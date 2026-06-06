@@ -7,9 +7,16 @@ window.SITE_CONTENT = {
     accueil: "Accueil",
     visio: "Coaching visio",
     suivi: "Suivi en ligne",
+    calculateur: "Calculateur",
     faq: "FAQ",
     contact: "Contact",
     cta: "Réserver un appel"
+  },
+
+  calc: {
+    eyebrow: "Outil gratuit",
+    title: "Calculateur alimentaire",
+    subtitle: "Estimez vos besoins caloriques et la répartition de vos macros en quelques secondes, selon votre profil et vos objectifs."
   },
 
   home: {

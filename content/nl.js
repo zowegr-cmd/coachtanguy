@@ -7,9 +7,16 @@ window.SITE_CONTENT = {
     accueil: "Home",
     visio: "Videocoaching",
     suivi: "Online opvolging",
+    calculateur: "Calculator",
     faq: "FAQ",
     contact: "Contact",
     cta: "Plan een gesprek"
+  },
+
+  calc: {
+    eyebrow: "Gratis tool",
+    title: "Voedingscalculator",
+    subtitle: "Schat je caloriebehoefte en macroverdeling in enkele seconden, op basis van je profiel en doelen."
   },
 
   home: {

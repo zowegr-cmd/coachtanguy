@@ -7,9 +7,16 @@ window.SITE_CONTENT = {
     accueil: "Home",
     visio: "Video coaching",
     suivi: "Online tracking",
+    calculateur: "Calculator",
     faq: "FAQ",
     contact: "Contact",
     cta: "Book a call"
+  },
+
+  calc: {
+    eyebrow: "Free tool",
+    title: "Food calculator",
+    subtitle: "Estimate your calorie needs and macro split in seconds, based on your profile and goals."
   },
 
   home: {

@@ -17,7 +17,7 @@ LANGS = {"en": "en_US", "nl": "nl_NL"}
 PAGES = ["index.html", "contact.html", "coaching-visio.html", "suivi-en-ligne.html"]
 
 # Pages qui n'existent QUE en FR (leurs liens pointeront vers ../ depuis /en /nl)
-FR_ONLY = ["mentions-legales.html", "cvg.html"]
+FR_ONLY = ["mentions-legales.html", "cvg.html", "calculateur.html"]
 
 def transform(html, lang, locale):
     # langue

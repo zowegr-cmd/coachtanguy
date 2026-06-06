@@ -139,16 +139,29 @@ body.has-hero .nav:not(.scrolled) .nav__links.open a { color: var(--gray-900); }
 .nav__burger.open span:nth-child(2) { opacity: 0; }
 .nav__burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* ===== Zone sombre continue (hero + stats + services) =====
+   Une seule surface : --dark + UN halo orange. Les enfants sont transparents,
+   la photo du hero se dissout dedans (masque). => aucune couture possible. */
+.darkzone {
+  position: relative; isolation: isolate;
+  background:
+    radial-gradient(58% 52vh at 80% 90vh, rgba(255,90,0,.13), transparent 62%),
+    var(--dark);
+}
+.darkzone > .trust { background: transparent; }
+.darkzone > .section--dark { background: transparent; }
+
 /* ===== Hero pleine largeur ===== */
 .hero { position: relative; min-height: 92vh; display: flex; align-items: center; padding: 130px 0 90px; overflow: hidden; }
-.hero__media { position: absolute; inset: 0; z-index: -1; }
+.hero__media {
+  position: absolute; inset: 0; z-index: -1;
+  -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 96%);
+          mask-image: linear-gradient(180deg, #000 60%, transparent 96%);
+}
 .hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
 .hero__overlay {
   position: absolute; inset: 0;
-  background:
-    radial-gradient(70% 46% at 85% 112%, rgba(255,90,0,.17), transparent 58%),
-    linear-gradient(90deg, rgba(12,12,14,.9) 0%, rgba(12,12,14,.6) 42%, rgba(12,12,14,.22) 74%, transparent 100%),
-    linear-gradient(0deg, var(--dark) 0%, var(--dark) 11%, rgba(12,12,14,.86) 22%, rgba(12,12,14,.5) 34%, rgba(12,12,14,.2) 45%, transparent 62%);
+  background: linear-gradient(90deg, rgba(12,12,14,.9) 0%, rgba(12,12,14,.6) 42%, rgba(12,12,14,.22) 74%, transparent 100%);
 }
 .hero__inner { position: relative; }
 .hero__text { max-width: 640px; }
@@ -316,8 +329,7 @@ body.has-hero .nav:not(.scrolled) .nav__links.open a { color: var(--gray-900); }
 .nav__links a.is-active::after { width: 100%; }
 
 /* Bandeau confiance */
-.trust { position: relative; z-index: 1; color: #fff;
-  background: radial-gradient(110% 320% at 82% 50%, rgba(255,90,0,.10), transparent 66%), var(--dark); }
+.trust { position: relative; z-index: 1; color: #fff; background: var(--dark); }
 .trust__inner { position: relative; z-index: 2; }
 .trust__inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 30px 24px; text-align: center; }
 .trust__item { display: flex; flex-direction: column; gap: 4px; }

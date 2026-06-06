@@ -166,6 +166,7 @@ window.SITE_CONTENT = {
     suivisEyebrow: "Formules",
     suivisTitle: "Deskundige opvolging, 100% persoonlijk",
     suivisSubtitle: "Programma op maat, regelmatige bijsturing en menselijke begeleiding.",
+    flowLabel: "daarna",
     s1Ribbon: "Om te starten", s1Name: "Initiële begeleiding", s1PriceSub: "voor 8 weken",
     s1l1: "Persoonlijke begeleiding gedurende 8 weken", s1l2: "Trainingsprogramma op maat afgestemd op je doelen", s1l3: "Toegang via de FitPros-app", s1l4: "Communicatie & opvolging via WhatsApp", s1l5: "Introductiegesprek via video (~30 min) gratis", s1l6: "Programma beschikbaar binnen 72u na het gesprek", s1l7: "Check-up om de 2 weken via een formulier", s1l8: "Regelmatige bijsturing voor optimale resultaten", s1l9: "Pauze mogelijk bij vakantie", s1Btn: "Kiezen",
     s2Name: "Maandelijkse opvolging", s2PriceSub: "per maand", s2Meta: "Enkel na de initiële begeleiding",

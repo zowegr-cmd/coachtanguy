@@ -166,6 +166,7 @@ window.SITE_CONTENT = {
     suivisEyebrow: "Plans",
     suivisTitle: "Expert tracking, 100% personalised",
     suivisSubtitle: "Tailored programme, regular adjustments and human support.",
+    flowLabel: "then",
     s1Ribbon: "To get started", s1Name: "Initial support", s1PriceSub: "for 8 weeks",
     s1l1: "Personalised support for 8 weeks", s1l2: "Tailored training programme adapted to your goals", s1l3: "Access via the FitPros app", s1l4: "Communication & tracking via WhatsApp", s1l5: "Introductory video call (~30 min) free", s1l6: "Programme available within 72h after the call", s1l7: "Check-up every 2 weeks via a form", s1l8: "Regular adjustments for optimal results", s1l9: "Pause possible during holidays", s1Btn: "Choose",
     s2Name: "Monthly tracking", s2PriceSub: "per month", s2Meta: "Only after the initial support",

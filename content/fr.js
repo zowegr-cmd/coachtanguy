@@ -166,6 +166,7 @@ window.SITE_CONTENT = {
     suivisEyebrow: "Suivis",
     suivisTitle: "Un suivi expert, 100% personnalisé",
     suivisSubtitle: "Programme sur-mesure, ajustements réguliers et accompagnement humain.",
+    flowLabel: "puis",
     s1Ribbon: "Pour démarrer", s1Name: "Accompagnement initial", s1PriceSub: "pour 8 semaines",
     s1l1: "Accompagnement personnalisé pendant 8 semaines", s1l2: "Programme d'entraînement sur-mesure adapté à vos objectifs", s1l3: "Accès via l'app FitPros", s1l4: "Communication & suivi via WhatsApp", s1l5: "Appel visio d'introduction (~30 min) offert", s1l6: "Programme accessible sous 72h après l'appel", s1l7: "Check-up toutes les 2 semaines via un formulaire", s1l8: "Ajustements réguliers pour des résultats optimaux", s1l9: "Mise en pause possible en cas de vacances", s1Btn: "Choisir",
     s2Name: "Suivi mensuel", s2PriceSub: "par mois", s2Meta: "Uniquement après l'accompagnement initial",

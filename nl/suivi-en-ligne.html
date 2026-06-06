@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../styles.css?v=29" />
+  <link rel="stylesheet" href="../styles.css?v=30" />
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png" />
   <link rel="apple-touch-icon" href="../assets/icon-180.png" />
@@ -121,7 +121,7 @@
         <h2 data-i18n="suivi.suivisTitle">Un suivi expert, 100% personnalisé</h2>
         <p data-i18n="suivi.suivisSubtitle">Programme sur-mesure, ajustements réguliers et accompagnement humain.</p>
       </div>
-      <div class="pricing pricing--2">
+      <div class="pricing pricing--2 pricing--flow">
         <article class="price price--featured reveal">
           <div class="price__ribbon" data-i18n="suivi.s1Ribbon">Pour démarrer</div>
           <h3 class="price__name" data-i18n="suivi.s1Name">Accompagnement initial</h3>
@@ -140,10 +140,15 @@
           <a href="#stripe-accompagnement-initial" class="btn btn--primary price__btn" data-i18n-href="stripe.initial" data-i18n="suivi.s1Btn" target="_blank" rel="noopener">Choisir</a>
         </article>
 
+        <div class="flow-connector">
+          <span class="flow-connector__icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="flow-connector__label" data-i18n="suivi.flowLabel">puis</span>
+        </div>
+
         <article class="price reveal">
           <h3 class="price__name" data-i18n="suivi.s2Name">Suivi mensuel</h3>
           <div class="price__amount">150€<span data-i18n="suivi.s2PriceSub">par mois</span></div>
-          <p class="price__meta" data-i18n="suivi.s2Meta">Uniquement après l'accompagnement initial</p>
+          <p class="price__meta price__prereq" data-i18n="suivi.s2Meta">Uniquement après l'accompagnement initial</p>
           <ul class="price__list">
             <li data-i18n="suivi.s2l1">Programme d'entraînement sur-mesure</li>
             <li data-i18n="suivi.s2l2">Accès via l'app FitPros</li>

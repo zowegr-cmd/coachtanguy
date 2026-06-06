@@ -100,8 +100,9 @@ window.SITE_CONTENT = {
   stripe: {
     unite: "contact.html",
     pack4: "https://buy.stripe.com/5kQ4gBdvB0Yz85A7Pa0RG0a",
-    pack8: "https://buy.stripe.com/5kQ4gBdvB0Yz85A7Pa0RG0a",
+    pack8: "https://buy.stripe.com/8x2cN7fDJePpadI8Te0RG0b",
     initial: "https://buy.stripe.com/8x214p8bh22D0D84CY0RG08",
     mensuel: "https://buy.stripe.com/dRm8wR63922DdpUfhC0RG09"
   }
 };
+(window.SITE_CONTENT_ALL = window.SITE_CONTENT_ALL || {}).fr = window.SITE_CONTENT;

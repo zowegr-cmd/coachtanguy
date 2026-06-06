@@ -47,6 +47,24 @@ faqItems.forEach(item => {
   });
 });
 
+// ===== Sélecteur de langue (FR / NL / EN) =====
+(function () {
+  var sw = document.getElementById('langSwitch');
+  if (!sw) return;
+  var cur = document.documentElement.lang || 'fr';
+  var file = (location.pathname.split('/').pop() || 'index.html');
+  if (!file) file = 'index.html';
+  var inLangFolder = /\/(en|nl)\/[^\/]*$/.test(location.pathname);
+  sw.querySelectorAll('a[data-lang]').forEach(function (a) {
+    var lang = a.getAttribute('data-lang');
+    var href;
+    if (lang === 'fr') href = inLangFolder ? '../' + file : file;
+    else href = inLangFolder ? '../' + lang + '/' + file : lang + '/' + file;
+    a.setAttribute('href', href);
+    a.classList.toggle('active', lang === cur);
+  });
+})();
+
 // ===== Formulaire de contact -> page de confirmation =====
 const contactForm = document.getElementById('form');
 if (contactForm) {

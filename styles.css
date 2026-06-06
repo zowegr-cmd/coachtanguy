@@ -112,6 +112,16 @@ body.nav-solid .nav {
 .nav__links a::after { content: ""; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px; background: var(--orange); transition: width .25s; border-radius: 2px; }
 .nav__links a:hover { color: var(--orange); }
 .nav__links a:hover::after { width: 100%; }
+/* Groupe de droite (bouton + sélecteur dans le coin) */
+.nav__right { display: flex; align-items: center; gap: 16px; }
+/* Sélecteur de langue */
+.lang-switch { display: flex; align-items: center; gap: 2px; border: 1px solid var(--gray-200); border-radius: 999px; padding: 3px; }
+.lang-switch a { font-size: 12px; font-weight: 700; letter-spacing: .02em; color: var(--gray-700); padding: 5px 9px; border-radius: 999px; transition: .15s; }
+.lang-switch a:hover { color: var(--orange); }
+.lang-switch a.active { background: var(--orange); color: #fff; }
+body.has-hero .nav:not(.scrolled) .lang-switch { border-color: rgba(255,255,255,.3); }
+body.has-hero .nav:not(.scrolled) .lang-switch a { color: rgba(255,255,255,.8); }
+body.has-hero .nav:not(.scrolled) .lang-switch a.active { background: var(--orange); color: #fff; }
 .nav__cta { padding: 11px 22px; }
 .nav__burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
 .nav__burger span { width: 24px; height: 2px; background: var(--black); border-radius: 2px; transition: .3s; }

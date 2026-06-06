@@ -62,8 +62,8 @@
         <h1>Coach<b>Tanguy</b> · Dashboard</h1>
         <div class="langs">
           <button class="lang active" data-lang="fr">FR</button>
-          <button class="lang" data-lang="nl" disabled title="Bientôt">NL</button>
-          <button class="lang" data-lang="en" disabled title="Bientôt">EN</button>
+          <button class="lang" data-lang="nl">NL</button>
+          <button class="lang" data-lang="en">EN</button>
         </div>
         <div class="actions">
           <button class="btn" id="reset">↺ Réinitialiser</button>
@@ -87,12 +87,16 @@
   </div>
   <div class="toast" id="toast"></div>
 
-  <!-- charge le contenu par défaut -->
+  <!-- charge le contenu des 3 langues (chacune s'enregistre dans SITE_CONTENT_ALL) -->
   <script src="content/fr.js"></script>
+  <script src="content/nl.js"></script>
+  <script src="content/en.js"></script>
   <script>
   (function(){
     var LANG='fr';
-    var DEFAULTS = JSON.parse(JSON.stringify(window.SITE_CONTENT||{}));
+    var DEFAULTS_ALL = JSON.parse(JSON.stringify(window.SITE_CONTENT_ALL||{}));
+    function DEF(){ return DEFAULTS_ALL[LANG]||{}; }
+    function homeFor(l){ return l==='fr' ? 'index.html' : l+'/index.html'; }
     var work = loadWork();
 
     var GROUPS = {
@@ -114,7 +118,7 @@
 
     function loadWork(){
       try{var raw=localStorage.getItem('SITE_CONTENT_'+LANG); if(raw) return JSON.parse(raw);}catch(e){}
-      return JSON.parse(JSON.stringify(DEFAULTS));
+      return JSON.parse(JSON.stringify(DEF()));
     }
     function flatten(obj,prefix,out){
       out=out||[];prefix=prefix||'';
@@ -140,7 +144,7 @@
         var title=SUB[s]||GROUPS[s]||s;
         html+='<details class="group" open><summary>'+title+'</summary><div class="group__body">';
         bySection[s].forEach(function(l){
-          var dv=getDeep(DEFAULTS,l.path); var changed=(dv!=null&&String(dv)!==l.value)?' changed':'';
+          var dv=getDeep(DEF(),l.path); var changed=(dv!=null&&String(dv)!==l.value)?' changed':'';
           var big=l.value.length>55||l.value.indexOf('<')>=0||l.value.indexOf('\n')>=0;
           var ctrl=big?'<textarea data-path="'+l.path+'" rows="3">'+esc(l.value)+'</textarea>'
                       :'<input data-path="'+l.path+'" value="'+esc(l.value)+'" />';
@@ -158,7 +162,7 @@
     var saveTimer;
     function onEdit(path,val,el){
       setDeep(work,path,val);
-      el.closest('.field').classList.toggle('changed', String(getDeep(DEFAULTS,path))!==val);
+      el.closest('.field').classList.toggle('changed', String(getDeep(DEF(),path))!==val);
       clearTimeout(saveTimer);
       saveTimer=setTimeout(persistAndPreview,250);
     }
@@ -168,12 +172,24 @@
       try{f.contentWindow.location.reload();}catch(e){f.src=f.src;}
     }
 
-    document.getElementById('search').addEventListener('input',function(){render(this.value.trim().toLowerCase());});
-    document.getElementById('page').addEventListener('change',function(){document.getElementById('frame').src=this.value;});
+    var curFilter='';
+    document.getElementById('search').addEventListener('input',function(){curFilter=this.value.trim().toLowerCase();render(curFilter);});
+
+    // Bascule de langue (FR / NL / EN)
+    document.querySelectorAll('.lang').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        LANG=btn.getAttribute('data-lang');
+        document.querySelectorAll('.lang').forEach(function(b){b.classList.toggle('active',b===btn);});
+        work=loadWork(); render(curFilter);
+        document.getElementById('frame').src=homeFor(LANG);
+        toast('Langue : '+LANG.toUpperCase());
+      });
+    });
+
     document.getElementById('reset').addEventListener('click',function(){
-      if(!confirm('Réinitialiser tous les textes aux valeurs d\'origine ?'))return;
+      if(!confirm('Réinitialiser les textes ('+LANG.toUpperCase()+') aux valeurs d\'origine ?'))return;
       localStorage.removeItem('SITE_CONTENT_'+LANG);
-      work=JSON.parse(JSON.stringify(DEFAULTS)); render(''); persistAndPreview(); toast('Réinitialisé');
+      work=JSON.parse(JSON.stringify(DEF())); render(curFilter); persistAndPreview(); toast('Réinitialisé');
     });
     document.getElementById('export').addEventListener('click',function(){
       var header='/* ===========================================================\n   CONTENU '+LANG.toUpperCase()+' — CoachTanguy (exporté via dashboard)\n   =========================================================== */\n';

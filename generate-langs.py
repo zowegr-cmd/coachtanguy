@@ -28,7 +28,7 @@ def transform(html, lang, locale):
     html = html.replace('href="assets/', 'href="../assets/')
     html = html.replace('href="site.webmanifest"', 'href="../site.webmanifest"')
     html = html.replace('src="content/fr.js"', 'src="../content/%s.js"' % lang)
-    html = html.replace('src="script.js"', 'src="../script.js"')
+    html = html.replace('src="script.js', 'src="../script.js')
     # canonical + og:url -> insère /lang/ après le domaine (toute page)
     html = re.sub(r'(rel="canonical" href="https://www\.coachtanguy\.com/)',
                   r'\g<1>%s/' % lang, html)

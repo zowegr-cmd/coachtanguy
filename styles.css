@@ -145,7 +145,7 @@ body.has-hero .nav:not(.scrolled) .nav__links.open a { color: var(--gray-900); }
 .darkzone {
   position: relative; isolation: isolate;
   background:
-    radial-gradient(58% 52vh at 80% 90vh, rgba(255,90,0,.13), transparent 62%),
+    radial-gradient(58% 54vh at 80% 102vh, rgba(255,90,0,.13), transparent 62%),
     var(--dark);
 }
 .darkzone > .trust { background: transparent; }

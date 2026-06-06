@@ -125,6 +125,7 @@ body.nav-solid .nav {
 .nav__links a::after { content: ""; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px; background: var(--orange); transition: width .25s; border-radius: 2px; }
 .nav__links a:hover { color: var(--orange); }
 .nav__links a:hover::after { width: 100%; }
+.nav__menu-logo { display: none; }   /* logo du menu : visible uniquement dans le menu mobile (voir media query) */
 /* Groupe de droite (bouton + sélecteur dans le coin) */
 .nav__right { display: flex; align-items: center; gap: 16px; }
 /* Sélecteur de langue */

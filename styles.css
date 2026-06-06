@@ -146,9 +146,7 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
    la photo du hero se dissout dedans (masque). => aucune couture possible. */
 .darkzone {
   position: relative; isolation: isolate;
-  background:
-    radial-gradient(115% 100vh at 72% 114vh, rgba(255,90,0,.12), rgba(255,90,0,.045) 45%, transparent 80%),
-    var(--dark);
+  background: var(--dark);
 }
 .darkzone > .trust { background: transparent; }
 .darkzone > .section--dark { background: transparent; }

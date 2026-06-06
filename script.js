@@ -117,6 +117,8 @@ if (contactForm) {
 // ===== Bouton WhatsApp flottant (FAB) sur toutes les pages =====
 (function () {
   var WA_NUMBER = '32472761639'; // +32 472 76 16 39
+  // Pas de FAB sur la page contact (le WhatsApp y est déjà présent)
+  if (/contact\.html(?:$|[?#])/.test(location.pathname + location.search + location.hash) || /\/contact\/?$/.test(location.pathname)) return;
   if (document.querySelector('.wa-fab')) return;
   var SVG = '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>';
   var a = document.createElement('a');

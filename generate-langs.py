@@ -14,10 +14,10 @@ LANGS = {"en": "en_US", "nl": "nl_NL"}
 
 # Pages traduites disponibles dans chaque dossier de langue.
 # Ajoute-en ici au fur et à mesure que tu les câbles (puis relance le script).
-PAGES = ["index.html", "contact.html", "coaching-visio.html", "suivi-en-ligne.html"]
+PAGES = ["index.html", "contact.html", "coaching-visio.html", "suivi-en-ligne.html", "calculateur.html"]
 
 # Pages qui n'existent QUE en FR (leurs liens pointeront vers ../ depuis /en /nl)
-FR_ONLY = ["mentions-legales.html", "cvg.html", "calculateur.html"]
+FR_ONLY = ["mentions-legales.html", "cvg.html"]
 
 def transform(html, lang, locale):
     # langue
@@ -29,6 +29,9 @@ def transform(html, lang, locale):
     html = html.replace('href="site.webmanifest"', 'href="../site.webmanifest"')
     html = html.replace('src="content/fr.js"', 'src="../content/%s.js"' % lang)
     html = html.replace('src="script.js', 'src="../script.js')
+    # iframe du calculateur -> chemin racine + langue
+    html = re.sub(r'src="calc-app\.html([^"]*)"',
+                  r'src="../calc-app.html\1&lang=%s"' % lang, html)
     # canonical + og:url -> insère /lang/ après le domaine (toute page)
     html = re.sub(r'(rel="canonical" href="https://www\.coachtanguy\.com/)',
                   r'\g<1>%s/' % lang, html)

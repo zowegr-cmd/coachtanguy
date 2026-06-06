@@ -2262,5 +2262,45 @@
     });
   })();
 </script>
+
+<!-- ===== Moteur de traduction (FR source -> NL/EN selon ?lang) ===== -->
+<script>
+  (function () {
+    var m = location.search.match(/[?&]lang=(fr|nl|en)/);
+    var lang = m ? m[1] : 'fr';
+    if (lang === 'fr') return;
+    var dict = {};
+    function tr(t) { if (t == null) return null; var k = ('' + t).replace(/\s+/g, ' ').trim(); var v = dict[k]; if (v == null) return null; return ('' + t).replace(k, v); }
+    function walk(root) {
+      var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), nodes = [];
+      while (w.nextNode()) { var n = w.currentNode; if (n.parentElement && n.parentElement.closest('script,style')) continue; nodes.push(n); }
+      nodes.forEach(function (n) { var r = tr(n.nodeValue); if (r !== null) n.nodeValue = r; });
+    }
+    function attrs(root) {
+      ['placeholder', 'aria-label', 'title'].forEach(function (a) {
+        root.querySelectorAll('[' + a + ']').forEach(function (e) { var v = dict[(e.getAttribute(a) || '').trim()]; if (v) e.setAttribute(a, v); });
+      });
+    }
+    function applyAll(r) { walk(r); attrs(r); }
+    function start() {
+      applyAll(document.body);
+      var mo = new MutationObserver(function (muts) {
+        muts.forEach(function (mu) {
+          [].forEach.call(mu.addedNodes || [], function (nd) {
+            if (nd.nodeType === 3) { var r = tr(nd.nodeValue); if (r !== null) nd.nodeValue = r; }
+            else if (nd.nodeType === 1) { applyAll(nd); }
+          });
+          if (mu.type === 'characterData' && mu.target && mu.target.nodeType === 3) { var r2 = tr(mu.target.nodeValue); if (r2 !== null && r2 !== mu.target.nodeValue) mu.target.nodeValue = r2; }
+        });
+      });
+      mo.observe(document.body, { childList: true, subtree: true, characterData: true });
+      document.documentElement.setAttribute('lang', lang);
+    }
+    var sc = document.createElement('script');
+    sc.src = 'content/calc-i18n.' + lang + '.js';
+    sc.onload = function () { dict = window.CALC_I18N || {}; start(); };
+    document.head.appendChild(sc);
+  })();
+</script>
 </body>
 </html>

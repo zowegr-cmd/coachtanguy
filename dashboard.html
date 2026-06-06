@@ -65,6 +65,10 @@
           <button class="lang" data-lang="nl">NL</button>
           <button class="lang" data-lang="en">EN</button>
         </div>
+        <div class="langs modes">
+          <button class="lang mode active" data-mode="site">Site</button>
+          <button class="lang mode" data-mode="calc">Calculateur</button>
+        </div>
         <div class="actions">
           <button class="btn" id="reset">↺ Réinitialiser</button>
           <button class="btn btn--primary" id="export">⤓ Exporter</button>
@@ -94,6 +98,11 @@
   <script src="content/fr.js"></script>
   <script src="content/nl.js"></script>
   <script src="content/en.js"></script>
+  <!-- Dictionnaires du calculateur (FR source -> NL/EN), snapshot par langue -->
+  <script src="content/calc-i18n.nl.js"></script>
+  <script>window.__CALC = { nl: { dict: Object.assign({}, window.CALC_I18N), frags: Object.assign({}, window.CALC_I18N_FRAGMENTS) } };</script>
+  <script src="content/calc-i18n.en.js"></script>
+  <script>window.__CALC.en = { dict: Object.assign({}, window.CALC_I18N), frags: Object.assign({}, window.CALC_I18N_FRAGMENTS) };</script>
   <script>
   (function(){
     var LANG='fr';
@@ -104,9 +113,45 @@
     function curPageFile(){ var s=document.getElementById('page'); return s?s.value:'index.html'; }
     var work = loadWork();
 
+    // ===== Mode Calculateur =====
+    var MODE = 'site';
+    var CALC_DEF = JSON.parse(JSON.stringify(window.__CALC || { nl: { dict: {}, frags: {} }, en: { dict: {}, frags: {} } }));
+    var cwork = { dict: {}, frags: {} };
+    function loadCalcWork(){ try{ var raw=localStorage.getItem('CALC_I18N_'+LANG); if(raw) return JSON.parse(raw); }catch(e){} return JSON.parse(JSON.stringify(CALC_DEF[LANG]||{dict:{},frags:{}})); }
+    function reloadPreview(){ var f=document.getElementById('frame'); try{ f.contentWindow.location.reload(); }catch(e){ f.src=f.src; } }
+    function previewSrc(){ if(MODE==='calc'){ return LANG==='fr'?'calculateur.html':LANG+'/calculateur.html'; } return pageFor(LANG, curPageFile()); }
+    function renderCalc(filter){
+      var host=document.getElementById('fields');
+      if(LANG==='fr'){ host.innerHTML='<p class="hint" style="padding:24px 22px;line-height:1.7">Le calculateur est en <b>français</b> (texte source).<br>Passez en <b>NL</b> ou <b>EN</b> pour éditer les traductions.<br><br>Le hero (Outil gratuit / Calculateur alimentaire / sous-titre) se modifie en mode <b>Site</b> → groupe « Calculateur ».</p>'; return; }
+      var groups=[ {key:'dict', title:'Calculateur · Textes', src:CALC_DEF[LANG].dict}, {key:'frags', title:'Calculateur · Repas dynamiques (aliments, unités)', src:CALC_DEF[LANG].frags} ];
+      var html='';
+      groups.forEach(function(g){
+        var keys=Object.keys(g.src).filter(function(fr){ if(!filter) return true; var val=cwork[g.key][fr]!=null?cwork[g.key][fr]:g.src[fr]; return fr.toLowerCase().indexOf(filter)>=0 || String(val).toLowerCase().indexOf(filter)>=0; });
+        if(!keys.length) return;
+        html+='<details class="group" open><summary>'+g.title+' ('+keys.length+')</summary><div class="group__body">';
+        keys.forEach(function(fr){
+          var val=cwork[g.key][fr]!=null?cwork[g.key][fr]:g.src[fr];
+          var changed=(String(g.src[fr])!==String(val))?' changed':'';
+          var big=String(val).length>55;
+          var ctrl=big?'<textarea data-calc="'+g.key+'" data-fr="'+esc(fr)+'" rows="2">'+esc(val)+'</textarea>':'<input data-calc="'+g.key+'" data-fr="'+esc(fr)+'" value="'+esc(val)+'" />';
+          html+='<div class="field'+changed+'"><label class="key">'+esc(fr)+'</label>'+ctrl+'</div>';
+        });
+        html+='</div></details>';
+      });
+      host.innerHTML=html||'<p class="hint">Aucun résultat.</p>';
+      host.querySelectorAll('[data-calc]').forEach(function(el){ el.addEventListener('input',function(){ onEditCalc(el.getAttribute('data-calc'), el.getAttribute('data-fr'), el.value, el); }); });
+    }
+    function onEditCalc(type,fr,val,el){
+      cwork[type][fr]=val;
+      el.closest('.field').classList.toggle('changed', String(CALC_DEF[LANG][type][fr])!==val);
+      clearTimeout(saveTimer);
+      saveTimer=setTimeout(function(){ try{ localStorage.setItem('CALC_I18N_'+LANG, JSON.stringify(cwork)); }catch(e){} reloadPreview(); },250);
+    }
+
     var GROUPS = {
       nav:"Navigation", home:"Accueil", visio:"Coaching visio", suivi:"Suivi en ligne",
-      contact:"Contact", footer:"Pied de page", stripe:"Liens de paiement Stripe"
+      contact:"Contact", footer:"Pied de page", stripe:"Liens de paiement Stripe",
+      calc:"Calculateur (hero)"
     };
     var SUB = {
       "home.hero":"Accueil · Hero", "home.trust":"Accueil · Bandeau confiance",
@@ -139,6 +184,7 @@
     function getDeep(obj,path){return path.split('.').reduce(function(a,k){return a&&a[k]!=null?a[k]:undefined;},obj);}
 
     function render(filter){
+      if(MODE==='calc'){ return renderCalc(filter); }
       var leaves=flatten(work);
       var sections=[]; var bySection={};
       leaves.forEach(function(l){
@@ -182,27 +228,53 @@
     document.getElementById('search').addEventListener('input',function(){curFilter=this.value.trim().toLowerCase();render(curFilter);});
     document.getElementById('page').addEventListener('change',function(){document.getElementById('frame').src=pageFor(LANG, this.value);});
 
+    // Bascule de mode (Site / Calculateur)
+    document.querySelectorAll('.mode').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        MODE=btn.getAttribute('data-mode');
+        document.querySelectorAll('.mode').forEach(function(b){b.classList.toggle('active',b===btn);});
+        if(MODE==='calc') cwork=loadCalcWork();
+        render(curFilter);
+        document.getElementById('page').style.display = (MODE==='calc')?'none':'';
+        document.getElementById('frame').src=previewSrc();
+        toast(MODE==='calc'?'Mode Calculateur':'Mode Site');
+      });
+    });
+
     // Bascule de langue (FR / NL / EN)
-    document.querySelectorAll('.lang').forEach(function(btn){
+    document.querySelectorAll('.lang[data-lang]').forEach(function(btn){
       btn.addEventListener('click',function(){
         LANG=btn.getAttribute('data-lang');
-        document.querySelectorAll('.lang').forEach(function(b){b.classList.toggle('active',b===btn);});
-        work=loadWork(); render(curFilter);
-        document.getElementById('frame').src=pageFor(LANG, curPageFile());
+        document.querySelectorAll('.lang[data-lang]').forEach(function(b){b.classList.toggle('active',b===btn);});
+        work=loadWork(); if(MODE==='calc') cwork=loadCalcWork(); render(curFilter);
+        document.getElementById('frame').src=previewSrc();
         toast('Langue : '+LANG.toUpperCase());
       });
     });
 
+    function download(name,content){ var blob=new Blob([content],{type:'text/javascript'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; a.click(); }
+
     document.getElementById('reset').addEventListener('click',function(){
+      if(MODE==='calc'){
+        if(LANG==='fr'){ toast('Rien à réinitialiser en FR (source).'); return; }
+        if(!confirm('Réinitialiser les traductions du calculateur ('+LANG.toUpperCase()+') ?'))return;
+        localStorage.removeItem('CALC_I18N_'+LANG); cwork=JSON.parse(JSON.stringify(CALC_DEF[LANG])); render(curFilter); reloadPreview(); toast('Réinitialisé'); return;
+      }
       if(!confirm('Réinitialiser les textes ('+LANG.toUpperCase()+') aux valeurs d\'origine ?'))return;
       localStorage.removeItem('SITE_CONTENT_'+LANG);
       work=JSON.parse(JSON.stringify(DEF())); render(curFilter); persistAndPreview(); toast('Réinitialisé');
     });
     document.getElementById('export').addEventListener('click',function(){
+      if(MODE==='calc'){
+        if(LANG==='fr'){ toast('Rien à exporter en FR (le calculateur source est en français).'); return; }
+        var h='/* Calculateur i18n '+LANG.toUpperCase()+' — exporté via dashboard. Clé = texte FR source. */\n';
+        var b='window.CALC_I18N = '+JSON.stringify(cwork.dict,null,2)+';\nwindow.CALC_I18N_FRAGMENTS = '+JSON.stringify(cwork.frags,null,2)+';\n';
+        download('calc-i18n.'+LANG+'.js', h+b);
+        toast('calc-i18n.'+LANG+'.js téléchargé → place-le dans content/'); return;
+      }
       var header='/* ===========================================================\n   CONTENU '+LANG.toUpperCase()+' — CoachTanguy (exporté via dashboard)\n   =========================================================== */\n';
       var body='window.SITE_CONTENT = '+JSON.stringify(work,null,2)+';\n';
-      var blob=new Blob([header+body],{type:'text/javascript'});
-      var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=LANG+'.js';a.click();
+      download(LANG+'.js', header+body);
       toast('Fichier '+LANG+'.js téléchargé → place-le dans content/');
     });
 

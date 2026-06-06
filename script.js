@@ -2,16 +2,18 @@
 const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
 if (burger && navLinks) {
-  burger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    burger.classList.toggle('open');
-  });
+  const setMenu = (open) => {
+    navLinks.classList.toggle('open', open);
+    burger.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  burger.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      burger.classList.remove('open');
-    });
+    link.addEventListener('click', () => setMenu(false));
   });
+  // Échap ferme le menu
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 }
 
 // ===== Nav adaptative (claire sur fond clair, sombre sur fond sombre) =====

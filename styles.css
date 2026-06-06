@@ -77,6 +77,7 @@ h1, h2, h3 { font-family: var(--font-head); font-weight: 700; line-height: 1.08;
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   padding: 14px 28px;
   border-radius: 999px;
+  white-space: nowrap;
   font-weight: 600; font-size: 15px;
   transition: transform .18s ease, background .2s ease, color .2s ease, box-shadow .25s ease, border-color .2s;
   cursor: pointer; border: 1px solid transparent;
@@ -134,7 +135,7 @@ body.nav-solid .nav {
 body.nav-over-dark .nav .lang-switch { border-color: rgba(255,255,255,.3); }
 body.nav-over-dark .nav .lang-switch a { color: rgba(255,255,255,.8); }
 body.nav-over-dark .nav .lang-switch a.active { background: var(--orange); color: #fff; }
-.nav__cta { padding: 11px 22px; }
+.nav__cta { padding: 11px 22px; flex-shrink: 0; }
 .nav__burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
 .nav__burger span { width: 24px; height: 2px; background: var(--black); border-radius: 2px; transition: .3s; }
 
@@ -383,8 +384,8 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
   .hero .eyebrow { margin-bottom: 20px; }
   .hero h1 { margin-bottom: 18px; }
   .hero p { margin-bottom: 28px; }
-  /* recadrage : coach décalé vers la droite pour libérer le texte sur sa tête */
-  .hero__media img { object-position: 50% 14%; }
+  /* recadrage : coach légèrement décalé pour libérer le texte sur sa tête */
+  .hero__media img { object-position: 60% 14%; }
 }
 
 /* ============================================================

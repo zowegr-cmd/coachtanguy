@@ -14,6 +14,17 @@ if (burger && navLinks) {
   });
   // Échap ferme le menu
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+
+  // Logo centré en haut du menu mobile (réutilise le logo blanc de la barre)
+  if (!navLinks.querySelector('.nav__menu-logo')) {
+    const barLogo = document.querySelector('.nav__logo .nav__logo-light') || document.querySelector('.nav__logo img');
+    const mlogo = document.createElement('img');
+    mlogo.className = 'nav__menu-logo';
+    mlogo.src = barLogo ? barLogo.getAttribute('src') : 'assets/logo-white.webp';
+    mlogo.alt = 'CoachTanguy';
+    mlogo.setAttribute('aria-hidden', 'true');
+    navLinks.insertBefore(mlogo, navLinks.firstChild);
+  }
 }
 
 // ===== Nav adaptative (claire sur fond clair, sombre sur fond sombre) =====
@@ -105,7 +116,7 @@ if (contactForm) {
 
 // ===== Bouton WhatsApp flottant (FAB) sur toutes les pages =====
 (function () {
-  var WA_NUMBER = '32470000000'; // ⬅️ remplace par ton vrai numéro WhatsApp (format international, sans +)
+  var WA_NUMBER = '32472761639'; // +32 472 76 16 39
   if (document.querySelector('.wa-fab')) return;
   var SVG = '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>';
   var a = document.createElement('a');

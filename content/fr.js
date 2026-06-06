@@ -140,7 +140,7 @@ window.SITE_CONTENT = {
     packsSubtitle: "Adaptée et personnalisée · feedback après chaque séance · report possible en cas de vacances.",
     p1Name: "Séance à l'unité", p1Meta: "Séance de 30 à 40 min",
     p1l1: "Séance adaptée et personnalisée", p1l2: "Feedback après la séance", p1l3: "Sans engagement",
-    p1Note: "💳 Paiement réglé directement lors de la séance", p1Btn: "Réserver",
+    p1Note: "💳 Paiement réglé lors de la réservation", p1Btn: "Réserver",
     p2Ribbon: "Le plus choisi", p2Name: "Pack 4 séances", p2PriceSub: "soit 35€ / séance", p2Meta: "Valable 5 semaines",
     p2l1: "4 séances personnalisées", p2l2: "Feedback après chaque séance", p2l3: "Report possible en cas de vacances", p2l4: "Idéal 1 séance / semaine", p2Btn: "Choisir",
     p3Name: "Pack 8 séances", p3PriceSub: "soit 30€ / séance", p3Meta: "Valable 10 semaines",

@@ -140,7 +140,7 @@ window.SITE_CONTENT = {
     packsSubtitle: "Adapted and personalised · feedback after every session · rescheduling possible during holidays.",
     p1Name: "Single session", p1Meta: "Session of 30 to 40 min",
     p1l1: "Adapted and personalised session", p1l2: "Feedback after the session", p1l3: "No commitment",
-    p1Note: "💳 Payment settled directly at the session", p1Btn: "Book",
+    p1Note: "💳 Payment settled at booking", p1Btn: "Book",
     p2Ribbon: "Most chosen", p2Name: "Pack of 4 sessions", p2PriceSub: "i.e. 35€ / session", p2Meta: "Valid 5 weeks",
     p2l1: "4 personalised sessions", p2l2: "Feedback after each session", p2l3: "Rescheduling possible during holidays", p2l4: "Ideal 1 session / week", p2Btn: "Choose",
     p3Name: "Pack of 8 sessions", p3PriceSub: "i.e. 30€ / session", p3Meta: "Valid 10 weeks",

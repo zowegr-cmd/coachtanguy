@@ -140,7 +140,7 @@ window.SITE_CONTENT = {
     packsSubtitle: "Aangepast en persoonlijk · feedback na elke sessie · uitstel mogelijk bij vakantie.",
     p1Name: "Losse sessie", p1Meta: "Sessie van 30 tot 40 min",
     p1l1: "Aangepaste en persoonlijke sessie", p1l2: "Feedback na de sessie", p1l3: "Zonder verbintenis",
-    p1Note: "💳 Betaling rechtstreeks bij de sessie", p1Btn: "Reserveren",
+    p1Note: "💳 Betaling bij de reservering", p1Btn: "Reserveren",
     p2Ribbon: "Meest gekozen", p2Name: "Pakket 4 sessies", p2PriceSub: "ofwel 35€ / sessie", p2Meta: "Geldig 5 weken",
     p2l1: "4 persoonlijke sessies", p2l2: "Feedback na elke sessie", p2l3: "Uitstel mogelijk bij vakantie", p2l4: "Ideaal 1 sessie / week", p2Btn: "Kiezen",
     p3Name: "Pakket 8 sessies", p3PriceSub: "ofwel 30€ / sessie", p3Meta: "Geldig 10 weken",

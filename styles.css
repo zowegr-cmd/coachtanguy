@@ -146,6 +146,7 @@ body.has-hero .nav:not(.scrolled) .nav__links.open a { color: var(--gray-900); }
 .hero__overlay {
   position: absolute; inset: 0;
   background:
+    radial-gradient(120% 65% at 78% 122%, rgba(255,90,0,.30), rgba(255,90,0,.10) 35%, transparent 60%),
     linear-gradient(90deg, rgba(12,12,14,.9) 0%, rgba(12,12,14,.62) 42%, rgba(12,12,14,.24) 74%, rgba(12,12,14,.08) 100%),
     linear-gradient(0deg, var(--dark) 0%, var(--dark) 4%, rgba(12,12,14,.82) 16%, rgba(12,12,14,.46) 30%, rgba(12,12,14,.18) 42%, transparent 58%);
 }

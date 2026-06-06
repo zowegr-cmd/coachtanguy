@@ -2269,8 +2269,9 @@
     var m = location.search.match(/[?&]lang=(fr|nl|en)/);
     var lang = m ? m[1] : 'fr';
     if (lang === 'fr') return;
-    var dict = {};
-    function tr(t) { if (t == null) return null; var k = ('' + t).replace(/\s+/g, ' ').trim(); var v = dict[k]; if (v == null) return null; return ('' + t).replace(k, v); }
+    var dict = {}, frags = [];
+    function applyFrags(s) { for (var i = 0; i < frags.length; i++) { if (s.indexOf(frags[i][0]) >= 0) s = s.split(frags[i][0]).join(frags[i][1]); } return s; }
+    function tr(t) { if (t == null) return null; var raw = '' + t, k = raw.replace(/\s+/g, ' ').trim(); var v = dict[k]; if (v != null) return raw.replace(k, v); if (frags.length) { var fz = applyFrags(raw); if (fz !== raw) return fz; } return null; }
     function walk(root) {
       var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), nodes = [];
       while (w.nextNode()) { var n = w.currentNode; if (n.parentElement && n.parentElement.closest('script,style')) continue; nodes.push(n); }
@@ -2297,8 +2298,9 @@
       document.documentElement.setAttribute('lang', lang);
     }
     var sc = document.createElement('script');
-    sc.src = 'content/calc-i18n.' + lang + '.js';
-    sc.onload = function () { dict = window.CALC_I18N || {}; start(); };
+    var vm = location.search.match(/[?&](v=[^&]+)/);
+    sc.src = 'content/calc-i18n.' + lang + '.js' + (vm ? '?' + vm[1] : '');
+    sc.onload = function () { dict = window.CALC_I18N || {}; var fr = window.CALC_I18N_FRAGMENTS || {}; frags = Object.keys(fr).sort(function (a, b) { return b.length - a.length; }).map(function (k) { return [k, fr[k]]; }); start(); };
     document.head.appendChild(sc);
   })();
 </script>

@@ -32,7 +32,21 @@
     body { margin: 0; overflow: hidden; background: #0a0a0b; }
     .calc-embed { position: fixed; inset: 0; z-index: 1; }
     .calc-embed__frame { display: block; width: 100%; height: 100%; border: 0; background: #0a0a0b; }
-    .nav { z-index: 60; background: rgba(12, 12, 14, .72); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, .07); }
+    /* spécificité > styles.css (body.nav-over-dark .nav) pour imposer un fond lisible ;
+       opacité élevée car le backdrop-filter ne floute pas le contenu de l'iframe */
+    .nav { z-index: 60; }
+    @media print {
+      .nav { display: none !important; }
+      body { overflow: visible !important; height: auto !important; }
+      .calc-embed { position: static !important; }
+    }
+    body.nav-over-dark .nav,
+    body.nav-over-dark .nav.scrolled {
+      background: rgba(9, 9, 11, .94);
+      -webkit-backdrop-filter: blur(16px) saturate(120%);
+      backdrop-filter: blur(16px) saturate(120%);
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
   </style>
 </head>
 <body class="has-hero nav-over-dark">
@@ -62,7 +76,7 @@
 
   <!-- ===== CALCULATEUR (app intégrée, plein écran, défilement natif interne) ===== -->
   <section class="calc-embed" aria-label="Calculateur alimentaire">
-    <iframe id="calcFrame" class="calc-embed__frame" src="calc-app.html" title="Calculateur alimentaire CoachTanguy"></iframe>
+    <iframe id="calcFrame" class="calc-embed__frame" src="calc-app.html?v=3" title="Calculateur alimentaire CoachTanguy"></iframe>
   </section>
 
   <script src="content/fr.js"></script>

@@ -146,8 +146,8 @@ body.has-hero .nav:not(.scrolled) .nav__links.open a { color: var(--gray-900); }
 .hero__overlay {
   position: absolute; inset: 0;
   background:
-    linear-gradient(90deg, rgba(12,12,14,.9) 0%, rgba(12,12,14,.65) 42%, rgba(12,12,14,.25) 74%, rgba(12,12,14,.1) 100%),
-    linear-gradient(0deg, var(--dark) 0%, rgba(12,12,14,.55) 13%, transparent 46%);
+    linear-gradient(90deg, rgba(12,12,14,.9) 0%, rgba(12,12,14,.62) 42%, rgba(12,12,14,.24) 74%, rgba(12,12,14,.08) 100%),
+    linear-gradient(0deg, var(--dark) 0%, var(--dark) 4%, rgba(12,12,14,.82) 16%, rgba(12,12,14,.46) 30%, rgba(12,12,14,.18) 42%, transparent 58%);
 }
 .hero__inner { position: relative; }
 .hero__text { max-width: 640px; }
@@ -343,7 +343,10 @@ body.has-hero .nav:not(.scrolled) .nav__links.open a { color: var(--gray-900); }
 .phero { position: relative; min-height: 62vh; display: flex; align-items: center; padding: 140px 0 80px; overflow: hidden; }
 .phero__media { position: absolute; inset: 0; z-index: -1; }
 .phero__media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.phero__overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12,12,14,.92) 0%, rgba(12,12,14,.72) 45%, rgba(12,12,14,.35) 100%), linear-gradient(0deg, rgba(12,12,14,.5), transparent 50%); }
+.phero__overlay { position: absolute; inset: 0; background:
+  linear-gradient(0deg, var(--surface) 0%, rgba(247,246,244,0) 16%),
+  linear-gradient(90deg, rgba(12,12,14,.92) 0%, rgba(12,12,14,.72) 45%, rgba(12,12,14,.35) 100%),
+  linear-gradient(0deg, rgba(12,12,14,.45), transparent 42%); }
 .phero__inner { position: relative; max-width: 660px; }
 .phero h1 { font-size: clamp(36px, 5.5vw, 60px); font-weight: 800; color: #fff; margin: 16px 0 18px; }
 .phero p { font-size: 18px; color: rgba(255,255,255,.82); margin-bottom: 30px; }

@@ -96,6 +96,33 @@ window.SITE_CONTENT = {
     copyright: "© 2026 CoachTanguy. Alle rechten voorbehouden."
   },
 
+  contact: {
+    eyebrow: "Contact",
+    title: "Contacteer Tanguy",
+    subtitle: "Een vraag? Klaar om te starten? Stuur me een bericht, ik antwoord snel.",
+    asideTitle: "Een vraag?",
+    asideText: "Het eenvoudigst en snelst: een direct bericht via WhatsApp.",
+    waLabel: "WhatsApp",
+    waSub: "Snel antwoord overdag",
+    emailLabel: "E-mail",
+    emailSub: "contact@coachtanguy.com",
+    note: "✓ Eerste proefsessie gratis",
+    formTitle: "Snel bericht",
+    fName: "Naam",
+    phName: "Je naam",
+    fEmail: "E-mail",
+    phEmail: "jij@email.com",
+    fSubject: "Onderwerp",
+    optVisio: "Videocoaching",
+    optSuivi: "Online opvolging",
+    optEssai: "Gratis proefsessie",
+    optAutre: "Andere vraag",
+    fMessage: "Bericht",
+    phMessage: "Vertel me over je doelen...",
+    submit: "Bericht versturen",
+    consent: "Door dit formulier te versturen, ga je akkoord dat CoachTanguy contact met je opneemt."
+  },
+
   stripe: {
     unite: "contact.html",
     pack4: "https://buy.stripe.com/5kQ4gBdvB0Yz85A7Pa0RG0a",

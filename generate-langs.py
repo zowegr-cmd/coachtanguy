@@ -14,7 +14,10 @@ LANGS = {"en": "en_US", "nl": "nl_NL"}
 
 # Pages traduites disponibles dans chaque dossier de langue.
 # Ajoute-en ici au fur et à mesure que tu les câbles (puis relance le script).
-PAGES = ["index.html"]
+PAGES = ["index.html", "contact.html"]
+
+# Pages qui n'existent QUE en FR (leurs liens pointeront vers ../ depuis /en /nl)
+FR_ONLY = ["coaching-visio.html", "suivi-en-ligne.html", "mentions-legales.html", "cvg.html"]
 
 def transform(html, lang, locale):
     # langue
@@ -26,17 +29,15 @@ def transform(html, lang, locale):
     html = html.replace('href="site.webmanifest"', 'href="../site.webmanifest"')
     html = html.replace('src="content/fr.js"', 'src="../content/%s.js"' % lang)
     html = html.replace('src="script.js"', 'src="../script.js"')
-    # canonical + og:url -> /lang/
-    html = html.replace('rel="canonical" href="https://www.coachtanguy.com/"',
-                        'rel="canonical" href="https://www.coachtanguy.com/%s/"' % lang)
-    html = html.replace('property="og:url" content="https://www.coachtanguy.com/"',
-                        'property="og:url" content="https://www.coachtanguy.com/%s/"' % lang)
+    # canonical + og:url -> insère /lang/ après le domaine (toute page)
+    html = re.sub(r'(rel="canonical" href="https://www\.coachtanguy\.com/)',
+                  r'\g<1>%s/' % lang, html)
+    html = re.sub(r'(property="og:url" content="https://www\.coachtanguy\.com/)',
+                  r'\g<1>%s/' % lang, html)
     html = html.replace('content="fr_FR"', 'content="%s"' % locale)
-    # liens internes vers les pages NON présentes dans le dossier de langue -> ../
-    for page in ["coaching-visio.html", "suivi-en-ligne.html", "contact.html",
-                 "mentions-legales.html", "cvg.html"]:
-        if page not in PAGES:
-            html = html.replace('href="%s"' % page, 'href="../%s"' % page)
+    # liens internes vers les pages uniquement FR -> ../
+    for page in FR_ONLY:
+        html = html.replace('href="%s"' % page, 'href="../%s"' % page)
     return html
 
 def main():

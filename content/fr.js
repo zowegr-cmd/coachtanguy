@@ -96,6 +96,33 @@ window.SITE_CONTENT = {
     copyright: "© 2026 CoachTanguy. Tous droits réservés."
   },
 
+  contact: {
+    eyebrow: "Contact",
+    title: "Contactez Tanguy",
+    subtitle: "Une question ? Envie de commencer ? Écrivez-moi, je vous réponds rapidement.",
+    asideTitle: "Une question ?",
+    asideText: "Le plus simple et le plus rapide : un message direct sur WhatsApp.",
+    waLabel: "WhatsApp",
+    waSub: "Réponse rapide en journée",
+    emailLabel: "Email",
+    emailSub: "contact@coachtanguy.com",
+    note: "✓ Première séance d'essai offerte",
+    formTitle: "Message rapide",
+    fName: "Nom",
+    phName: "Votre nom",
+    fEmail: "Email",
+    phEmail: "vous@email.com",
+    fSubject: "Sujet",
+    optVisio: "Coaching visio",
+    optSuivi: "Suivi en ligne",
+    optEssai: "Séance d'essai offerte",
+    optAutre: "Autre question",
+    fMessage: "Message",
+    phMessage: "Parlez-moi de vos objectifs...",
+    submit: "Envoyer le message",
+    consent: "En envoyant ce formulaire, vous acceptez d'être recontacté par CoachTanguy."
+  },
+
   /* Liens de paiement Stripe (buy.stripe.com/...). "unite" redirige vers le contact (paiement sur place). */
   stripe: {
     unite: "contact.html",

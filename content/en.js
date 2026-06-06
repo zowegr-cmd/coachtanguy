@@ -96,6 +96,33 @@ window.SITE_CONTENT = {
     copyright: "© 2026 CoachTanguy. All rights reserved."
   },
 
+  contact: {
+    eyebrow: "Contact",
+    title: "Contact Tanguy",
+    subtitle: "A question? Ready to start? Drop me a message, I'll reply quickly.",
+    asideTitle: "A question?",
+    asideText: "The simplest and quickest way: a direct message on WhatsApp.",
+    waLabel: "WhatsApp",
+    waSub: "Quick reply during the day",
+    emailLabel: "Email",
+    emailSub: "contact@coachtanguy.com",
+    note: "✓ First trial session free",
+    formTitle: "Quick message",
+    fName: "Name",
+    phName: "Your name",
+    fEmail: "Email",
+    phEmail: "you@email.com",
+    fSubject: "Subject",
+    optVisio: "Video coaching",
+    optSuivi: "Online tracking",
+    optEssai: "Free trial session",
+    optAutre: "Other question",
+    fMessage: "Message",
+    phMessage: "Tell me about your goals...",
+    submit: "Send message",
+    consent: "By sending this form, you agree to be contacted by CoachTanguy."
+  },
+
   stripe: {
     unite: "contact.html",
     pack4: "https://buy.stripe.com/5kQ4gBdvB0Yz85A7Pa0RG0a",

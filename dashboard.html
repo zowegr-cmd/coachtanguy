@@ -80,6 +80,7 @@
         <span class="dot"></span> Aperçu en direct
         <select id="page">
           <option value="index.html">Accueil</option>
+          <option value="contact.html">Contact</option>
         </select>
       </div>
       <iframe id="frame" src="index.html"></iframe>
@@ -97,6 +98,8 @@
     var DEFAULTS_ALL = JSON.parse(JSON.stringify(window.SITE_CONTENT_ALL||{}));
     function DEF(){ return DEFAULTS_ALL[LANG]||{}; }
     function homeFor(l){ return l==='fr' ? 'index.html' : l+'/index.html'; }
+    function pageFor(l, file){ return l==='fr' ? file : l+'/'+file; }
+    function curPageFile(){ var s=document.getElementById('page'); return s?s.value:'index.html'; }
     var work = loadWork();
 
     var GROUPS = {
@@ -174,6 +177,7 @@
 
     var curFilter='';
     document.getElementById('search').addEventListener('input',function(){curFilter=this.value.trim().toLowerCase();render(curFilter);});
+    document.getElementById('page').addEventListener('change',function(){document.getElementById('frame').src=pageFor(LANG, this.value);});
 
     // Bascule de langue (FR / NL / EN)
     document.querySelectorAll('.lang').forEach(function(btn){
@@ -181,7 +185,7 @@
         LANG=btn.getAttribute('data-lang');
         document.querySelectorAll('.lang').forEach(function(b){b.classList.toggle('active',b===btn);});
         work=loadWork(); render(curFilter);
-        document.getElementById('frame').src=homeFor(LANG);
+        document.getElementById('frame').src=pageFor(LANG, curPageFile());
         toast('Langue : '+LANG.toUpperCase());
       });
     });

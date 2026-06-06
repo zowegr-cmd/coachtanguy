@@ -2311,7 +2311,7 @@
     }
     var sc = document.createElement('script');
     var vm = location.search.match(/[?&](v=[^&]+)/);
-    sc.src = '/content/calc-i18n.' + lang + '.js' + (vm ? '?' + vm[1] : '');
+    sc.src = '../content/calc-i18n.' + lang + '.js' + (vm ? '?' + vm[1] : '');
     sc.onload = function () {
       dict = window.CALC_I18N || {}; var fr = window.CALC_I18N_FRAGMENTS || {};
       try { var ov = JSON.parse(localStorage.getItem('CALC_I18N_' + lang) || 'null'); if (ov) { if (ov.dict) for (var k in ov.dict) dict[k] = ov.dict[k]; if (ov.frags) for (var k2 in ov.frags) fr[k2] = ov.frags[k2]; } } catch (e) {}

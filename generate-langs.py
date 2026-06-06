@@ -29,9 +29,9 @@ def transform(html, lang, locale):
     html = html.replace('href="site.webmanifest"', 'href="../site.webmanifest"')
     html = html.replace('src="content/fr.js"', 'src="../content/%s.js"' % lang)
     html = html.replace('src="script.js', 'src="../script.js')
-    # iframe du calculateur (page autonome, chemin absolu) + langue
-    html = re.sub(r'src="/calculateur/index\.html([^"]*)"',
-                  r'src="/calculateur/index.html\1&lang=%s"' % lang, html)
+    # iframe du calculateur (page autonome, chemin relatif depuis /lang/) + langue
+    html = re.sub(r'src="calculateur/index\.html([^"]*)"',
+                  r'src="../calculateur/index.html\1&lang=%s"' % lang, html)
     # canonical + og:url -> insère /lang/ après le domaine (toute page)
     html = re.sub(r'(rel="canonical" href="https://www\.coachtanguy\.com/)',
                   r'\g<1>%s/' % lang, html)

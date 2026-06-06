@@ -146,7 +146,7 @@ body.has-hero .nav:not(.scrolled) .nav__links.open a { color: var(--gray-900); }
 .hero__overlay {
   position: absolute; inset: 0;
   background:
-    radial-gradient(130% 62% at 50% 100%, rgba(255,90,0,.26), rgba(255,90,0,.07) 42%, transparent 66%),
+    radial-gradient(70% 46% at 85% 112%, rgba(255,90,0,.17), transparent 58%),
     linear-gradient(90deg, rgba(12,12,14,.9) 0%, rgba(12,12,14,.6) 42%, rgba(12,12,14,.22) 74%, transparent 100%),
     linear-gradient(0deg, var(--dark) 0%, var(--dark) 11%, rgba(12,12,14,.86) 22%, rgba(12,12,14,.5) 34%, rgba(12,12,14,.2) 45%, transparent 62%);
 }
@@ -317,7 +317,7 @@ body.has-hero .nav:not(.scrolled) .nav__links.open a { color: var(--gray-900); }
 
 /* Bandeau confiance */
 .trust { position: relative; z-index: 1; color: #fff;
-  background: radial-gradient(170% 320% at 55% 40%, rgba(255,90,0,.16), transparent 66%), var(--dark); }
+  background: radial-gradient(90% 240% at 84% 50%, rgba(255,90,0,.08), transparent 64%), var(--dark); }
 .trust__inner { position: relative; z-index: 2; }
 .trust__inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 30px 24px; text-align: center; }
 .trust__item { display: flex; flex-direction: column; gap: 4px; }

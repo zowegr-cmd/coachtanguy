@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — CoachTanguy</title>
+  <meta name="description" content="Une question ? Contactez CoachTanguy via WhatsApp ou par message. Première séance d'essai offerte." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+</head>
+<body>
+
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo"><img src="assets/logo.webp" alt="CoachTanguy" width="160" height="73" /></a>
+      <nav class="nav__links" id="navLinks">
+        <a href="index.html">Accueil</a>
+        <a href="coaching-visio.html">Coaching visio</a>
+        <a href="suivi-en-ligne.html">Suivi en ligne</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html" class="is-active">Contact</a>
+      </nav>
+      <a href="#form" class="btn btn--primary nav__cta">Écrire un message</a>
+      <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="section contact-page">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow">Contact</span>
+        <h2>Contactez CoachTanguy</h2>
+        <p>Une question ? Envie de commencer ? Écrivez-moi, je vous réponds rapidement.</p>
+      </div>
+
+      <div class="contact reveal">
+        <!-- Infos / WhatsApp -->
+        <aside class="contact__aside">
+          <h3>Une question ?</h3>
+          <p>Le plus simple et le plus rapide : un message direct sur WhatsApp.</p>
+          <a href="https://wa.me/32470000000" class="contact__channel" target="_blank" rel="noopener">
+            <span class="contact__ico contact__ico--wa">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.659 5.448l-.999 3.648 3.737-.943z"/></svg>
+            </span>
+            <span><strong>WhatsApp</strong><small>Réponse rapide en journée</small></span>
+          </a>
+          <a href="mailto:contact@coachtanguy.com" class="contact__channel">
+            <span class="contact__ico">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
+            </span>
+            <span><strong>Email</strong><small>contact@coachtanguy.com</small></span>
+          </a>
+          <div class="contact__note">✓ Première séance d'essai offerte</div>
+        </aside>
+
+        <!-- Formulaire -->
+        <form class="contact__form" id="form" novalidate>
+          <h3>Message rapide</h3>
+          <div class="field">
+            <label for="name">Nom</label>
+            <input id="name" name="name" type="text" placeholder="Votre nom" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="vous@email.com" required />
+          </div>
+          <div class="field">
+            <label for="subject">Sujet</label>
+            <select id="subject" name="subject">
+              <option>Coaching visio</option>
+              <option>Suivi en ligne</option>
+              <option>Séance d'essai offerte</option>
+              <option>Autre question</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Parlez-moi de vos objectifs..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg" style="width:100%">Envoyer le message</button>
+          <p class="contact__small">En envoyant ce formulaire, vous acceptez d'être recontacté par CoachTanguy.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo"><img src="assets/logo-white.webp" alt="CoachTanguy" width="160" height="73" /></a>
+        <p>Le sport facile, partout et à tout moment.</p>
+      </div>
+      <nav class="footer__links">
+        <a href="coaching-visio.html">Coaching visio</a>
+        <a href="suivi-en-ligne.html">Suivi en ligne</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="cvg.html">CGV</a>
+      </nav>
+    </div>
+    <div class="footer__bottom"><div class="container">© 2026 CoachTanguy. Tous droits réservés.</div></div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

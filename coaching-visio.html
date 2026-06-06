@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coaching Visio — CoachTanguy</title>
+  <meta name="description" content="Coaching sportif individuel à distance par visioconférence. Flexible, interactif et efficace. Première séance d'essai offerte." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+</head>
+<body>
+
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo"><img src="assets/logo.webp" alt="CoachTanguy" width="160" height="73" /></a>
+      <nav class="nav__links" id="navLinks">
+        <a href="index.html">Accueil</a>
+        <a href="coaching-visio.html" class="is-active">Coaching visio</a>
+        <a href="suivi-en-ligne.html">Suivi en ligne</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="#packs" class="btn btn--primary nav__cta">Voir les packs</a>
+      <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="phero">
+    <div class="phero__media" aria-hidden="true">
+      <img src="assets/service-visio.webp" alt="" width="820" height="615" fetchpriority="high" />
+      <div class="phero__overlay"></div>
+    </div>
+    <div class="container phero__inner reveal">
+      <span class="eyebrow">Coaching Visio</span>
+      <h1>Flexible, interactif,<br />efficace.</h1>
+      <p>Profitez de séances individuelles de coaching sportif à distance, accessibles partout. Coaching personnalisé, conseils en temps réel et suivi sur-mesure par visioconférence.</p>
+      <div class="phero__actions">
+        <a href="#packs" class="btn btn--primary">Aller directement aux packs</a>
+        <a href="contact.html" class="btn btn--ghost btn--ghost-light">Séance d'essai offerte</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ATOUTS ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="features">
+        <article class="feature reveal">
+          <div class="feature__ico"><img src="assets/icon-visio.svg" alt="" width="30" height="30" /></div>
+          <h3>Coaching sur-mesure</h3>
+          <p>Des séances adaptées à votre rythme, vos objectifs et votre espace, où que vous soyez.</p>
+        </article>
+        <article class="feature reveal">
+          <div class="feature__ico"><img src="assets/icon-suivi.svg" alt="" width="30" height="30" /></div>
+          <h3>Packs de séances</h3>
+          <p>Des packs conçus selon votre fréquence d'entraînement pour garantir une vraie régularité.</p>
+        </article>
+        <article class="feature reveal">
+          <div class="feature__ico">
+            <svg viewBox="0 0 32 32" fill="none" width="30" height="30"><path d="M16 3l3.5 8.5L28 12l-6 6 1.5 9L16 22l-7.5 5L10 18l-6-6 8.5-.5L16 3z" stroke="#ff5a00" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Séance d'essai offerte</h3>
+          <p>Un premier échange pour découvrir vos besoins, tester la méthode et définir ensemble vos objectifs.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PACKS ===== -->
+  <section class="section section--dark" id="packs">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow">Packs</span>
+        <h2>Choisissez la formule qui vous convient</h2>
+        <p>Adaptée et personnalisée · feedback après chaque séance · report possible en cas de vacances.</p>
+      </div>
+      <div class="pricing">
+        <article class="price reveal">
+          <h3 class="price__name">Séance à l'unité</h3>
+          <div class="price__amount">40€<span></span></div>
+          <p class="price__meta">Séance de 30 à 40 min</p>
+          <ul class="price__list">
+            <li>Séance adaptée et personnalisée</li>
+            <li>Feedback après la séance</li>
+            <li>Sans engagement</li>
+          </ul>
+          <a href="contact.html" class="btn btn--ghost price__btn">Choisir</a>
+        </article>
+
+        <article class="price price--featured reveal">
+          <div class="price__ribbon">Le plus choisi</div>
+          <h3 class="price__name">Pack 4 séances</h3>
+          <div class="price__amount">140€<span>soit 35€ / séance</span></div>
+          <p class="price__meta">Valable 5 semaines</p>
+          <ul class="price__list">
+            <li>4 séances personnalisées</li>
+            <li>Feedback après chaque séance</li>
+            <li>Report possible en cas de vacances</li>
+            <li>Idéal 1 séance / semaine</li>
+          </ul>
+          <a href="contact.html" class="btn btn--primary price__btn">Choisir</a>
+        </article>
+
+        <article class="price reveal">
+          <h3 class="price__name">Pack 8 séances</h3>
+          <div class="price__amount">240€<span>soit 30€ / séance</span></div>
+          <p class="price__meta">Valable 10 semaines</p>
+          <ul class="price__list">
+            <li>8 séances personnalisées</li>
+            <li>Feedback après chaque séance</li>
+            <li>Report possible en cas de vacances</li>
+            <li>Le meilleur tarif / séance</li>
+          </ul>
+          <a href="contact.html" class="btn btn--ghost price__btn">Choisir</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta">
+    <div class="cta__bg" aria-hidden="true"></div>
+    <div class="container cta__inner reveal">
+      <h2>Prêt à commencer ?</h2>
+      <p>Réservez votre séance d'essai offerte et lançons-nous ensemble.</p>
+      <a href="contact.html" class="btn btn--primary btn--lg">Contacter</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo"><img src="assets/logo-white.webp" alt="CoachTanguy" width="160" height="73" /></a>
+        <p>Le sport facile, partout et à tout moment.</p>
+      </div>
+      <nav class="footer__links">
+        <a href="coaching-visio.html">Coaching visio</a>
+        <a href="suivi-en-ligne.html">Suivi en ligne</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="cvg.html">CGV</a>
+      </nav>
+    </div>
+    <div class="footer__bottom"><div class="container">© 2026 CoachTanguy. Tous droits réservés.</div></div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

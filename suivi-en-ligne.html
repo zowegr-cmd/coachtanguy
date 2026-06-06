@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suivi en Ligne — CoachTanguy</title>
+  <meta name="description" content="Suivi sportif 100% personnalisé via l'application FitPros : programme évolutif, conseils réguliers et accompagnement sur-mesure pour progresser efficacement." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+</head>
+<body>
+
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo"><img src="assets/logo.webp" alt="CoachTanguy" width="160" height="73" /></a>
+      <nav class="nav__links" id="navLinks">
+        <a href="index.html">Accueil</a>
+        <a href="coaching-visio.html">Coaching visio</a>
+        <a href="suivi-en-ligne.html" class="is-active">Suivi en ligne</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="#suivis" class="btn btn--primary nav__cta">Voir les suivis</a>
+      <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="phero">
+    <div class="phero__media" aria-hidden="true">
+      <img src="assets/service-suivi.webp" alt="" width="820" height="615" fetchpriority="high" />
+      <div class="phero__overlay"></div>
+    </div>
+    <div class="container phero__inner reveal">
+      <span class="eyebrow">Suivi en Ligne</span>
+      <h1>Coaching sportif<br />à distance.</h1>
+      <p>Un suivi à votre rythme, 100% personnalisé, où que vous soyez via l'application FitPros. Programme évolutif, conseils réguliers et accompagnement sur-mesure pour progresser efficacement.</p>
+      <div class="phero__actions">
+        <a href="#suivis" class="btn btn--primary">Aller directement aux suivis</a>
+        <a href="contact.html" class="btn btn--ghost btn--ghost-light">Poser une question</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== APP FITPROS ===== -->
+  <section class="section section--alt">
+    <div class="container about">
+      <div class="about__photo reveal">
+        <img src="assets/service-suivi.webp" alt="Application FitPros — suivi de progression" width="820" height="615" loading="lazy" decoding="async" />
+      </div>
+      <div class="about__text reveal">
+        <span class="eyebrow">FitPros</span>
+        <h2>Votre programme sur mesure dans votre poche</h2>
+        <p>Un espace simple pour suivre votre progression et rester motivé au quotidien.</p>
+        <ul class="ticks">
+          <li>Des séances guidées étape par étape</li>
+          <li>Suivi clair de votre progression</li>
+          <li>Conseils et ajustements réguliers</li>
+          <li>Communication directe via WhatsApp</li>
+        </ul>
+        <a href="#suivis" class="btn btn--primary" style="margin-top:26px">Voir les formules</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SUIVIS / PRICING ===== -->
+  <section class="section section--dark" id="suivis">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow">Suivis</span>
+        <h2>Un suivi expert, 100% personnalisé</h2>
+        <p>Programme sur-mesure, ajustements réguliers et accompagnement humain.</p>
+      </div>
+      <div class="pricing pricing--2">
+        <article class="price price--featured reveal">
+          <div class="price__ribbon">Pour démarrer</div>
+          <h3 class="price__name">Accompagnement initial</h3>
+          <div class="price__amount">300€<span>pour 8 semaines</span></div>
+          <ul class="price__list">
+            <li>Accompagnement personnalisé pendant 8 semaines</li>
+            <li>Programme d'entraînement sur-mesure adapté à vos objectifs</li>
+            <li>Accès via l'app FitPros</li>
+            <li>Communication & suivi via WhatsApp</li>
+            <li>Appel visio d'introduction (~30 min) offert</li>
+            <li>Programme accessible sous 72h après l'appel</li>
+            <li>Check-up toutes les 2 semaines via un formulaire</li>
+            <li>Ajustements réguliers pour des résultats optimaux</li>
+            <li>Mise en pause possible en cas de vacances</li>
+          </ul>
+          <a href="contact.html" class="btn btn--primary price__btn">Choisir</a>
+        </article>
+
+        <article class="price reveal">
+          <h3 class="price__name">Suivi mensuel</h3>
+          <div class="price__amount">150€<span>par mois</span></div>
+          <p class="price__meta">Uniquement après l'accompagnement initial</p>
+          <ul class="price__list">
+            <li>Programme d'entraînement sur-mesure</li>
+            <li>Accès via l'app FitPros</li>
+            <li>Communication & suivi via WhatsApp</li>
+            <li>Check-up toutes les 2 semaines</li>
+            <li>Ajustements réguliers</li>
+            <li>Mise en pause possible en cas de vacances</li>
+          </ul>
+          <a href="contact.html" class="btn btn--ghost price__btn">Choisir</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta">
+    <div class="cta__bg" aria-hidden="true"></div>
+    <div class="container cta__inner reveal">
+      <h2>Prêt à progresser ?</h2>
+      <p>Réservez votre appel d'introduction offert et construisons votre programme.</p>
+      <a href="contact.html" class="btn btn--primary btn--lg">Contacter</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo"><img src="assets/logo-white.webp" alt="CoachTanguy" width="160" height="73" /></a>
+        <p>Le sport facile, partout et à tout moment.</p>
+      </div>
+      <nav class="footer__links">
+        <a href="coaching-visio.html">Coaching visio</a>
+        <a href="suivi-en-ligne.html">Suivi en ligne</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="cvg.html">CGV</a>
+      </nav>
+    </div>
+    <div class="footer__bottom"><div class="container">© 2026 CoachTanguy. Tous droits réservés.</div></div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

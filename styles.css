@@ -119,22 +119,24 @@ body.nav-solid .nav {
 .lang-switch a { font-size: 12px; font-weight: 700; letter-spacing: .02em; color: var(--gray-700); padding: 5px 9px; border-radius: 999px; transition: .15s; }
 .lang-switch a:hover { color: var(--orange); }
 .lang-switch a.active { background: var(--orange); color: #fff; }
-body.has-hero .nav:not(.scrolled) .lang-switch { border-color: rgba(255,255,255,.3); }
-body.has-hero .nav:not(.scrolled) .lang-switch a { color: rgba(255,255,255,.8); }
-body.has-hero .nav:not(.scrolled) .lang-switch a.active { background: var(--orange); color: #fff; }
+body.nav-over-dark .nav .lang-switch { border-color: rgba(255,255,255,.3); }
+body.nav-over-dark .nav .lang-switch a { color: rgba(255,255,255,.8); }
+body.nav-over-dark .nav .lang-switch a.active { background: var(--orange); color: #fff; }
 .nav__cta { padding: 11px 22px; }
 .nav__burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
 .nav__burger span { width: 24px; height: 2px; background: var(--black); border-radius: 2px; transition: .3s; }
 
-/* Nav transparente par-dessus un hero sombre (haut de page, pas encore scrollée) */
-body.has-hero .nav:not(.scrolled) { background: transparent; backdrop-filter: none; border-color: transparent; box-shadow: none; }
-body.has-hero .nav:not(.scrolled) .nav__links a { color: #fff; }
-body.has-hero .nav:not(.scrolled) .nav__links a:hover { color: #fff; }
-body.has-hero .nav:not(.scrolled) .nav__burger span { background: #fff; }
-body.has-hero .nav:not(.scrolled) .nav__logo-dark { display: none; }
-body.has-hero .nav:not(.scrolled) .nav__logo-light { display: block; }
-/* menu mobile ouvert (fond blanc) : liens foncés même par-dessus le hero */
-body.has-hero .nav:not(.scrolled) .nav__links.open a { color: var(--gray-900); }
+/* Nav ADAPTATIVE : par-dessus une section sombre (hero, services sombre, CTA, footer) */
+body.nav-over-dark .nav { background: transparent; backdrop-filter: none; border-color: transparent; box-shadow: none; }
+/* Quand on scrolle en restant sur du sombre : verre dépoli sombre (pas blanc) */
+body.nav-over-dark .nav.scrolled { background: rgba(12,12,14,.62); backdrop-filter: blur(12px); border-color: rgba(255,255,255,.08); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+body.nav-over-dark .nav .nav__links a { color: #fff; }
+body.nav-over-dark .nav .nav__links a:hover { color: #fff; }
+body.nav-over-dark .nav .nav__burger span { background: #fff; }
+body.nav-over-dark .nav .nav__logo-dark { display: none; }
+body.nav-over-dark .nav .nav__logo-light { display: block; }
+/* menu mobile ouvert (fond blanc) : liens foncés même par-dessus le sombre */
+body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
 .nav__burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav__burger.open span:nth-child(2) { opacity: 0; }
 .nav__burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }

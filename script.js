@@ -14,12 +14,27 @@ if (burger && navLinks) {
   });
 }
 
-// ===== Nav : ombre au scroll =====
+// ===== Nav adaptative (claire sur fond clair, sombre sur fond sombre) =====
 const nav = document.querySelector('.nav');
 if (nav) {
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
+  const adaptive = document.body.classList.contains('has-hero');
+  const darkBlocks = adaptive
+    ? document.querySelectorAll('.darkzone, .phero, .section--dark, .cta, .footer, .confirm')
+    : [];
+  const lineY = 38; // point juste sous le haut de la nav
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 12);
+    if (!adaptive) return;
+    let overDark = false;
+    darkBlocks.forEach((b) => {
+      const r = b.getBoundingClientRect();
+      if (r.top <= lineY && r.bottom > lineY) overDark = true;
+    });
+    document.body.classList.toggle('nav-over-dark', overDark);
+  };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
 }
 
 // ===== Reveal au scroll =====

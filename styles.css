@@ -276,7 +276,11 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
 /* ===== CTA ===== */
 .cta { position: relative; background: var(--dark); color: #fff; padding: 100px 0; overflow: hidden; }
 .cta__bg { position: absolute; inset: 0; }
-.cta__bg::before { content: none; }
+.cta__bg::before {
+  content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 720px; height: 260px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255,90,0,.17), transparent 62%); filter: blur(64px);
+}
 .cta__inner { position: relative; z-index: 2; text-align: center; max-width: 640px; margin: 0 auto; }
 .cta h2 { font-size: clamp(34px, 5vw, 50px); margin-bottom: 16px; }
 .cta p { color: rgba(255,255,255,.72); font-size: 18px; margin-bottom: 32px; }

@@ -24,20 +24,19 @@
   <link rel="manifest" href="site.webmanifest" />
   <meta name="theme-color" content="#ff5a00" />
   <style>
-    body { background: #0a0a0b; }
-    .calc-hero { padding: 132px 0 30px; background: #0a0a0b; }
-    .calc-hero .section__head { margin-bottom: 0; }
-    .calc-embed { background: #0a0a0b; }
-    .calc-embed__frame {
-      display: block; width: 100%; border: 0;
-      min-height: 60vh; background: #0a0a0b;
-      overflow: hidden;
-    }
-    .footer { background: #0a0a0b; }
-    @media (max-width: 720px) { .calc-hero { padding: 110px 0 22px; } }
+    /* Le calculateur occupe tout l'écran et défile en interne : on conserve ainsi
+       son scroll natif (carte de résultats "sticky", onglets collants et halo
+       orange en parallax) — exactement comme le HTML d'origine, mais habillé du
+       nav du site. Un seul scrollbar, aucune "boîte". */
+    html, body { height: 100%; }
+    body { margin: 0; overflow: hidden; background: #0a0a0b; }
+    .calc-embed { position: fixed; inset: 0; z-index: 1; }
+    .calc-embed__frame { display: block; width: 100%; height: 100%; border: 0; background: #0a0a0b; }
+    /* nav en verre sombre, posé par-dessus le calculateur */
+    .nav { z-index: 60; background: rgba(12, 12, 14, .72); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, .07); }
   </style>
 </head>
-<body class="has-hero">
+<body class="has-hero nav-over-dark">
 
   <header class="nav" id="top">
     <div class="container nav__inner">
@@ -62,54 +61,10 @@
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
-  <section class="section section--dark calc-hero">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="eyebrow" data-i18n="calc.eyebrow">Outil gratuit</span>
-        <h1 data-i18n="calc.title">Calculateur alimentaire</h1>
-        <p data-i18n="calc.subtitle">Estimez vos besoins caloriques et la répartition de vos macros en quelques secondes, selon votre profil et vos objectifs.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CALCULATEUR (app intégrée) ===== -->
+  <!-- ===== CALCULATEUR (app intégrée, plein écran, défilement interne) ===== -->
   <section class="calc-embed" aria-label="Calculateur alimentaire">
-    <iframe id="calcFrame" class="calc-embed__frame" src="calc-app.html" title="Calculateur alimentaire CoachTanguy" loading="lazy"></iframe>
+    <iframe id="calcFrame" class="calc-embed__frame" src="calc-app.html" title="Calculateur alimentaire CoachTanguy"></iframe>
   </section>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <a href="index.html" class="nav__logo"><img src="assets/logo-white.webp" alt="CoachTanguy" width="160" height="73" /></a>
-        <p data-i18n="footer.tagline">Le sport facile, partout et à tout moment.</p>
-      </div>
-      <nav class="footer__links">
-        <a href="coaching-visio.html" data-i18n="footer.lVisio">Coaching visio</a>
-        <a href="suivi-en-ligne.html" data-i18n="footer.lSuivi">Suivi en ligne</a>
-        <a href="calculateur.html" data-i18n="nav.calculateur">Calculateur</a>
-        <a href="contact.html" data-i18n="footer.lContact">Contact</a>
-        <a href="mentions-legales.html" data-i18n="footer.lMentions">Mentions légales</a>
-        <a href="cvg.html" data-i18n="footer.lCgv">CGV</a>
-      </nav>
-    </div>
-    <div class="footer__bottom"><div class="container" data-i18n="footer.copyright">© 2026 CoachTanguy. Tous droits réservés.</div></div>
-  </footer>
-
-  <!-- Le calculateur (dans l'iframe) mesure sa propre hauteur et l'envoie ici via
-       postMessage. Fonctionne même en file:// (pas d'accès direct au contenu requis). -->
-  <script>
-    (function () {
-      var ifr = document.getElementById('calcFrame');
-      if (!ifr) return;
-      window.addEventListener('message', function (e) {
-        var d = e.data;
-        if (d && typeof d.__calcHeight === 'number' && d.__calcHeight > 0) {
-          ifr.style.height = d.__calcHeight + 'px';
-        }
-      });
-    })();
-  </script>
 
   <script src="content/fr.js"></script>
   <script src="assets/i18n.js"></script>

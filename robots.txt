@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /confirmation.html
+Disallow: /mentions-legales.html
+Disallow: /cvg.html
+
+Sitemap: https://www.coachtanguy.com/sitemap.xml

@@ -5,29 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CoachTanguy — Le sport facile, partout et à tout moment</title>
   <meta name="description" content="Coaching visio et suivi en ligne avec CoachTanguy. Un accompagnement personnalisé, adapté à votre niveau, vos objectifs et votre emploi du temps." />
+  <link rel="canonical" href="https://www.coachtanguy.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CoachTanguy" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="CoachTanguy — Le sport facile, partout et à tout moment" />
+  <meta property="og:description" content="Coaching visio et suivi en ligne, adapté à votre niveau, vos objectifs et votre emploi du temps." />
+  <meta property="og:url" content="https://www.coachtanguy.com/" />
+  <meta property="og:image" content="https://www.coachtanguy.com/assets/hero-wide.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CoachTanguy — Le sport facile, partout et à tout moment" />
+  <meta name="twitter:description" content="Coaching visio et suivi en ligne, adapté à votre niveau, vos objectifs et votre emploi du temps." />
+  <meta name="twitter:image" content="https://www.coachtanguy.com/assets/hero-wide.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="assets/hero-wide.webp" fetchpriority="high" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=4" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png" />
+  <link rel="apple-touch-icon" href="assets/icon-180.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#ff5a00" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.coachtanguy.com/#website",
+        "url": "https://www.coachtanguy.com/",
+        "name": "CoachTanguy",
+        "inLanguage": "fr-FR"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.coachtanguy.com/#tanguy",
+        "name": "Tanguy",
+        "jobTitle": "Coach sportif",
+        "description": "Coach sportif diplômé, spécialisé en coaching visio et suivi en ligne.",
+        "url": "https://www.coachtanguy.com/",
+        "image": "https://www.coachtanguy.com/assets/about.jpg",
+        "knowsAbout": ["Coaching sportif", "Musculation", "Nutrition", "Préparation physique"]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Pourquoi proposer des packs de séances ?", "acceptedAnswer": { "@type": "Answer", "text": "Les packs simplifient le paiement et encouragent l'engagement. La régularité est la clé des résultats : s'engager sur plusieurs séances aide à rester constant et à progresser durablement." } },
+          { "@type": "Question", "name": "Comment réserver une séance ?", "acceptedAnswer": { "@type": "Answer", "text": "Un lien de calendrier est partagé toutes les deux semaines via WhatsApp. Vous choisissez les créneaux qui s'adaptent le mieux à vos disponibilités." } },
+          { "@type": "Question", "name": "Puis-je annuler ou reporter une séance ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, vous pouvez annuler ou reporter une séance tant que votre pack est valide. Une fois le pack expiré, les séances non utilisées sont perdues." } },
+          { "@type": "Question", "name": "Quelle est la durée de validité d'un pack ?", "acceptedAnswer": { "@type": "Answer", "text": "Les packs de 4 séances sont valables 5 semaines, et les packs de 8 séances 10 semaines, à compter de la date d'achat." } },
+          { "@type": "Question", "name": "Quels moyens de paiement sont acceptés ?", "acceptedAnswer": { "@type": "Answer", "text": "Visa, Mastercard, PayPal, Klarna, Apple Pay, Google Pay et d'autres moyens de paiement sont acceptés en toute sécurité via Stripe." } },
+          { "@type": "Question", "name": "Et si je pars en vacances ?", "acceptedAnswer": { "@type": "Answer", "text": "Pas de souci : votre pack est mis en pause pendant votre absence et reprend dès votre retour." } },
+          { "@type": "Question", "name": "Puis-je payer en plusieurs fois ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, le paiement en plusieurs fois est possible grâce à Klarna." } }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
-<body>
+<body class="has-hero">
 
   <!-- ===== NAVBAR ===== -->
   <header class="nav" id="top">
     <div class="container nav__inner">
       <a href="index.html" class="nav__logo">
-        <img src="assets/logo.webp" alt="CoachTanguy" width="160" height="73" />
+        <img class="nav__logo-dark" src="assets/logo.webp" alt="CoachTanguy" width="160" height="73" />
+        <img class="nav__logo-light" src="assets/logo-white.webp" alt="CoachTanguy" width="160" height="73" />
       </a>
       <nav class="nav__links" id="navLinks">
-        <a href="index.html" class="is-active">Accueil</a>
-        <a href="coaching-visio.html">Coaching visio</a>
-        <a href="suivi-en-ligne.html">Suivi en ligne</a>
-        <a href="index.html#faq">FAQ</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html" class="is-active" data-i18n="nav.accueil">Accueil</a>
+        <a href="coaching-visio.html" data-i18n="nav.visio">Coaching visio</a>
+        <a href="suivi-en-ligne.html" data-i18n="nav.suivi">Suivi en ligne</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
       </nav>
-      <a href="contact.html" class="btn btn--primary nav__cta">Réserver un appel</a>
+      <a href="contact.html" class="btn btn--primary nav__cta" data-i18n="nav.cta">Réserver un appel</a>
       <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </header>
@@ -40,22 +93,18 @@
     </div>
     <div class="container hero__inner">
       <div class="hero__text reveal">
-        <span class="eyebrow">Coaching sportif personnalisé</span>
-        <h1>Le sport facile,<br />partout et à tout moment.</h1>
-        <p>Coaching visio et suivi en ligne, adapté à votre niveau, vos objectifs et votre emploi du temps.</p>
+        <span class="eyebrow" data-i18n="home.hero.eyebrow">Coaching sportif personnalisé</span>
+        <h1 data-i18n-html="home.hero.titleHtml">Le sport facile,<br />partout et à tout moment.</h1>
+        <p data-i18n="home.hero.subtitle">Coaching visio et suivi en ligne, adapté à votre niveau, vos objectifs et votre emploi du temps.</p>
         <div class="hero__actions">
-          <a href="#services" class="btn btn--primary">Découvrir les offres</a>
-          <a href="contact.html" class="btn btn--ghost btn--ghost-light">Séance d'essai offerte</a>
+          <a href="#services" class="btn btn--primary" data-i18n="home.hero.ctaPrimary">Découvrir les offres</a>
+          <a href="contact.html" class="btn btn--ghost btn--ghost-light" data-i18n="home.hero.ctaSecondary">Séance d'essai offerte</a>
         </div>
         <div class="hero__pills">
-          <span>✓ Visioconférence</span>
-          <span>✓ Plans personnalisés</span>
-          <span>✓ Tous niveaux</span>
+          <span data-i18n="home.hero.pill1">✓ Visioconférence</span>
+          <span data-i18n="home.hero.pill2">✓ Plans personnalisés</span>
+          <span data-i18n="home.hero.pill3">✓ Tous niveaux</span>
         </div>
-      </div>
-      <div class="hero__badge reveal">
-        <strong>10+ ans</strong>
-        <span>d'expérience</span>
       </div>
     </div>
   </section>
@@ -63,10 +112,10 @@
   <!-- ===== TRUST BAND ===== -->
   <div class="trust">
     <div class="container trust__inner">
-      <div class="trust__item"><strong>500+</strong><span>heures de formation</span></div>
-      <div class="trust__item"><strong>100%</strong><span>personnalisé</span></div>
-      <div class="trust__item"><strong>7j/7</strong><span>accompagnement</span></div>
-      <div class="trust__item"><strong>1ère</strong><span>séance offerte</span></div>
+      <div class="trust__item"><strong data-i18n="home.trust.v1">500+</strong><span data-i18n="home.trust.l1">heures de formation</span></div>
+      <div class="trust__item"><strong data-i18n="home.trust.v2">100%</strong><span data-i18n="home.trust.l2">personnalisé</span></div>
+      <div class="trust__item"><strong data-i18n="home.trust.v3">7j/7</strong><span data-i18n="home.trust.l3">accompagnement</span></div>
+      <div class="trust__item"><strong data-i18n="home.trust.v4">1ère</strong><span data-i18n="home.trust.l4">séance offerte</span></div>
     </div>
   </div>
 
@@ -74,9 +123,9 @@
   <section class="section section--dark" id="services">
     <div class="container">
       <div class="section__head reveal">
-        <span class="eyebrow">Nos services</span>
-        <h2>Un accompagnement à votre rythme</h2>
-        <p>Deux formules pensées pour vous faire progresser, où que vous soyez.</p>
+        <span class="eyebrow" data-i18n="home.services.eyebrow">Nos services</span>
+        <h2 data-i18n="home.services.title">Un accompagnement à votre rythme</h2>
+        <p data-i18n="home.services.subtitle">Deux formules pensées pour vous faire progresser, où que vous soyez.</p>
       </div>
       <div class="cards">
         <article class="card reveal">
@@ -85,9 +134,9 @@
             <div class="card__tag"><img src="assets/icon-visio.svg" alt="" width="28" height="28" /></div>
           </div>
           <div class="card__body">
-            <h3>Coaching visio</h3>
-            <p>Profitez d'un accompagnement professionnel à distance via visioconférence, pour garder la motivation partout où vous êtes.</p>
-            <a href="coaching-visio.html" class="card__link">Découvrir l'offre →</a>
+            <h3 data-i18n="home.services.c1Title">Coaching visio</h3>
+            <p data-i18n="home.services.c1Text">Profitez d'un accompagnement professionnel à distance via visioconférence, pour garder la motivation partout où vous êtes.</p>
+            <a href="coaching-visio.html" class="card__link" data-i18n="home.services.c1Link">Découvrir l'offre →</a>
           </div>
         </article>
         <article class="card reveal">
@@ -96,9 +145,9 @@
             <div class="card__tag"><img src="assets/icon-suivi.svg" alt="" width="28" height="28" /></div>
           </div>
           <div class="card__body">
-            <h3>Suivi en ligne</h3>
-            <p>Accédez à un suivi, des plans d'entraînement et conseils personnalisés via une application.</p>
-            <a href="suivi-en-ligne.html" class="card__link">Découvrir l'offre →</a>
+            <h3 data-i18n="home.services.c2Title">Suivi en ligne</h3>
+            <p data-i18n="home.services.c2Text">Accédez à un suivi, des plans d'entraînement et conseils personnalisés via une application.</p>
+            <a href="suivi-en-ligne.html" class="card__link" data-i18n="home.services.c2Link">Découvrir l'offre →</a>
           </div>
         </article>
       </div>
@@ -109,24 +158,24 @@
   <section class="section" id="process">
     <div class="container">
       <div class="section__head reveal">
-        <span class="eyebrow">Comment ça marche</span>
-        <h2>Progressez en 3 étapes simples</h2>
+        <span class="eyebrow" data-i18n="home.process.eyebrow">Comment ça marche</span>
+        <h2 data-i18n="home.process.title">Progressez en 3 étapes simples</h2>
       </div>
       <div class="steps">
         <article class="step reveal">
           <span class="step__num">01</span>
-          <h3>Échange découverte</h3>
-          <p>Un premier appel offert pour comprendre vos besoins, vos objectifs et tester la méthode ensemble.</p>
+          <h3 data-i18n="home.process.s1Title">Échange découverte</h3>
+          <p data-i18n="home.process.s1Text">Un premier appel offert pour comprendre vos besoins, vos objectifs et tester la méthode ensemble.</p>
         </article>
         <article class="step reveal">
           <span class="step__num">02</span>
-          <h3>Plan sur-mesure</h3>
-          <p>Je construis un programme adapté à votre niveau, votre emploi du temps et votre matériel.</p>
+          <h3 data-i18n="home.process.s2Title">Plan sur-mesure</h3>
+          <p data-i18n="home.process.s2Text">Je construis un programme adapté à votre niveau, votre emploi du temps et votre matériel.</p>
         </article>
         <article class="step reveal">
           <span class="step__num">03</span>
-          <h3>Suivi & résultats</h3>
-          <p>On avance ensemble : séances, ajustements réguliers et motivation pour des résultats durables.</p>
+          <h3 data-i18n="home.process.s3Title">Suivi & résultats</h3>
+          <p data-i18n="home.process.s3Text">On avance ensemble : séances, ajustements réguliers et motivation pour des résultats durables.</p>
         </article>
       </div>
     </div>
@@ -141,16 +190,16 @@
         <img src="assets/about.webp" alt="Tanguy, coach sportif diplômé" width="800" height="1000" loading="lazy" decoding="async" />
       </div>
       <div class="about__text reveal">
-        <span class="eyebrow">À propos</span>
-        <h2>Tanguy, votre coach sportif</h2>
-        <p>Diplômé en coaching sportif, je m'appuie sur de solides connaissances en anatomie, physiologie, nutrition et science de l'entraînement pour vous accompagner en toute sécurité.</p>
-        <p>J'ai travaillé avec des profils variés, des enfants aux seniors, et adapte chaque programme à vos besoins. Mon parcours, c'est plus de 500 heures de stage, 2 ans d'expérience en tant que coach personnel et plus de 10 ans de pratique personnelle de la musculation.</p>
+        <span class="eyebrow" data-i18n="home.about.eyebrow">À propos</span>
+        <h2 data-i18n="home.about.title">Tanguy, votre coach sportif</h2>
+        <p data-i18n="home.about.p1">Diplômé en coaching sportif, je m'appuie sur de solides connaissances en anatomie, physiologie, nutrition et science de l'entraînement pour vous accompagner en toute sécurité.</p>
+        <p data-i18n="home.about.p2">J'ai travaillé avec des profils variés, des enfants aux seniors, et adapte chaque programme à vos besoins. Mon parcours, c'est plus de 500 heures de stage, 2 ans d'expérience en tant que coach personnel et plus de 10 ans de pratique personnelle de la musculation.</p>
         <ul class="stats">
-          <li><strong>500+</strong><span>heures de stage</span></li>
-          <li><strong>2 ans</strong><span>de coaching</span></li>
-          <li><strong>10+ ans</strong><span>de pratique</span></li>
+          <li><strong data-i18n="home.about.s1v">500+</strong><span data-i18n="home.about.s1l">heures de stage</span></li>
+          <li><strong data-i18n="home.about.s2v">2 ans</strong><span data-i18n="home.about.s2l">de coaching</span></li>
+          <li><strong data-i18n="home.about.s3v">10+ ans</strong><span data-i18n="home.about.s3l">de pratique</span></li>
         </ul>
-        <a href="contact.html" class="btn btn--primary" style="margin-top:28px">Travailler avec moi</a>
+        <a href="contact.html" class="btn btn--primary" style="margin-top:28px" data-i18n="home.about.cta">Travailler avec moi</a>
       </div>
     </div>
   </section>
@@ -161,17 +210,17 @@
   <section class="section" id="faq">
     <div class="container container--narrow">
       <div class="section__head reveal">
-        <span class="eyebrow">FAQ</span>
-        <h2>Questions fréquentes</h2>
+        <span class="eyebrow" data-i18n="home.faq.eyebrow">FAQ</span>
+        <h2 data-i18n="home.faq.title">Questions fréquentes</h2>
       </div>
       <div class="faq reveal">
-        <details class="faq__item"><summary>Pourquoi proposer des packs de séances ?</summary><div class="faq__body"><p>Les packs simplifient le paiement et encouragent l'engagement. La régularité est la clé des résultats : s'engager sur plusieurs séances aide à rester constant et à progresser durablement.</p></div></details>
-        <details class="faq__item"><summary>Comment réserver une séance ?</summary><div class="faq__body"><p>Un lien de calendrier est partagé toutes les deux semaines via WhatsApp. Vous choisissez les créneaux qui s'adaptent le mieux à vos disponibilités.</p></div></details>
-        <details class="faq__item"><summary>Puis-je annuler ou reporter une séance ?</summary><div class="faq__body"><p>Oui, vous pouvez annuler ou reporter une séance tant que votre pack est valide. Une fois le pack expiré, les séances non utilisées sont perdues.</p></div></details>
-        <details class="faq__item"><summary>Quelle est la durée de validité d'un pack ?</summary><div class="faq__body"><p>Les packs de 4 séances sont valables 5 semaines, et les packs de 8 séances 10 semaines, à compter de la date d'achat.</p></div></details>
-        <details class="faq__item"><summary>Quels moyens de paiement sont acceptés ?</summary><div class="faq__body"><p>Visa, Mastercard, PayPal, Klarna, Apple Pay, Google Pay et d'autres moyens de paiement sont acceptés en toute sécurité via Stripe.</p></div></details>
-        <details class="faq__item"><summary>Et si je pars en vacances ?</summary><div class="faq__body"><p>Pas de souci : votre pack est mis en pause pendant votre absence et reprend dès votre retour.</p></div></details>
-        <details class="faq__item"><summary>Puis-je payer en plusieurs fois ?</summary><div class="faq__body"><p>Oui, le paiement en plusieurs fois est possible grâce à Klarna.</p></div></details>
+        <details class="faq__item"><summary data-i18n="home.faq.q1">Pourquoi proposer des packs de séances ?</summary><div class="faq__body"><p data-i18n="home.faq.a1">Les packs simplifient le paiement et encouragent l'engagement. La régularité est la clé des résultats : s'engager sur plusieurs séances aide à rester constant et à progresser durablement.</p></div></details>
+        <details class="faq__item"><summary data-i18n="home.faq.q2">Comment réserver une séance ?</summary><div class="faq__body"><p data-i18n="home.faq.a2">Un lien de calendrier est partagé toutes les deux semaines via WhatsApp. Vous choisissez les créneaux qui s'adaptent le mieux à vos disponibilités.</p></div></details>
+        <details class="faq__item"><summary data-i18n="home.faq.q3">Puis-je annuler ou reporter une séance ?</summary><div class="faq__body"><p data-i18n="home.faq.a3">Oui, vous pouvez annuler ou reporter une séance tant que votre pack est valide. Une fois le pack expiré, les séances non utilisées sont perdues.</p></div></details>
+        <details class="faq__item"><summary data-i18n="home.faq.q4">Quelle est la durée de validité d'un pack ?</summary><div class="faq__body"><p data-i18n="home.faq.a4">Les packs de 4 séances sont valables 5 semaines, et les packs de 8 séances 10 semaines, à compter de la date d'achat.</p></div></details>
+        <details class="faq__item"><summary data-i18n="home.faq.q5">Quels moyens de paiement sont acceptés ?</summary><div class="faq__body"><p data-i18n="home.faq.a5">Visa, Mastercard, PayPal, Klarna, Apple Pay, Google Pay et d'autres moyens de paiement sont acceptés en toute sécurité via Stripe.</p></div></details>
+        <details class="faq__item"><summary data-i18n="home.faq.q6">Et si je pars en vacances ?</summary><div class="faq__body"><p data-i18n="home.faq.a6">Pas de souci : votre pack est mis en pause pendant votre absence et reprend dès votre retour.</p></div></details>
+        <details class="faq__item"><summary data-i18n="home.faq.q7">Puis-je payer en plusieurs fois ?</summary><div class="faq__body"><p data-i18n="home.faq.a7">Oui, le paiement en plusieurs fois est possible grâce à Klarna.</p></div></details>
       </div>
     </div>
   </section>
@@ -180,9 +229,9 @@
   <section class="cta" id="contact-cta">
     <div class="cta__bg" aria-hidden="true"></div>
     <div class="container cta__inner reveal">
-      <h2>Prêt à vous lancer ?</h2>
-      <p>Contactez-moi pour discuter de vos objectifs et trouver la formule qui vous correspond. La première séance est offerte.</p>
-      <a href="contact.html" class="btn btn--primary btn--lg">Me contacter</a>
+      <h2 data-i18n="home.cta.title">Prêt à vous lancer ?</h2>
+      <p data-i18n="home.cta.text">Contactez-moi pour discuter de vos objectifs et trouver la formule qui vous correspond. La première séance est offerte.</p>
+      <a href="contact.html" class="btn btn--primary btn--lg" data-i18n="home.cta.button">Me contacter</a>
     </div>
   </section>
 
@@ -191,20 +240,22 @@
     <div class="container footer__inner">
       <div class="footer__brand">
         <a href="index.html" class="nav__logo"><img src="assets/logo-white.webp" alt="CoachTanguy" width="160" height="73" /></a>
-        <p>Le sport facile, partout et à tout moment.</p>
+        <p data-i18n="footer.tagline">Le sport facile, partout et à tout moment.</p>
       </div>
       <nav class="footer__links">
-        <a href="coaching-visio.html">Coaching visio</a>
-        <a href="suivi-en-ligne.html">Suivi en ligne</a>
-        <a href="index.html#faq">FAQ</a>
-        <a href="contact.html">Contact</a>
-        <a href="mentions-legales.html">Mentions légales</a>
-        <a href="cvg.html">CGV</a>
+        <a href="coaching-visio.html" data-i18n="footer.lVisio">Coaching visio</a>
+        <a href="suivi-en-ligne.html" data-i18n="footer.lSuivi">Suivi en ligne</a>
+        <a href="index.html#faq" data-i18n="footer.lFaq">FAQ</a>
+        <a href="contact.html" data-i18n="footer.lContact">Contact</a>
+        <a href="mentions-legales.html" data-i18n="footer.lMentions">Mentions légales</a>
+        <a href="cvg.html" data-i18n="footer.lCgv">CGV</a>
       </nav>
     </div>
-    <div class="footer__bottom"><div class="container">© 2026 CoachTanguy. Tous droits réservés.</div></div>
+    <div class="footer__bottom"><div class="container" data-i18n="footer.copyright">© 2026 CoachTanguy. Tous droits réservés.</div></div>
   </footer>
 
+  <script src="content/fr.js"></script>
+  <script src="assets/i18n.js"></script>
   <script src="script.js" defer></script>
 </body>
 </html>

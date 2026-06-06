@@ -72,7 +72,7 @@ window.CALC_I18N = {
   "Glucides": "Koolhydraten",
   "Votre résumé personnalisé": "Je persoonlijke samenvatting",
   "Copier mon résumé": "Mijn samenvatting kopiëren",
-  "Imprimer / enregistrer": "Afdrukken / opslaan",
+  "Enregistrer en PDF": "Opslaan als PDF",
   "Résumé copié.": "Samenvatting gekopieerd.",
 
   // Section Assiettes

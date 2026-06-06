@@ -72,7 +72,7 @@ window.CALC_I18N = {
   "Glucides": "Carbs",
   "Votre résumé personnalisé": "Your personalised summary",
   "Copier mon résumé": "Copy my summary",
-  "Imprimer / enregistrer": "Print / save",
+  "Enregistrer en PDF": "Save as PDF",
   "Résumé copié.": "Summary copied.",
 
   // Plates section

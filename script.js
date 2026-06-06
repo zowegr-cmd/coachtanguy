@@ -52,7 +52,7 @@ faqItems.forEach(item => {
   var sw = document.getElementById('langSwitch');
   if (!sw) return;
   // Pages disponibles dans /en et /nl (ajoute-les ici quand elles sont traduites)
-  var TRANSLATED = ['index.html', 'contact.html'];
+  var TRANSLATED = ['index.html', 'contact.html', 'coaching-visio.html', 'suivi-en-ligne.html'];
   var cur = document.documentElement.lang || 'fr';
   var file = (location.pathname.split('/').pop() || 'index.html');
   if (!file) file = 'index.html';

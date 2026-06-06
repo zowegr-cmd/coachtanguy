@@ -123,6 +123,52 @@ window.SITE_CONTENT = {
     consent: "By sending this form, you agree to be contacted by CoachTanguy."
   },
 
+  visio: {
+    heroEyebrow: "Video Coaching",
+    heroTitleHtml: "Flexible, interactive,<br />effective.",
+    heroSubtitle: "Enjoy one-to-one remote sports coaching sessions, accessible anywhere. Personalised coaching, real-time advice and tailored follow-up via video call.",
+    heroCta1: "Go straight to the packs",
+    heroCta2: "Free trial session",
+    f1Title: "Tailored coaching",
+    f1Text: "Sessions adapted to your pace, your goals and your space, wherever you are.",
+    f2Title: "Session packs",
+    f2Text: "Packs designed around your training frequency to ensure real consistency.",
+    f3Title: "Free trial session",
+    f3Text: "A first chat to discover your needs, try the method and set your goals together.",
+    packsEyebrow: "Packs",
+    packsTitle: "Choose the formula that suits you",
+    packsSubtitle: "Adapted and personalised · feedback after every session · rescheduling possible during holidays.",
+    p1Name: "Single session", p1Meta: "Session of 30 to 40 min",
+    p1l1: "Adapted and personalised session", p1l2: "Feedback after the session", p1l3: "No commitment",
+    p1Note: "💳 Payment settled directly at the session", p1Btn: "Book",
+    p2Ribbon: "Most chosen", p2Name: "Pack of 4 sessions", p2PriceSub: "i.e. 35€ / session", p2Meta: "Valid 5 weeks",
+    p2l1: "4 personalised sessions", p2l2: "Feedback after each session", p2l3: "Rescheduling possible during holidays", p2l4: "Ideal 1 session / week", p2Btn: "Choose",
+    p3Name: "Pack of 8 sessions", p3PriceSub: "i.e. 30€ / session", p3Meta: "Valid 10 weeks",
+    p3l1: "8 personalised sessions", p3l2: "Feedback after each session", p3l3: "Rescheduling possible during holidays", p3l4: "Best price / session", p3Btn: "Choose",
+    ctaTitle: "Ready to get started?", ctaText: "Book your free trial session and let's get going together.", ctaBtn: "Get in touch"
+  },
+
+  suivi: {
+    heroEyebrow: "Online Tracking",
+    heroTitleHtml: "Remote sports<br />coaching.",
+    heroSubtitle: "Tracking at your own pace, 100% personalised, wherever you are via the FitPros app. Evolving programme, regular advice and tailored support to progress effectively.",
+    heroCta1: "Go straight to the plans",
+    heroCta2: "Ask a question",
+    appEyebrow: "FitPros",
+    appTitle: "Your tailored programme in your pocket",
+    appText: "A simple space to track your progress and stay motivated every day.",
+    appT1: "Step-by-step guided sessions", appT2: "Clear tracking of your progress", appT3: "Regular advice and adjustments", appT4: "Direct communication via WhatsApp",
+    appBtn: "See the plans",
+    suivisEyebrow: "Plans",
+    suivisTitle: "Expert tracking, 100% personalised",
+    suivisSubtitle: "Tailored programme, regular adjustments and human support.",
+    s1Ribbon: "To get started", s1Name: "Initial support", s1PriceSub: "for 8 weeks",
+    s1l1: "Personalised support for 8 weeks", s1l2: "Tailored training programme adapted to your goals", s1l3: "Access via the FitPros app", s1l4: "Communication & tracking via WhatsApp", s1l5: "Introductory video call (~30 min) free", s1l6: "Programme available within 72h after the call", s1l7: "Check-up every 2 weeks via a form", s1l8: "Regular adjustments for optimal results", s1l9: "Pause possible during holidays", s1Btn: "Choose",
+    s2Name: "Monthly tracking", s2PriceSub: "per month", s2Meta: "Only after the initial support",
+    s2l1: "Tailored training programme", s2l2: "Access via the FitPros app", s2l3: "Communication & tracking via WhatsApp", s2l4: "Check-up every 2 weeks", s2l5: "Regular adjustments", s2l6: "Pause possible during holidays", s2Btn: "Choose",
+    ctaTitle: "Ready to progress?", ctaText: "Book your free introductory call and let's build your programme.", ctaBtn: "Get in touch"
+  },
+
   stripe: {
     unite: "contact.html",
     pack4: "https://buy.stripe.com/5kQ4gBdvB0Yz85A7Pa0RG0a",

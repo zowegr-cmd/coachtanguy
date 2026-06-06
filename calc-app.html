@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
   <script>
 (function(){
-  function ensureStyle(){ try{ if(!document.getElementById("__embedfit")){ var st=document.createElement("style"); st.id="__embedfit"; st.textContent="html{scroll-padding-top:150px!important}.wrap{padding-top:92px!important}.wrap>header.hero{background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;margin-top:4px!important}header.hero .hero-logo{display:none!important}.topnav{top:74px!important}section.card.white{top:150px!important}"; (document.head||document.documentElement).appendChild(st);} }catch(e){} }
+  function ensureStyle(){ try{ if(!document.getElementById("__embedfit")){ var st=document.createElement("style"); st.id="__embedfit"; st.textContent="html,body{min-height:0!important;height:auto!important;overflow:visible!important;background:transparent!important}.wrap>header.hero{display:none!important}.wrap{padding-top:6px!important}main{margin-top:14px!important}"; (document.head||document.documentElement).appendChild(st);} }catch(e){} }
   function report(){ ensureStyle(); try{ var h=Math.max(document.documentElement?document.documentElement.scrollHeight:0, document.body?document.body.scrollHeight:0); if(h>0 && window.parent && window.parent!==window){ window.parent.postMessage({__calcHeight:h},"*"); } }catch(e){} }
   try{ setInterval(report,300); }catch(e){}
   window.addEventListener("resize", report);

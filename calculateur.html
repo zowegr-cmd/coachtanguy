@@ -24,31 +24,18 @@
   <link rel="manifest" href="site.webmanifest" />
   <meta name="theme-color" content="#ff5a00" />
   <style>
-    /* Même fond que le calculateur, posé sur la PAGE (qui scrolle) : les halos
-       orange restent ancrés au viewport (background-attachment: fixed) et
-       "bougent" donc au scroll, comme sur le HTML d'origine. */
-    body {
-      background:
-        radial-gradient(900px circle at 12% -4%, rgba(255,90,0,.16), transparent 58%),
-        radial-gradient(760px circle at 90% 6%, rgba(255,90,0,.08), transparent 52%),
-        radial-gradient(1000px circle at 86% 88%, rgba(255,90,0,.07), transparent 58%),
-        radial-gradient(680px circle at 6% 72%, rgba(255,90,0,.05), transparent 52%),
-        #0a0a0b;
-      background-attachment: fixed;
-    }
-    .calc-hero { padding: 132px 0 30px; background: transparent; }
-    .calc-hero .section__head { margin-bottom: 0; }
-    .calc-embed { background: transparent; }
-    .calc-embed__frame {
-      display: block; width: 100%; border: 0;
-      min-height: 60vh; background: transparent;
-      overflow: hidden;
-    }
-    .footer { background: transparent; }
-    @media (max-width: 720px) { .calc-hero { padding: 110px 0 22px; } }
+    /* Le calculateur occupe tout l'écran et défile nativement : la carte
+       "Vos résultats" reste sticky, les onglets collent, le halo orange est en
+       parallax. Le hero du site est injecté DANS le calculateur (voir calc-app)
+       pour garder le même haut, tout en profitant du scroll natif. */
+    html, body { height: 100%; }
+    body { margin: 0; overflow: hidden; background: #0a0a0b; }
+    .calc-embed { position: fixed; inset: 0; z-index: 1; }
+    .calc-embed__frame { display: block; width: 100%; height: 100%; border: 0; background: #0a0a0b; }
+    .nav { z-index: 60; background: rgba(12, 12, 14, .72); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, .07); }
   </style>
 </head>
-<body class="has-hero">
+<body class="has-hero nav-over-dark">
 
   <header class="nav" id="top">
     <div class="container nav__inner">
@@ -73,54 +60,10 @@
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
-  <section class="section section--dark calc-hero">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="eyebrow" data-i18n="calc.eyebrow">Outil gratuit</span>
-        <h1 data-i18n="calc.title">Calculateur alimentaire</h1>
-        <p data-i18n="calc.subtitle">Estimez vos besoins caloriques et la répartition de vos macros en quelques secondes, selon votre profil et vos objectifs.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CALCULATEUR (app intégrée) ===== -->
+  <!-- ===== CALCULATEUR (app intégrée, plein écran, défilement natif interne) ===== -->
   <section class="calc-embed" aria-label="Calculateur alimentaire">
-    <iframe id="calcFrame" class="calc-embed__frame" src="calc-app.html" title="Calculateur alimentaire CoachTanguy" loading="lazy"></iframe>
+    <iframe id="calcFrame" class="calc-embed__frame" src="calc-app.html" title="Calculateur alimentaire CoachTanguy"></iframe>
   </section>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <a href="index.html" class="nav__logo"><img src="assets/logo-white.webp" alt="CoachTanguy" width="160" height="73" /></a>
-        <p data-i18n="footer.tagline">Le sport facile, partout et à tout moment.</p>
-      </div>
-      <nav class="footer__links">
-        <a href="coaching-visio.html" data-i18n="footer.lVisio">Coaching visio</a>
-        <a href="suivi-en-ligne.html" data-i18n="footer.lSuivi">Suivi en ligne</a>
-        <a href="calculateur.html" data-i18n="nav.calculateur">Calculateur</a>
-        <a href="contact.html" data-i18n="footer.lContact">Contact</a>
-        <a href="mentions-legales.html" data-i18n="footer.lMentions">Mentions légales</a>
-        <a href="cvg.html" data-i18n="footer.lCgv">CGV</a>
-      </nav>
-    </div>
-    <div class="footer__bottom"><div class="container" data-i18n="footer.copyright">© 2026 CoachTanguy. Tous droits réservés.</div></div>
-  </footer>
-
-  <!-- Le calculateur (dans l'iframe) mesure sa propre hauteur et l'envoie ici via
-       postMessage. Fonctionne même en file:// (pas d'accès direct au contenu requis). -->
-  <script>
-    (function () {
-      var ifr = document.getElementById('calcFrame');
-      if (!ifr) return;
-      window.addEventListener('message', function (e) {
-        var d = e.data;
-        if (d && typeof d.__calcHeight === 'number' && d.__calcHeight > 0) {
-          ifr.style.height = d.__calcHeight + 'px';
-        }
-      });
-    })();
-  </script>
 
   <script src="content/fr.js"></script>
   <script src="assets/i18n.js"></script>

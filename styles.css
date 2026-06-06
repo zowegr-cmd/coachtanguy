@@ -315,7 +315,8 @@ body.has-hero .nav:not(.scrolled) .nav__links.open a { color: var(--gray-900); }
 .nav__links a.is-active::after { width: 100%; }
 
 /* Bandeau confiance */
-.trust { position: relative; z-index: 1; background: var(--dark); color: #fff; }
+.trust { position: relative; z-index: 1; color: #fff;
+  background: radial-gradient(130% 130% at 80% 125%, rgba(255,90,0,.13), transparent 60%), var(--dark); }
 .trust__inner { position: relative; z-index: 2; }
 .trust__inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 30px 24px; text-align: center; }
 .trust__item { display: flex; flex-direction: column; gap: 4px; }

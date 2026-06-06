@@ -51,6 +51,8 @@ faqItems.forEach(item => {
 (function () {
   var sw = document.getElementById('langSwitch');
   if (!sw) return;
+  // Pages disponibles dans /en et /nl (ajoute-les ici quand elles sont traduites)
+  var TRANSLATED = ['index.html', 'contact.html'];
   var cur = document.documentElement.lang || 'fr';
   var file = (location.pathname.split('/').pop() || 'index.html');
   if (!file) file = 'index.html';
@@ -58,8 +60,13 @@ faqItems.forEach(item => {
   sw.querySelectorAll('a[data-lang]').forEach(function (a) {
     var lang = a.getAttribute('data-lang');
     var href;
-    if (lang === 'fr') href = inLangFolder ? '../' + file : file;
-    else href = inLangFolder ? '../' + lang + '/' + file : lang + '/' + file;
+    if (lang === 'fr') {
+      href = inLangFolder ? '../' + file : file;
+    } else {
+      var exists = TRANSLATED.indexOf(file) >= 0;
+      if (inLangFolder) href = '../' + lang + '/' + file;
+      else href = exists ? lang + '/' + file : lang + '/index.html';
+    }
     a.setAttribute('href', href);
     a.classList.toggle('active', lang === cur);
   });

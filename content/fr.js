@@ -123,6 +123,52 @@ window.SITE_CONTENT = {
     consent: "En envoyant ce formulaire, vous acceptez d'être recontacté par CoachTanguy."
   },
 
+  visio: {
+    heroEyebrow: "Coaching Visio",
+    heroTitleHtml: "Flexible, interactif,<br />efficace.",
+    heroSubtitle: "Profitez de séances individuelles de coaching sportif à distance, accessibles partout. Coaching personnalisé, conseils en temps réel et suivi sur-mesure par visioconférence.",
+    heroCta1: "Aller directement aux packs",
+    heroCta2: "Séance d'essai offerte",
+    f1Title: "Coaching sur-mesure",
+    f1Text: "Des séances adaptées à votre rythme, vos objectifs et votre espace, où que vous soyez.",
+    f2Title: "Packs de séances",
+    f2Text: "Des packs conçus selon votre fréquence d'entraînement pour garantir une vraie régularité.",
+    f3Title: "Séance d'essai offerte",
+    f3Text: "Un premier échange pour découvrir vos besoins, tester la méthode et définir ensemble vos objectifs.",
+    packsEyebrow: "Packs",
+    packsTitle: "Choisissez la formule qui vous convient",
+    packsSubtitle: "Adaptée et personnalisée · feedback après chaque séance · report possible en cas de vacances.",
+    p1Name: "Séance à l'unité", p1Meta: "Séance de 30 à 40 min",
+    p1l1: "Séance adaptée et personnalisée", p1l2: "Feedback après la séance", p1l3: "Sans engagement",
+    p1Note: "💳 Paiement réglé directement lors de la séance", p1Btn: "Réserver",
+    p2Ribbon: "Le plus choisi", p2Name: "Pack 4 séances", p2PriceSub: "soit 35€ / séance", p2Meta: "Valable 5 semaines",
+    p2l1: "4 séances personnalisées", p2l2: "Feedback après chaque séance", p2l3: "Report possible en cas de vacances", p2l4: "Idéal 1 séance / semaine", p2Btn: "Choisir",
+    p3Name: "Pack 8 séances", p3PriceSub: "soit 30€ / séance", p3Meta: "Valable 10 semaines",
+    p3l1: "8 séances personnalisées", p3l2: "Feedback après chaque séance", p3l3: "Report possible en cas de vacances", p3l4: "Le meilleur tarif / séance", p3Btn: "Choisir",
+    ctaTitle: "Prêt à commencer ?", ctaText: "Réservez votre séance d'essai offerte et lançons-nous ensemble.", ctaBtn: "Contacter"
+  },
+
+  suivi: {
+    heroEyebrow: "Suivi en Ligne",
+    heroTitleHtml: "Coaching sportif<br />à distance.",
+    heroSubtitle: "Un suivi à votre rythme, 100% personnalisé, où que vous soyez via l'application FitPros. Programme évolutif, conseils réguliers et accompagnement sur-mesure pour progresser efficacement.",
+    heroCta1: "Aller directement aux suivis",
+    heroCta2: "Poser une question",
+    appEyebrow: "FitPros",
+    appTitle: "Votre programme sur mesure dans votre poche",
+    appText: "Un espace simple pour suivre votre progression et rester motivé au quotidien.",
+    appT1: "Des séances guidées étape par étape", appT2: "Suivi clair de votre progression", appT3: "Conseils et ajustements réguliers", appT4: "Communication directe via WhatsApp",
+    appBtn: "Voir les formules",
+    suivisEyebrow: "Suivis",
+    suivisTitle: "Un suivi expert, 100% personnalisé",
+    suivisSubtitle: "Programme sur-mesure, ajustements réguliers et accompagnement humain.",
+    s1Ribbon: "Pour démarrer", s1Name: "Accompagnement initial", s1PriceSub: "pour 8 semaines",
+    s1l1: "Accompagnement personnalisé pendant 8 semaines", s1l2: "Programme d'entraînement sur-mesure adapté à vos objectifs", s1l3: "Accès via l'app FitPros", s1l4: "Communication & suivi via WhatsApp", s1l5: "Appel visio d'introduction (~30 min) offert", s1l6: "Programme accessible sous 72h après l'appel", s1l7: "Check-up toutes les 2 semaines via un formulaire", s1l8: "Ajustements réguliers pour des résultats optimaux", s1l9: "Mise en pause possible en cas de vacances", s1Btn: "Choisir",
+    s2Name: "Suivi mensuel", s2PriceSub: "par mois", s2Meta: "Uniquement après l'accompagnement initial",
+    s2l1: "Programme d'entraînement sur-mesure", s2l2: "Accès via l'app FitPros", s2l3: "Communication & suivi via WhatsApp", s2l4: "Check-up toutes les 2 semaines", s2l5: "Ajustements réguliers", s2l6: "Mise en pause possible en cas de vacances", s2Btn: "Choisir",
+    ctaTitle: "Prêt à progresser ?", ctaText: "Réservez votre appel d'introduction offert et construisons votre programme.", ctaBtn: "Contacter"
+  },
+
   /* Liens de paiement Stripe (buy.stripe.com/...). "unite" redirige vers le contact (paiement sur place). */
   stripe: {
     unite: "contact.html",

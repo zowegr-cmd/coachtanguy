@@ -2,6 +2,17 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
+  <!-- Habillage site appliqué uniquement quand le calculateur est dans l'iframe -->
+  <script>if (window.self !== window.top) document.documentElement.classList.add("is-embedded");</script>
+  <!-- PWA -->
+  <link rel="manifest" href="/calculateur/manifest.webmanifest" />
+  <meta name="theme-color" content="#ff5a00" />
+  <link rel="apple-touch-icon" href="/calculateur/icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/calculateur/icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="CoachTanguy" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Calculateur alimentaire | CoachTanguy</title>
   <meta name="description" content="Calculateur alimentaire CoachTanguy : métabolisme de base, besoins caloriques, macros, méthode de l'assiette, portions et idées de repas." />
@@ -2220,22 +2231,23 @@
 
 <!-- ===== Intégration au site CoachTanguy (ajoutée automatiquement) ===== -->
 <style id="__ctembed">
-  .wrap > header.hero { display: none !important; }      /* en-tête de l'app masqué à l'écran */
-  .wrap { padding-top: 0 !important; }
-  html { scroll-padding-top: 150px !important; }
+  html.is-embedded .wrap > header.hero { display: none !important; }
+  html.is-embedded .wrap { padding-top: 0 !important; }
+  html.is-embedded { scroll-padding-top: 150px !important; }
   #__ctshero { text-align: center; max-width: 760px; margin: 0 auto; padding: 104px 16px 4px; }
   #__ctshero .ctsh-eyebrow { display: inline-block; font: 700 12px/1 'Inter Tight', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #ff5a00; background: rgba(255,90,0,.12); border: 1px solid rgba(255,90,0,.30); padding: 7px 14px; border-radius: 999px; margin-bottom: 16px; }
   #__ctshero .ctsh-title { font: 800 clamp(30px,5vw,52px)/1.05 'Inter Tight', sans-serif; color: #fff; margin: 0 0 14px; letter-spacing: -.01em; }
   #__ctshero .ctsh-sub { font: 400 clamp(15px,2.2vw,18px)/1.6 'Inter', sans-serif; color: rgba(255,255,255,.62); margin: 0; }
-  .topnav { top: 80px !important; background: rgba(12,12,14,.66) !important; -webkit-backdrop-filter: blur(16px) saturate(120%) !important; backdrop-filter: blur(16px) saturate(120%) !important; border: 1px solid rgba(255,255,255,.07) !important; border-radius: 16px !important; box-shadow: 0 10px 26px rgba(0,0,0,.28) !important; }
-  #resultats { top: 150px !important; }
+  html.is-embedded .topnav { top: 80px !important; background: rgba(12,12,14,.66) !important; -webkit-backdrop-filter: blur(16px) saturate(120%) !important; backdrop-filter: blur(16px) saturate(120%) !important; border: 1px solid rgba(255,255,255,.07) !important; border-radius: 16px !important; box-shadow: 0 10px 26px rgba(0,0,0,.28) !important; }
+  html.is-embedded #resultats { top: 150px !important; }
   @media print {
-    .wrap > header.hero { display: block !important; }   /* en-tête de l'app rétabli pour l'impression */
+    html.is-embedded .wrap > header.hero { display: block !important; }
     #__ctshero { display: none !important; }             /* hero site masqué à l'impression */
   }
 </style>
 <script>
   (function () {
+    if (window.self === window.top) return; /* habillage site seulement dans l'iframe */
     var wrap = document.querySelector('.wrap');
     if (wrap && !document.getElementById('__ctshero')) {
       var h = document.createElement('div');
@@ -2299,7 +2311,7 @@
     }
     var sc = document.createElement('script');
     var vm = location.search.match(/[?&](v=[^&]+)/);
-    sc.src = 'content/calc-i18n.' + lang + '.js' + (vm ? '?' + vm[1] : '');
+    sc.src = '/content/calc-i18n.' + lang + '.js' + (vm ? '?' + vm[1] : '');
     sc.onload = function () {
       dict = window.CALC_I18N || {}; var fr = window.CALC_I18N_FRAGMENTS || {};
       try { var ov = JSON.parse(localStorage.getItem('CALC_I18N_' + lang) || 'null'); if (ov) { if (ov.dict) for (var k in ov.dict) dict[k] = ov.dict[k]; if (ov.frags) for (var k2 in ov.frags) fr[k2] = ov.frags[k2]; } } catch (e) {}
@@ -2309,5 +2321,8 @@
     document.head.appendChild(sc);
   })();
 </script>
+
+<!-- PWA : installation + tutoriel -->
+<script src="/calculateur/pwa.js" defer></script>
 </body>
 </html>

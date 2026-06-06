@@ -1,0 +1,20 @@
+{
+  "name": "Calculateur Alimentaire CoachTanguy",
+  "short_name": "CoachTanguy",
+  "description": "Calculateur alimentaire : métabolisme de base, besoins caloriques, macros, méthode de l'assiette, portions et idées de repas.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "/calculateur/",
+  "scope": "/calculateur/",
+  "id": "/calculateur/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0b",
+  "theme_color": "#ff5a00",
+  "categories": ["health", "fitness", "lifestyle"],
+  "icons": [
+    { "src": "/calculateur/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/calculateur/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/calculateur/icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

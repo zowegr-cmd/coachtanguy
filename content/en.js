@@ -94,7 +94,7 @@ window.SITE_CONTENT = {
 
   footer: {
     tagline: "Fitness made easy, anywhere, anytime.",
-    areas: "Personal trainer in Rhode-Saint-Genèse, Waterloo, Beersel, Linkebeek and Braine-l'Alleud — in person or by video.",
+    areas: "Personal trainer in Rhode-Saint-Genèse, Uccle, Waterloo, Beersel, Linkebeek and Braine-l'Alleud — in person or by video.",
     lVisio: "Video coaching",
     lSuivi: "Online tracking",
     lFaq: "FAQ",

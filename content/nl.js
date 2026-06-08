@@ -94,7 +94,7 @@ window.SITE_CONTENT = {
 
   footer: {
     tagline: "Sporten wordt makkelijk, overal en altijd.",
-    areas: "Sportcoach in Sint-Genesius-Rode, Waterloo, Beersel, Linkebeek en Eigenbrakel — aan huis of via video.",
+    areas: "Sportcoach in Sint-Genesius-Rode, Ukkel, Waterloo, Beersel, Linkebeek en Eigenbrakel — aan huis of via video.",
     lVisio: "Videocoaching",
     lSuivi: "Online opvolging",
     lFaq: "FAQ",

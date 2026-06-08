@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CoachTanguy — Le sport facile, partout et à tout moment</title>
-  <meta name="description" content="Coaching visio et suivi en ligne avec CoachTanguy. Un accompagnement personnalisé, adapté à votre niveau, vos objectifs et votre emploi du temps." />
+  <title>Coach sportif à Rhode-Saint-Genèse & Brabant — CoachTanguy</title>
+  <meta name="description" content="Coach sportif à Rhode-Saint-Genèse : coaching à domicile, en visio et suivi en ligne. Aussi à Waterloo, Beersel, Linkebeek et Braine-l'Alleud. 1ère séance offerte." />
   <link rel="canonical" href="https://www.coachtanguy.com/" />
   <link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/" />
   <link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/" />
@@ -25,12 +25,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="assets/hero-wide.webp?v=2" fetchpriority="high" />
-  <link rel="stylesheet" href="styles.css?v=40" />
+  <link rel="stylesheet" href="styles.css?v=41" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png" />
   <link rel="apple-touch-icon" href="assets/icon-180.png" />
   <link rel="manifest" href="site.webmanifest" />
   <meta name="theme-color" content="#ff5a00" />
+  <!-- SEO local -->
+  <meta name="geo.region" content="BE-VBR" />
+  <meta name="geo.placename" content="Rhode-Saint-Genèse" />
+  <meta name="geo.position" content="50.7494;4.3597" />
+  <meta name="ICBM" content="50.7494, 4.3597" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -51,6 +56,38 @@
         "url": "https://www.coachtanguy.com/",
         "image": "https://www.coachtanguy.com/assets/about.jpg",
         "knowsAbout": ["Coaching sportif", "Musculation", "Nutrition", "Préparation physique"]
+      },
+      {
+        "@type": ["LocalBusiness", "SportsActivityLocation"],
+        "@id": "https://www.coachtanguy.com/#business",
+        "name": "CoachTanguy",
+        "description": "Coach sportif à Rhode-Saint-Genèse : coaching à domicile, en visioconférence et suivi en ligne, personnalisé selon votre niveau et vos objectifs.",
+        "url": "https://www.coachtanguy.com/",
+        "image": "https://www.coachtanguy.com/assets/icon-512.png",
+        "logo": "https://www.coachtanguy.com/assets/logo.webp",
+        "telephone": "+32472761639",
+        "email": "tanguy_coaching@hotmail.com",
+        "priceRange": "€€",
+        "currenciesAccepted": "EUR",
+        "founder": { "@id": "https://www.coachtanguy.com/#tanguy" },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Avenue de la Pépinière 11",
+          "postalCode": "1640",
+          "addressLocality": "Rhode-Saint-Genèse",
+          "addressRegion": "Brabant flamand",
+          "addressCountry": "BE"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 50.7494, "longitude": 4.3597 },
+        "areaServed": [
+          { "@type": "Place", "name": "Rhode-Saint-Genèse" },
+          { "@type": "Place", "name": "Waterloo" },
+          { "@type": "Place", "name": "Beersel" },
+          { "@type": "Place", "name": "Linkebeek" },
+          { "@type": "Place", "name": "Holleken" },
+          { "@type": "Place", "name": "Braine-l'Alleud" }
+        ],
+        "knowsLanguage": ["fr", "nl", "en"]
       },
       {
         "@type": "FAQPage",
@@ -259,6 +296,7 @@
       <div class="footer__brand">
         <a href="index.html" class="nav__logo"><img src="assets/logo-white.webp" alt="CoachTanguy" width="160" height="73" /></a>
         <p data-i18n="footer.tagline">Le sport facile, partout et à tout moment.</p>
+        <p class="footer__areas" data-i18n="footer.areas">Coach sportif à Rhode-Saint-Genèse, Waterloo, Beersel, Linkebeek et Braine-l'Alleud — à domicile ou en visio.</p>
       </div>
       <nav class="footer__links">
         <a href="coaching-visio.html" data-i18n="footer.lVisio">Coaching visio</a>

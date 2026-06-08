@@ -94,6 +94,7 @@ window.SITE_CONTENT = {
 
   footer: {
     tagline: "Le sport facile, partout et à tout moment.",
+    areas: "Coach sportif à Rhode-Saint-Genèse, Waterloo, Beersel, Linkebeek et Braine-l'Alleud — à domicile ou en visio.",
     lVisio: "Coaching visio",
     lSuivi: "Suivi en ligne",
     lFaq: "FAQ",

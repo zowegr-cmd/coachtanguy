@@ -2244,6 +2244,12 @@
     html.is-embedded .wrap > header.hero { display: block !important; }
     #__ctshero { display: none !important; }             /* hero site masqué à l'impression */
   }
+  /* Mobile : onglets centrés sur 2 lignes (plus de scrollbar horizontale) */
+  @media (max-width: 700px) {
+    .topnav { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; overflow-x: visible !important; gap: 3px 3px !important; padding-top: 9px !important; padding-bottom: 9px !important; }
+    .topnav a { font-size: 13.5px !important; padding: 7px 11px !important; }
+    .topnav::-webkit-scrollbar { display: none !important; }
+  }
 </style>
 <script>
   (function () {

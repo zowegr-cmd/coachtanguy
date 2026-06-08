@@ -1,58 +1,310 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.coachtanguy.com/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/nl/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.coachtanguy.com/coaching-visio.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coaching-visio.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coaching-visio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coaching-visio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coaching-visio.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/nl/coaching-visio.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coaching-visio.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coaching-visio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coaching-visio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coaching-visio.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/en/coaching-visio.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coaching-visio.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coaching-visio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coaching-visio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coaching-visio.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.coachtanguy.com/suivi-en-ligne.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/suivi-en-ligne.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/suivi-en-ligne.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/suivi-en-ligne.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/suivi-en-ligne.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/nl/suivi-en-ligne.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/suivi-en-ligne.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/suivi-en-ligne.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/suivi-en-ligne.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/suivi-en-ligne.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/en/suivi-en-ligne.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/suivi-en-ligne.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/suivi-en-ligne.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/suivi-en-ligne.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/suivi-en-ligne.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.coachtanguy.com/calculateur.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/calculateur.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/calculateur.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/calculateur.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/calculateur.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/nl/calculateur.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/calculateur.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/calculateur.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/calculateur.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/calculateur.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/en/calculateur.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/calculateur.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/calculateur.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/calculateur.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/calculateur.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.coachtanguy.com/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/contact.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/nl/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/contact.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/en/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/contact.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.coachtanguy.com/coach-sportif-rhode-saint-genese.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-rhode-saint-genese.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-rhode-saint-genese.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-rhode-saint-genese.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-rhode-saint-genese.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.coachtanguy.com/coach-sportif-waterloo.html</loc>
+    <loc>https://www.coachtanguy.com/nl/coach-sportif-rhode-saint-genese.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-rhode-saint-genese.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-rhode-saint-genese.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-rhode-saint-genese.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-rhode-saint-genese.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.coachtanguy.com/coach-sportif-beersel.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.coachtanguy.com/coach-sportif-linkebeek.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.coachtanguy.com/coach-sportif-braine-lalleud.html</loc>
+    <loc>https://www.coachtanguy.com/en/coach-sportif-rhode-saint-genese.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-rhode-saint-genese.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-rhode-saint-genese.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-rhode-saint-genese.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-rhode-saint-genese.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.coachtanguy.com/coach-sportif-uccle.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-uccle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-uccle.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-uccle.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-uccle.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/nl/coach-sportif-uccle.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-uccle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-uccle.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-uccle.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-uccle.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/en/coach-sportif-uccle.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-uccle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-uccle.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-uccle.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-uccle.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/coach-sportif-waterloo.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-waterloo.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-waterloo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-waterloo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-waterloo.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/nl/coach-sportif-waterloo.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-waterloo.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-waterloo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-waterloo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-waterloo.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/en/coach-sportif-waterloo.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-waterloo.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-waterloo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-waterloo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-waterloo.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/coach-sportif-beersel.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-beersel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-beersel.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-beersel.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-beersel.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/nl/coach-sportif-beersel.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-beersel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-beersel.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-beersel.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-beersel.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/en/coach-sportif-beersel.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-beersel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-beersel.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-beersel.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-beersel.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/coach-sportif-linkebeek.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-linkebeek.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-linkebeek.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-linkebeek.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-linkebeek.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/nl/coach-sportif-linkebeek.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-linkebeek.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-linkebeek.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-linkebeek.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-linkebeek.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/en/coach-sportif-linkebeek.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-linkebeek.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-linkebeek.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-linkebeek.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-linkebeek.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/coach-sportif-braine-lalleud.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-braine-lalleud.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-braine-lalleud.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-braine-lalleud.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-braine-lalleud.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/nl/coach-sportif-braine-lalleud.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-braine-lalleud.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-braine-lalleud.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-braine-lalleud.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-braine-lalleud.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/en/coach-sportif-braine-lalleud.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/coach-sportif-braine-lalleud.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/coach-sportif-braine-lalleud.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/coach-sportif-braine-lalleud.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/coach-sportif-braine-lalleud.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/mentions-legales.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/cvg.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

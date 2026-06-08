@@ -109,8 +109,15 @@ if (contactForm) {
       contactForm.reportValidity();
       return;
     }
-    // (Brancher ici l'envoi réel : email, API, etc.)
-    window.location.href = 'confirmation.html';
+    // Envoi via Netlify Forms (capté au déploiement), puis page de confirmation
+    const go = () => { window.location.href = '/confirmation.html'; };
+    const btn = contactForm.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.dataset.t = btn.textContent; btn.textContent = '…'; }
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(contactForm)).toString()
+    }).then(go).catch(go);
   });
 }
 

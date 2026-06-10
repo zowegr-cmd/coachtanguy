@@ -44,10 +44,10 @@ window.SITE_CONTENT = {
       "subtitle": "Deux formules pensées pour vous faire progresser, où que vous soyez.",
       "c1Title": "Coaching visio",
       "c1Text": "Profitez d'un accompagnement professionnel à distance via visioconférence, pour garder la motivation partout où vous êtes.",
-      "c1Link": "Découvrir l'offre →",
+      "c1Link": "Découvrir l'offre",
       "c2Title": "Suivi en ligne",
       "c2Text": "Accédez à un suivi, des plans d'entraînement et conseils personnalisés via une application.",
-      "c2Link": "Découvrir l'offre →"
+      "c2Link": "Découvrir l'offre"
     },
     "process": {
       "eyebrow": "Comment ça marche",

@@ -43,10 +43,10 @@ window.SITE_CONTENT = {
       "subtitle": "Twee formules om je vooruit te helpen, waar je ook bent.",
       "c1Title": "Videocoaching",
       "c1Text": "Geniet van professionele begeleiding op afstand via videogesprek, om overal gemotiveerd te blijven.",
-      "c1Link": "Ontdek de formule →",
+      "c1Link": "Ontdek de formule",
       "c2Title": "Online opvolging",
       "c2Text": "Krijg persoonlijke opvolging, trainingsschema's en advies via een app.",
-      "c2Link": "Ontdek de formule →"
+      "c2Link": "Ontdek de formule"
     },
     "process": {
       "eyebrow": "Hoe het werkt",

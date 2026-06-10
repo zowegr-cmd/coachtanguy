@@ -43,10 +43,10 @@ window.SITE_CONTENT = {
       "subtitle": "Two formulas designed to help you progress, wherever you are.",
       "c1Title": "Video coaching",
       "c1Text": "Enjoy professional remote support via video call, to stay motivated wherever you are.",
-      "c1Link": "Discover the offer →",
+      "c1Link": "Discover the offer",
       "c2Title": "Online tracking",
       "c2Text": "Get personalised tracking, training plans and advice through an app.",
-      "c2Link": "Discover the offer →"
+      "c2Link": "Discover the offer"
     },
     "process": {
       "eyebrow": "How it works",

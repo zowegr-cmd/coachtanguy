@@ -609,3 +609,88 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
   .contact { grid-template-columns: 1fr; }
   .phero { min-height: 54vh; padding: 120px 0 64px; }
 }
+
+/* ============================================================
+   POLISH VISUEL — micro-interactions & profondeur
+   (esprit "calcpromo" : l'orange s'allume au survol)
+   ============================================================ */
+
+/* Confort global */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+::selection { background: rgba(255,90,0,.22); }
+:focus-visible { outline: 3px solid rgba(255,90,0,.45); outline-offset: 2px; }
+
+/* Boutons : effet de pression */
+.btn:active { transform: translateY(-1px) scale(.985); }
+
+/* Cartes services : liseré orange + flèche du lien qui glisse */
+.card:hover { border-color: rgba(255,90,0,.38); }
+.section--dark .card:hover { border-color: rgba(255,90,0,.45); }
+.card__link { display: inline-flex; align-items: center; gap: 7px; }
+.card__link::after { content: "→"; transition: transform .25s; }
+.card__link:hover::after { transform: translateX(4px); }
+
+/* Étapes : numéro en filigrane + barre orange qui se déploie */
+.step { overflow: hidden; }
+.step__num {
+  position: absolute; top: 14px; right: 22px;
+  font-size: 64px; opacity: .10; line-height: 1;
+  transition: opacity .3s, transform .3s;
+}
+.step:hover .step__num { opacity: .2; transform: scale(1.06); }
+.step h3 { margin-top: 0; }
+.step::before {
+  content: ""; position: absolute; left: 0; top: 0; height: 3px; width: 0;
+  background: linear-gradient(90deg, var(--orange-light), var(--orange));
+  transition: width .4s cubic-bezier(.2,.7,.2,1);
+}
+.step:hover::before { width: 100%; }
+.step:hover { border-color: rgba(255,90,0,.32); }
+
+/* Atouts : l'icône s'allume en orange */
+.feature__ico { transition: background .3s, transform .3s, box-shadow .3s; }
+.feature:hover { border-color: rgba(255,90,0,.32); }
+.feature:hover .feature__ico {
+  background: linear-gradient(135deg, var(--orange-light), var(--orange));
+  box-shadow: 0 10px 24px rgba(255,90,0,.32);
+  transform: scale(1.06);
+}
+.feature:hover .feature__ico img,
+.feature:hover .feature__ico svg { filter: brightness(0) invert(1); }
+
+/* FAQ : survol orangé + fond chaud quand ouvert */
+.faq__item summary { transition: color .2s; }
+.faq__item summary:hover { color: var(--orange); }
+.faq__item[open] { background: linear-gradient(180deg, #fff, #fff8f3); }
+
+/* Bandeau stats : fins séparateurs verticaux */
+.trust__item + .trust__item { border-left: 1px solid rgba(255,255,255,.09); }
+
+/* Tarifs : liseré orange au survol */
+.price:hover { border-color: rgba(255,90,0,.4); }
+
+/* Pills du hero : réaction au survol */
+.hero__pills span { transition: border-color .25s, background .25s; }
+.hero__pills span:hover { border-color: rgba(255,90,0,.55); background: rgba(255,90,0,.14); }
+
+/* À propos : photo qui respire dans son cadre */
+.about__photo { overflow: visible; }
+.about__photo img { transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.about__photo:hover img { transform: scale(1.02); }
+
+/* Vitrine app : le téléphone se soulève */
+.appshow__media img { transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s; }
+.appshow__row:hover .appshow__media img { transform: translateY(-6px); box-shadow: 0 32px 60px rgba(0,0,0,.28); }
+
+/* Badges de paiement : petite levée au survol */
+.payments__icons .pay { transition: transform .25s; }
+.payments__icons .pay:hover { transform: translateY(-3px); }
+
+/* Footer : liens qui glissent */
+.footer__links a { display: inline-block; transition: color .2s, transform .2s; }
+.footer__links a:hover { transform: translateX(3px); }
+
+/* Canaux de contact : l'icône s'allume */
+.contact__ico { transition: transform .25s, box-shadow .25s; }
+.contact__channel:hover .contact__ico { transform: scale(1.07); box-shadow: 0 8px 20px rgba(0,0,0,.3); }

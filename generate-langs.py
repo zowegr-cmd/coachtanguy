@@ -14,7 +14,7 @@ LANGS = {"en": "en_US", "nl": "nl_NL"}
 
 # Pages traduites disponibles dans chaque dossier de langue.
 # Ajoute-en ici au fur et à mesure que tu les câbles (puis relance le script).
-PAGES = ["index.html", "contact.html", "coaching-visio.html", "suivi-en-ligne.html", "calculateur.html"]
+PAGES = ["index.html", "contact.html", "coaching-visio.html", "suivi-en-ligne.html", "calculateur.html", "politique-confidentialite.html", "cookies.html"]
 
 # Pages qui n'existent QUE en FR (leurs liens pointeront vers ../ depuis /en /nl)
 FR_ONLY = ["mentions-legales.html", "cvg.html"]

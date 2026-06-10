@@ -298,6 +298,60 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.coachtanguy.com/politique-confidentialite.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/politique-confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/politique-confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/politique-confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/politique-confidentialite.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/nl/politique-confidentialite.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/politique-confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/politique-confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/politique-confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/politique-confidentialite.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/en/politique-confidentialite.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/politique-confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/politique-confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/politique-confidentialite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/politique-confidentialite.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/cookies.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/cookies.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/nl/cookies.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/cookies.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/en/cookies.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/cookies.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/cookies.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://www.coachtanguy.com/mentions-legales.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

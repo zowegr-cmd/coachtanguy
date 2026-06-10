@@ -408,6 +408,14 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
 .trust__item strong { font-family: var(--font-head); font-size: 28px; font-weight: 800; color: var(--orange); }
 .trust__item span { font-size: 13px; color: rgba(255,255,255,.62); }
 
+/* Paiement sécurisé (au-dessus du footer) */
+.payments { background: var(--dark); color: #fff; border-top: 1px solid rgba(255,255,255,.07); padding: 28px 0 32px; }
+.payments__inner { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+.payments__title { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-size: 13.5px; letter-spacing: .02em; color: rgba(255,255,255,.6); }
+.payments__lock { color: var(--orange); flex-shrink: 0; }
+.payments__icons { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 9px; max-width: 540px; }
+.payments__icons svg { height: 30px; width: auto; display: block; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,.35); }
+
 /* Étapes "Comment ça marche" */
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .step { position: relative; padding: 36px 30px; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); transition: transform .3s, box-shadow .3s; }

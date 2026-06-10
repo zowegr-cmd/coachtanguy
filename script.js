@@ -32,7 +32,7 @@ const nav = document.querySelector('.nav');
 if (nav) {
   const adaptive = document.body.classList.contains('has-hero');
   const darkBlocks = adaptive
-    ? document.querySelectorAll('.darkzone, .phero, .section--dark, .cta, .footer, .confirm, .calc-embed')
+    ? document.querySelectorAll('.darkzone, .phero, .section--dark, .cta, .footer, .confirm, .calc-embed, .payments')
     : [];
   const lineY = 38; // point juste sous le haut de la nav
   const onScroll = () => {

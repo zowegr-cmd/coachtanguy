@@ -93,6 +93,9 @@ window.SITE_CONTENT = {
       "title": "Ready to get started?",
       "text": "Contact me to discuss your goals and find the formula that suits you. The first session is free.",
       "button": "Contact me"
+    },
+    "payments": {
+      "title": "Secure payment via Stripe"
     }
   },
   "footer": {

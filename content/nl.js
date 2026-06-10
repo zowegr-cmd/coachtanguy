@@ -93,6 +93,9 @@ window.SITE_CONTENT = {
       "title": "Klaar om te starten?",
       "text": "Neem contact op om je doelen te bespreken en de juiste formule te vinden. De eerste sessie is gratis.",
       "button": "Contacteer mij"
+    },
+    "payments": {
+      "title": "Beveiligde betaling via Stripe"
     }
   },
   "footer": {

@@ -94,6 +94,9 @@ window.SITE_CONTENT = {
       "title": "Prêt à vous lancer ?",
       "text": "Contactez-moi pour discuter de vos objectifs et trouver la formule qui vous correspond. La première séance est offerte.",
       "button": "Me contacter"
+    },
+    "payments": {
+      "title": "Paiement sécurisé via Stripe"
     }
   },
   "footer": {

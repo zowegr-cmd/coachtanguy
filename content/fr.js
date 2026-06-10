@@ -24,9 +24,9 @@ window.SITE_CONTENT = {
       "subtitle": "Coaching visio et suivi en ligne, adapté à votre niveau, vos objectifs et votre emploi du temps.",
       "ctaPrimary": "Découvrir les offres",
       "ctaSecondary": "Séance d'essai offerte",
-      "pill1": "✓ Visioconférence",
-      "pill2": "✓ Plans personnalisés",
-      "pill3": "✓ Tous niveaux"
+      "pill1": "✓ Coaching visio",
+      "pill2": "✓ Suivi en ligne",
+      "pill3": "✓ Sans engagement"
     },
     "trust": {
       "v1": "500+",
@@ -39,7 +39,7 @@ window.SITE_CONTENT = {
       "l4": "séance offerte"
     },
     "services": {
-      "eyebrow": "Nos services",
+      "eyebrow": "Services",
       "title": "Un accompagnement à votre rythme",
       "subtitle": "Deux formules pensées pour vous faire progresser, où que vous soyez.",
       "c1Title": "Coaching visio",
@@ -51,7 +51,7 @@ window.SITE_CONTENT = {
     },
     "process": {
       "eyebrow": "Comment ça marche",
-      "title": "Progressez en 3 étapes simples",
+      "title": "Que ce soit avec le coaching visio ou le suivi en ligne, progressez en 3 étapes simples",
       "s1Title": "Échange découverte",
       "s1Text": "Un premier appel offert pour comprendre vos besoins, vos objectifs et tester la méthode ensemble.",
       "s2Title": "Plan sur-mesure",
@@ -62,7 +62,7 @@ window.SITE_CONTENT = {
     "about": {
       "eyebrow": "À propos",
       "title": "Tanguy, votre coach sportif",
-      "p1": "Diplômé en coaching sportif, je m'appuie sur de solides connaissances en anatomie, physiologie, nutrition et science de l'entraînement pour vous accompagner en toute sécurité.",
+      "p1": "Diplômé d'un Bachelier en Coaching Sportif, je m'appuie sur de solides connaissances en anatomie, physiologie, nutrition et science de l'entraînement pour vous accompagner en toute sécurité.",
       "p2": "J'ai travaillé avec des profils variés, des enfants aux seniors, et adapte chaque programme à vos besoins. Mon parcours, c'est plus de 500 heures de stage, 2 ans d'expérience en tant que coach personnel et plus de 10 ans de pratique personnelle de la musculation.",
       "s1v": "500+",
       "s1l": "heures de stage",
@@ -153,7 +153,7 @@ window.SITE_CONTENT = {
     "p1l1": "Séance adaptée et personnalisée",
     "p1l2": "Feedback après la séance",
     "p1l3": "Sans engagement",
-    "p1Note": "💳 Paiement réglé lors de la réservation",
+    "p1Note": "💳 Paiement lors de la réservation",
     "p1Btn": "Réserver",
     "p2Ribbon": "Le plus choisi",
     "p2Name": "Pack 4 séances",

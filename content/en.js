@@ -23,9 +23,9 @@ window.SITE_CONTENT = {
       "subtitle": "Video coaching and online tracking, tailored to your level, your goals and your schedule.",
       "ctaPrimary": "Discover the offers",
       "ctaSecondary": "Free trial session",
-      "pill1": "✓ Video call",
-      "pill2": "✓ Personalised plans",
-      "pill3": "✓ All levels"
+      "pill1": "✓ Video coaching",
+      "pill2": "✓ Online follow-up",
+      "pill3": "✓ No commitment"
     },
     "trust": {
       "v1": "500+",
@@ -38,7 +38,7 @@ window.SITE_CONTENT = {
       "l4": "session free"
     },
     "services": {
-      "eyebrow": "Our services",
+      "eyebrow": "Services",
       "title": "Support at your own pace",
       "subtitle": "Two formulas designed to help you progress, wherever you are.",
       "c1Title": "Video coaching",
@@ -50,7 +50,7 @@ window.SITE_CONTENT = {
     },
     "process": {
       "eyebrow": "How it works",
-      "title": "Progress in 3 simple steps",
+      "title": "Whether with video coaching or online follow-up, progress in 3 simple steps",
       "s1Title": "Discovery call",
       "s1Text": "A first free call to understand your needs, your goals and try the method together.",
       "s2Title": "Tailored plan",
@@ -61,7 +61,7 @@ window.SITE_CONTENT = {
     "about": {
       "eyebrow": "About",
       "title": "Tanguy, your personal coach",
-      "p1": "Qualified in sports coaching, I rely on solid knowledge of anatomy, physiology, nutrition and training science to support you safely.",
+      "p1": "Holder of a Bachelor's degree in Sports Coaching (Bachelier en Coaching Sportif), I rely on solid knowledge of anatomy, physiology, nutrition and training science to guide you safely.",
       "p2": "I've worked with varied profiles, from children to seniors, and adapt each programme to your needs. My background: over 500 hours of placement, 2 years of experience as a personal coach and more than 10 years of personal strength training.",
       "s1v": "500+",
       "s1l": "placement hours",
@@ -152,7 +152,7 @@ window.SITE_CONTENT = {
     "p1l1": "Adapted and personalised session",
     "p1l2": "Feedback after the session",
     "p1l3": "No commitment",
-    "p1Note": "💳 Payment settled at booking",
+    "p1Note": "💳 Payment upon booking",
     "p1Btn": "Book",
     "p2Ribbon": "Most chosen",
     "p2Name": "Pack of 4 sessions",

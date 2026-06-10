@@ -403,7 +403,7 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
 /* Bandeau confiance */
 .trust { position: relative; z-index: 1; color: #fff; background: var(--dark); }
 .trust__inner { position: relative; z-index: 2; }
-.trust__inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 30px 24px; text-align: center; }
+.trust__inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 30px 24px; text-align: center; }
 .trust__item { display: flex; flex-direction: column; gap: 4px; }
 .trust__item strong { font-family: var(--font-head); font-size: 28px; font-weight: 800; color: var(--orange); }
 .trust__item span { font-size: 13px; color: rgba(255,255,255,.62); }
@@ -569,7 +569,7 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
 /* Responsive composants */
 @media (max-width: 900px) {
   .steps, .features, .pricing, .pricing--2 { grid-template-columns: 1fr; }
-  .trust__inner { grid-template-columns: repeat(2, 1fr); gap: 24px 12px; }
+  .trust__inner { grid-template-columns: repeat(3, 1fr); gap: 24px 10px; }
   .contact { grid-template-columns: 1fr; }
   .phero { min-height: 54vh; padding: 120px 0 64px; }
 }

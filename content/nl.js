@@ -23,9 +23,9 @@ window.SITE_CONTENT = {
       "subtitle": "Videocoaching en online opvolging, afgestemd op jouw niveau, je doelen en je agenda.",
       "ctaPrimary": "Ontdek de formules",
       "ctaSecondary": "Gratis proefsessie",
-      "pill1": "✓ Videogesprek",
-      "pill2": "✓ Schema's op maat",
-      "pill3": "✓ Alle niveaus"
+      "pill1": "✓ Videocoaching",
+      "pill2": "✓ Online opvolging",
+      "pill3": "✓ Zonder verbintenis"
     },
     "trust": {
       "v1": "500+",
@@ -38,7 +38,7 @@ window.SITE_CONTENT = {
       "l4": "sessie gratis"
     },
     "services": {
-      "eyebrow": "Onze diensten",
+      "eyebrow": "Diensten",
       "title": "Begeleiding op jouw tempo",
       "subtitle": "Twee formules om je vooruit te helpen, waar je ook bent.",
       "c1Title": "Videocoaching",
@@ -50,7 +50,7 @@ window.SITE_CONTENT = {
     },
     "process": {
       "eyebrow": "Hoe het werkt",
-      "title": "Vooruitgang in 3 eenvoudige stappen",
+      "title": "Of het nu met videocoaching of online opvolging is: vorder in 3 eenvoudige stappen",
       "s1Title": "Kennismakingsgesprek",
       "s1Text": "Een eerste gratis gesprek om je behoeften en doelen te begrijpen en samen de methode te testen.",
       "s2Title": "Schema op maat",
@@ -61,7 +61,7 @@ window.SITE_CONTENT = {
     "about": {
       "eyebrow": "Over mij",
       "title": "Tanguy, jouw sportcoach",
-      "p1": "Als gediplomeerd sportcoach steun ik op een sterke kennis van anatomie, fysiologie, voeding en trainingsleer om je veilig te begeleiden.",
+      "p1": "Afgestudeerd met een Bachelier en Coaching Sportif steun ik op een stevige kennis van anatomie, fysiologie, voeding en trainingswetenschap om je in alle veiligheid te begeleiden.",
       "p2": "Ik werkte met uiteenlopende profielen, van kinderen tot senioren, en pas elk programma aan jouw behoeften aan. Mijn parcours: meer dan 500 stage-uren, 2 jaar ervaring als personal coach en meer dan 10 jaar eigen krachttraining.",
       "s1v": "500+",
       "s1l": "stage-uren",

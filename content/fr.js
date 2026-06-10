@@ -97,6 +97,15 @@ window.SITE_CONTENT = {
     },
     "payments": {
       "title": "Paiement sécurisé via Stripe"
+    },
+    "calcTeaser": {
+      "eyebrow": "Outil gratuit",
+      "title": "Calculez vos besoins caloriques en 2 minutes",
+      "text": "Métabolisme de base, calories cibles, répartition des macros et repères concrets pour composer vos repas : mon calculateur alimentaire gratuit vous donne une base claire pour démarrer — sans inscription.",
+      "chip1": "✓ Calories & macros",
+      "chip2": "✓ Méthode de l'assiette",
+      "chip3": "✓ Idées de repas",
+      "button": "Essayer le calculateur"
     }
   },
   "footer": {

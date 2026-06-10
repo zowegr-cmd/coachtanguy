@@ -96,6 +96,15 @@ window.SITE_CONTENT = {
     },
     "payments": {
       "title": "Beveiligde betaling via Stripe"
+    },
+    "calcTeaser": {
+      "eyebrow": "Gratis tool",
+      "title": "Bereken je caloriebehoefte in 2 minuten",
+      "text": "Basaal metabolisme, doelcalorieën, verdeling van je macro's en concrete richtlijnen om je maaltijden samen te stellen: mijn gratis voedingscalculator geeft je een duidelijke basis om te starten — zonder registratie.",
+      "chip1": "✓ Calorieën & macro's",
+      "chip2": "✓ Bordmethode",
+      "chip3": "✓ Maaltijdideeën",
+      "button": "Probeer de calculator"
     }
   },
   "footer": {

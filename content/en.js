@@ -96,6 +96,15 @@ window.SITE_CONTENT = {
     },
     "payments": {
       "title": "Secure payment via Stripe"
+    },
+    "calcTeaser": {
+      "eyebrow": "Free tool",
+      "title": "Calculate your calorie needs in 2 minutes",
+      "text": "Basal metabolic rate, target calories, macro split and practical guidelines to build your meals: my free nutrition calculator gives you a clear starting point — no sign-up needed.",
+      "chip1": "✓ Calories & macros",
+      "chip2": "✓ Plate method",
+      "chip3": "✓ Meal ideas",
+      "button": "Try the calculator"
     }
   },
   "footer": {

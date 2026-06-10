@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="assets/hero-wide.webp?v=2" fetchpriority="high" />
-  <link rel="stylesheet" href="styles.css?v=45" />
+  <link rel="stylesheet" href="styles.css?v=46" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png" />
   <link rel="apple-touch-icon" href="assets/icon-180.png" />
@@ -260,6 +260,36 @@
   </section>
 
   <div class="divider"><span class="divider__mark"></span></div>
+
+  <!-- ===== CALCULATEUR (mise en avant) ===== -->
+  <section class="section" id="calculateur" aria-label="Calculateur alimentaire">
+    <div class="container">
+      <div class="calcpromo reveal">
+        <div class="calcpromo__glow" aria-hidden="true"></div>
+        <div class="calcpromo__text">
+          <span class="eyebrow" data-i18n="home.calcTeaser.eyebrow">Outil gratuit</span>
+          <h2 data-i18n="home.calcTeaser.title">Calculez vos besoins caloriques en 2 minutes</h2>
+          <p data-i18n="home.calcTeaser.text">Métabolisme de base, calories cibles, répartition des macros et repères concrets pour composer vos repas : mon calculateur alimentaire gratuit vous donne une base claire pour démarrer — sans inscription.</p>
+          <div class="calcpromo__chips">
+            <span data-i18n="home.calcTeaser.chip1">✓ Calories &amp; macros</span>
+            <span data-i18n="home.calcTeaser.chip2">✓ Méthode de l'assiette</span>
+            <span data-i18n="home.calcTeaser.chip3">✓ Idées de repas</span>
+          </div>
+          <a href="calculateur.html" class="btn btn--primary btn--lg" data-i18n="home.calcTeaser.button">Essayer le calculateur</a>
+        </div>
+        <div class="calcpromo__visual" aria-hidden="true">
+          <svg viewBox="0 0 200 200" width="220" height="220">
+            <circle cx="100" cy="100" r="74" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="22"/>
+            <circle cx="100" cy="100" r="74" fill="none" stroke="#ff5a00" stroke-width="22" stroke-linecap="round" stroke-dasharray="186 465" transform="rotate(-90 100 100)"/>
+            <circle cx="100" cy="100" r="74" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="22" stroke-linecap="round" stroke-dasharray="116 465" stroke-dashoffset="-196" transform="rotate(-90 100 100)"/>
+            <circle cx="100" cy="100" r="74" fill="none" stroke="rgba(255,144,64,.55)" stroke-width="22" stroke-linecap="round" stroke-dasharray="93 465" stroke-dashoffset="-322" transform="rotate(-90 100 100)"/>
+            <text x="100" y="94" text-anchor="middle" font-family="Inter Tight, Inter, sans-serif" font-size="30" font-weight="800" fill="#fff">2150</text>
+            <text x="100" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="rgba(255,255,255,.55)">kcal / jour</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== FAQ ===== -->
   <section class="section" id="faq">

@@ -25,7 +25,7 @@ window.SITE_CONTENT = {
       "ctaSecondary": "Online opvolging",
       "pill1": "✓ Videogesprek",
       "pill2": "✓ Schema's op maat",
-      "pill3": "✓ Alle niveaus"
+      "pill3": "✓ Zonder verbintenis"
     },
     "trust": {
       "v1": "500+",

@@ -26,7 +26,7 @@ window.SITE_CONTENT = {
       "ctaSecondary": "Suivi en ligne",
       "pill1": "✓ Visioconférence",
       "pill2": "✓ Plans personnalisés",
-      "pill3": "✓ Tous niveaux"
+      "pill3": "✓ Sans engagement"
     },
     "trust": {
       "v1": "500+",

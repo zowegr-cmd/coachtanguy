@@ -25,7 +25,7 @@ window.SITE_CONTENT = {
       "ctaSecondary": "Online follow-up",
       "pill1": "✓ Video call",
       "pill2": "✓ Personalised plans",
-      "pill3": "✓ All levels"
+      "pill3": "✓ No commitment"
     },
     "trust": {
       "v1": "500+",

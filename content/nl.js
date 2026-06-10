@@ -21,11 +21,11 @@ window.SITE_CONTENT = {
       "eyebrow": "Gediplomeerd sportcoach",
       "titleHtml": "Sporten wordt makkelijk,<br />overal en altijd.",
       "subtitle": "Videocoaching en online opvolging, afgestemd op jouw niveau, je doelen en je agenda.",
-      "ctaPrimary": "Ontdek de formules",
-      "ctaSecondary": "Gratis proefsessie",
-      "pill1": "✓ Videocoaching",
-      "pill2": "✓ Online opvolging",
-      "pill3": "✓ Zonder verbintenis"
+      "ctaPrimary": "Videocoaching",
+      "ctaSecondary": "Online opvolging",
+      "pill1": "✓ Videogesprek",
+      "pill2": "✓ Schema's op maat",
+      "pill3": "✓ Alle niveaus"
     },
     "trust": {
       "v1": "500+",

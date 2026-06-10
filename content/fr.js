@@ -22,11 +22,11 @@ window.SITE_CONTENT = {
       "eyebrow": "Coach sportif diplômé",
       "titleHtml": "Le sport facile,<br />partout et à tout moment.",
       "subtitle": "Coaching visio et suivi en ligne, adapté à votre niveau, vos objectifs et votre emploi du temps.",
-      "ctaPrimary": "Découvrir les offres",
-      "ctaSecondary": "Séance d'essai offerte",
-      "pill1": "✓ Coaching visio",
-      "pill2": "✓ Suivi en ligne",
-      "pill3": "✓ Sans engagement"
+      "ctaPrimary": "Coaching visio",
+      "ctaSecondary": "Suivi en ligne",
+      "pill1": "✓ Visioconférence",
+      "pill2": "✓ Plans personnalisés",
+      "pill3": "✓ Tous niveaux"
     },
     "trust": {
       "v1": "500+",

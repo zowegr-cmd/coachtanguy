@@ -21,11 +21,11 @@ window.SITE_CONTENT = {
       "eyebrow": "Certified personal trainer",
       "titleHtml": "Fitness made easy,<br />anywhere, anytime.",
       "subtitle": "Video coaching and online tracking, tailored to your level, your goals and your schedule.",
-      "ctaPrimary": "Discover the offers",
-      "ctaSecondary": "Free trial session",
-      "pill1": "✓ Video coaching",
-      "pill2": "✓ Online follow-up",
-      "pill3": "✓ No commitment"
+      "ctaPrimary": "Video coaching",
+      "ctaSecondary": "Online follow-up",
+      "pill1": "✓ Video call",
+      "pill2": "✓ Personalised plans",
+      "pill3": "✓ All levels"
     },
     "trust": {
       "v1": "500+",

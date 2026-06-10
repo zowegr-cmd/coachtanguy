@@ -1585,7 +1585,7 @@
             <h2>Envie d'aller plus loin&nbsp;?</h2>
             <p>Ce calculateur vous donne des repères de départ. Pour un accompagnement sur-mesure — coaching en visio ou suivi en ligne adapté à vos objectifs — retrouvez tout sur le site CoachTanguy.</p>
           </div>
-          <a class="cta-btn" href="https://www.coachtanguy.com" target="_blank" rel="noopener">Découvrir le coaching &rarr;</a>
+          <a class="cta-btn" href="../coaching-visio.html" target="_top">Découvrir le coaching &rarr;</a>
         </div>
       </section>
     </main>
@@ -2289,6 +2289,8 @@
     var m = location.search.match(/[?&]lang=(fr|nl|en)/);
     var lang = m ? m[1] : 'fr';
     var preview = /[?&]preview=1/.test(location.search);
+    // Le bouton "Découvrir le coaching" pointe vers la page coaching de la bonne langue
+    if (lang !== 'fr') { var cb = document.querySelector('.cta-btn'); if (cb) cb.setAttribute('href', '../' + lang + '/coaching-visio.html'); }
     var dict = {}, frags = [];
     function applyFrags(s) { for (var i = 0; i < frags.length; i++) { if (s.indexOf(frags[i][0]) >= 0) s = s.split(frags[i][0]).join(frags[i][1]); } return s; }
     function tr(t) { if (t == null) return null; var raw = '' + t, k = raw.replace(/\s+/g, ' ').trim(); var v = dict[k]; if (v != null) return raw.replace(k, v); if (frags.length) { var fz = applyFrags(raw); if (fz !== raw) return fz; } return null; }

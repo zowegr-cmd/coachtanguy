@@ -142,7 +142,7 @@ window.SITE_CONTENT = {
     "fMessage": "Bericht",
     "phMessage": "Vertel me over je doelen...",
     "submit": "Bericht versturen",
-    "consent": "Door dit formulier te versturen, ga je akkoord dat CoachTanguy contact met je opneemt."
+    "consent": "Na het versturen van dit bericht neemt Tanguy nog dezelfde dag contact met u op."
   },
   "visio": {
     "heroEyebrow": "Videocoaching",

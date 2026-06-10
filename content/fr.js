@@ -143,7 +143,7 @@ window.SITE_CONTENT = {
     "fMessage": "Message",
     "phMessage": "Parlez-moi de vos objectifs...",
     "submit": "Envoyer le message",
-    "consent": "En envoyant ce formulaire, vous acceptez d'être recontacté par CoachTanguy."
+    "consent": "En envoyant ce message, vous serez recontacté par Tanguy dans la journée."
   },
   "visio": {
     "heroEyebrow": "Coaching Visio",

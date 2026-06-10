@@ -142,7 +142,7 @@ window.SITE_CONTENT = {
     "fMessage": "Message",
     "phMessage": "Tell me about your goals...",
     "submit": "Send message",
-    "consent": "By sending this form, you agree to be contacted by CoachTanguy."
+    "consent": "Once you send this message, Tanguy will get back to you within the day."
   },
   "visio": {
     "heroEyebrow": "Video Coaching",

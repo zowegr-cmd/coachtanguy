@@ -694,3 +694,19 @@ html { scroll-behavior: smooth; }
 /* Canaux de contact : l'icône s'allume */
 .contact__ico { transition: transform .25s, box-shadow .25s; }
 .contact__channel:hover .contact__ico { transform: scale(1.07); box-shadow: 0 8px 20px rgba(0,0,0,.3); }
+
+/* ===== Optimisations mobiles fines ===== */
+@media (max-width: 760px) {
+  /* iOS : un champ < 16px déclenche un zoom automatique au focus */
+  .field input, .field select, .field textarea { font-size: 16px; }
+  /* Cibles tactiles confortables dans le footer */
+  .footer__links a { padding: 8px 0; }
+  .footer__local a { padding: 6px 0; }
+}
+/* Très petits écrans (≤ 360px) : la page contact respire */
+@media (max-width: 360px) {
+  .contact { gap: 20px; }
+  .contact > * { min-width: 0; }
+  .contact__aside { padding: 30px 22px; }
+  .contact__form { padding: 28px 20px; }
+}

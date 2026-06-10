@@ -91,6 +91,10 @@
     (function () {
       var ifr = document.getElementById('calcFrame');
       if (!ifr) return;
+      // Propage le mode aperçu au calculateur (sinon le vrai calculateur ignore le brouillon)
+      if (/[?&]preview=1/.test(location.search) && ifr.src.indexOf('preview=1') < 0) {
+        ifr.src = ifr.src + (ifr.src.indexOf('?') >= 0 ? '&' : '?') + 'preview=1';
+      }
       function send() {
         try {
           if (window.SITE_CONTENT && window.SITE_CONTENT.calc && ifr.contentWindow) {

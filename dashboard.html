@@ -142,7 +142,7 @@
           </optgroup>
         </select>
       </div>
-      <iframe id="frame" src="index.html"></iframe>
+      <iframe id="frame" src="index.html?preview=1"></iframe>
     </div>
   </div>
   <div class="toast" id="toast"></div>
@@ -177,6 +177,8 @@
     var FR_ONLY_PAGES = ['mentions-legales.html','cvg.html','confirmation.html'];
     function pageFor(l, file){ return (l==='fr' || FR_ONLY_PAGES.indexOf(file)>=0) ? file : l+'/'+file; }
     function curPageFile(){ var s=document.getElementById('page'); return s?s.value:'index.html'; }
+    // Ajoute ?preview=1 : l'aperçu lit le brouillon localStorage, le vrai site jamais.
+    function pv(u){ return u + (u.indexOf('?')>=0?'&':'?') + 'preview=1'; }
     var work = loadWork();
 
     // ===== Mode Calculateur =====
@@ -185,7 +187,7 @@
     var cwork = { dict: {}, frags: {} };
     function loadCalcWork(){ try{ var raw=localStorage.getItem('CALC_I18N_'+LANG); if(raw) return JSON.parse(raw); }catch(e){} return JSON.parse(JSON.stringify(CALC_DEF[LANG]||{dict:{},frags:{}})); }
     function reloadPreview(){ var f=document.getElementById('frame'); try{ f.contentWindow.location.reload(); }catch(e){ f.src=f.src; } }
-    function previewSrc(){ if(MODE==='calc'){ return LANG==='fr'?'calculateur.html':LANG+'/calculateur.html'; } return pageFor(LANG, curPageFile()); }
+    function previewSrc(){ if(MODE==='calc'){ return pv(LANG==='fr'?'calculateur.html':LANG+'/calculateur.html'); } return pv(pageFor(LANG, curPageFile())); }
     function renderCalc(filter){
       var host=document.getElementById('fields');
       var groups=[ {key:'dict', title:'Calculateur · Textes', src:CALC_DEF[LANG].dict}, {key:'frags', title:'Calculateur · Repas dynamiques (aliments, unités)', src:CALC_DEF[LANG].frags} ];
@@ -304,7 +306,7 @@
 
     var curFilter='';
     document.getElementById('search').addEventListener('input',function(){curFilter=this.value.trim().toLowerCase();render(curFilter);});
-    document.getElementById('page').addEventListener('change',function(){document.getElementById('frame').src=pageFor(LANG, this.value);});
+    document.getElementById('page').addEventListener('change',function(){document.getElementById('frame').src=pv(pageFor(LANG, this.value));});
 
     // Bascule de mode (Site / Calculateur)
     document.querySelectorAll('.mode').forEach(function(btn){

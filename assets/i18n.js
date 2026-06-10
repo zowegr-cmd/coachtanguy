@@ -14,11 +14,14 @@
   var lang = document.documentElement.lang || 'fr';
   var content = window.SITE_CONTENT || {};
 
-  // Aperçu live depuis le dashboard (même navigateur)
-  try {
-    var raw = localStorage.getItem('SITE_CONTENT_' + lang);
-    if (raw) content = JSON.parse(raw);
-  } catch (e) {}
+  // Aperçu live depuis le dashboard : UNIQUEMENT en mode preview (?preview=1).
+  // Le vrai site n'utilise jamais l'éventuel brouillon stocké en localStorage.
+  if (/[?&]preview=1/.test(location.search)) {
+    try {
+      var raw = localStorage.getItem('SITE_CONTENT_' + lang);
+      if (raw) content = JSON.parse(raw);
+    } catch (e) {}
+  }
 
   function setText(attr, fn) {
     document.querySelectorAll('[' + attr + ']').forEach(function (el) {

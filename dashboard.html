@@ -120,10 +120,26 @@
       <div class="preview__bar">
         <span class="dot"></span> Aperçu en direct
         <select id="page">
-          <option value="index.html">Accueil</option>
-          <option value="coaching-visio.html">Coaching visio</option>
-          <option value="suivi-en-ligne.html">Suivi en ligne</option>
-          <option value="contact.html">Contact</option>
+          <optgroup label="Pages principales">
+            <option value="index.html">Accueil</option>
+            <option value="coaching-visio.html">Coaching visio</option>
+            <option value="suivi-en-ligne.html">Suivi en ligne</option>
+            <option value="calculateur.html">Calculateur</option>
+            <option value="contact.html">Contact</option>
+          </optgroup>
+          <optgroup label="Pages locales SEO">
+            <option value="coach-sportif-rhode-saint-genese.html">Rhode-Saint-Genèse</option>
+            <option value="coach-sportif-uccle.html">Uccle</option>
+            <option value="coach-sportif-waterloo.html">Waterloo</option>
+            <option value="coach-sportif-beersel.html">Beersel</option>
+            <option value="coach-sportif-linkebeek.html">Linkebeek</option>
+            <option value="coach-sportif-braine-lalleud.html">Braine-l'Alleud</option>
+          </optgroup>
+          <optgroup label="Autres (FR)">
+            <option value="mentions-legales.html">Mentions légales</option>
+            <option value="cvg.html">CGV</option>
+            <option value="confirmation.html">Confirmation</option>
+          </optgroup>
         </select>
       </div>
       <iframe id="frame" src="index.html"></iframe>
@@ -140,13 +156,26 @@
   <script>window.__CALC = { nl: { dict: Object.assign({}, window.CALC_I18N), frags: Object.assign({}, window.CALC_I18N_FRAGMENTS) } };</script>
   <script src="content/calc-i18n.en.js"></script>
   <script>window.__CALC.en = { dict: Object.assign({}, window.CALC_I18N), frags: Object.assign({}, window.CALC_I18N_FRAGMENTS) };</script>
+  <!-- FR : la « source » est la liste des clés (texte FR), valeur par défaut = la clé elle-même -->
+  <script src="content/calc-i18n.fr.js"></script>
+  <script>(function(){
+    function ident(o){ var r={}; for(var k in o){ r[k]=k; } return r; }
+    var ref = window.__CALC.nl || { dict:{}, frags:{} };
+    var frOv = { dict: Object.assign({}, window.CALC_I18N), frags: Object.assign({}, window.CALC_I18N_FRAGMENTS) };
+    var d = ident(ref.dict), f = ident(ref.frags);
+    // applique les surcharges FR déjà exportées comme valeurs par défaut affichées
+    for(var k in frOv.dict){ d[k]=frOv.dict[k]; }
+    for(var k2 in frOv.frags){ f[k2]=frOv.frags[k2]; }
+    window.__CALC.fr = { dict: d, frags: f };
+  })();</script>
   <script>
   (function(){
     var LANG='fr';
     var DEFAULTS_ALL = JSON.parse(JSON.stringify(window.SITE_CONTENT_ALL||{}));
     function DEF(){ return DEFAULTS_ALL[LANG]||{}; }
     function homeFor(l){ return l==='fr' ? 'index.html' : l+'/index.html'; }
-    function pageFor(l, file){ return l==='fr' ? file : l+'/'+file; }
+    var FR_ONLY_PAGES = ['mentions-legales.html','cvg.html','confirmation.html'];
+    function pageFor(l, file){ return (l==='fr' || FR_ONLY_PAGES.indexOf(file)>=0) ? file : l+'/'+file; }
     function curPageFile(){ var s=document.getElementById('page'); return s?s.value:'index.html'; }
     var work = loadWork();
 
@@ -159,7 +188,6 @@
     function previewSrc(){ if(MODE==='calc'){ return LANG==='fr'?'calculateur.html':LANG+'/calculateur.html'; } return pageFor(LANG, curPageFile()); }
     function renderCalc(filter){
       var host=document.getElementById('fields');
-      if(LANG==='fr'){ host.innerHTML='<p class="hint" style="padding:24px 22px;line-height:1.7">Le calculateur est en <b>français</b> (texte source).<br>Passez en <b>NL</b> ou <b>EN</b> pour éditer les traductions.<br><br>Le hero (Outil gratuit / Calculateur alimentaire / sous-titre) se modifie en mode <b>Site</b> → groupe « Calculateur ».</p>'; return; }
       var groups=[ {key:'dict', title:'Calculateur · Textes', src:CALC_DEF[LANG].dict}, {key:'frags', title:'Calculateur · Repas dynamiques (aliments, unités)', src:CALC_DEF[LANG].frags} ];
       var html='';
       groups.forEach(function(g){
@@ -188,12 +216,17 @@
     var GROUPS = {
       nav:"Navigation", home:"Accueil", visio:"Coaching visio", suivi:"Suivi en ligne",
       contact:"Contact", footer:"Pied de page", stripe:"Liens de paiement Stripe",
-      calc:"Calculateur (hero)"
+      calc:"Calculateur (hero)", meta:"SEO · Titres & descriptions", local:"Pages locales",
+      legal:"Pages légales", confirm:"Page de confirmation"
     };
     var SUB = {
       "home.hero":"Accueil · Hero", "home.trust":"Accueil · Bandeau confiance",
       "home.services":"Accueil · Services", "home.process":"Accueil · Comment ça marche",
-      "home.about":"Accueil · À propos", "home.faq":"Accueil · FAQ", "home.cta":"Accueil · Appel à l'action"
+      "home.about":"Accueil · À propos", "home.faq":"Accueil · FAQ", "home.cta":"Accueil · Appel à l'action",
+      "local.rhode":"Page locale · Rhode-Saint-Genèse", "local.uccle":"Page locale · Uccle",
+      "local.waterloo":"Page locale · Waterloo", "local.beersel":"Page locale · Beersel",
+      "local.linkebeek":"Page locale · Linkebeek", "local.braine":"Page locale · Braine-l'Alleud",
+      "legal.mentions":"Mentions légales", "legal.cvg":"CGV"
     };
     var LABELS = {
       eyebrow:"Surtitre", title:"Titre", titleHtml:"Titre (HTML)", subtitle:"Sous-titre",
@@ -201,7 +234,14 @@
       cta:"Bouton", text:"Texte", tagline:"Slogan", copyright:"Copyright",
       accueil:"Accueil", visio:"Coaching visio", suivi:"Suivi en ligne", faq:"FAQ", contact:"Contact",
       unite:"Séance à l'unité (40€)", pack4:"Pack 4 séances (140€)", pack8:"Pack 8 séances (240€)",
-      initial:"Accompagnement initial (300€)", mensuel:"Suivi mensuel (150€)"
+      initial:"Accompagnement initial (300€)", mensuel:"Suivi mensuel (150€)",
+      desc:"Description SEO", metaTitle:"Titre SEO (onglet)", metaDesc:"Description SEO",
+      heroEyebrow:"Surtitre (hero)", h1:"Titre H1", heroLead:"Texte d'intro (hero)",
+      btnEssai:"Bouton « essai »", btnVisio:"Bouton « visio »", btnContact:"Bouton « contact »",
+      secEyebrow:"Surtitre (section)", h2:"Titre H2", secIntro:"Intro de section",
+      f1h:"Service 1 · titre", f1p:"Service 1 · texte", f2h:"Service 2 · titre", f2p:"Service 2 · texte",
+      f3h:"Service 3 · titre", f3p:"Service 3 · texte", ctaH2:"Titre (appel à l'action)", ctaP:"Texte (appel à l'action)",
+      body:"Contenu complet (HTML)"
     };
 
     function loadWork(){
@@ -215,7 +255,7 @@
         else out.push({path:p,value:String(v)});
       } return out;
     }
-    function sectionOf(path){var parts=path.split('.');return (parts[0]==='home'&&parts.length>1)?parts[0]+'.'+parts[1]:parts[0];}
+    function sectionOf(path){var p=path.split('.');return ((p[0]==='home'||p[0]==='local'||p[0]==='legal')&&p.length>1)?p[0]+'.'+p[1]:p[0];}
     function labelOf(path){var last=path.split('.').pop();return LABELS[last]||last;}
     function setDeep(obj,path,val){var p=path.split('.');var o=obj;for(var i=0;i<p.length-1;i++){o=o[p[i]];}o[p[p.length-1]]=val;}
     function getDeep(obj,path){return path.split('.').reduce(function(a,k){return a&&a[k]!=null?a[k]:undefined;},obj);}
@@ -293,8 +333,7 @@
 
     document.getElementById('reset').addEventListener('click',function(){
       if(MODE==='calc'){
-        if(LANG==='fr'){ toast('Rien à réinitialiser en FR (source).'); return; }
-        if(!confirm('Réinitialiser les traductions du calculateur ('+LANG.toUpperCase()+') ?'))return;
+        if(!confirm('Réinitialiser les textes du calculateur ('+LANG.toUpperCase()+') ?'))return;
         localStorage.removeItem('CALC_I18N_'+LANG); cwork=JSON.parse(JSON.stringify(CALC_DEF[LANG])); render(curFilter); reloadPreview(); toast('Réinitialisé'); return;
       }
       if(!confirm('Réinitialiser les textes ('+LANG.toUpperCase()+') aux valeurs d\'origine ?'))return;
@@ -303,9 +342,14 @@
     });
     document.getElementById('export').addEventListener('click',function(){
       if(MODE==='calc'){
-        if(LANG==='fr'){ toast('Rien à exporter en FR (le calculateur source est en français).'); return; }
+        var od={}, of={};
+        if(LANG==='fr'){
+          // FR : n'exporte que les vraies personnalisations (valeur != texte source)
+          Object.keys(CALC_DEF.fr.dict).forEach(function(k){ var v=(cwork.dict[k]!=null)?cwork.dict[k]:CALC_DEF.fr.dict[k]; if(v!==k) od[k]=v; });
+          Object.keys(CALC_DEF.fr.frags).forEach(function(k){ var v=(cwork.frags[k]!=null)?cwork.frags[k]:CALC_DEF.fr.frags[k]; if(v!==k) of[k]=v; });
+        } else { od=cwork.dict; of=cwork.frags; }
         var h='/* Calculateur i18n '+LANG.toUpperCase()+' — exporté via dashboard. Clé = texte FR source. */\n';
-        var b='window.CALC_I18N = '+JSON.stringify(cwork.dict,null,2)+';\nwindow.CALC_I18N_FRAGMENTS = '+JSON.stringify(cwork.frags,null,2)+';\n';
+        var b='window.CALC_I18N = '+JSON.stringify(od,null,2)+';\nwindow.CALC_I18N_FRAGMENTS = '+JSON.stringify(of,null,2)+';\n';
         download('calc-i18n.'+LANG+'.js', h+b);
         toast('calc-i18n.'+LANG+'.js téléchargé → place-le dans content/'); return;
       }

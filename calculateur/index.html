@@ -2288,7 +2288,6 @@
   (function () {
     var m = location.search.match(/[?&]lang=(fr|nl|en)/);
     var lang = m ? m[1] : 'fr';
-    if (lang === 'fr') return;
     var dict = {}, frags = [];
     function applyFrags(s) { for (var i = 0; i < frags.length; i++) { if (s.indexOf(frags[i][0]) >= 0) s = s.split(frags[i][0]).join(frags[i][1]); } return s; }
     function tr(t) { if (t == null) return null; var raw = '' + t, k = raw.replace(/\s+/g, ' ').trim(); var v = dict[k]; if (v != null) return raw.replace(k, v); if (frags.length) { var fz = applyFrags(raw); if (fz !== raw) return fz; } return null; }
@@ -2317,15 +2316,19 @@
       mo.observe(document.body, { childList: true, subtree: true, characterData: true });
       document.documentElement.setAttribute('lang', lang);
     }
+    function boot() {
+      dict = window.CALC_I18N || {}; var fr = window.CALC_I18N_FRAGMENTS || {};
+      try { var ov = JSON.parse(localStorage.getItem('CALC_I18N_' + lang) || 'null'); if (ov) { if (ov.dict) for (var k in ov.dict) dict[k] = ov.dict[k]; if (ov.frags) for (var k2 in ov.frags) fr[k2] = ov.frags[k2]; } } catch (e) {}
+      // En FR (texte source), n'active le moteur que si le coach a personnalisé du texte.
+      if (lang === 'fr' && !Object.keys(dict).length && !Object.keys(fr).length) return;
+      frags = Object.keys(fr).sort(function (a, b) { return b.length - a.length; }).map(function (k) { return [k, fr[k]]; });
+      start();
+    }
     var sc = document.createElement('script');
     var vm = location.search.match(/[?&](v=[^&]+)/);
     sc.src = '../content/calc-i18n.' + lang + '.js' + (vm ? '?' + vm[1] : '');
-    sc.onload = function () {
-      dict = window.CALC_I18N || {}; var fr = window.CALC_I18N_FRAGMENTS || {};
-      try { var ov = JSON.parse(localStorage.getItem('CALC_I18N_' + lang) || 'null'); if (ov) { if (ov.dict) for (var k in ov.dict) dict[k] = ov.dict[k]; if (ov.frags) for (var k2 in ov.frags) fr[k2] = ov.frags[k2]; } } catch (e) {}
-      frags = Object.keys(fr).sort(function (a, b) { return b.length - a.length; }).map(function (k) { return [k, fr[k]]; });
-      start();
-    };
+    sc.onload = boot;
+    sc.onerror = function () { window.CALC_I18N = {}; window.CALC_I18N_FRAGMENTS = {}; boot(); };
     document.head.appendChild(sc);
   })();
 </script>

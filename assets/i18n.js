@@ -32,6 +32,7 @@
     setText('data-i18n-html', function (el, v) { el.innerHTML = v; });
     setText('data-i18n-href', function (el, v) { el.setAttribute('href', v); });
     setText('data-i18n-ph', function (el, v) { el.setAttribute('placeholder', v); });
+    setText('data-i18n-content', function (el, v) { el.setAttribute('content', v); });
   }
 
   if (document.readyState !== 'loading') apply();

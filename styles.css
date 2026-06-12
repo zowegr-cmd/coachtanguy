@@ -710,3 +710,8 @@ html { scroll-behavior: smooth; }
   .contact__aside { padding: 30px 22px; }
   .contact__form { padding: 28px 20px; }
 }
+
+/* Page collaboration */
+.page-top { padding-top: 138px; }
+.calcpromo--solo { grid-template-columns: 1fr; }
+.calcpromo--solo .calcpromo__text { max-width: 720px; }

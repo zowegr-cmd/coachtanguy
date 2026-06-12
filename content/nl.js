@@ -118,7 +118,8 @@ window.SITE_CONTENT = {
     "lCgv": "Voorwaarden",
     "copyright": "© 2026 CoachTanguy. Alle rechten voorbehouden.",
     "lPrivacy": "Privacy",
-    "lCookies": "Cookies"
+    "lCookies": "Cookies",
+    "lCollab": "Partner-kine"
   },
   "contact": {
     "eyebrow": "Contact",
@@ -408,6 +409,26 @@ window.SITE_CONTENT = {
       "desc": "CoachTanguy gebruikt geen enkele trackingcookie. Overzicht van de functionele lokale opslag en uw opties.",
       "body": "<span class=\"eyebrow\">Cookies &amp; lokale opslag</span>\n      <h1>Cookiebeleid</h1>\n      <p class=\"legal__update\">Laatste update: juni 2026</p>\n\n      <h2>1. Geen trackingcookies</h2>\n      <p>De site <strong>coachtanguy.com</strong> gebruikt <strong>geen enkele cookie voor statistieken, reclame of sociale media</strong>, en geen trackers van derden. Een toestemmingsbanner is dus niet nodig: overeenkomstig de aanbevelingen van de Gegevensbeschermingsautoriteit (GBA) wordt enkel opslag gebruikt die strikt noodzakelijk is voor de werking van de site, en die is vrijgesteld van toestemming.</p>\n\n      <h2>2. Functionele lokale opslag</h2>\n      <p>De site gebruikt de lokale opslag van uw browser (localStorage / sessionStorage / Cache Storage) uitsluitend voor de volgende technische doeleinden:</p>\n      <ul>\n        <li><strong>Cache van de app \"Calculator\"</strong> (Cache Storage, als u de calculator als app installeert): bewaart de bestanden die nodig zijn om offline te werken. Duur: tot u de app verwijdert of de cache wist.</li>\n        <li><strong>SITE_CONTENT_fr / _nl / _en</strong> en <strong>CALC_I18N_fr / _nl / _en</strong> (localStorage): conceptversies van de inhoud, enkel gebruikt in voorbeeldmodus door de beheerder van de site. Ze worden niet gelezen of aangemaakt bij een gewoon bezoek. Duur: tot handmatige verwijdering.</li>\n        <li><strong>dash_ok</strong> (sessionStorage): houdt de sessie van de beheerder op het bewerkingsdashboard actief. Duur: sluiten van het tabblad.</li>\n        <li><strong>cookie_consent</strong> (localStorage): zou uw keuze onthouden indien ooit een toestemmingsbanner wordt geactiveerd. <em>Momenteel niet in gebruik.</em> Maximale duur: 6 maanden.</li>\n      </ul>\n      <p>Deze opslag blijft in uw browser: er wordt geen informatie naar derden gestuurd en u kan er niet mee worden gevolgd.</p>\n\n      <h2>3. Externe diensten</h2>\n      <ul>\n        <li><strong>Lettertypen</strong>: lokaal gehost op de site — geen enkele aanvraag naar Google Fonts.</li>\n        <li><strong>Stripe-betalingen</strong>: de betaalknoppen zijn gewone links naar de beveiligde pagina's van Stripe; de cookies van Stripe gelden enkel op de site van Stripe (zie hun <a href=\"https://stripe.com/nl-be/privacy\" target=\"_blank\" rel=\"noopener\">privacybeleid</a>).</li>\n        <li><strong>WhatsApp</strong>: de WhatsApp-knoppen zijn links; er wordt geen script van Meta op deze site geladen.</li>\n      </ul>\n\n      <h2>4. Hoe deze gegevens verwijderen?</h2>\n      <p>U kan op elk moment de lokale opslag en de cache van uw browser wissen: Instellingen → Privacy → Browsegegevens wissen (of gelijkaardig volgens uw browser). Voor de geïnstalleerde app: verwijder ze gewoon.</p>\n\n      <h2>5. Als er ooit trackers worden toegevoegd</h2>\n      <p>Indien ooit niet-essentiële cookies (statistieken, marketing) zouden worden gebruikt, worden die enkel geplaatst <strong>na uw voorafgaande, vrije en geïnformeerde toestemming</strong>, via een banner waarmee weigeren even eenvoudig is als aanvaarden, zonder vooraf aangevinkte vakjes, en uw keuze wordt maximaal 6 maanden bewaard. Deze pagina zou dan worden bijgewerkt.</p>\n\n      <p class=\"legal__back\"><a href=\"index.html\">← Terug naar de startpagina</a></p>"
     }
+  },
+  "collab": {
+    "title": "Partner-kinesitherapeut in Sint-Genesius-Rode — ZOWE × CoachTanguy",
+    "desc": "CoachTanguy werkt samen met ZOWE, de kinesitherapiepraktijk van Zoé Grêde in Sint-Genesius-Rode: zorg en sportcoaching gaan hand in hand.",
+    "eyebrow": "Gezondheidspartnerschap",
+    "h1": "ZOWE Kine × CoachTanguy",
+    "intro": "Om je van herstel tot prestatie te begeleiden, werk ik samen met Zoé Grêde, gediplomeerd kinesitherapeute (Master in de kinesitherapie en revalidatie, ULB) en beoefenaar van de BELTRA-methode. Haar praktijk ZOWE is gevestigd bij Kinovea, Rue des Iris in Sint-Genesius-Rode — midden in mijn coachingzone.",
+    "f1h": "Van zorg naar training",
+    "f1p": "Blessure, pijn, verminderde mobiliteit? Zoé herstelt de beweging; ik neem het over om kracht en uithouding veilig weer op te bouwen.",
+    "f2h": "Precieze expertise",
+    "f2p": "Morfostatische diagnose, diep myofasciaal werk, IASTM, vacuümtherapie, mobilisaties: een gerichte aanpak die de oorzaak behandelt, niet alleen de symptomen.",
+    "f3h": "Dezelfde regio",
+    "f3p": "Praktijk in Sint-Genesius-Rode en huisbezoeken in Linkebeek, Beersel, Lot, Eigenbrakel en Waterloo — precies waar ik coach.",
+    "cardEyebrow": "ZOWE — Kinesitherapie",
+    "cardTitle": "Nood aan kine-advies?",
+    "cardText": "Lage rugpijn, nekpijn, tendinitis, chronische pijn of terugkeer naar sport na een blessure: ontdek de aanpak van Zoé — \"L'art de la justesse, l'expertise du soin\".",
+    "chip1": "✓ BELTRA-methode",
+    "chip2": "✓ Praktijk Kinovea · Sint-Genesius-Rode",
+    "chip3": "✓ FR · NL · EN",
+    "button": "Bezoek zowekine.com"
   }
 };
 (window.SITE_CONTENT_ALL = window.SITE_CONTENT_ALL || {}).nl = window.SITE_CONTENT;

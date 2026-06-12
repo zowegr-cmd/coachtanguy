@@ -1,0 +1,28 @@
+# ============================================================
+#  Configuration Netlify — CoachTanguy
+# ============================================================
+[build]
+  publish = "."
+  functions = "netlify/functions"
+  command = ""        # site statique : aucun build
+
+# --- En-têtes de sécurité (toutes les pages) ---
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=()"
+
+# --- Le tableau de bord ne doit jamais être indexé ---
+[[headers]]
+  for = "/dashboard.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# --- Polices : cache long (fichiers versionnés/immutables) ---
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

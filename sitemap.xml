@@ -298,6 +298,33 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.coachtanguy.com/collaboration.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/collaboration.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/collaboration.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/collaboration.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/collaboration.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/nl/collaboration.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/collaboration.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/collaboration.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/collaboration.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/collaboration.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/en/collaboration.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/collaboration.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/collaboration.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/collaboration.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/collaboration.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://www.coachtanguy.com/politique-confidentialite.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/politique-confidentialite.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/politique-confidentialite.html"/>

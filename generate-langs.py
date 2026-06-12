@@ -14,7 +14,7 @@ LANGS = {"en": "en_US", "nl": "nl_NL"}
 
 # Pages traduites disponibles dans chaque dossier de langue.
 # Ajoute-en ici au fur et à mesure que tu les câbles (puis relance le script).
-PAGES = ["index.html", "contact.html", "coaching-visio.html", "suivi-en-ligne.html", "calculateur.html", "politique-confidentialite.html", "cookies.html"]
+PAGES = ["index.html", "contact.html", "coaching-visio.html", "suivi-en-ligne.html", "calculateur.html", "politique-confidentialite.html", "cookies.html", "collaboration.html"]
 
 # Pages qui n'existent QUE en FR (leurs liens pointeront vers ../ depuis /en /nl)
 FR_ONLY = ["mentions-legales.html", "cvg.html"]
@@ -27,7 +27,7 @@ def transform(html, lang, locale):
     html = html.replace('src="assets/', 'src="../assets/')
     html = html.replace('href="assets/', 'href="../assets/')
     html = html.replace('href="site.webmanifest"', 'href="../site.webmanifest"')
-    html = html.replace('src="content/fr.js"', 'src="../content/%s.js"' % lang)
+    html = re.sub(r'src="content/fr\.js(\?[^"]*)?"', r'src="../content/%s.js"' % lang, html)
     html = html.replace('src="script.js', 'src="../script.js')
     # iframe du calculateur (page autonome, chemin relatif depuis /lang/) + langue
     html = re.sub(r'src="calculateur/index\.html([^"]*)"',

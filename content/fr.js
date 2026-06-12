@@ -119,7 +119,8 @@ window.SITE_CONTENT = {
     "lCgv": "CGV",
     "copyright": "© 2026 CoachTanguy. Tous droits réservés.",
     "lPrivacy": "Confidentialité",
-    "lCookies": "Cookies"
+    "lCookies": "Cookies",
+    "lCollab": "Kiné partenaire"
   },
   "contact": {
     "eyebrow": "Contact",
@@ -425,6 +426,26 @@ window.SITE_CONTENT = {
     "desc": "Votre message a bien été envoyé à CoachTanguy.",
     "h1": "Message bien envoyé !",
     "text": "Merci pour votre message. Je reviens vers vous très rapidement, généralement dans la journée. À très vite pour votre première séance offerte !"
+  },
+  "collab": {
+    "title": "Kiné partenaire à Rhode-Saint-Genèse — ZOWE × CoachTanguy",
+    "desc": "CoachTanguy collabore avec ZOWE, le cabinet de kinésithérapie de Zoé Grêde à Rhode-Saint-Genèse : le soin et le coaching sportif avancent main dans la main.",
+    "eyebrow": "Partenariat santé",
+    "h1": "ZOWE Kiné × CoachTanguy",
+    "intro": "Pour vous accompagner du soin jusqu'à la performance, je collabore avec Zoé Grêde, kinésithérapeute diplômée (Master en kinésithérapie et réadaptation, ULB) et praticienne de la méthode BELTRA. Son cabinet ZOWE est installé chez Kinovea, Rue des Iris à Rhode-Saint-Genèse — au cœur de ma zone de coaching.",
+    "f1h": "Du soin à l'entraînement",
+    "f1p": "Blessure, douleur, perte de mobilité ? Zoé restaure le mouvement ; je prends le relais pour reconstruire force et endurance, en toute sécurité.",
+    "f2h": "Une expertise précise",
+    "f2p": "Diagnostic morphostatique, travail myofascial profond, IASTM, vacuothérapie, mobilisations : une approche ciblée qui traite la cause, pas seulement les symptômes.",
+    "f3h": "La même région",
+    "f3p": "Cabinet à Rhode-Saint-Genèse et visites à domicile à Linkebeek, Beersel, Lot, Braine-l'Alleud et Waterloo — exactement là où je coache.",
+    "cardEyebrow": "ZOWE — Kinésithérapie",
+    "cardTitle": "Besoin d'un avis kiné ?",
+    "cardText": "Lombalgies, cervicalgies, tendinites, douleurs chroniques ou retour au sport après blessure : découvrez l'approche de Zoé — « L'art de la justesse, l'expertise du soin ».",
+    "chip1": "✓ Méthode BELTRA",
+    "chip2": "✓ Cabinet Kinovea · Rhode-Saint-Genèse",
+    "chip3": "✓ FR · NL · EN",
+    "button": "Visiter zowekine.com"
   }
 };
 (window.SITE_CONTENT_ALL = window.SITE_CONTENT_ALL || {}).fr = window.SITE_CONTENT;

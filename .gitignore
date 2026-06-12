@@ -9,3 +9,6 @@ desktop.ini
 
 # Logs / divers
 *.log
+
+# Local Netlify folder
+.netlify

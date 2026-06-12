@@ -80,7 +80,7 @@ faqItems.forEach(item => {
   var sw = document.getElementById('langSwitch');
   if (!sw) return;
   // Pages disponibles dans /en et /nl (ajoute-les ici quand elles sont traduites)
-  var TRANSLATED = ['index.html', 'contact.html', 'coaching-visio.html', 'suivi-en-ligne.html', 'calculateur.html', 'politique-confidentialite.html', 'cookies.html',
+  var TRANSLATED = ['index.html', 'contact.html', 'coaching-visio.html', 'suivi-en-ligne.html', 'calculateur.html', 'politique-confidentialite.html', 'cookies.html', 'collaboration.html',
     'coach-sportif-rhode-saint-genese.html', 'coach-sportif-uccle.html', 'coach-sportif-waterloo.html',
     'coach-sportif-beersel.html', 'coach-sportif-linkebeek.html', 'coach-sportif-braine-lalleud.html'];
   var cur = document.documentElement.lang || 'fr';

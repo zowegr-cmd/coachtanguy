@@ -77,18 +77,27 @@
   </div>
   <script>
     (function () {
-      // ⬇️⬇️ CHANGE TON MOT DE PASSE ICI ⬇️⬇️
-      var DASH_PASSWORD = "CoachTanguy2026";
+      // Le mot de passe n'est PLUS dans ce fichier : il est vérifié côté serveur
+      // par la fonction Netlify /.netlify/functions/dash-login (variable DASH_PASSWORD).
       var gate = document.getElementById('dashGate');
       if (sessionStorage.getItem('dash_ok') === '1') { gate.remove(); return; }
-      document.getElementById('dashGateForm').addEventListener('submit', function (e) {
+      // En local (édition sur ta machine), la fonction n'existe pas : accès direct.
+      var isLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
+      if (isLocal) { gate.remove(); return; }
+      var form = document.getElementById('dashGateForm');
+      var err = document.getElementById('dashErr');
+      var pass = document.getElementById('dashPass');
+      form.addEventListener('submit', function (e) {
         e.preventDefault();
-        if (document.getElementById('dashPass').value === DASH_PASSWORD) {
-          sessionStorage.setItem('dash_ok', '1'); gate.remove();
-        } else {
-          document.getElementById('dashErr').textContent = 'Mot de passe incorrect.';
-          document.getElementById('dashPass').select();
-        }
+        err.textContent = '…';
+        fetch('/.netlify/functions/dash-login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: pass.value })
+        }).then(function (r) {
+          if (r.ok) { sessionStorage.setItem('dash_ok', '1'); gate.remove(); }
+          else { err.textContent = 'Mot de passe incorrect.'; pass.select(); }
+        }).catch(function () { err.textContent = 'Erreur réseau, réessaie.'; });
       });
     })();
   </script>
@@ -126,6 +135,7 @@
             <option value="suivi-en-ligne.html">Suivi en ligne</option>
             <option value="calculateur.html">Calculateur</option>
             <option value="contact.html">Contact</option>
+            <option value="collaboration.html">Kiné partenaire</option>
             <option value="politique-confidentialite.html">Confidentialité</option>
             <option value="cookies.html">Cookies</option>
           </optgroup>
@@ -150,16 +160,16 @@
   <div class="toast" id="toast"></div>
 
   <!-- charge le contenu des 3 langues (chacune s'enregistre dans SITE_CONTENT_ALL) -->
-  <script src="content/fr.js?v=2"></script>
-  <script src="content/nl.js?v=2"></script>
-  <script src="content/en.js?v=2"></script>
+  <script src="content/fr.js?v=3"></script>
+  <script src="content/nl.js?v=3"></script>
+  <script src="content/en.js?v=3"></script>
   <!-- Dictionnaires du calculateur (FR source -> NL/EN), snapshot par langue -->
-  <script src="content/calc-i18n.nl.js?v=2"></script>
+  <script src="content/calc-i18n.nl.js?v=3"></script>
   <script>window.__CALC = { nl: { dict: Object.assign({}, window.CALC_I18N), frags: Object.assign({}, window.CALC_I18N_FRAGMENTS) } };</script>
-  <script src="content/calc-i18n.en.js?v=2"></script>
+  <script src="content/calc-i18n.en.js?v=3"></script>
   <script>window.__CALC.en = { dict: Object.assign({}, window.CALC_I18N), frags: Object.assign({}, window.CALC_I18N_FRAGMENTS) };</script>
   <!-- FR : la « source » est la liste des clés (texte FR), valeur par défaut = la clé elle-même -->
-  <script src="content/calc-i18n.fr.js?v=2"></script>
+  <script src="content/calc-i18n.fr.js?v=3"></script>
   <script>(function(){
     function ident(o){ var r={}; for(var k in o){ r[k]=k; } return r; }
     var ref = window.__CALC.nl || { dict:{}, frags:{} };
@@ -220,7 +230,7 @@
     var GROUPS = {
       nav:"Navigation", home:"Accueil", visio:"Coaching visio", suivi:"Suivi en ligne",
       contact:"Contact", footer:"Pied de page", stripe:"Liens de paiement Stripe",
-      calc:"Calculateur (hero)", meta:"SEO · Titres & descriptions", local:"Pages locales",
+      calc:"Calculateur (hero)", collab:"Page Kiné partenaire (ZOWE)", meta:"SEO · Titres & descriptions", local:"Pages locales",
       legal:"Pages légales", confirm:"Page de confirmation"
     };
     var SUB = {

@@ -118,7 +118,8 @@ window.SITE_CONTENT = {
     "lCgv": "Terms of sale",
     "copyright": "© 2026 CoachTanguy. All rights reserved.",
     "lPrivacy": "Privacy",
-    "lCookies": "Cookies"
+    "lCookies": "Cookies",
+    "lCollab": "Partner physio"
   },
   "contact": {
     "eyebrow": "Contact",
@@ -408,6 +409,26 @@ window.SITE_CONTENT = {
       "desc": "CoachTanguy uses no tracking cookies. Details of the functional local storage used and your options.",
       "body": "<span class=\"eyebrow\">Cookies &amp; local storage</span>\n      <h1>Cookie policy</h1>\n      <p class=\"legal__update\">Last updated: June 2026</p>\n\n      <h2>1. No tracking cookies</h2>\n      <p><strong>coachtanguy.com</strong> uses <strong>no analytics, advertising or social-media cookies</strong>, and no third-party trackers. No consent banner is therefore required: in line with the recommendations of the Belgian Data Protection Authority, only storage strictly necessary for the operation of the site is used, which is exempt from consent.</p>\n\n      <h2>2. Functional local storage</h2>\n      <p>The site uses your browser's local storage (localStorage / sessionStorage / Cache Storage) solely for the following technical purposes:</p>\n      <ul>\n        <li><strong>\"Calculator\" app cache</strong> (Cache Storage, if you install the calculator as an app): keeps the files needed to work offline. Duration: until you uninstall the app or clear the cache.</li>\n        <li><strong>SITE_CONTENT_fr / _nl / _en</strong> and <strong>CALC_I18N_fr / _nl / _en</strong> (localStorage): content drafts, used only in preview mode by the site administrator. They are neither read nor created during a normal visit. Duration: until manually deleted.</li>\n        <li><strong>dash_ok</strong> (sessionStorage): keeps the administrator's session on the editing dashboard. Duration: closing the tab.</li>\n        <li><strong>cookie_consent</strong> (localStorage): would remember your choice if a consent banner were ever activated. <em>Not currently used.</em> Maximum duration: 6 months.</li>\n      </ul>\n      <p>This storage stays in your browser: it sends no information to third parties and cannot be used to track you.</p>\n\n      <h2>3. External services</h2>\n      <ul>\n        <li><strong>Fonts</strong>: hosted locally on the site — no request is made to Google Fonts.</li>\n        <li><strong>Stripe payments</strong>: the payment buttons are plain links to Stripe's secure pages; Stripe's cookies only apply on Stripe's site (see their <a href=\"https://stripe.com/en-be/privacy\" target=\"_blank\" rel=\"noopener\">privacy policy</a>).</li>\n        <li><strong>WhatsApp</strong>: the WhatsApp buttons are links; no Meta script is loaded on this site.</li>\n      </ul>\n\n      <h2>4. How to delete this data?</h2>\n      <p>You can clear your browser's local storage and cache at any time: Settings → Privacy → Clear browsing data (or equivalent depending on your browser). For the installed app, simply uninstall it.</p>\n\n      <h2>5. If trackers were ever added</h2>\n      <p>If non-essential cookies (statistics, marketing) were ever used, they would only be set <strong>after your prior, free and informed consent</strong>, collected through a banner where refusing is as easy as accepting, with no pre-ticked boxes, and your choice would be kept for a maximum of 6 months. This page would be updated accordingly.</p>\n\n      <p class=\"legal__back\"><a href=\"index.html\">← Back to home</a></p>"
     }
+  },
+  "collab": {
+    "title": "Partner physiotherapist in Rhode-Saint-Genèse — ZOWE × CoachTanguy",
+    "desc": "CoachTanguy partners with ZOWE, Zoé Grêde's physiotherapy practice in Rhode-Saint-Genèse: care and sports coaching go hand in hand.",
+    "eyebrow": "Health partnership",
+    "h1": "ZOWE Physio × CoachTanguy",
+    "intro": "To support you from recovery to performance, I work with Zoé Grêde, certified physiotherapist (Master's in physiotherapy and rehabilitation, ULB) and BELTRA-method practitioner. Her practice ZOWE is based at Kinovea, Rue des Iris in Rhode-Saint-Genèse — right in my coaching area.",
+    "f1h": "From care to training",
+    "f1p": "Injury, pain, reduced mobility? Zoé restores movement; I take over to rebuild strength and endurance, safely.",
+    "f2h": "Precise expertise",
+    "f2p": "Morphostatic assessment, deep myofascial work, IASTM, cupping therapy, joint mobilisations: a targeted approach that treats the cause, not just the symptoms.",
+    "f3h": "The same area",
+    "f3p": "Practice in Rhode-Saint-Genèse and home visits in Linkebeek, Beersel, Lot, Braine-l'Alleud and Waterloo — exactly where I coach.",
+    "cardEyebrow": "ZOWE — Physiotherapy",
+    "cardTitle": "Need a physio's opinion?",
+    "cardText": "Lower-back pain, neck pain, tendinitis, chronic pain or returning to sport after injury: discover Zoé's approach — \"The art of precision, the expertise of care\".",
+    "chip1": "✓ BELTRA method",
+    "chip2": "✓ Kinovea practice · Rhode-Saint-Genèse",
+    "chip3": "✓ FR · NL · EN",
+    "button": "Visit zowekine.com"
   }
 };
 (window.SITE_CONTENT_ALL = window.SITE_CONTENT_ALL || {}).en = window.SITE_CONTENT;

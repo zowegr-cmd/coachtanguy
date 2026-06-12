@@ -357,6 +357,7 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
   .nav__links.open > *:nth-child(5) { animation-delay: .26s; }
   .nav__links.open > *:nth-child(6) { animation-delay: .31s; }
   .nav__links.open > *:nth-child(7) { animation-delay: .36s; }
+  .nav__links.open > *:nth-child(8) { animation-delay: .41s; }
   /* logo centré, au-dessus de « Accueil » */
   .nav__menu-logo { display: block; width: 152px; height: auto; margin: 0 auto 30px; }
   body.menu-open .nav__right,

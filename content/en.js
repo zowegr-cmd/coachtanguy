@@ -9,7 +9,8 @@ window.SITE_CONTENT = {
     "calculateur": "Calculator",
     "faq": "FAQ",
     "contact": "Contact",
-    "cta": "Book a call"
+    "cta": "Book a call",
+    "collab": "Collaboration"
   },
   "calc": {
     "eyebrow": "Free tool",
@@ -428,7 +429,15 @@ window.SITE_CONTENT = {
     "chip1": "✓ BELTRA method",
     "chip2": "✓ Kinovea practice · Rhode-Saint-Genèse",
     "chip3": "✓ FR · NL · EN",
-    "button": "Visit zowekine.com"
+    "button": "Visit zowekine.com",
+    "aboutEyebrow": "Who is Zoé?",
+    "aboutTitle": "Zoé Grêde, BELTRA physiotherapist",
+    "aboutP1": "Holding a Master's in physiotherapy and rehabilitation (ULB), Zoé practises the BELTRA method: a precise approach combining morphostatic assessment, deep myofascial work, IASTM and joint mobilisations to treat the cause of pain — not just the symptoms.",
+    "aboutP2": "She helps with lower-back pain, neck pain, tendinitis and chronic pain, at the Kinovea practice in Rhode-Saint-Genèse or at home. Her motto: \"The art of precision, the expertise of care\".",
+    "tick1": "Master's in physiotherapy and rehabilitation (ULB)",
+    "tick2": "BELTRA method practitioner",
+    "tick3": "Kinovea practice · Rhode-Saint-Genèse & home visits",
+    "tick4": "Consultations in FR, NL and EN"
   }
 };
 (window.SITE_CONTENT_ALL = window.SITE_CONTENT_ALL || {}).en = window.SITE_CONTENT;

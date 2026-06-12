@@ -10,7 +10,8 @@ window.SITE_CONTENT = {
     "calculateur": "Calculateur",
     "faq": "FAQ",
     "contact": "Contact",
-    "cta": "Réserver un appel"
+    "cta": "Réserver un appel",
+    "collab": "Collaboration"
   },
   "calc": {
     "eyebrow": "Outil gratuit",
@@ -445,7 +446,15 @@ window.SITE_CONTENT = {
     "chip1": "✓ Méthode BELTRA",
     "chip2": "✓ Cabinet Kinovea · Rhode-Saint-Genèse",
     "chip3": "✓ FR · NL · EN",
-    "button": "Visiter zowekine.com"
+    "button": "Visiter zowekine.com",
+    "aboutEyebrow": "Qui est Zoé ?",
+    "aboutTitle": "Zoé Grêde, kinésithérapeute BELTRA",
+    "aboutP1": "Diplômée d'un Master en kinésithérapie et réadaptation (ULB), Zoé pratique la méthode BELTRA : une approche précise qui combine diagnostic morphostatique, travail myofascial profond, IASTM et mobilisations pour traiter la cause des douleurs — pas seulement les symptômes.",
+    "aboutP2": "Elle accompagne notamment les lombalgies, cervicalgies, tendinites et douleurs chroniques, au cabinet Kinovea à Rhode-Saint-Genèse ou à domicile. Sa devise : « L'art de la justesse, l'expertise du soin ».",
+    "tick1": "Master en kinésithérapie et réadaptation (ULB)",
+    "tick2": "Praticienne de la méthode BELTRA",
+    "tick3": "Cabinet Kinovea · Rhode-Saint-Genèse & à domicile",
+    "tick4": "Consultations en FR, NL et EN"
   }
 };
 (window.SITE_CONTENT_ALL = window.SITE_CONTENT_ALL || {}).fr = window.SITE_CONTENT;

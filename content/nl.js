@@ -9,7 +9,8 @@ window.SITE_CONTENT = {
     "calculateur": "Calculator",
     "faq": "FAQ",
     "contact": "Contact",
-    "cta": "Plan een gesprek"
+    "cta": "Plan een gesprek",
+    "collab": "Samenwerking"
   },
   "calc": {
     "eyebrow": "Gratis tool",
@@ -428,7 +429,15 @@ window.SITE_CONTENT = {
     "chip1": "✓ BELTRA-methode",
     "chip2": "✓ Praktijk Kinovea · Sint-Genesius-Rode",
     "chip3": "✓ FR · NL · EN",
-    "button": "Bezoek zowekine.com"
+    "button": "Bezoek zowekine.com",
+    "aboutEyebrow": "Wie is Zoé?",
+    "aboutTitle": "Zoé Grêde, BELTRA-kinesitherapeute",
+    "aboutP1": "Met een Master in de kinesitherapie en revalidatie (ULB) past Zoé de BELTRA-methode toe: een precieze aanpak die morfostatische diagnose, diep myofasciaal werk, IASTM en mobilisaties combineert om de oorzaak van de pijn te behandelen — niet alleen de symptomen.",
+    "aboutP2": "Ze begeleidt onder meer lage rugpijn, nekpijn, tendinitis en chronische pijn, in de praktijk Kinovea in Sint-Genesius-Rode of aan huis. Haar motto: \"L'art de la justesse, l'expertise du soin\".",
+    "tick1": "Master in de kinesitherapie en revalidatie (ULB)",
+    "tick2": "Beoefenaar van de BELTRA-methode",
+    "tick3": "Praktijk Kinovea · Sint-Genesius-Rode & aan huis",
+    "tick4": "Consultaties in FR, NL en EN"
   }
 };
 (window.SITE_CONTENT_ALL = window.SITE_CONTENT_ALL || {}).nl = window.SITE_CONTENT;

@@ -430,14 +430,15 @@ window.SITE_CONTENT = {
     "chip2": "✓ Kinovea practice · Rhode-Saint-Genèse",
     "chip3": "✓ FR · NL · EN",
     "button": "Visit zowekine.com",
-    "aboutEyebrow": "Who is Zoé?",
+    "aboutEyebrow": "Who am I?",
     "aboutTitle": "Zoé Grêde, BELTRA physiotherapist",
-    "aboutP1": "Holding a Master's in physiotherapy and rehabilitation (ULB), Zoé practises the BELTRA method: a precise approach combining morphostatic assessment, deep myofascial work, IASTM and joint mobilisations to treat the cause of pain — not just the symptoms.",
-    "aboutP2": "She helps with lower-back pain, neck pain, tendinitis and chronic pain, at the Kinovea practice in Rhode-Saint-Genèse or at home. Her motto: \"The art of precision, the expertise of care\".",
-    "tick1": "Master's in physiotherapy and rehabilitation (ULB)",
-    "tick2": "BELTRA method practitioner",
-    "tick3": "Kinovea practice · Rhode-Saint-Genèse & home visits",
-    "tick4": "Consultations in FR, NL and EN"
+    "aboutP1": "I designed Zowe with a clear vision: to turn the physiotherapy session into a high-precision experience.",
+    "aboutP2": "My approach doesn't stop once the pain is gone — it aims for the lasting optimisation of your physical capital.",
+    "tick1": "Université Libre de Bruxelles",
+    "tick2": "Master's in physiotherapy and rehabilitation",
+    "tick3": "Conventional physiotherapy too, via Kinovea",
+    "aboutP3": "To reach that level of precision, I trained specifically in the Beltra method. This expertise allows me to bring advanced care protocols into my practice, focused on technical control and the deep re-harmonisation of the body.",
+    "aboutP4": "As every patient is unique, I put my know-how and this specialisation at the service of tailor-made support, where scientific rigour meets the comfort of exclusive care."
   }
 };
 (window.SITE_CONTENT_ALL = window.SITE_CONTENT_ALL || {}).en = window.SITE_CONTENT;

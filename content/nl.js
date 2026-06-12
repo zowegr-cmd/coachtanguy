@@ -430,14 +430,15 @@ window.SITE_CONTENT = {
     "chip2": "✓ Praktijk Kinovea · Sint-Genesius-Rode",
     "chip3": "✓ FR · NL · EN",
     "button": "Bezoek zowekine.com",
-    "aboutEyebrow": "Wie is Zoé?",
+    "aboutEyebrow": "Wie ben ik?",
     "aboutTitle": "Zoé Grêde, BELTRA-kinesitherapeute",
-    "aboutP1": "Met een Master in de kinesitherapie en revalidatie (ULB) past Zoé de BELTRA-methode toe: een precieze aanpak die morfostatische diagnose, diep myofasciaal werk, IASTM en mobilisaties combineert om de oorzaak van de pijn te behandelen — niet alleen de symptomen.",
-    "aboutP2": "Ze begeleidt onder meer lage rugpijn, nekpijn, tendinitis en chronische pijn, in de praktijk Kinovea in Sint-Genesius-Rode of aan huis. Haar motto: \"L'art de la justesse, l'expertise du soin\".",
-    "tick1": "Master in de kinesitherapie en revalidatie (ULB)",
-    "tick2": "Beoefenaar van de BELTRA-methode",
-    "tick3": "Praktijk Kinovea · Sint-Genesius-Rode & aan huis",
-    "tick4": "Consultaties in FR, NL en EN"
+    "aboutP1": "Ik heb Zowe ontworpen met een duidelijke visie: de kinesitherapiesessie omvormen tot een ervaring van hoge precisie.",
+    "aboutP2": "Mijn aanpak stopt niet bij het verdwijnen van de pijn, maar mikt op de duurzame optimalisatie van uw fysieke kapitaal.",
+    "tick1": "Université Libre de Bruxelles",
+    "tick2": "Master in de kinesitherapie en revalidatie",
+    "tick3": "Ook conventionele kinesitherapie, via Kinovea",
+    "aboutP3": "Om dat niveau van precisie te bereiken, heb ik mij specifiek gevormd in de Beltra-methode. Die expertise laat mij toe geavanceerde zorgprotocollen in mijn praktijk te integreren, gericht op technische controle en een diepe herharmonisatie van het lichaam.",
+    "aboutP4": "Omdat elke patiënt uniek is, stel ik mijn vakkennis en deze specialisatie ten dienste van een begeleiding op maat, waar wetenschappelijke nauwkeurigheid het comfort van een exclusieve aanpak ontmoet."
   }
 };
 (window.SITE_CONTENT_ALL = window.SITE_CONTENT_ALL || {}).nl = window.SITE_CONTENT;

@@ -447,14 +447,15 @@ window.SITE_CONTENT = {
     "chip2": "✓ Cabinet Kinovea · Rhode-Saint-Genèse",
     "chip3": "✓ FR · NL · EN",
     "button": "Visiter zowekine.com",
-    "aboutEyebrow": "Qui est Zoé ?",
+    "aboutEyebrow": "Qui suis-je ?",
     "aboutTitle": "Zoé Grêde, kinésithérapeute BELTRA",
-    "aboutP1": "Diplômée d'un Master en kinésithérapie et réadaptation (ULB), Zoé pratique la méthode BELTRA : une approche précise qui combine diagnostic morphostatique, travail myofascial profond, IASTM et mobilisations pour traiter la cause des douleurs — pas seulement les symptômes.",
-    "aboutP2": "Elle accompagne notamment les lombalgies, cervicalgies, tendinites et douleurs chroniques, au cabinet Kinovea à Rhode-Saint-Genèse ou à domicile. Sa devise : « L'art de la justesse, l'expertise du soin ».",
-    "tick1": "Master en kinésithérapie et réadaptation (ULB)",
-    "tick2": "Praticienne de la méthode BELTRA",
-    "tick3": "Cabinet Kinovea · Rhode-Saint-Genèse & à domicile",
-    "tick4": "Consultations en FR, NL et EN"
+    "aboutP1": "J'ai conçu Zowe avec une vision précise : transformer la séance de kinésithérapie en une expérience de haute précision.",
+    "aboutP2": "Mon approche ne s'arrête pas à la disparition de la douleur, elle vise l'optimisation durable de votre capital physique.",
+    "tick1": "Université Libre de Bruxelles",
+    "tick2": "Master en kinésithérapie et réadaptation",
+    "tick3": "Kinésithérapie conventionnelle également, via Kinovea",
+    "aboutP3": "Pour atteindre ce niveau d'exigence, je me suis spécifiquement formée à la méthode Beltra. Cette expertise me permet d'intégrer à ma pratique des protocoles de soin avancés, axés sur le contrôle technique et la réharmonisation profonde du corps.",
+    "aboutP4": "Chaque patient étant unique, je mets mon savoir-faire et cette spécialisation au service d'un accompagnement sur mesure, où la rigueur scientifique rencontre le confort d'une prise en charge exclusive."
   }
 };
 (window.SITE_CONTENT_ALL = window.SITE_CONTENT_ALL || {}).fr = window.SITE_CONTENT;

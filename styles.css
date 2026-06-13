@@ -718,3 +718,25 @@ html { scroll-behavior: smooth; }
 .page-top { padding-top: 138px; }
 .calcpromo--solo { grid-template-columns: 1fr; }
 .calcpromo--solo .calcpromo__text { max-width: 720px; }
+
+/* ===== Préloader d'intro — accueil (style crème, révélation du mot) ===== */
+#preloader {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface);
+  animation: preloaderHide .55s ease 1.05s forwards;
+}
+.preloader__line { overflow: hidden; padding: .2em .18em; }
+.preloader__word {
+  display: inline-block;
+  font-family: var(--font-head); font-weight: 800;
+  font-size: clamp(40px, 8.5vw, 96px); letter-spacing: -.04em; line-height: 1.16;
+  color: var(--black);
+  transform: translateY(118%); opacity: 0;
+  animation: preloaderRise .9s cubic-bezier(.16,1,.3,1) .1s forwards;
+}
+.preloader__dot { color: var(--orange); }
+@keyframes preloaderRise { to { transform: translateY(0); opacity: 1; } }
+@keyframes preloaderHide { to { opacity: 0; visibility: hidden; } }
+body.preloaded #preloader { opacity: 0; visibility: hidden; transition: opacity .4s ease; }
+@media (prefers-reduced-motion: reduce) { #preloader { display: none !important; } }

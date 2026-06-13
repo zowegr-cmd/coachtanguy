@@ -23,7 +23,7 @@
   <meta name="twitter:image" content="https://www.coachtanguy.com/assets/hero-wide.jpg" />
   <link rel="stylesheet" href="../assets/fonts.css" />
   <link rel="preload" as="image" href="../assets/hero-wide.webp?v=2" fetchpriority="high" />
-  <link rel="stylesheet" href="../styles.css?v=51" />
+  <link rel="stylesheet" href="../styles.css?v=52" />
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png" />
   <link rel="apple-touch-icon" href="../assets/icon-180.png" />
@@ -105,6 +105,24 @@
   </script>
 </head>
 <body class="has-hero">
+
+  <!-- ===== Préloader d'intro (accueil) ===== -->
+  <div id="preloader" aria-hidden="true">
+    <div class="preloader__line">
+      <span class="preloader__word">CoachTanguy<span class="preloader__dot">.</span></span>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var p = document.getElementById('preloader');
+      if (!p) return;
+      var skip = function () { document.body.classList.add('preloaded'); };
+      ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(function (ev) {
+        window.addEventListener(ev, skip, { once: true, passive: true });
+      });
+      setTimeout(function () { if (p.parentNode) p.parentNode.removeChild(p); }, 2200);
+    })();
+  </script>
 
   <!-- ===== NAVBAR ===== -->
   <header class="nav" id="top">

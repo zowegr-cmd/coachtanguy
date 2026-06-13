@@ -744,3 +744,12 @@ html { scroll-behavior: smooth; }
 @keyframes preloaderHide { to { opacity: 0; visibility: hidden; } }
 body.preloaded #preloader { opacity: 0; visibility: hidden; transition: opacity .4s ease; }
 @media (prefers-reduced-motion: reduce) { #preloader { display: none !important; } }
+
+/* ===== Zones sûres iOS (viewport-fit=cover : encoche + barre d'accueil) ===== */
+.nav { padding-top: env(safe-area-inset-top); }
+.container { padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
+.wa-fab { bottom: calc(24px + env(safe-area-inset-bottom)); right: calc(24px + env(safe-area-inset-right)); }
+.footer__bottom { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
+body.menu-open .lang-switch { bottom: calc(50px + env(safe-area-inset-bottom)); }
+@media (max-width: 760px) { .footer__bottom { padding-bottom: calc(22px + env(safe-area-inset-bottom)); } }
+@media (max-width: 720px) { .wa-fab { bottom: calc(16px + env(safe-area-inset-bottom)); right: calc(16px + env(safe-area-inset-right)); } }

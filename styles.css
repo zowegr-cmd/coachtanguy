@@ -762,3 +762,12 @@ body.menu-open .lang-switch { bottom: calc(50px + env(safe-area-inset-bottom)); 
 body.nav-solid .safe-top { background: #ffffff; }
 /* Menu mobile ouvert : le haut redevient sombre (l'overlay est sombre) */
 body.menu-open .safe-top { background: var(--dark); }
+
+/* ===== Fond de page SOMBRE sur les pages à hero sombre (.has-hero) =====
+   Safari iOS peint les safe areas (encoche / barre d'accueil) avec le fond du
+   body/html — comme sur la page calculateur (body sombre) qui n'a jamais eu de
+   bande blanche. On rend donc le body sombre ICI, et on redonne un fond clair
+   EXPLICITE aux sections claires pour que le rendu reste identique. */
+body.has-hero { background: var(--dark); }
+body.has-hero .section { background: var(--surface); }
+body.has-hero .section.section--dark { background: transparent; }

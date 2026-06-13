@@ -139,3 +139,13 @@ if (contactForm) {
   a.innerHTML = SVG;
   document.body.appendChild(a);
 })();
+
+// ===== Barres "safe area" iOS : peignent l'encoche (haut) et la barre d'accueil (bas) =====
+// Safari iOS colore ces zones avec le fond de la page (clair ici) -> bande blanche sur les
+// pages sombres. Ces barres fixes les peignent explicitement (hauteur = 0 sans encoche).
+(function () {
+  if (document.querySelector('.safe-top')) return;
+  var t = document.createElement('div'); t.className = 'safe-top'; t.setAttribute('aria-hidden', 'true');
+  var b = document.createElement('div'); b.className = 'safe-bottom'; b.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(t); document.body.appendChild(b);
+})();

@@ -753,3 +753,12 @@ body.preloaded #preloader { opacity: 0; visibility: hidden; transition: opacity 
 body.menu-open .lang-switch { bottom: calc(50px + env(safe-area-inset-bottom)); }
 @media (max-width: 760px) { .footer__bottom { padding-bottom: calc(22px + env(safe-area-inset-bottom)); } }
 @media (max-width: 720px) { .wa-fab { bottom: calc(16px + env(safe-area-inset-bottom)); right: calc(16px + env(safe-area-inset-right)); } }
+
+/* ===== Barres safe area iOS (peintes selon le haut/bas de la page) ===== */
+.safe-top, .safe-bottom { position: fixed; left: 0; right: 0; z-index: 200; pointer-events: none; }
+.safe-top { top: 0; height: env(safe-area-inset-top); background: var(--dark); }
+.safe-bottom { bottom: 0; height: env(safe-area-inset-bottom); background: var(--dark); }
+/* Pages à fond clair (nav blanche) : encoche claire pour rester cohérent */
+body.nav-solid .safe-top { background: #ffffff; }
+/* Menu mobile ouvert : le haut redevient sombre (l'overlay est sombre) */
+body.menu-open .safe-top { background: var(--dark); }

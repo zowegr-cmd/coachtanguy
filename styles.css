@@ -771,6 +771,9 @@ body.menu-open .safe-top { background: var(--dark); }
 body.has-hero { background: var(--dark); }
 body.has-hero .section { background: var(--surface); }
 body.has-hero .section.section--dark { background: transparent; }
-/* Éléments clairs hors .section (séparateurs entre sections claires) : fond clair
-   explicite pour ne pas laisser apparaître le noir du body. (.divider--on-dark reste sombre) */
-body.has-hero .divider:not(.divider--on-dark) { background: var(--surface); }
+/* Séparateurs (.divider) entre sections claires : centrés/limités à 760px, donc sur
+   fond sombre le noir du body débordait des deux côtés. On étire leur fond clair sur
+   TOUTE la largeur et on garde les traits courts et centrés (rendu identique). */
+body.has-hero .divider:not(.divider--on-dark) { background: var(--surface); max-width: none; }
+body.has-hero .divider:not(.divider--on-dark)::before,
+body.has-hero .divider:not(.divider--on-dark)::after { flex: 0 1 330px; }

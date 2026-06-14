@@ -26,6 +26,9 @@
     .btn:hover{border-color:#bbb}
     .btn--primary{background:var(--orange);color:#fff;border-color:var(--orange)}
     .btn--primary:hover{background:#e04d00}
+    .btn--publish{background:#16a34a;color:#fff;border-color:#16a34a;font-weight:700}
+    .btn--publish:hover{background:#15803d;border-color:#15803d}
+    .btn:disabled{opacity:.6;cursor:default}
     .search{padding:12px 22px;border-bottom:1px solid var(--line);background:#fff}
     .search input{width:100%;font-size:14px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
     .search input:focus{outline:none;border-color:var(--orange)}
@@ -95,7 +98,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ password: pass.value })
         }).then(function (r) {
-          if (r.ok) { sessionStorage.setItem('dash_ok', '1'); gate.remove(); }
+          if (r.ok) { sessionStorage.setItem('dash_ok', '1'); try { sessionStorage.setItem('dash_pw', pass.value); } catch (e) {} gate.remove(); }
           else { err.textContent = 'Mot de passe incorrect.'; pass.select(); }
         }).catch(function () { err.textContent = 'Erreur réseau, réessaie.'; });
       });
@@ -117,12 +120,13 @@
         </div>
         <div class="actions">
           <button class="btn" id="reset">↺ Réinitialiser</button>
-          <button class="btn btn--primary" id="export">⤓ Exporter</button>
+          <button class="btn" id="export">⤓ Exporter</button>
+          <button class="btn btn--publish" id="publish">⬆ Publier en ligne</button>
         </div>
       </div>
       <div class="search"><input id="search" type="text" placeholder="Rechercher un texte…" /></div>
       <div class="fields" id="fields"></div>
-      <p class="hint">Les modifications s'affichent en direct dans l'aperçu. Cliquez « Exporter » pour télécharger le fichier de contenu mis à jour, puis remplacez-le dans <code>content/</code>.</p>
+      <p class="hint">Les modifications s'affichent en direct dans l'aperçu. Cliquez « <b>Publier en ligne</b> » pour mettre le site à jour automatiquement (en ligne après ~1 min). « Exporter » télécharge seulement une sauvegarde du fichier.</p>
     </div>
     <!-- APERÇU -->
     <div class="preview">
@@ -374,6 +378,64 @@
       var body='window.SITE_CONTENT = '+JSON.stringify(work,null,2)+';\n';
       download(LANG+'.js', header+body);
       toast('Fichier '+LANG+'.js téléchargé → place-le dans content/');
+    });
+
+    // ===== Publication en ligne (commit GitHub → redéploiement Netlify) =====
+    // En-têtes IDENTIQUES aux fichiers existants -> publier sans changement = aucun diff.
+    var SITE_HEADERS = {
+      fr: '/* ===========================================================\n   CONTENU FRANÇAIS — CoachTanguy\n   Édité via dashboard.html. Ne pas casser la structure des clés.\n   =========================================================== */\n',
+      nl: '/* ===========================================================\n   INHOUD NEDERLANDS — CoachTanguy (bewerkt via dashboard.html)\n   =========================================================== */\n',
+      en: '/* ===========================================================\n   ENGLISH CONTENT — CoachTanguy (edited via dashboard.html)\n   =========================================================== */\n'
+    };
+    function buildSiteFile(l, obj){
+      return (SITE_HEADERS[l]||SITE_HEADERS.fr)+'window.SITE_CONTENT = '+JSON.stringify(obj,null,2)+';\n'
+        +'(window.SITE_CONTENT_ALL = window.SITE_CONTENT_ALL || {}).'+l+' = window.SITE_CONTENT;\n';
+    }
+    function buildCalcFile(l, dict, frags){
+      var h='/* Calculateur i18n '+l.toUpperCase()+' — exporté via dashboard. Clé = texte FR source. */\n';
+      return h+'window.CALC_I18N = '+JSON.stringify(dict,null,2)+';\n'
+        +'window.CALC_I18N_FRAGMENTS = '+JSON.stringify(frags,null,2)+';\n';
+    }
+    function gatherFiles(){
+      var files={};
+      ['fr','nl','en'].forEach(function(l){
+        var raw=null; try{ raw=localStorage.getItem('SITE_CONTENT_'+l); }catch(e){}
+        if(raw){ try{ files['content/'+l+'.js']=buildSiteFile(l, JSON.parse(raw)); }catch(e){} }
+        var craw=null; try{ craw=localStorage.getItem('CALC_I18N_'+l); }catch(e){}
+        if(craw){ try{
+          var cw=JSON.parse(craw)||{}; var cd=cw.dict||{}, cf=cw.frags||{}; var od, of;
+          if(l==='fr'){ od={}; of={};
+            Object.keys(CALC_DEF.fr.dict).forEach(function(k){ var v=(cd[k]!=null)?cd[k]:CALC_DEF.fr.dict[k]; if(v!==k) od[k]=v; });
+            Object.keys(CALC_DEF.fr.frags).forEach(function(k){ var v=(cf[k]!=null)?cf[k]:CALC_DEF.fr.frags[k]; if(v!==k) of[k]=v; });
+          } else { od=cd; of=cf; }
+          files['content/calc-i18n.'+l+'.js']=buildCalcFile(l, od, of);
+        }catch(e){} }
+      });
+      return files;
+    }
+    var pubBtn=document.getElementById('publish');
+    if(pubBtn) pubBtn.addEventListener('click', function(){
+      try{ localStorage.setItem('SITE_CONTENT_'+LANG, JSON.stringify(work)); }catch(e){}
+      if(MODE==='calc'){ try{ localStorage.setItem('CALC_I18N_'+LANG, JSON.stringify(cwork)); }catch(e){} }
+      var files=gatherFiles(); var n=Object.keys(files).length;
+      if(!n){ toast('Rien à publier : fais d\'abord une modification.'); return; }
+      var pw=''; try{ pw=sessionStorage.getItem('dash_pw')||''; }catch(e){}
+      if(!pw){ pw=prompt('Mot de passe pour publier en ligne :')||''; }
+      if(!pw) return;
+      if(!confirm('Publier '+n+' fichier(s) en ligne ?\nLe site sera mis à jour automatiquement dans ~1 minute.')) return;
+      var old=pubBtn.textContent; pubBtn.disabled=true; pubBtn.textContent='Publication…'; toast('Publication en cours…');
+      fetch('/.netlify/functions/dash-publish', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({password:pw, files:files}) })
+        .then(function(r){ return r.json().then(function(j){ return {status:r.status, j:j}; }).catch(function(){ return {status:r.status, j:{}}; }); })
+        .then(function(res){
+          var j=res.j||{};
+          if(res.status===200 && j.ok){
+            if(j.deploy===false) toast('✅ Déjà à jour (aucun changement).');
+            else toast('✅ Publié ! En ligne dans ~1 min.');
+          } else if(res.status===401){ try{ sessionStorage.removeItem('dash_pw'); }catch(e){} toast('Mot de passe incorrect — réessaie.'); }
+          else { toast('Erreur : '+(j.error||('HTTP '+res.status))); }
+        })
+        .catch(function(e){ toast('Erreur réseau : '+e.message); })
+        .then(function(){ pubBtn.disabled=false; pubBtn.textContent=old; });
     });
 
     function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2600);}

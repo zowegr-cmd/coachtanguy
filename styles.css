@@ -772,6 +772,9 @@ body.menu-open .safe-top { background: var(--dark); }
 body.has-hero { background: var(--dark); }
 body.has-hero .section { background: var(--surface); }
 body.has-hero .section.section--dark { background: var(--dark); }
+/* Sections sombres "lift" : coins hauts droits -> aucun clair révélé à la jonction
+   (la version arrondie laissait voir la section claire derrière les coins). */
+.section--dark.section-lift { border-top-left-radius: 0; border-top-right-radius: 0; }
 /* Séparateurs (.divider) entre sections claires : centrés/limités à 760px, donc sur
    fond sombre le noir du body débordait des deux côtés. On étire leur fond clair sur
    TOUTE la largeur et on garde les traits courts et centrés (rendu identique). */

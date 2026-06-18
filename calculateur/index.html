@@ -795,6 +795,41 @@
     .choice:has(input:checked){background:#16171b}
     .choice-grid{gap:16px;margin-top:14px}
     .choice{padding:18px 18px 18px 48px;gap:8px}
+
+    /* ===== Feuille d'impression dediee (resultats + repas, 1-2 pages) ===== */
+    #printSheet{display:none}
+    @media print{
+      @page{size:A4;margin:11mm 12mm}
+      body>*:not(#printSheet){display:none!important}
+      html,body{background:#fff!important}
+      #printSheet{display:block!important;font-family:'Sora',-apple-system,sans-serif}
+      #printSheet *{background:transparent!important;color:#221d18!important;box-shadow:none!important;border-color:#ece3d6!important}
+      #printSheet .ps-head{text-align:center;border-bottom:2.5px solid #ff5a00;padding-bottom:3mm;margin-bottom:3mm}
+      #printSheet .ps-logo-img{height:30px;display:block;margin:0 auto 3mm}
+      #printSheet .ps-title{font:800 17pt/1.1 'Inter Tight','Sora',sans-serif;margin:1mm 0}
+      #printSheet .ps-meta{font-size:9.5pt;color:#7a6d5e!important}
+      #printSheet .ps-meta b{color:#221d18!important}
+      #printSheet .ps-h{font:800 12.5pt 'Inter Tight','Sora',sans-serif;color:#ff5a00!important;margin:2mm 0 1.5mm;letter-spacing:.01em}
+      #printSheet .ps-block{break-inside:avoid;margin-bottom:1mm}
+      #printSheet .result-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:3mm}
+      #printSheet .result{background:#faf6f0!important;border:1px solid #ece3d6!important;border-radius:9px;padding:2.4mm 1.5mm!important;text-align:center}
+      #printSheet .result .k{font-size:7.5pt;color:#7a6d5e!important;display:block;margin-bottom:1mm}
+      #printSheet .result strong,#printSheet .result .v{font:800 13pt 'Inter Tight','Sora';color:#221d18!important}
+      #printSheet .result.highlight{background:#fff3e9!important;border-color:#ff5a00!important}
+      #printSheet .macro-bars{margin-top:2mm;display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+      #printSheet .barrow{display:block}
+      #printSheet .bar-label{font-size:9pt;font-weight:700;margin-bottom:1mm;display:flex;justify-content:space-between}
+      #printSheet .bar-bg{height:5px;background:#ece3d6!important;border-radius:3px;overflow:hidden}
+      #printSheet .bar-fill{background:#ff5a00!important;height:100%;display:block}
+      #printSheet .personal-meal-grid,#printSheet .meal-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:2.4mm}
+      #printSheet .meal-card,#printSheet .personal-meal-block{background:#faf6f0!important;border:1px solid #ece3d6!important;border-radius:9px;padding:2.2mm!important;break-inside:avoid;font-size:7.2pt;line-height:1.24}
+      #printSheet .meal-card strong,#printSheet .personal-meal-head,#printSheet .personal-meal-block strong{color:#ff5a00!important;font-weight:800}
+      #printSheet .method-tag{background:#fff3e9!important;color:#ff5a00!important;border:1px solid #ffd9bf!important;border-radius:6px;padding:1px 6px;font-size:7.5pt}
+      #printSheet ul{margin:1.5mm 0;padding-left:4mm}
+      #printSheet li{margin:.6mm 0}
+      #printSheet .ps-foot{margin-top:2.5mm;padding-top:1.5mm;border-top:1px solid #ece3d6;font-size:8pt;color:#7a6d5e!important;text-align:center}
+      #printSheet h2,#printSheet h3,#printSheet h4{margin:2mm 0}
+    }
   </style>
 </head>
 <body>
@@ -1950,12 +1985,39 @@
       function h(){ var mob=window.matchMedia&&window.matchMedia('(max-width: 759px)').matches; if(!mob){top.classList.remove('is-fixed'); ph.classList.remove('active'); return;} if((window.pageYOffset||document.documentElement.scrollTop||0)>=start){top.classList.add('is-fixed'); ph.classList.add('active');} else {top.classList.remove('is-fixed'); ph.classList.remove('active');}}
       window.addEventListener('scroll',h,{passive:true}); h();
     }
+function buildPrintSheet(){
+      var ps=document.getElementById('printSheet');
+      if(!ps){ps=document.createElement('div');ps.id='printSheet';ps.setAttribute('aria-hidden','true');document.body.appendChild(ps);}
+      function val(i){var e=document.getElementById(i);return e?((e.value||e.textContent||'')+'').trim():'';}
+      var fn=val('firstname');
+      var gs=document.getElementById('goal');var goal=(gs&&gs.selectedIndex>0)?gs.options[gs.selectedIndex].text:'';
+      var rb=document.getElementById('resultsBlock');var rp=document.getElementById('personalMealsBlock');
+      var resC=rb?rb.cloneNode(true):null,rpC=rp?rp.cloneNode(true):null;
+      [resC,rpC].forEach(function(c){if(!c)return;
+        c.querySelectorAll('button,.button-link,.actions,.notice,.section-title,textarea,script,.hint').forEach(function(e){e.remove();});
+        c.querySelectorAll('.hidden').forEach(function(e){e.classList.remove('hidden');});
+        c.querySelectorAll('[id]').forEach(function(e){e.removeAttribute('id');});
+      });
+      var d=new Date(),mois=['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
+      var date=d.getDate()+' '+mois[d.getMonth()]+' '+d.getFullYear();
+      ps.innerHTML='';
+      var h=document.createElement('div');h.className='ps-head';
+      h.innerHTML='<img class="ps-logo-img" src="../assets/logo.webp" alt="CoachTanguy" />'
+        +'<div class="ps-title">Vos repères alimentaires</div>'
+        +'<div class="ps-meta">'+(fn?('Établi pour <b>'+fn+'</b> · '):'')+(goal?(goal+' · '):'')+date+'</div>';
+      ps.appendChild(h);
+      if(resC){var b1=document.createElement('div');b1.className='ps-block';b1.innerHTML='<h3 class="ps-h">Vos repères du jour</h3>';b1.appendChild(resC);ps.appendChild(b1);}
+      if(rpC){var b2=document.createElement('div');b2.className='ps-block ps-meals';b2.innerHTML='<h3 class="ps-h">Idées de repas conseillées</h3>';b2.appendChild(rpC);ps.appendChild(b2);}
+      var ft=document.createElement('div');ft.className='ps-foot';
+      ft.innerHTML='Ces chiffres sont des repères de départ, à ajuster sur 2 à 3 semaines. — CoachTanguy · coachtanguy.com';
+      ps.appendChild(ft);
+    }
     function init(){
       var b=id('calculateBtn'); if(b){b.onclick=run; b.addEventListener('click',run,false); b.addEventListener('touchend',run,false);}
       var form=id('calcForm'); if(form)form.onsubmit=run;
       var r=id('resetBtn'); if(r)r.onclick=reset;
       var c=id('copyBtn'); if(c)c.onclick=copy;
-      var p=id('printBtn'); if(p)p.onclick=function(){window.print();};
+      var p=id('printBtn'); if(p)p.onclick=function(){buildPrintSheet();window.print();};window.addEventListener('beforeprint',buildPrintSheet);
       var g=id('goal'); if(g)g.onchange=updateGoalFields; updateGoalFields();
       nav(); setTimeout(nav,250);
     }

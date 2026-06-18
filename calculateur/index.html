@@ -178,7 +178,7 @@
       border-radius: 999px;
       font-size: .82rem;
       font-weight: 800;
-      color: #49382c;
+      color: var(--text);
       background: var(--card);
       border: 1px solid rgba(255,90,0,.16);
     }
@@ -188,7 +188,7 @@
       border-radius: 18px;
       background: var(--card);
       border: 1px solid rgba(255,90,0,.14);
-      color: #4e4035;
+      color: var(--text);
       font-size: .92rem;
       max-width: 65ch;
     }
@@ -405,7 +405,7 @@
 
     .macro-bars { display: grid; gap: 9px; margin-top: 12px; }
     .barrow { display: grid; gap: 5px; }
-    .bar-label { display: flex; justify-content: space-between; gap: 8px; font-size: .85rem; font-weight: 800; color: #49382c; }
+    .bar-label { display: flex; justify-content: space-between; gap: 8px; font-size: .85rem; font-weight: 800; color: var(--text); }
     .bar-bg { height: 10px; border-radius: 999px; background: #efe4d8; overflow: hidden; }
     .bar-fill { height: 100%; width: 0%; background: var(--accent-2); border-radius: 999px; transition: width .25s ease; }
 
@@ -425,9 +425,9 @@
       font-size: .92rem;
       border: 1px solid rgba(155,91,0,.22);
       background: #16171b;
-      color: #65400d;
+      color: var(--warn);
     }
-    .notice.good { background: #eefaf4; color: #1f6045; border-color: rgba(47,125,92,.2); }
+    .notice.good { background: #eefaf4; color: var(--good); border-color: rgba(47,125,92,.2); }
     .notice.danger { background: rgba(248,113,113,.12); color: #fca5a5; border-color: rgba(159,48,48,.2); }
 
     .mini-cards {

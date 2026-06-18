@@ -428,7 +428,7 @@
       color: #65400d;
     }
     .notice.good { background: #eefaf4; color: #1f6045; border-color: rgba(47,125,92,.2); }
-    .notice.danger { background: rgba(248,113,113,.12); color: #7c2020; border-color: rgba(159,48,48,.2); }
+    .notice.danger { background: rgba(248,113,113,.12); color: #fca5a5; border-color: rgba(159,48,48,.2); }
 
     .mini-cards {
       display: grid;
@@ -441,7 +441,7 @@
       border-radius: 18px;
       padding: 13px;
     }
-    .mini-card strong { display: block; margin-bottom: 6px; color: #37291e; }
+    .mini-card strong { display: block; margin-bottom: 6px; color: var(--text); }
     .mini-card p { margin: 0; color: var(--muted); font-size: .9rem; }
 
     .personal-method {
@@ -512,7 +512,7 @@
     .personal-hand-item strong {
       display: block;
       font-size: .88rem;
-      color: #37291e;
+      color: var(--text);
       margin-bottom: 4px;
     }
 
@@ -562,7 +562,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      color: #4b3b2f;
+      color: var(--text);
       font-size: .88rem;
     }
     .dot {
@@ -606,7 +606,7 @@
       border-radius: 18px;
       padding: 13px;
     }
-    .list-card strong { display: block; margin-bottom: 7px; color: #37291e; }
+    .list-card strong { display: block; margin-bottom: 7px; color: var(--text); }
     .list-card ul { margin: 0; padding-left: 18px; color: var(--muted); }
     .list-card li + li { margin-top: 4px; }
 
@@ -621,7 +621,7 @@
       list-style: none;
       padding: 13px 14px;
       font-weight: 850;
-      color: #3b2d23;
+      color: var(--text);
     }
     summary::-webkit-details-marker { display: none; }
     summary::after { content: "+"; float: right; color: var(--accent); font-weight: 900; }
@@ -661,7 +661,7 @@
 
     .slot-title {
       display: block;
-      color: #37291e;
+      color: var(--text);
       margin-bottom: 4px;
       font-size: .98rem;
     }
@@ -687,7 +687,7 @@
 
     .slot-option strong {
       display: block;
-      color: #37291e;
+      color: var(--text);
       margin-bottom: 5px;
       font-size: .9rem;
     }
@@ -709,7 +709,7 @@
 
     .personal-meal-card strong {
       display: block;
-      color: #37291e;
+      color: var(--text);
       margin-bottom: 6px;
     }
 
@@ -747,7 +747,7 @@
       border-radius: 18px;
       padding: 13px;
     }
-    .meal-card strong { display: block; margin-bottom: 7px; color: #37291e; }
+    .meal-card strong { display: block; margin-bottom: 7px; color: var(--text); }
     .meal-card ul { margin: 0; padding-left: 18px; color: var(--muted); }
     .meal-card li + li { margin-top: 4px; }
 
@@ -793,6 +793,8 @@
     body{font-family:'Sora',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--text);background:radial-gradient(900px circle at 12% -4%,rgba(255,90,0,.16),transparent 58%),radial-gradient(760px circle at 90% 6%,rgba(255,90,0,.08),transparent 52%),radial-gradient(1000px circle at 86% 88%,rgba(255,90,0,.07),transparent 58%),radial-gradient(680px circle at 6% 72%,rgba(255,90,0,.05),transparent 52%),#0a0a0b;background-attachment:fixed}
     .choice{background:#141519}
     .choice:has(input:checked){background:#16171b}
+    .choice-grid{gap:16px}
+    .choice{padding-top:14px;padding-bottom:14px}
   </style>
 </head>
 <body>

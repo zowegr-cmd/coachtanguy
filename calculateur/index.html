@@ -810,7 +810,7 @@
       #printSheet .ps-meta{font-size:9.5pt;color:#7a6d5e!important}
       #printSheet .ps-meta b{color:#221d18!important}
       #printSheet .ps-h{font:800 12.5pt 'Inter Tight','Sora',sans-serif;color:#ff5a00!important;margin:2mm 0 1.5mm;letter-spacing:.01em}
-      #printSheet .ps-block{break-inside:avoid;margin-bottom:1mm}
+      #printSheet .ps-block{margin-bottom:3mm}
       #printSheet .result-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:3mm}
       #printSheet .result{background:#faf6f0!important;border:1px solid #ece3d6!important;border-radius:9px;padding:2.4mm 1.5mm!important;text-align:center}
       #printSheet .result .k{font-size:7.5pt;color:#7a6d5e!important;display:block;margin-bottom:1mm}
@@ -819,7 +819,7 @@
       #printSheet .macro-bars{margin-top:2mm;display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
       #printSheet .barrow{display:block}
       #printSheet .bar-label{font-size:9pt;font-weight:700;margin-bottom:1mm;display:flex;justify-content:space-between}
-      #printSheet .bar-bg{height:5px;background:#ece3d6!important;border-radius:3px;overflow:hidden}
+      #printSheet .bar-bg{height:6px;background:#ece3d6!important;border-radius:3px;overflow:hidden}
       #printSheet .bar-fill{background:#ff5a00!important;height:100%;display:block}
       #printSheet .personal-meal-grid,#printSheet .meal-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:2.4mm}
       #printSheet .meal-card,#printSheet .personal-meal-block{background:#faf6f0!important;border:1px solid #ece3d6!important;border-radius:9px;padding:2.2mm!important;break-inside:avoid;font-size:7.2pt;line-height:1.24}
@@ -1999,7 +1999,8 @@ function buildPrintSheet(){
       var rb=document.getElementById('resultsBlock');var rp=document.getElementById('repas');
       var resC=rb?rb.cloneNode(true):null,rpC=rp?rp.cloneNode(true):null;
       [resC,rpC].forEach(function(c){if(!c)return;
-        c.querySelectorAll('button,.button-link,.actions,.notice,.section-title,textarea,script,.hint').forEach(function(e){e.remove();});
+        c.querySelectorAll('button,.button-link,.actions,.notice,.section-title,textarea,.summary-box,script,.hint').forEach(function(e){e.remove();});
+        c.querySelectorAll('h2,h3,h4').forEach(function(e){if(/résumé personnalis/i.test(e.textContent||''))e.remove();});
         c.querySelectorAll('.hidden').forEach(function(e){e.classList.remove('hidden');});
         c.querySelectorAll('[id]').forEach(function(e){e.removeAttribute('id');});
       });

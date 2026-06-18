@@ -24,7 +24,9 @@
 
 /* ===== Reset ===== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 90px; background: var(--surface); }
+/* Décalage des ancres = hauteur de la barre (+ encoche) -> l'ancre arrive pile sous
+   le nav, sans laisser voir la section précédente (ex : FAQ qui mordait le calculateur). */
+html { scroll-behavior: smooth; scroll-padding-top: calc(76px + env(safe-area-inset-top)); background: var(--surface); }
 body {
   font-family: var(--font);
   color: var(--black);
@@ -329,9 +331,10 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
   .hero { min-height: 80vh; }
   .about { grid-template-columns: 1fr; }
   .about__photo { max-width: 420px; margin: 0 auto; }
-  /* À propos : eyebrow + titre centrés sur mobile (comme les autres titres de section) */
-  .about__text .eyebrow { display: block; width: -moz-fit-content; width: fit-content; margin-left: auto; margin-right: auto; }
-  .about__text h2 { text-align: center; }
+  /* À propos : tout le texte centré sur mobile (eyebrow, titre, paragraphes) ;
+     la liste de diplômes (.ticks, page collaboration) reste alignée à gauche. */
+  .about__text { text-align: center; }
+  .about__text .ticks { text-align: left; }
   .stats { justify-content: center; }
   /* bouton « Travailler avec moi » centré sous les stats */
   .about__text > .btn { display: block; width: -moz-fit-content; width: fit-content; margin-left: auto; margin-right: auto; }
@@ -487,16 +490,12 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
   border-top-left-radius: 34px; border-top-right-radius: 34px;
   box-shadow: 0 -16px 40px rgba(0,0,0,.10);
 }
-.phero__inner { position: relative; max-width: 660px; }
+/* Héro des pages internes : bloc + texte + boutons centrés (desktop ET mobile),
+   comme les titres de section. */
+.phero__inner { position: relative; max-width: 660px; margin-left: auto; margin-right: auto; text-align: center; }
 .phero h1 { font-size: clamp(36px, 5.5vw, 60px); font-weight: 800; color: #fff; margin: 16px 0 18px; }
 .phero p { font-size: 18px; color: rgba(255,255,255,.82); margin-bottom: 30px; }
-.phero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
-/* Desktop : héro centré comme les titres de section (le bloc est déjà centré,
-   on centre le texte + les boutons). Mobile inchangé (aligné à gauche). */
-@media (min-width: 901px) {
-  .phero__inner { margin-left: auto; margin-right: auto; text-align: center; }
-  .phero__actions { justify-content: center; }
-}
+.phero__actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 
 /* Tarifs */
 .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: start; }

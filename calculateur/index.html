@@ -179,14 +179,14 @@
       font-size: .82rem;
       font-weight: 800;
       color: #49382c;
-      background: rgba(255,255,255,.74);
+      background: var(--card);
       border: 1px solid rgba(255,90,0,.16);
     }
 
     .intro-note {
       padding: 12px 14px;
       border-radius: 18px;
-      background: rgba(255,255,255,.76);
+      background: var(--card);
       border: 1px solid rgba(255,90,0,.14);
       color: #4e4035;
       font-size: .92rem;
@@ -238,7 +238,7 @@
       border-radius: 999px;
     }
 
-    .topnav a:hover, .topnav a:focus { background: #fff; color: var(--accent); }
+    .topnav a:hover, .topnav a:focus { background: #16171b; color: var(--accent); }
 
     main {
       display: grid;
@@ -257,7 +257,7 @@
       padding: 18px;
     }
 
-    .card.white { background: rgba(255,255,255,.94); }
+    .card.white { background: var(--card); }
 
     .section-title {
       display: flex;
@@ -302,7 +302,7 @@
       padding: 13px 13px;
       border: 1.5px solid var(--line);
       border-radius: 16px;
-      background: #fff;
+      background: #16171b;
       color: var(--text);
       font: inherit;
       outline: none;
@@ -311,7 +311,7 @@
       border-color: var(--accent-2);
       box-shadow: 0 0 0 4px rgba(255,125,51,.16);
     }
-    input::placeholder { color: #a89b90; }
+    input::placeholder { color: #6b6b73; }
 
     .choice-grid {
       display: grid;
@@ -327,7 +327,7 @@
       min-height: 100%;
       padding: 12px 12px 12px 44px;
       border-radius: 18px;
-      background: #fff;
+      background: #16171b;
       border: 1.5px solid var(--line);
       cursor: pointer;
       user-select: none;
@@ -348,11 +348,11 @@
     .choice span { color: var(--muted); font-size: .88rem; line-height: 1.38; }
     .choice em {
       display: block;
-      color: #5d4c40;
+      color: var(--muted);
       font-style: normal;
       font-size: .81rem;
       line-height: 1.35;
-      background: #faf5ee;
+      background: rgba(255,90,0,.10);
       padding: 7px 8px;
       border-radius: 12px;
       border: 1px dashed rgba(255,90,0,.16);
@@ -382,7 +382,7 @@
       cursor: pointer;
     }
     button.primary { background: var(--accent); color: #fff; box-shadow: 0 12px 20px rgba(255,90,0,.25); }
-    button.secondary, .button-link.secondary { background: #fff; color: var(--accent); border: 1.5px solid var(--line); }
+    button.secondary, .button-link.secondary { background: #16171b; color: var(--accent); border: 1.5px solid var(--line); }
     button:active { transform: translateY(1px); }
 
     .result-grid {
@@ -395,13 +395,13 @@
       min-height: 92px;
       padding: 12px;
       border-radius: 18px;
-      background: #fff;
+      background: #16171b;
       border: 1px solid var(--line);
     }
     .result .k { color: var(--muted); font-size: .79rem; font-weight: 800; line-height: 1.2; }
     .result .v { margin-top: 8px; font-size: clamp(1.25rem, 4vw, 1.8rem); line-height: 1; font-weight: 900; letter-spacing: -.04em; }
     .result .u { color: var(--muted); font-size: .78rem; margin-top: 4px; }
-    .result.highlight { background: linear-gradient(135deg, #fff 0%, #16171b 100%); border-color: rgba(255,125,51,.42); }
+    .result.highlight { background: linear-gradient(135deg, rgba(255,90,0,.22) 0%, #16171b 100%); border-color: rgba(255,125,51,.42); }
 
     .macro-bars { display: grid; gap: 9px; margin-top: 12px; }
     .barrow { display: grid; gap: 5px; }
@@ -414,7 +414,7 @@
       min-height: 190px;
       resize: vertical;
       white-space: pre-wrap;
-      background: #fff;
+      background: #16171b;
       border-color: rgba(255,90,0,.25);
     }
 
@@ -436,7 +436,7 @@
       grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     }
     .mini-card {
-      background: #fff;
+      background: #16171b;
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 13px;
@@ -448,7 +448,7 @@
       margin: 14px 0 16px;
       padding: 14px;
       border-radius: 22px;
-      background: linear-gradient(135deg, #fff 0%, #16171b 100%);
+      background: linear-gradient(135deg, rgba(255,90,0,.22) 0%, #16171b 100%);
       border: 1.5px solid rgba(255,125,51,.38);
       box-shadow: 0 10px 24px rgba(120,45,0,.07);
     }
@@ -503,7 +503,7 @@
     }
 
     .personal-hand-item {
-      background: #fff;
+      background: #16171b;
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 11px;
@@ -530,7 +530,7 @@
     }
 
     .plate-card {
-      background: #fff;
+      background: #16171b;
       border: 1px solid var(--line);
       border-radius: 20px;
       padding: 14px;
@@ -581,7 +581,7 @@
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     }
     .hand-card {
-      background: #fff;
+      background: #16171b;
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 13px;
@@ -601,7 +601,7 @@
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
     .list-card {
-      background: #fff;
+      background: #16171b;
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 13px;
@@ -611,7 +611,7 @@
     .list-card li + li { margin-top: 4px; }
 
     details {
-      background: #fff;
+      background: #16171b;
       border: 1px solid var(--line);
       border-radius: 16px;
       overflow: hidden;
@@ -632,7 +632,7 @@
       margin: 14px 0 16px;
       padding: 14px;
       border-radius: 22px;
-      background: linear-gradient(135deg, #fff 0%, #16171b 100%);
+      background: linear-gradient(135deg, rgba(255,90,0,.22) 0%, #16171b 100%);
       border: 1.5px solid rgba(255,125,51,.38);
       box-shadow: 0 10px 24px rgba(120,45,0,.07);
     }
@@ -652,7 +652,7 @@
     }
 
     .personal-meal-slot {
-      background: #fff;
+      background: #16171b;
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 13px;
@@ -701,7 +701,7 @@
     .slot-option li + li { margin-top: 4px; }
 
     .personal-meal-card {
-      background: #fff;
+      background: #16171b;
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 13px;
@@ -742,7 +742,7 @@
     }
 
     .meal-card {
-      background: #fff;
+      background: #16171b;
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 13px;
@@ -791,6 +791,8 @@
     /* ===== Habillage CoachTanguy : theme sombre/orange du site (surcharge le beige v29) ===== */
     :root{--bg:#0a0a0b;--card:#141519;--card-strong:#16171b;--text:#f4f4f5;--muted:#a1a1aa;--line:rgba(255,255,255,.09);--accent:#ff5a00;--accent-2:#ff7d33;--accent-soft:rgba(255,90,0,.12);--good:#34d399;--warn:#fbbf24;--danger:#f87171;--shadow:0 18px 44px rgba(0,0,0,.55);--radius:24px;--radius-sm:18px}
     body{font-family:'Sora',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--text);background:radial-gradient(900px circle at 12% -4%,rgba(255,90,0,.16),transparent 58%),radial-gradient(760px circle at 90% 6%,rgba(255,90,0,.08),transparent 52%),radial-gradient(1000px circle at 86% 88%,rgba(255,90,0,.07),transparent 58%),radial-gradient(680px circle at 6% 72%,rgba(255,90,0,.05),transparent 52%),#0a0a0b;background-attachment:fixed}
+    .choice{background:#141519}
+    .choice:has(input:checked){background:#16171b}
   </style>
 </head>
 <body>
@@ -1231,7 +1233,7 @@
 
         <div id="personalMealsEmpty" class="notice">Après avoir rempli vos données et lancé le calcul, une journée-type adaptée à vos préférences s’affichera ici avec des quantités personnalisées.</div>
 
-        <div class="personal-meal-block" style="background: linear-gradient(135deg, #fff 0%, #16171b 100%);">
+        <div class="personal-meal-block" style="background: linear-gradient(135deg, rgba(255,90,0,.22) 0%, #16171b 100%);">
           <div class="personal-meal-head">
             <div>
               <span class="method-tag">Exemples généraux</span>

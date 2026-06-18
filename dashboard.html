@@ -120,13 +120,13 @@
         </div>
         <div class="actions">
           <button class="btn" id="reset">↺ Réinitialiser</button>
-          <button class="btn" id="export">⤓ Exporter</button>
-          <button class="btn btn--publish" id="publish">⬆ Publier en ligne</button>
+          <button class="btn btn--publish" id="publish">⬆ Mettre en ligne</button>
+          <button class="btn" id="export" title="Télécharger une sauvegarde du fichier (optionnel)">⤓ Sauvegarde</button>
         </div>
       </div>
       <div class="search"><input id="search" type="text" placeholder="Rechercher un texte…" /></div>
       <div class="fields" id="fields"></div>
-      <p class="hint">Les modifications s'affichent en direct dans l'aperçu. Cliquez « <b>Publier en ligne</b> » pour mettre le site à jour automatiquement (en ligne après ~1 min). « Exporter » télécharge seulement une sauvegarde du fichier.</p>
+      <p class="hint">Les modifications s'affichent en direct dans l'aperçu. Cliquez « <b>Mettre en ligne</b> » pour déployer tes changements sur le site (en ligne après ~1 min). « Sauvegarde » télécharge juste le fichier (optionnel).</p>
     </div>
     <!-- APERÇU -->
     <div class="preview">
@@ -211,7 +211,7 @@
       groups.forEach(function(g){
         var keys=Object.keys(g.src).filter(function(fr){ if(!filter) return true; var val=cwork[g.key][fr]!=null?cwork[g.key][fr]:g.src[fr]; return fr.toLowerCase().indexOf(filter)>=0 || String(val).toLowerCase().indexOf(filter)>=0; });
         if(!keys.length) return;
-        html+='<details class="group" open><summary>'+g.title+' ('+keys.length+')</summary><div class="group__body">';
+        html+='<details class="group"><summary>'+g.title+' ('+keys.length+')</summary><div class="group__body">';
         keys.forEach(function(fr){
           var val=cwork[g.key][fr]!=null?cwork[g.key][fr]:g.src[fr];
           var changed=(String(g.src[fr])!==String(val))?' changed':'';
@@ -292,7 +292,7 @@
       var html='';
       sections.forEach(function(s){
         var title=SUB[s]||GROUPS[s]||s;
-        html+='<details class="group" open><summary>'+title+'</summary><div class="group__body">';
+        html+='<details class="group"><summary>'+title+'</summary><div class="group__body">';
         bySection[s].forEach(function(l){
           var dv=getDeep(DEF(),l.path); var changed=(dv!=null&&String(dv)!==l.value)?' changed':'';
           var big=l.value.length>55||l.value.indexOf('<')>=0||l.value.indexOf('\n')>=0;

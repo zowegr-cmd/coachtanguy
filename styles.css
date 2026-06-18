@@ -329,6 +329,9 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
   .hero { min-height: 80vh; }
   .about { grid-template-columns: 1fr; }
   .about__photo { max-width: 420px; margin: 0 auto; }
+  /* À propos : eyebrow + titre centrés sur mobile (comme les autres titres de section) */
+  .about__text .eyebrow { display: block; width: -moz-fit-content; width: fit-content; margin-left: auto; margin-right: auto; }
+  .about__text h2 { text-align: center; }
   .stats { justify-content: center; }
   /* bouton « Travailler avec moi » centré sous les stats */
   .about__text > .btn { display: block; width: -moz-fit-content; width: fit-content; margin-left: auto; margin-right: auto; }

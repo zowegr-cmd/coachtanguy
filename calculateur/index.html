@@ -830,6 +830,11 @@
       #printSheet .ps-foot{margin-top:2.5mm;padding-top:1.5mm;border-top:1px solid #ece3d6;font-size:8pt;color:#7a6d5e!important;text-align:center}
       #printSheet h2,#printSheet h3,#printSheet h4{margin:2mm 0}
     }
+    /* A) la carte resultats s'adapte a son contenu (plus d'etirement vide) */
+    main{align-items:start}
+    #resultats{align-self:start}
+    /* B) nav du calculateur centre */
+    nav.topnav{text-align:center}
   </style>
 </head>
 <body>
@@ -1991,7 +1996,7 @@ function buildPrintSheet(){
       function val(i){var e=document.getElementById(i);return e?((e.value||e.textContent||'')+'').trim():'';}
       var fn=val('firstname');
       var gs=document.getElementById('goal');var goal=(gs&&gs.selectedIndex>0)?gs.options[gs.selectedIndex].text:'';
-      var rb=document.getElementById('resultsBlock');var rp=document.getElementById('personalMealsBlock');
+      var rb=document.getElementById('resultsBlock');var rp=document.getElementById('repas');
       var resC=rb?rb.cloneNode(true):null,rpC=rp?rp.cloneNode(true):null;
       [resC,rpC].forEach(function(c){if(!c)return;
         c.querySelectorAll('button,.button-link,.actions,.notice,.section-title,textarea,script,.hint').forEach(function(e){e.remove();});

@@ -356,11 +356,11 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
        couche ni de re-décodage du logo à chaque fois → fini le micro-saccade. */
     background: #0a0a0c;
     opacity: 0; pointer-events: none;
-    transform: translate3d(0, -8px, 0);          /* le menu glisse/fond d'un seul bloc */
-    will-change: opacity, transform;
-    transition: opacity .2s ease, transform .2s ease;
+    transform: translateX(100%);                 /* hors écran à droite → glisse comme un tiroir */
+    will-change: transform, opacity;
+    transition: transform .3s cubic-bezier(.22,1,.36,1), opacity .25s ease;
   }
-  .nav__links.open { opacity: 1; pointer-events: auto; transform: translate3d(0, 0, 0); }
+  .nav__links.open { opacity: 1; pointer-events: auto; transform: translateX(0); }
   /* Plus de cascade lente : le menu s'ouvre d'un bloc (voir .nav__links).
      Seul le sélecteur de langue garde une petite entrée. */
   @keyframes navLangIn { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }

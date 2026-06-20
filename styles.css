@@ -356,23 +356,14 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
        couche ni de re-décodage du logo à chaque fois → fini le micro-saccade. */
     background: #0a0a0c;
     opacity: 0; pointer-events: none;
-    transform: translateZ(0); -webkit-transform: translateZ(0);
-    will-change: opacity;
-    transition: opacity .25s ease;
+    transform: translate3d(0, -8px, 0);          /* le menu glisse/fond d'un seul bloc */
+    will-change: opacity, transform;
+    transition: opacity .2s ease, transform .2s ease;
   }
-  .nav__links.open { opacity: 1; pointer-events: auto; }
-  /* Apparition fluide en cascade des éléments du menu */
-  @keyframes navItemIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes navLangIn { from { opacity: 0; transform: translateX(-50%) translateY(16px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
-  .nav__links.open > * { animation: navItemIn .5s cubic-bezier(.22,1,.36,1) both; will-change: transform, opacity; }
-  .nav__links.open > *:nth-child(1) { animation-delay: .06s; }
-  .nav__links.open > *:nth-child(2) { animation-delay: .11s; }
-  .nav__links.open > *:nth-child(3) { animation-delay: .16s; }
-  .nav__links.open > *:nth-child(4) { animation-delay: .21s; }
-  .nav__links.open > *:nth-child(5) { animation-delay: .26s; }
-  .nav__links.open > *:nth-child(6) { animation-delay: .31s; }
-  .nav__links.open > *:nth-child(7) { animation-delay: .36s; }
-  .nav__links.open > *:nth-child(8) { animation-delay: .41s; }
+  .nav__links.open { opacity: 1; pointer-events: auto; transform: translate3d(0, 0, 0); }
+  /* Plus de cascade lente : le menu s'ouvre d'un bloc (voir .nav__links).
+     Seul le sélecteur de langue garde une petite entrée. */
+  @keyframes navLangIn { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
   /* logo centré, au-dessus de « Accueil » */
   .nav__menu-logo { display: block; width: 134px; height: auto; margin: 0 auto 20px; flex-shrink: 0; }
   body.menu-open .nav__right,
@@ -403,7 +394,7 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
     gap: 4px; padding: 6px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px;
     background: rgba(255,255,255,.06); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
     box-shadow: 0 12px 32px rgba(0,0,0,.45);
-    animation: navLangIn .5s cubic-bezier(.22,1,.36,1) both .42s;
+    animation: navLangIn .22s ease both .06s;
   }
   body.menu-open .lang-switch a { color: rgba(255,255,255,.72); font-size: 14px; font-weight: 700; letter-spacing: .03em; padding: 9px 18px; border-radius: 999px; transition: .15s; }
   body.menu-open .lang-switch a.active { background: var(--orange); color: #fff; }

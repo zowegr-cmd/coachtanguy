@@ -34,7 +34,26 @@ if (burger && navLinks) {
           e.preventDefault();
           setMenu(false);
           if (location.hash !== '#' + id) history.pushState(null, '', '#' + id);
-          requestAnimationFrame(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+          // On vise l'en-tête de section (pastille orange + titre), pas le haut de la
+          // section (son padding laisserait un gros vide sous la nav). scrollIntoView est
+          // natif/résilient aux décalages de mise en page (images qui chargent) et respecte
+          // scroll-padding-top (= hauteur nav) → la pastille atterrit juste sous la barre.
+          const dest = target.querySelector('.section__head') || target;
+          // 1) Figer la révélation de la section cible : son transform d'animation
+          //    fausserait la position visée.
+          target.querySelectorAll('.reveal').forEach((el) => { el.style.transition = 'none'; el.classList.add('in'); });
+          // 2) Scroll smooth, puis RE-CALAGE jusqu'à stabilisation : les images en
+          //    lazy-load grandissent la page pendant le trajet → sans ça on s'arrête
+          //    trop haut (sur le calculateur).
+          requestAnimationFrame(() => dest.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+          let last = -1, stable = 0; const start = Date.now();
+          const align = () => {
+            dest.scrollIntoView({ behavior: 'instant', block: 'start' });
+            const y = Math.round(window.pageYOffset);
+            if (y === last) { stable++; } else { stable = 0; last = y; }
+            if (stable < 3 && Date.now() - start < 2200) setTimeout(align, 100);
+          };
+          setTimeout(align, 430);
           return;
         }
       }

@@ -377,7 +377,10 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
   .nav__links a.is-active,
   body.nav-over-dark .nav .nav__links a.is-active { color: var(--orange); }
   /* Barre transparente quand le menu est ouvert (rendu sombre cohérent) */
-  body.menu-open { overflow: hidden; }
+  /* Fond sombre quand le menu est ouvert : iOS peint les safe-areas (encoche / barre
+     d'accueil) avec le fond du body -> sinon bande blanche en haut/bas sur les pages
+     claires alors que l'overlay du menu est noir. */
+  body.menu-open { overflow: hidden; background: var(--dark); }
   /* CAUSE RACINE du menu cassé : un backdrop-filter sur la nav crée un "bloc conteneur"
      qui piège le menu plein écran (position:fixed) → menu écrasé à la taille de la nav,
      puis "snap" plein écran quand le flou finit sa transition .3s. On retire donc le
@@ -779,8 +782,11 @@ body.menu-open .lang-switch { bottom: calc(26px + env(safe-area-inset-bottom)); 
 .safe-bottom { bottom: 0; height: env(safe-area-inset-bottom); background: var(--dark); }
 /* Pages à fond clair (nav blanche) : encoche claire pour rester cohérent */
 body.nav-solid .safe-top { background: #ffffff; }
-/* Menu mobile ouvert : le haut redevient sombre (l'overlay est sombre) */
-body.menu-open .safe-top { background: var(--dark); }
+/* Menu mobile ouvert : les DEUX safe-areas redeviennent sombres (l'overlay est sombre),
+   même sur les pages claires. Le fond html sombre couvre le cas où iOS peint via html. */
+body.menu-open .safe-top,
+body.menu-open .safe-bottom { background: var(--dark) !important; }
+html:has(body.menu-open) { background: var(--dark); }
 
 /* ===== Fond de page SOMBRE sur les pages à hero sombre (.has-hero) =====
    Safari iOS peint les safe areas (encoche / barre d'accueil) avec le fond du

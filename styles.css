@@ -377,10 +377,16 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
   .nav__links a.is-active,
   body.nav-over-dark .nav .nav__links a.is-active { color: var(--orange); }
   /* Barre transparente quand le menu est ouvert (rendu sombre cohérent) */
-  /* Verrou de scroll iOS : position:fixed (et top = -scrollY posé en JS) au lieu de
-     overflow:hidden seul. Empêche la barre d'adresse de réapparaître / le viewport de
-     sauter quand on ouvre le menu en étant scrollé → fin du saccade « depuis la FAQ ». */
-  body.menu-open { position: fixed; left: 0; right: 0; width: 100%; overflow: hidden; }
+  body.menu-open { overflow: hidden; }
+  /* CAUSE RACINE du menu cassé : un backdrop-filter sur la nav crée un "bloc conteneur"
+     qui piège le menu plein écran (position:fixed) → menu écrasé à la taille de la nav,
+     puis "snap" plein écran quand le flou finit sa transition .3s. On retire donc le
+     backdrop-filter de la nav en mobile (et c'est aussi un gros gain de perf). Les fonds
+     restent lisibles (nav-solid déjà .92 ; nav-over-dark scrollé remonté à .92). */
+  .nav, .nav.scrolled, body.nav-solid .nav, body.nav-over-dark .nav.scrolled {
+    -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+  }
+  body.nav-over-dark .nav.scrolled { background: rgba(12,12,14,.92); }
   body.menu-open .nav,
   body.menu-open .nav.scrolled {
     background: transparent !important; box-shadow: none !important;

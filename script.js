@@ -10,25 +10,36 @@ if (burger && navLinks) {
     if (burgerVisible() && !navLinks.classList.contains('open')) navLinks.setAttribute('inert', '');
     else navLinks.removeAttribute('inert');
   };
-  let scrollLockY = 0;
   const setMenu = (open) => {
-    if (open) {                                   // fige la page à sa position actuelle
-      scrollLockY = window.scrollY || window.pageYOffset || 0;
-      document.body.style.top = (-scrollLockY) + 'px';
-    }
     navLinks.classList.toggle('open', open);
     burger.classList.toggle('open', open);
     document.body.classList.toggle('menu-open', open);
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if (!open) {                                  // restaure la position de scroll
-      document.body.style.top = '';
-      window.scrollTo(0, scrollLockY);
-    }
     syncInert();
   };
   burger.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => setMenu(false));
+    link.addEventListener('click', (e) => {
+      // Lien-ancre vers la page courante (ex. "index.html#faq" depuis l'accueil) :
+      // on ferme le menu D'ABORD, puis on scrolle — sinon la fermeture du menu
+      // interrompt le smooth-scroll et on s'arrête trop tôt (sur le calculateur).
+      const href = link.getAttribute('href') || '';
+      const h = href.indexOf('#');
+      if (h >= 0) {
+        const path = href.slice(0, h);
+        const id = href.slice(h + 1);
+        const curFile = location.pathname.split('/').pop() || 'index.html';
+        const target = id && document.getElementById(id);
+        if ((!path || path === curFile) && target) {
+          e.preventDefault();
+          setMenu(false);
+          if (location.hash !== '#' + id) history.pushState(null, '', '#' + id);
+          requestAnimationFrame(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+          return;
+        }
+      }
+      setMenu(false);
+    });
   });
   // Échap ferme le menu
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });

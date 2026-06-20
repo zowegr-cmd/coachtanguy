@@ -14,7 +14,16 @@ if (burger && navLinks) {
     navLinks.classList.toggle('open', open);
     burger.classList.toggle('open', open);
     document.body.classList.toggle('menu-open', open);
+    document.documentElement.classList.toggle('menu-open', open);
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    // Encoche / barre d'accueil iOS : sombres UNIQUEMENT quand le menu (noir) est ouvert.
+    // iOS peint la safe-area avec le fond html/body et ne la repeint PAS sur un simple
+    // changement de classe -> on force en INLINE (html + body + les 2 barres). Le set
+    // inline déclenche le repaint que la classe seule ne déclenchait pas.
+    const safeBg = open ? '#0c0c0e' : '';
+    document.documentElement.style.backgroundColor = safeBg;
+    document.body.style.backgroundColor = safeBg;
+    document.querySelectorAll('.safe-top, .safe-bottom').forEach((el) => { el.style.backgroundColor = safeBg; });
     syncInert();
   };
   burger.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));

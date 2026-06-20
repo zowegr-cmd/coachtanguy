@@ -15,7 +15,7 @@ window.SITE_CONTENT = {
   },
   "calc": {
     "eyebrow": "Outil gratuit",
-    "title": "Calculateur alimentaire",
+    "title": "Calculateur alimentaire.",
     "subtitle": "Estimez vos besoins caloriques et la répartition de vos macros en quelques secondes, selon votre profil et vos objectifs."
   },
   "home": {
@@ -75,7 +75,7 @@ window.SITE_CONTENT = {
     },
     "faq": {
       "eyebrow": "FAQ",
-      "title": "Questions fréquemment posées.",
+      "title": "Questions fréquentes.",
       "q1": "Pourquoi proposer des packs de séances ?",
       "a1": "Les packs permettent de simplifier l'organisation avec un seul paiement, tout en favorisant un engagement sur la durée. Ils aident également à rester régulier et motivé dans les séances, ce qui est essentiel pour progresser et obtenir des résultats concrets.",
       "q2": "Comment réserver une séance ?",
@@ -101,7 +101,7 @@ window.SITE_CONTENT = {
     },
     "calcTeaser": {
       "eyebrow": "Outil gratuit",
-      "title": "Calculez vos besoins caloriques en 2 minutes",
+      "title": "Calculez vos besoins caloriques en 2 minutes.",
       "text": "Métabolisme de base, calories cibles, répartition des macros et repères concrets pour composer vos repas : mon calculateur alimentaire gratuit vous donne une base claire pour démarrer — sans inscription.",
       "chip1": "✓ Calories & macros",
       "chip2": "✓ Méthode de l'assiette",
@@ -125,7 +125,7 @@ window.SITE_CONTENT = {
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Contactez Tanguy",
+    "title": "Contactez Tanguy.",
     "subtitle": "Une question ? Envie de commencer ? Écrivez-moi, je vous réponds rapidement.",
     "asideTitle": "Une question ?",
     "asideText": "Le plus simple et le plus rapide : un message direct sur WhatsApp.",
@@ -448,7 +448,7 @@ window.SITE_CONTENT = {
     "chip3": "✓ FR · NL · EN",
     "button": "Visiter zowekine.com",
     "aboutEyebrow": "Qui suis-je ?",
-    "aboutTitle": "Zoé Grêde, kinésithérapeute BELTRA",
+    "aboutTitle": "Zoé Grêde, kinésithérapeute BELTRA.",
     "aboutP1": "J'ai conçu Zowe avec une vision précise : transformer la séance de kinésithérapie en une expérience de haute précision.",
     "aboutP2": "Mon approche ne s'arrête pas à la disparition de la douleur, elle vise l'optimisation durable de votre capital physique.",
     "tick1": "Université Libre de Bruxelles",

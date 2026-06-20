@@ -10,11 +10,20 @@ if (burger && navLinks) {
     if (burgerVisible() && !navLinks.classList.contains('open')) navLinks.setAttribute('inert', '');
     else navLinks.removeAttribute('inert');
   };
+  let scrollLockY = 0;
   const setMenu = (open) => {
+    if (open) {                                   // fige la page à sa position actuelle
+      scrollLockY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.top = (-scrollLockY) + 'px';
+    }
     navLinks.classList.toggle('open', open);
     burger.classList.toggle('open', open);
     document.body.classList.toggle('menu-open', open);
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!open) {                                  // restaure la position de scroll
+      document.body.style.top = '';
+      window.scrollTo(0, scrollLockY);
+    }
     syncInert();
   };
   burger.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));

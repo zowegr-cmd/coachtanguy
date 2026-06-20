@@ -349,18 +349,22 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
     flex-direction: column; justify-content: center; align-items: center;
     gap: 0; padding: calc(74px + env(safe-area-inset-top)) 28px calc(116px + env(safe-area-inset-bottom));
     overflow-y: auto;
-    /* Fond opaque + PAS de backdrop-filter : le flou (quasi invisible car déjà 98,5%
-       opaque) coûtait très cher à calculer sur mobile et provoquait le micro-saccade
-       à l'ouverture. Opacité seule = transition GPU fluide. */
+    /* Fond opaque, PAS de backdrop-filter (flou très coûteux sur mobile).
+       On garde le menu PEINT en permanence — opacity 0 + pointer-events none au lieu
+       de visibility:hidden — et sur sa propre couche GPU (translateZ). Du coup
+       l'ouverture n'est qu'une transition d'opacité composée : plus de re-création de
+       couche ni de re-décodage du logo à chaque fois → fini le micro-saccade. */
     background: #0a0a0c;
-    opacity: 0; visibility: hidden;
-    transition: opacity .25s ease, visibility .25s;
+    opacity: 0; pointer-events: none;
+    transform: translateZ(0); -webkit-transform: translateZ(0);
+    will-change: opacity;
+    transition: opacity .25s ease;
   }
-  .nav__links.open { opacity: 1; visibility: visible; }
+  .nav__links.open { opacity: 1; pointer-events: auto; }
   /* Apparition fluide en cascade des éléments du menu */
   @keyframes navItemIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes navLangIn { from { opacity: 0; transform: translateX(-50%) translateY(16px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
-  .nav__links.open > * { animation: navItemIn .5s cubic-bezier(.22,1,.36,1) both; }
+  .nav__links.open > * { animation: navItemIn .5s cubic-bezier(.22,1,.36,1) both; will-change: transform, opacity; }
   .nav__links.open > *:nth-child(1) { animation-delay: .06s; }
   .nav__links.open > *:nth-child(2) { animation-delay: .11s; }
   .nav__links.open > *:nth-child(3) { animation-delay: .16s; }

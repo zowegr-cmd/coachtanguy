@@ -7,6 +7,10 @@
   <meta name="description" content="Calculateur alimentaire CoachTanguy : métabolisme de base, besoins caloriques, macros, méthode de l'assiette, portions et idées de repas." />
   <link rel="stylesheet" href="../assets/fonts-sora.css" />
   <script>if (window.self !== window.top) document.documentElement.classList.add("is-embedded");</script>
+  <!-- Cache le hero v29 (aligné à gauche) DÈS le <head>, avant le rendu du body : sinon il
+       « flashe » une fraction de seconde avant que le hero centré du site prenne le relais.
+       L'impression (@media print) le ré-affiche plus bas dans le code (ordre source). -->
+  <style>html.is-embedded .wrap > header.hero{display:none!important}</style>
   <link rel="manifest" href="/calculateur/manifest.webmanifest" />
   <meta name="theme-color" content="#0c0c0e" />
   <link rel="apple-touch-icon" href="/calculateur/icons/apple-touch-icon.png" />

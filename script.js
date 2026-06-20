@@ -2,11 +2,20 @@
 const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
 if (burger && navLinks) {
+  // a11y : sur mobile, le menu fermé ne doit pas être focusable. Comme on n'utilise
+  // plus visibility:hidden (pour la fluidité), on rend navLinks « inert » à la place.
+  // Sur desktop (burger masqué), navLinks est la barre normale → jamais inert.
+  const burgerVisible = () => getComputedStyle(burger).display !== 'none';
+  const syncInert = () => {
+    if (burgerVisible() && !navLinks.classList.contains('open')) navLinks.setAttribute('inert', '');
+    else navLinks.removeAttribute('inert');
+  };
   const setMenu = (open) => {
     navLinks.classList.toggle('open', open);
     burger.classList.toggle('open', open);
     document.body.classList.toggle('menu-open', open);
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    syncInert();
   };
   burger.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
   navLinks.querySelectorAll('a').forEach(link => {
@@ -22,9 +31,15 @@ if (burger && navLinks) {
     mlogo.className = 'nav__menu-logo';
     mlogo.src = barLogo ? barLogo.getAttribute('src') : 'assets/logo-white.webp';
     mlogo.alt = 'CoachTanguy';
+    mlogo.width = 160; mlogo.height = 73;          // ratio réservé → aucun saut de mise en page
+    mlogo.decoding = 'async';
     mlogo.setAttribute('aria-hidden', 'true');
     navLinks.insertBefore(mlogo, navLinks.firstChild);
+    if (mlogo.decode) mlogo.decode().catch(function () {});  // pré-décodage → 1ère ouverture fluide
   }
+
+  syncInert();                                  // état initial (mobile fermé = inert)
+  window.addEventListener('resize', syncInert); // suit les bascules mobile/desktop
 }
 
 // ===== Nav adaptative (claire sur fond clair, sombre sur fond sombre) =====

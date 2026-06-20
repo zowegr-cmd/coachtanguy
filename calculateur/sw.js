@@ -4,7 +4,7 @@
    - network-first pour le document (toujours la dernière version,
      avec repli sur le cache hors-ligne)
    ============================================================ */
-const CACHE = 'coachtanguy-calc-v1';
+const CACHE = 'coachtanguy-calc-v2';
 
 // Ressources mises en cache à l'installation (coquille offline)
 const PRECACHE = [

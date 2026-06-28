@@ -529,6 +529,8 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
 .price__name { font-size: 21px; margin-bottom: 14px; }
 .price__amount { font-family: var(--font-head); font-size: 44px; font-weight: 800; line-height: 1; color: var(--black); display: flex; flex-direction: column; gap: 6px; }
 .price__amount span { font-family: var(--font); font-size: 14px; font-weight: 500; color: var(--orange); }
+/* Le nombre (prix éditable) garde le gros style du conteneur, pas celui du sous-prix */
+.price__amount .price__num { font: inherit; color: inherit; }
 .price__meta { font-size: 14px; color: var(--gray-700); margin: 12px 0 4px; }
 .price__list { list-style: none; margin: 22px 0 26px; display: flex; flex-direction: column; gap: 12px; }
 .price__list li { position: relative; padding-left: 28px; color: var(--gray-700); font-size: 15px; }

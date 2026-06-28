@@ -267,9 +267,22 @@
       body:"Contenu complet (HTML)"
     };
 
+    // Fusionne le brouillon (tes modifs) PAR-DESSUS le contenu frais : ainsi les
+    // nouvelles clés ajoutées au site (ex. prix des packs) apparaissent toujours,
+    // même si un ancien brouillon existait, sans perdre tes éditions.
+    function mergeWork(base, over){
+      if(over===null||over===undefined) return base;
+      if(typeof base!=='object'||base===null||Array.isArray(base)) return over;
+      var out={};
+      for(var k in base){ out[k]=mergeWork(base[k], over[k]); }
+      for(var k2 in over){ if(!(k2 in out)) out[k2]=over[k2]; }
+      return out;
+    }
     function loadWork(){
-      try{var raw=localStorage.getItem('SITE_CONTENT_'+LANG); if(raw) return JSON.parse(raw);}catch(e){}
-      return JSON.parse(JSON.stringify(DEF()));
+      var def=JSON.parse(JSON.stringify(DEF()));
+      var draft=null;
+      try{var raw=localStorage.getItem('SITE_CONTENT_'+LANG); if(raw) draft=JSON.parse(raw);}catch(e){}
+      return draft ? mergeWork(def, draft) : def;
     }
     function flatten(obj,prefix,out){
       out=out||[];prefix=prefix||'';

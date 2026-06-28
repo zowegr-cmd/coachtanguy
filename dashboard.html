@@ -254,10 +254,10 @@
       ctaPrimary:"Bouton principal", ctaSecondary:"Bouton secondaire", button:"Bouton",
       cta:"Bouton", text:"Texte", tagline:"Slogan", copyright:"Copyright",
       accueil:"Accueil", collab:"Collaboration (nav)", visio:"Coaching visio", suivi:"Suivi en ligne", faq:"FAQ", contact:"Contact",
-      unite:"Séance à l'unité (40€)", pack4:"Pack 4 séances (140€)", pack8:"Pack 8 séances (240€)",
+      unite:"Séance à l'unité", pack4:"Pack 4 séances", pack8:"Pack 8 séances",
       p1Price:"Prix · séance à l'unité", p2Price:"Prix · pack 4 séances", p3Price:"Prix · pack 8 séances",
       s1Price:"Prix · accompagnement initial", s2Price:"Prix · suivi mensuel",
-      initial:"Accompagnement initial (300€)", mensuel:"Suivi mensuel (150€)",
+      initial:"Accompagnement initial", mensuel:"Suivi mensuel",
       desc:"Description SEO", metaTitle:"Titre SEO (onglet)", metaDesc:"Description SEO",
       heroEyebrow:"Surtitre (hero)", h1:"Titre H1", heroLead:"Texte d'intro (hero)",
       btnEssai:"Bouton « essai »", btnVisio:"Bouton « visio »", btnContact:"Bouton « contact »",
@@ -293,6 +293,9 @@
     }
     function sectionOf(path){var p=path.split('.');return ((p[0]==='home'||p[0]==='local'||p[0]==='legal')&&p.length>1)?p[0]+'.'+p[1]:p[0];}
     function labelOf(path){var last=path.split('.').pop();return LABELS[last]||last;}
+    // Chaque lien Stripe correspond à un prix éditable : on affiche le prix ACTUEL
+    // (de tes sections) à côté du lien, pour qu'ils restent cohérents.
+    var STRIPE_PRICE={'stripe.unite':'visio.p1Price','stripe.pack4':'visio.p2Price','stripe.pack8':'visio.p3Price','stripe.initial':'suivi.s1Price','stripe.mensuel':'suivi.s2Price'};
     function setDeep(obj,path,val){var p=path.split('.');var o=obj;for(var i=0;i<p.length-1;i++){o=o[p[i]];}o[p[p.length-1]]=val;}
     function getDeep(obj,path){return path.split('.').reduce(function(a,k){return a&&a[k]!=null?a[k]:undefined;},obj);}
 
@@ -313,7 +316,8 @@
           var big=l.value.length>55||l.value.indexOf('<')>=0||l.value.indexOf('\n')>=0;
           var ctrl=big?'<textarea data-path="'+l.path+'" rows="3">'+esc(l.value)+'</textarea>'
                       :'<input data-path="'+l.path+'" value="'+esc(l.value)+'" />';
-          html+='<div class="field'+changed+'"><label>'+labelOf(l.path)+' <span class="key">'+l.path+'</span></label>'+ctrl+'</div>';
+          var lbl=labelOf(l.path); var pk=STRIPE_PRICE[l.path]; if(pk){var pr=getDeep(work,pk); if(pr) lbl+=' ('+pr+')';}
+          html+='<div class="field'+changed+'"><label>'+lbl+' <span class="key">'+l.path+'</span></label>'+ctrl+'</div>';
         });
         html+='</div></details>';
       });

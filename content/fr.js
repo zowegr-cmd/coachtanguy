@@ -221,7 +221,7 @@ window.SITE_CONTENT = {
     "flowLabel": "puis",
     "s1Ribbon": "Pour démarrer",
     "s1Name": "Accompagnement initial",
-    "s1Price": "300€",
+    "s1Price": "299€",
     "s1PriceSub": "pour 8 semaines",
     "s1l1": "Accompagnement personnalisé pendant 8 semaines",
     "s1l2": "Programme d'entraînement sur-mesure adapté à vos objectifs",
@@ -234,7 +234,7 @@ window.SITE_CONTENT = {
     "s1l9": "Mise en pause possible en cas de vacances",
     "s1Btn": "Choisir",
     "s2Name": "Suivi mensuel",
-    "s2Price": "150€",
+    "s2Price": "119€",
     "s2PriceSub": "par mois",
     "s2Meta": "Uniquement après l'accompagnement initial",
     "s2l1": "Programme d'entraînement sur-mesure",
@@ -252,8 +252,8 @@ window.SITE_CONTENT = {
     "unite": "contact.html",
     "pack4": "https://buy.stripe.com/5kQ4gBdvB0Yz85A7Pa0RG0a",
     "pack8": "https://buy.stripe.com/8x2cN7fDJePpadI8Te0RG0b",
-    "initial": "https://buy.stripe.com/8x214p8bh22D0D84CY0RG08",
-    "mensuel": "https://buy.stripe.com/dRm8wR63922DdpUfhC0RG09"
+    "initial": "https://buy.stripe.com/6oU3cx9fl6iTadIb1m0RG0c",
+    "mensuel": "https://buy.stripe.com/14A3cx9fl0YzadI0mI0RG0d"
   },
   "meta": {
     "index": {

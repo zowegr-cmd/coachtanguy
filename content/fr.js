@@ -94,7 +94,7 @@ window.SITE_CONTENT = {
     "cta": {
       "title": "Prêt à vous lancer ?",
       "text": "Contactez-moi pour discuter de vos objectifs et trouver la formule qui vous correspond. La première séance est offerte.",
-      "button": "Me contacter"
+      "button": "Contacter"
     },
     "payments": {
       "title": "Paiement sécurisé via Stripe"
@@ -235,7 +235,7 @@ window.SITE_CONTENT = {
     "s1Btn": "Choisir",
     "s2Name": "Suivi mensuel",
     "s2Price": "119€",
-    "s2PriceSub": "par mois",
+    "s2PriceSub": "toutes les 4 semaines",
     "s2Meta": "Uniquement après l'accompagnement initial",
     "s2l1": "Programme d'entraînement sur-mesure",
     "s2l2": "Accès via l'app FitPros",

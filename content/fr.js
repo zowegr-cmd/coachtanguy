@@ -234,7 +234,7 @@ window.SITE_CONTENT = {
     "s1l9": "Mise en pause possible en cas de vacances",
     "s1Btn": "Choisir",
     "s2Name": "Suivi mensuel",
-    "s2Price": "119€",
+    "s2Price": "139€",
     "s2PriceSub": "toutes les 4 semaines",
     "s2Meta": "Uniquement après l'accompagnement initial",
     "s2l1": "Programme d'entraînement sur-mesure",

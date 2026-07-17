@@ -253,7 +253,7 @@ window.SITE_CONTENT = {
     "pack4": "https://buy.stripe.com/5kQ4gBdvB0Yz85A7Pa0RG0a",
     "pack8": "https://buy.stripe.com/8x2cN7fDJePpadI8Te0RG0b",
     "initial": "https://buy.stripe.com/6oU3cx9fl6iTadIb1m0RG0c",
-    "mensuel": "https://buy.stripe.com/14A3cx9fl0YzadI0mI0RG0d"
+    "mensuel": "https://buy.stripe.com/6oU14p77d4aLadIglG0RG0g"
   },
   "meta": {
     "index": {

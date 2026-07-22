@@ -1,0 +1,1280 @@
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Démo FitPros — CoachTanguy</title>
+  <style>
+    :root{
+      --site-bg:#f7f5f1;
+      --site-card:#ffffff;
+      --site-ink:#0a0a0a;
+      --site-muted:#7b7b7d;
+      --site-line:#e7e2db;
+      --orange:#ff5a00;
+      --orange-soft:#fff0e6;
+
+      --black:#000000;
+      --app-card:#222329;
+      --app-card-2:#25262c;
+      --app-border:#2f3138;
+      --soft:#9a9ca5;
+      --soft-2:#73757d;
+      --green:#39d353;
+      --green-soft:#203a28;
+      --purple:#8d7cf8;
+      --red:#ff6666;
+      --white:#ffffff;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 90% 4%,rgba(255,90,0,.07),transparent 28rem),
+        var(--site-bg);
+      color:var(--site-ink);
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Inter,Arial,sans-serif;
+    }
+    button,input,textarea{font:inherit}
+    button{border:0;background:none;cursor:pointer}
+    img{max-width:100%;display:block}
+
+    .page{min-height:100vh;padding:28px clamp(18px,4vw,56px) 72px}
+    .site-brand{width:max-content;display:flex;align-items:center;gap:10px;margin:0 auto 18px}
+    .site-brand img{width:44px;height:28px;object-fit:contain}
+    .site-brand span{font-weight:850;font-size:15px;letter-spacing:-.02em}
+    .tag{
+      display:table;margin:0 auto 18px;padding:8px 18px;border-radius:999px;
+      background:var(--orange-soft);color:var(--orange);font-weight:850;font-size:12px;letter-spacing:.14em
+    }
+    h1{
+      max-width:900px;margin:0 auto;text-align:center;
+      font-size:clamp(40px,4.3vw,62px);line-height:1;letter-spacing:-.055em;font-weight:900
+    }
+    .intro{
+      max-width:730px;margin:24px auto 0;text-align:center;color:var(--site-muted);
+      font-size:clamp(17px,1.5vw,21px);line-height:1.58
+    }
+    .layout{
+      width:min(1220px,100%);margin:64px auto 0;
+      display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:64px;align-items:center
+    }
+    .copy h2{margin:0;font-size:clamp(28px,2.8vw,40px);line-height:1.08;letter-spacing:-.045em;font-weight:850}
+    .copy > p{margin:22px 0 0;color:var(--site-muted);font-size:19px;line-height:1.72;max-width:660px}
+    .bullets{margin-top:30px;display:grid;gap:12px}
+    .bullet{
+      display:grid;grid-template-columns:44px 1fr;gap:14px;padding:16px;border-radius:20px;
+      background:rgba(255,255,255,.72);border:1px solid var(--site-line);box-shadow:0 8px 24px rgba(10,10,10,.035)
+    }
+    .bullet-no{
+      width:44px;height:44px;border-radius:14px;display:grid;place-items:center;
+      background:var(--site-ink);color:#fff;font-weight:850;font-size:13px
+    }
+    .bullet strong{display:block;font-size:16px;margin-bottom:4px;font-weight:800}
+    .bullet span{display:block;color:var(--site-muted);font-size:14px;line-height:1.45}
+
+
+    .copy{text-align:center}
+    .copy h2{max-width:620px;margin-left:auto;margin-right:auto}
+    .copy > p{max-width:650px;margin-left:auto;margin-right:auto}
+    .site-copy-secondary{
+      max-width:650px;
+      margin:46px auto 0;
+      padding-top:38px;
+      border-top:1px solid var(--site-line);
+    }
+    .site-copy-secondary h3{
+      margin:0;
+      font-size:clamp(28px,2.8vw,40px);
+      line-height:1.08;
+      letter-spacing:-.045em;
+      font-weight:850;
+    }
+    .site-copy-secondary p{
+      margin:20px 0 0;
+      color:var(--site-muted);
+      font-size:18px;
+      line-height:1.72;
+    }
+
+    .demo-side{display:grid;justify-items:center;gap:14px}
+    .hint{
+      display:flex;align-items:center;gap:9px;padding:10px 14px;border-radius:999px;
+      background:#fff;border:1px solid var(--site-line);box-shadow:0 12px 26px rgba(0,0,0,.06);font-size:13px;font-weight:750
+    }
+    .hint i{
+      width:9px;height:9px;border-radius:50%;background:var(--orange);
+      box-shadow:0 0 0 0 rgba(255,90,0,.34);animation:pulse 1.8s infinite;display:block
+    }
+    @keyframes pulse{70%{box-shadow:0 0 0 10px transparent}}
+
+    .phone{
+      width:390px;height:800px;border-radius:58px;padding:11px;
+      background:linear-gradient(145deg,#2c2d31 0%,#080808 30%,#000 76%);
+      box-shadow:0 40px 80px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.1);
+      position:relative
+    }
+    .phone:before{
+      content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);
+      width:112px;height:28px;border-radius:18px;background:#000;z-index:20
+    }
+    .screen{
+      width:100%;height:100%;border-radius:46px;overflow:hidden;background:#000;color:#fff;position:relative
+    }
+
+    .status{
+      position:absolute;top:0;left:0;right:0;height:44px;padding:10px 18px 0;
+      display:flex;align-items:center;justify-content:space-between;z-index:30;font-size:11px;font-weight:700;pointer-events:none
+    }
+    .status-left,.status-right{display:flex;align-items:center;gap:7px}
+    .mute-icon{width:10px;height:10px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg);opacity:.9}
+    .signal{display:flex;gap:1px;align-items:flex-end;height:10px}
+    .signal i{display:block;width:2px;border-radius:2px;background:#fff}
+    .signal i:nth-child(1){height:4px}.signal i:nth-child(2){height:6px}.signal i:nth-child(3){height:8px}.signal i:nth-child(4){height:10px}
+    .wifi{width:14px;height:10px;border:2px solid transparent;border-top-color:#fff;border-radius:50%;position:relative;top:1px}
+    .wifi:before,.wifi:after{
+      content:"";position:absolute;left:50%;transform:translateX(-50%);border:2px solid transparent;border-top-color:#fff;border-radius:50%
+    }
+    .wifi:before{top:-3px;width:10px;height:8px}
+    .wifi:after{top:-6px;width:16px;height:12px}
+    .battery{
+      min-width:27px;height:16px;padding:0 4px;border-radius:6px;background:#d6d6d6;color:#111;
+      display:grid;place-items:center;font-size:10px;font-weight:800
+    }
+
+    .app{position:absolute;inset:0;background:#000}
+    .view{
+      position:absolute;inset:0;padding:58px 16px 94px;overflow-y:auto;
+      opacity:0;pointer-events:none;transform:translateX(18px);
+      transition:opacity .22s ease,transform .22s ease;scrollbar-width:none;background:#000
+    }
+    .view::-webkit-scrollbar{display:none}
+    .view.active{opacity:1;pointer-events:auto;transform:none}
+
+    .top-domain{text-align:center;margin-top:6px}
+    .top-domain .domain{
+      display:inline-block;font-size:17px;font-weight:700;letter-spacing:-.03em;color:#fff
+    }
+    .domain-bar{width:110px;height:6px;border-radius:999px;background:#2f2f34;margin:10px auto 0}
+
+    .home-float-right{position:absolute;right:16px;top:70px;display:grid;gap:14px}
+    .round-btn{
+      width:58px;height:58px;border-radius:50%;background:#111216;border:1px solid #2a2b30;
+      display:grid;place-items:center;color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.03) inset
+    }
+    .round-btn.avatar{font-size:14px;font-weight:650}
+    .round-btn svg{width:22px;height:22px}
+    .dumbbell-mark{margin-top:42px;width:24px;height:24px;color:#fff;opacity:.96}
+
+    .hello{
+      margin:42px 0 0;font-size:38px;line-height:1.02;letter-spacing:-.06em;font-weight:780
+    }
+    .date{
+      margin:10px 0 0;color:#6f7178;font-size:18px;letter-spacing:-.03em;font-weight:500
+    }
+    .week-card{
+      margin-top:36px;background:#1f2025;border-radius:26px;padding:18px 18px 20px;border:1px solid #2a2c33
+    }
+    .week-top{display:grid;grid-template-columns:52px 1fr auto;gap:14px;align-items:center}
+    .icon-circle{
+      width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#202126;color:#797b84
+    }
+    .icon-circle svg{width:20px;height:20px}
+    .week-card h3{margin:0;font-size:22px;line-height:1;letter-spacing:-.04em;font-weight:760}
+    .week-card p{margin:9px 0 0;color:#73757d;font-size:13px;font-weight:500}
+    .week-score{font-size:32px;font-weight:760;letter-spacing:-.06em;white-space:nowrap}
+    .week-score span{color:#6a6c74;font-size:24px;font-weight:650}
+    .week-progress{margin-top:18px;height:8px;border-radius:999px;background:#1e1f24;overflow:hidden}
+    .week-progress i{display:block;height:100%;width:0;background:#2d2f35;border-radius:999px}
+    .week-days{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;justify-items:center}
+    .week-days .dot{
+      width:38px;height:38px;border-radius:50%;background:#1f2025;display:grid;place-items:center;color:#80828a;font-size:17px;font-weight:550
+    }
+
+    .section-row{margin:32px 0 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .section-row .title-inline{display:flex;align-items:center;gap:14px}
+    .section-row .title-inline h3{margin:0;font-size:20px;line-height:1;letter-spacing:-.04em;font-weight:760}
+    .section-row .see{color:#fff;font-size:13px;font-weight:650}
+
+    .carousel{
+      display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:12px;overflow-x:auto;padding-bottom:6px;
+      scrollbar-width:none;scroll-snap-type:x mandatory
+    }
+    .carousel::-webkit-scrollbar{display:none}
+    .program-card{
+      position:relative;min-height:360px;overflow:hidden;border-radius:24px;scroll-snap-align:start;background:#15161a;text-align:left
+    }
+    .program-card img{
+      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.78) saturate(.9)
+    }
+    .program-card:after{
+      content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 18%, rgba(0,0,0,.68) 70%, rgba(0,0,0,.9))
+    }
+    .program-card .badge{
+      position:absolute;left:12px;top:12px;z-index:2;display:flex;align-items:center;gap:7px;
+      padding:8px 12px;border-radius:999px;background:rgba(13,14,17,.7);backdrop-filter:blur(10px);font-size:12px;font-weight:650
+    }
+    .bookmark{
+      position:absolute;right:12px;top:12px;z-index:2;width:40px;height:40px;border-radius:50%;
+      background:rgba(255,255,255,.9);display:grid;place-items:center;color:#16171b
+    }
+    .bookmark svg{width:18px;height:18px}
+    .program-copy{position:absolute;left:16px;right:16px;bottom:14px;z-index:2}
+    .program-copy h4{
+      margin:0;font-size:20px;line-height:1.12;letter-spacing:-.04em;font-weight:760
+    }
+    .program-copy p{margin:10px 0 0;font-size:14px;color:#d7d7db;font-weight:500}
+    .carousel-indicator{margin-top:8px;height:6px;border-radius:999px;background:#2c2d31;overflow:hidden}
+    .carousel-indicator i{display:block;width:16%;height:100%;background:#f4f4f4;border-radius:999px}
+
+    .bottom-nav{
+      position:absolute;left:0;right:0;bottom:0;height:83px;background:rgba(0,0,0,.94);border-top:1px solid #1c1d22;
+      display:grid;grid-template-columns:1fr 1fr 70px 1fr 1fr;align-items:start;padding:10px 8px 8px;z-index:25
+    }
+    .nav-item{display:grid;justify-items:center;gap:4px;color:#666870;font-size:9px;font-weight:500}
+    .nav-item svg{width:24px;height:24px}
+    .nav-item.active{color:#fff}
+    .plus-wrap{display:grid;justify-items:center;align-content:start}
+    .plus{
+      width:66px;height:66px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;
+      font-size:36px;line-height:1;box-shadow:0 0 35px rgba(255,255,255,.18);position:relative;top:-14px;font-weight:300
+    }
+
+    .program-detail{padding-top:58px}
+    .hero{
+      position:relative;margin:-58px -16px 0;height:300px;overflow:hidden;background:#111
+    }
+    .hero img{width:100%;height:100%;object-fit:cover;filter:brightness(.72)}
+    .hero:after{
+      content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.68) 65%,rgba(0,0,0,.95))
+    }
+    .hero-top{
+      position:absolute;left:0;right:0;top:58px;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:0 16px
+    }
+    .hero-back{
+      width:48px;height:48px;border-radius:50%;background:rgba(18,19,22,.78);border:1px solid rgba(255,255,255,.06);display:grid;place-items:center
+    }
+    .hero-back svg{width:24px;height:24px}
+    .hero-text{position:absolute;left:16px;right:16px;bottom:22px;z-index:2}
+    .hero-text h2{
+      margin:0;font-size:28px;line-height:1.08;letter-spacing:-.05em;font-weight:800;max-width:300px
+    }
+    .hero-text p{margin:10px 0 0;color:#a0a1a8;font-size:16px;font-weight:500}
+    .hero-desc{margin-top:24px;color:#c8c8cd;font-size:15px;line-height:1.9;font-weight:450}
+    .read-more{display:inline-block;margin-top:10px;color:#fff;font-weight:700;font-size:16px}
+    .stats-panel{
+      margin-top:20px;background:#202126;border-radius:24px;padding:18px 8px;border:1px solid #2b2d34;
+      display:grid;grid-template-columns:repeat(4,1fr);align-items:center;text-align:center
+    }
+    .stats-panel .col strong{display:block;font-size:23px;font-weight:780;letter-spacing:-.04em}
+    .stats-panel .col span{
+      display:block;color:#777980;font-size:10px;margin-top:6px;text-transform:uppercase;letter-spacing:.06em;font-weight:600
+    }
+    .stats-panel .separator{width:1px;height:46px;background:#26272d;justify-self:center}
+    .ring{
+      width:56px;height:56px;border-radius:50%;margin:0 auto;background:conic-gradient(#ffffff 7%, #2b2c31 0);position:relative
+    }
+    .ring:after{
+      content:"7%";position:absolute;inset:6px;border-radius:50%;background:#17181d;color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700
+    }
+    .weeks{
+      margin:22px 0 18px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:center
+    }
+    .week-tab{
+      color:#73757c;font-size:18px;letter-spacing:-.04em;text-align:center;padding:14px 0;border-radius:24px;font-weight:650
+    }
+    .week-tab.active{background:#111216;color:#fff;border:1px solid #202126}
+
+    .day-card{
+      width:100%;padding:22px 18px;border-radius:24px;background:#23242a;border:1px solid #2d2f36;
+      display:grid;grid-template-columns:58px 1fr 18px;gap:16px;align-items:center;margin-bottom:16px;text-align:left;color:#fff
+    }
+    .day-icon{
+      width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#2f3036;color:#fff
+    }
+    .day-icon.green{background:#203a28;color:#5ee173}
+    .day-main h4{margin:0;font-size:18px;letter-spacing:-.03em;font-weight:500;color:#fff}
+    .day-main p{margin:7px 0 0;color:#91939b;font-size:14px;line-height:1.4;font-weight:500}
+    .day-main p .green{color:#3fd55f}
+    .chev{color:#666870;font-size:26px;font-weight:300}
+
+    .sheet-overlay{
+      position:absolute;inset:0;background:rgba(0,0,0,.52);display:none;align-items:flex-end;z-index:40
+    }
+    .sheet-overlay.show{display:flex}
+    .sheet{
+      width:100%;border-radius:28px 28px 0 0;background:#1f2025;padding:14px 16px 20px;
+      animation:slideUp .22s ease;max-height:74%;overflow:auto;scrollbar-width:none
+    }
+    .sheet::-webkit-scrollbar{display:none}
+    @keyframes slideUp{from{transform:translateY(28px);opacity:0}}
+    .sheet-grab{width:70px;height:8px;border-radius:999px;background:#505158;margin:0 auto 14px}
+    .sheet h3{margin:0 0 18px;font-size:24px;letter-spacing:-.04em;font-weight:800}
+    .sheet-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+    .sheet-stat{border-radius:24px;background:#2a2b31;padding:18px 12px;text-align:center}
+    .sheet-stat strong{display:block;font-size:28px;line-height:1;font-weight:800}
+    .sheet-stat span{
+      display:block;color:#7e8088;text-transform:uppercase;letter-spacing:.08em;font-size:9px;margin-top:10px;font-weight:650
+    }
+    .sheet section h4{margin:0 0 16px;font-size:20px;letter-spacing:-.04em;font-weight:760}
+    .mini-ex{display:grid;grid-template-columns:58px 1fr 36px;gap:14px;align-items:center;margin-bottom:18px}
+    .mini-ex .thumb{width:58px;height:58px;border-radius:50%;overflow:hidden;background:#23242a}
+    .mini-ex .thumb img{width:100%;height:100%;object-fit:cover}
+    .mini-ex strong{display:block;font-size:16px;letter-spacing:-.03em;font-weight:700}
+    .mini-ex span{display:block;color:#90919a;font-size:14px;margin-top:6px;font-weight:500}
+    .comment-btn{
+      width:32px;height:32px;border-radius:50%;background:#292a30;display:grid;place-items:center;color:#8b8d95;font-size:14px
+    }
+    .sheet-start{position:sticky;bottom:0;left:0;right:0;background:#17181d;padding-top:12px}
+    .sheet-start .btn{
+      width:100%;padding:18px 18px;border-radius:24px;background:#fff;color:#000;
+      font-size:22px;font-weight:760;letter-spacing:-.03em;display:flex;align-items:center;justify-content:center;gap:12px;
+      box-shadow:0 -6px 24px rgba(0,0,0,.24)
+    }
+    .sheet-start .btn svg{width:20px;height:20px}
+
+    .exercise-header{
+      display:grid;grid-template-columns:auto 1fr auto auto;gap:14px;align-items:center;margin-bottom:12px
+    }
+    .exercise-header .title{
+      margin:0;font-size:16px;line-height:1.1;letter-spacing:-.03em;font-weight:650;
+      text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+    }
+    .exercise-header .link{color:#fff;font-size:16px;font-weight:500}
+    .icon-btn{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff}
+    .icon-btn svg{width:20px;height:20px}
+    .exercise-card{
+      background:transparent;border:0;border-radius:0;padding:0;margin-top:12px
+    }
+    .exercise-card h3{margin:0 0 12px;font-size:17px;line-height:1.2;letter-spacing:-.035em;font-weight:700}
+    .exercise-top{display:grid;grid-template-columns:112px 1fr 40px;gap:12px;align-items:start}
+    .video-thumb{
+      width:112px;height:76px;border-radius:16px;overflow:hidden;position:relative;background:#111;cursor:default;pointer-events:none
+    }
+    .video-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.78)}
+    .video-thumb .play{
+      position:absolute;inset:0;margin:auto;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.88);color:#111;
+      display:grid;place-items:center;font-size:16px;padding-left:3px;font-weight:700
+    }
+    .last-time{padding-top:6px}
+    .last-time .label{color:#7f8087;font-size:13px;font-weight:500}
+    .last-time .value{margin-top:8px;color:#ff6464;font-size:15px;font-weight:700}
+    .last-time .history-link{margin-top:8px;color:#91939b;font-size:12px;font-weight:500}
+    .more-circle{
+      width:38px;height:38px;border-radius:50%;background:#111216;color:#fff;display:grid;place-items:center;font-size:18px;font-weight:700
+    }
+
+    .metric{margin-top:16px}
+    .metric-title{
+      display:flex;align-items:center;gap:6px;font-size:12px;font-weight:580;letter-spacing:-.01em;color:#d8d9de;margin-bottom:8px
+    }
+    .metric-title .accent{color:var(--purple);font-size:10px;font-weight:850;text-transform:uppercase}
+    .metric-title.red .accent{color:var(--red)}
+    .metric-title.green .accent{color:#4ee37e}
+    .unit-pill{padding:3px 7px;border-radius:999px;background:#38403c;color:#6df08d;font-size:9px;font-weight:650}
+    .unit-pill.red{background:#45363a;color:#ff7575}
+    .boxes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .box{
+      background:#0f1013;border:1px solid #1d1f25;border-radius:14px;padding:8px 6px;text-align:center;min-height:62px
+    }
+    .box small{display:block;color:#9c9ea4;font-size:10px;margin-bottom:5px;font-weight:480}
+    .box input{
+      width:100%;background:transparent;border:0;outline:none;color:#fff;text-align:center;
+      font-size:15px;letter-spacing:-.01em;font-weight:480
+    }
+    .set-adjust{
+      margin-top:14px;display:flex;align-items:center;justify-content:center;gap:24px;color:#aeafb5;font-size:14px;font-weight:520
+    }
+    .set-adjust .round{
+      width:40px;height:40px;border-radius:50%;background:#111216;display:grid;place-items:center;color:#fff;font-size:21px;font-weight:380
+    }
+    .coach-note{
+      margin-top:18px;border-radius:18px;background:#101115;border:1px solid #1f2025;padding:14px
+    }
+    .coach-note h4{
+      margin:0 0 10px;color:#8d8f97;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:750
+    }
+    .coach-note p{margin:0;color:#d1d2d6;font-size:13px;line-height:1.55;font-weight:430}
+    .exercise-bottom{
+      position:sticky;left:0;right:0;bottom:-1px;margin:22px -16px -14px;padding:12px 16px 18px;background:rgba(0,0,0,.96);
+      border-top:1px solid #17181d;display:grid;grid-template-columns:86px 68px 1fr;gap:12px;align-items:center
+    }
+    .pill-btn{
+      height:52px;border-radius:26px;background:#111216;border:1px solid #1d1f24;color:#fff;
+      display:grid;place-items:center;font-size:17px;font-weight:650
+    }
+    .pill-btn.primary{background:#fff;color:#000;border:0;font-size:18px;font-weight:760}
+    .pill-btn .timer-sm{font-size:16px;letter-spacing:-.03em;font-weight:650}
+    .pill-btn.icon-plus{display:flex;align-items:center;justify-content:center;gap:6px;color:#c8c8cc}
+    .pill-btn.icon-plus svg{width:16px;height:16px}
+
+    .video-modal{
+      position:absolute;inset:0;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;z-index:60;padding:18px
+    }
+    .video-modal.show{display:flex}
+    .video-frame{
+      width:100%;max-width:340px;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#111;position:relative
+    }
+    .video-frame iframe{width:100%;height:100%;border:0}
+    .close-video{
+      position:absolute;top:-46px;right:0;width:38px;height:38px;border-radius:50%;background:#fff;color:#111;display:grid;place-items:center;font-size:24px
+    }
+
+    .complete-overlay{position:absolute;inset:0;background:rgba(0,0,0,.58);display:none;align-items:flex-end;z-index:65}
+    .complete-overlay.show{display:flex}
+    .complete-card{
+      width:100%;background:#17181d;border-radius:28px 28px 0 0;padding:14px 18px 22px;
+      animation:slideUp .22s ease;max-height:80%;overflow:auto;scrollbar-width:none
+    }
+    .complete-card::-webkit-scrollbar{display:none}
+    .complete-card .grab{width:72px;height:8px;border-radius:999px;background:#505158;margin:0 auto 18px}
+    .complete-card h3{margin:0;font-size:27px;letter-spacing:-.05em;font-weight:800}
+    .complete-card .subtitle{margin-top:10px;color:#8f9198;font-size:16px;line-height:1.5;font-weight:450}
+    .summary-grid{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .summary-box{padding:20px 8px;border-radius:24px;background:#24252b;text-align:center}
+    .summary-box strong{display:block;font-size:27px;line-height:1;font-weight:800}
+    .summary-box span{
+      display:block;margin-top:10px;color:#7b7d84;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:650
+    }
+    .rating{margin-top:28px;color:#d6d7db;font-size:17px;font-weight:600}
+    .stars{margin-top:18px;display:flex;gap:12px;font-size:48px;line-height:1;color:#7a7c84}
+    .stars button{color:inherit;padding:0}
+    .stars button.active{color:#fff}
+    .note{
+      width:100%;min-height:130px;margin-top:22px;background:#24252b;border:0;border-radius:24px;padding:18px 18px;color:#fff;resize:vertical;
+      font-size:18px;outline:none;font-weight:500
+    }
+    .note::placeholder{color:#9b9ca3}
+    .complete-actions{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .complete-actions button{height:68px;border-radius:28px;font-size:22px;font-weight:760;letter-spacing:-.03em}
+    .complete-actions .cancel{background:#24252b;color:#9fa0a8}
+    .complete-actions .save{background:#fff;color:#000}
+
+    .toast{
+      position:absolute;left:50%;transform:translateX(-50%);bottom:98px;z-index:70;width:calc(100% - 34px);
+      padding:12px 14px;border-radius:14px;background:#fff;color:#111;text-align:center;font-size:14px;font-weight:760;
+      opacity:0;pointer-events:none;transition:.2s ease;box-shadow:0 18px 34px rgba(0,0,0,.32)
+    }
+    .toast.show{opacity:1}
+
+    .note-site{max-width:400px;text-align:center;color:var(--site-muted);font-size:12px;line-height:1.5}
+    .legend{
+      max-width:1040px;margin:64px auto 0;padding:18px 20px;border-radius:18px;background:rgba(255,255,255,.72);
+      border:1px solid var(--site-line);color:var(--site-muted);text-align:center;font-size:13px;line-height:1.5
+    }
+
+    @media (max-width:980px){
+      .layout{grid-template-columns:1fr;gap:42px;margin-top:52px}
+      .copy{text-align:center}
+      .copy > p{margin-left:auto;margin-right:auto}
+      .phone{width:min(390px,calc(100vw - 30px));height:min(800px,calc((100vw - 30px)*2.051))}
+    }
+    @media (max-width:480px){
+      .page{padding-left:12px;padding-right:12px}
+      h1{font-size:38px}
+      .intro{font-size:16px}
+      .copy h2{font-size:28px}
+      .copy > p{font-size:17px}
+      .phone{width:calc(100vw - 24px);height:calc((100vw - 24px)*2.051)}
+    }
+  </style>
+  <meta name="robots" content="noindex, nofollow" />
+  <script>if(window.self!==window.top)document.documentElement.classList.add("is-embedded")</script>
+  <style>
+    html.is-embedded body{background:transparent!important}
+    html.is-embedded main>.site-brand,html.is-embedded main>.tag,html.is-embedded main>h1{display:none!important}
+    html.is-embedded .page{min-height:0!important;padding:4px clamp(12px,3vw,36px) 14px!important}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="site-brand">
+      <img src="img/a1.webp" alt="Logo CoachTanguy">
+      <span>CoachTanguy.</span>
+    </div>
+    <div class="tag">FITPROS</div>
+    <h1>Votre programme sur mesure<br>dans votre poche.</h1>
+
+    <section class="layout">
+      
+<div class="copy">
+  <h2>Un espace simple pour suivre votre progression.</h2>
+  <p>
+    Depuis l'application, vous retrouvez facilement vos entraînements en cours,
+    votre progression de la semaine et les prochaines séances prévues.
+    Tout est centralisé pour garder une vision claire de votre suivi
+    et rester régulier dans votre pratique.
+  </p>
+
+  <div class="site-copy-secondary">
+    <h3>Des séances guidées étape par étape.</h3>
+    <p>
+      Chaque séance est organisée de manière claire avec les exercices,
+      les séries, les répétitions, les consignes associées et les vidéos d'exécution.
+      Vous pouvez lancer votre entraînement directement depuis l'application
+      et suivre le programme à votre rythme, en toute autonomie.
+    </p>
+  </div>
+</div>
+
+
+      <div class="demo-side">
+        <div class="hint"><i></i>Cliquez dans le téléphone</div>
+
+        <div class="phone">
+          <div class="screen">
+            <div class="status">
+              <div class="status-left"><span id="clock">23:18</span><span class="mute-icon"></span></div>
+              <div class="status-right">
+                <div class="signal"><i></i><i></i><i></i><i></i></div>
+                <div class="wifi"></div>
+                <div class="battery">25</div>
+              </div>
+            </div>
+
+            <div class="app">
+              <!-- HOME -->
+              <section class="view active" id="view-home">
+                <div class="top-domain">
+                  <div class="domain">app.fitpros.io</div>
+                  <div class="domain-bar"></div>
+                </div>
+
+                <div class="home-float-right">
+                  <button class="round-btn" aria-label="Menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                      <rect x="4" y="5" width="16" height="6" rx="1.8"></rect>
+                      <path d="M4 16h16"></path>
+                      <path d="M4 20h16"></path>
+                    </svg>
+                  </button>
+                  <button class="round-btn avatar" aria-label="Profil d’Alex">AL</button>
+                </div>
+
+                <svg class="dumbbell-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 10v4M7 9v6M17 9v6M20 10v4"></path>
+                  <path d="M7 12h10"></path>
+                  <path d="M2.5 8.5 7 10M2.5 15.5 7 14M17 10l4.5-1.5M17 14l4.5 1.5"></path>
+                </svg>
+
+                <h2 class="hello">Good evening,<br>Alex</h2>
+                <p class="date">Monday, July 13</p>
+
+                <div class="week-card">
+                  <div class="week-top">
+                    <div class="icon-circle">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 16l5-5 4 4 7-7"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3>This Week</h3>
+                      <p>1 of 3 workouts</p>
+                    </div>
+                    <div class="week-score">1<span>/3</span></div>
+                  </div>
+                  <div class="week-progress"><i style="width:33%"></i></div>
+                  <div class="week-days">
+                    <div class="dot">1</div>
+                    <div class="dot">2</div>
+                    <div class="dot">3</div>
+                  </div>
+                </div>
+
+                <div class="section-row">
+                  <div class="title-inline">
+                    <div class="icon-circle" style="width:34px;height:34px">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M8 4 5 10h5l-2 10 8-12h-5l2-4z"></path>
+                      </svg>
+                    </div>
+                    <h3>Continue Training</h3>
+                  </div>
+                  <button class="see" id="see-all-home">See All</button>
+                </div>
+
+                <div class="carousel" id="carousel">
+                  <article class="program-card" id="home-program-card">
+                    <img src="img/a2.webp" alt="">
+                    <div class="badge">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M8 4 5 10h5l-2 10 8-12h-5l2-4z"></path>
+                      </svg>
+                      <span>From CoachTanguy</span>
+                    </div>
+                    <div class="bookmark">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 4h10a1 1 0 0 1 1 1v15l-6-3-6 3V5a1 1 0 0 1 1-1z"/>
+                      </svg>
+                    </div>
+                    <div class="program-copy">
+                      <h4>Force & mobilité - 8 semaines</h4>
+                      <p>3 / 24 workouts</p>
+                    </div>
+                  </article>
+
+                  <article class="program-card">
+                    <img src="img/a3.webp" alt="">
+                    <div class="badge">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M8 4 5 10h5l-2 10 8-12h-5l2-4z"></path>
+                      </svg>
+                      <span>From CoachTanguy</span>
+                    </div>
+                    <div class="program-copy">
+                      <h4>Full Body maison - 4 semaines</h4>
+                      <p>1 / 12 workouts</p>
+                    </div>
+                  </article>
+                </div>
+                <div class="carousel-indicator"><i></i></div>
+              </section>
+
+              <!-- PROGRAM -->
+              <section class="view program-detail" id="view-program">
+                <div class="top-domain">
+                  <div class="domain">app.fitpros.io</div>
+                  <div class="domain-bar"></div>
+                </div>
+
+                <div class="hero">
+                  <img src="img/a4.webp" alt="">
+                  <div class="hero-top">
+                    <button class="hero-back" id="back-to-home" aria-label="Retour">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                    <button class="hero-back" aria-label="Favori">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4h10a1 1 0 0 1 1 1v15l-6-3-6 3V5a1 1 0 0 1 1-1z"/></svg>
+                    </button>
+                  </div>
+                  <div class="hero-text">
+                    <h2>Force & mobilité -<br>8 semaines</h2>
+                    <p>by CoachTanguy</p>
+                  </div>
+                </div>
+
+                <div class="hero-desc">
+                  Ce programme exemple a été pensé pour montrer comment un client suit son évolution
+                  au fil des semaines : des séances full body progressives, un accent sur la qualité du mouvement
+                  et une structure simple à suivre dans l’app.
+                </div>
+                <span class="read-more">Read more</span>
+
+                <div class="stats-panel">
+                  <div class="col"><strong>8</strong><span>Weeks</span></div>
+                  <div class="separator"></div>
+                  <div class="col"><strong>24</strong><span>Workouts</span></div>
+                  <div class="separator"></div>
+                  <div class="col"><div class="ring"></div></div>
+                  <div class="separator"></div>
+                  <div class="col"><strong>3/24</strong><span>Complete</span></div>
+                </div>
+
+                <div class="weeks">
+                  <button class="week-tab active">Week 1</button>
+                  <button class="week-tab">Week 2</button>
+                  <button class="week-tab">Week 3</button>
+                  <button class="week-tab">Week 4</button>
+                </div>
+
+                <button class="day-card">
+                  <div class="day-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 10v4M7 9v6M17 9v6M20 10v4"></path>
+                      <path d="M7 12h10"></path>
+                      <path d="M2.5 8.5 7 10M2.5 15.5 7 14M17 10l4.5-1.5M17 14l4.5 1.5"></path>
+                    </svg>
+                  </div>
+                  <div class="day-main"><h4>Infos</h4></div>
+                  <div class="chev">›</div>
+                </button>
+
+                <button class="day-card open-day">
+                  <div class="day-icon green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 13 4 4L19 7"/></svg>
+                  </div>
+                  <div class="day-main">
+                    <h4>Jour 1</h4>
+                    <p>Bike, mobilité hanches, goblet squat...<br>8 exercises &nbsp;·&nbsp; <span class="green">3 days ago</span></p>
+                  </div>
+                  <div class="chev">›</div>
+                </button>
+
+                <button class="day-card">
+                  <div class="day-icon green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m5 13 4 4L19 7"/></svg>
+                  </div>
+                  <div class="day-main">
+                    <h4>Jour 2</h4>
+                    <p>Rameur, développé incliné, tirage...<br>8 exercises &nbsp;·&nbsp; <span class="green">1 week ago</span></p>
+                  </div>
+                  <div class="chev">›</div>
+                </button>
+
+                <button class="day-card open-day">
+                  <div class="day-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 10v4M7 9v6M17 9v6M20 10v4"></path>
+                      <path d="M7 12h10"></path>
+                      <path d="M2.5 8.5 7 10M2.5 15.5 7 14M17 10l4.5-1.5M17 14l4.5 1.5"></path>
+                    </svg>
+                  </div>
+                  <div class="day-main">
+                    <h4>Jour 3</h4>
+                    <p>Bike, mobilité, gainage<br>6 exercises</p>
+                  </div>
+                  <div class="chev">›</div>
+                </button>
+              </section>
+
+              <!-- EXERCISE -->
+              <section class="view" id="view-exercise">
+                <div class="top-domain" style="margin-bottom:18px">
+                  <div class="domain" style="font-size:16px">app.fitpros.io</div>
+                  <div class="domain-bar" style="width:104px"></div>
+                </div>
+
+                <div class="exercise-header">
+                  <button class="link" id="back-to-program">‹ Back</button>
+                  <h2 class="title">Force & mobilité - 8 sem...</h2>
+                  <button class="icon-btn" aria-label="Liste">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M9 6h11M9 12h11M9 18h11"></path><circle cx="4" cy="6" r="1"></circle><circle cx="4" cy="12" r="1"></circle><circle cx="4" cy="18" r="1"></circle>
+                    </svg>
+                  </button>
+                  <button class="icon-btn" aria-label="Menu">•••</button>
+                </div>
+
+                
+<div class="exercise-card">
+  <h3>Goblet Squat</h3>
+  <div class="exercise-top">
+    <div class="video-thumb">
+      <img src="img/a5.webp" alt="">
+      <div class="play">▶</div>
+    </div>
+    <div class="last-time">
+      <div class="label">Last time</div>
+      <div class="value">12, 12, 12</div>
+      <div class="history-link">View full history &nbsp;›</div>
+    </div>
+    <button class="more-circle">•••</button>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title"><span class="accent">↕</span><span>Reps</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="10"></div>
+      <div class="box"><small>2</small><input value="10"></div>
+      <div class="box"><small>3</small><input value="10"></div>
+    </div>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title red"><span class="accent">◭</span><span>Weight</span><span class="unit-pill red">kg ▾</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="12"></div>
+      <div class="box"><small>2</small><input value="12"></div>
+      <div class="box"><small>3</small><input value="12"></div>
+    </div>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title green"><span class="accent">☕</span><span>Rest</span><span class="unit-pill">sec ▾</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="60"></div>
+      <div class="box"><small>2</small><input value="60"></div>
+      <div class="box"><small>3</small><input value="60"></div>
+    </div>
+  </div>
+
+  <div class="set-adjust">
+    <button class="round" aria-label="Moins">−</button>
+    <span>3 sets</span>
+    <button class="round" aria-label="Plus">+</button>
+  </div>
+
+  <div class="coach-note">
+    <h4>CoachTanguy's notes:</h4>
+    <p>Garde le buste gainé, descends dans une amplitude confortable et pousse fort dans le sol à la remontée.</p>
+  </div>
+</div>
+
+<div class="exercise-card">
+  <h3>Incline Dumbbell Press</h3>
+  <div class="exercise-top">
+    <div class="video-thumb">
+      <img src="img/a6.webp" alt="">
+      <div class="play">▶</div>
+    </div>
+    <div class="last-time">
+      <div class="label">Last time</div>
+      <div class="value">8, 8, 8</div>
+      <div class="history-link">View full history &nbsp;›</div>
+    </div>
+    <button class="more-circle">•••</button>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title"><span class="accent">↕</span><span>Reps</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="10"></div>
+      <div class="box"><small>2</small><input value="10"></div>
+      <div class="box"><small>3</small><input value="10"></div>
+    </div>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title red"><span class="accent">◭</span><span>Weight</span><span class="unit-pill red">kg ▾</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="8"></div>
+      <div class="box"><small>2</small><input value="8"></div>
+      <div class="box"><small>3</small><input value="8"></div>
+    </div>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title green"><span class="accent">☕</span><span>Rest</span><span class="unit-pill">sec ▾</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="75"></div>
+      <div class="box"><small>2</small><input value="75"></div>
+      <div class="box"><small>3</small><input value="75"></div>
+    </div>
+  </div>
+
+  <div class="set-adjust">
+    <button class="round" aria-label="Moins">−</button>
+    <span>3 sets</span>
+    <button class="round" aria-label="Plus">+</button>
+  </div>
+
+  <div class="coach-note">
+    <h4>CoachTanguy's notes:</h4>
+    <p>Contrôle bien la descente, garde les omoplates stables et pousse sans cambrer exagérément.</p>
+  </div>
+</div>
+
+<div class="exercise-card">
+  <h3>Seated Cable Row</h3>
+  <div class="exercise-top">
+    <div class="video-thumb">
+      <img src="img/a7.webp" alt="">
+      <div class="play">▶</div>
+    </div>
+    <div class="last-time">
+      <div class="label">Last time</div>
+      <div class="value">22, 22, 22</div>
+      <div class="history-link">View full history &nbsp;›</div>
+    </div>
+    <button class="more-circle">•••</button>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title"><span class="accent">↕</span><span>Reps</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="12"></div>
+      <div class="box"><small>2</small><input value="12"></div>
+      <div class="box"><small>3</small><input value="12"></div>
+    </div>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title red"><span class="accent">◭</span><span>Weight</span><span class="unit-pill red">kg ▾</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="22"></div>
+      <div class="box"><small>2</small><input value="22"></div>
+      <div class="box"><small>3</small><input value="22"></div>
+    </div>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title green"><span class="accent">☕</span><span>Rest</span><span class="unit-pill">sec ▾</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="75"></div>
+      <div class="box"><small>2</small><input value="75"></div>
+      <div class="box"><small>3</small><input value="75"></div>
+    </div>
+  </div>
+
+  <div class="set-adjust">
+    <button class="round" aria-label="Moins">−</button>
+    <span>3 sets</span>
+    <button class="round" aria-label="Plus">+</button>
+  </div>
+
+  <div class="coach-note">
+    <h4>CoachTanguy's notes:</h4>
+    <p>Ramène les coudes vers l’arrière, serre le dos et évite de balancer le buste.</p>
+  </div>
+</div>
+
+<div class="exercise-card">
+  <h3>Dumbbell Romanian Deadlift</h3>
+  <div class="exercise-top">
+    <div class="video-thumb">
+      <img src="img/a8.webp" alt="">
+      <div class="play">▶</div>
+    </div>
+    <div class="last-time">
+      <div class="label">Last time</div>
+      <div class="value">26, 26, 26</div>
+      <div class="history-link">View full history &nbsp;›</div>
+    </div>
+    <button class="more-circle">•••</button>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title"><span class="accent">↕</span><span>Reps</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="10"></div>
+      <div class="box"><small>2</small><input value="10"></div>
+      <div class="box"><small>3</small><input value="10"></div>
+    </div>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title red"><span class="accent">◭</span><span>Weight</span><span class="unit-pill red">kg ▾</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="28"></div>
+      <div class="box"><small>2</small><input value="28"></div>
+      <div class="box"><small>3</small><input value="28"></div>
+    </div>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title green"><span class="accent">☕</span><span>Rest</span><span class="unit-pill">sec ▾</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="90"></div>
+      <div class="box"><small>2</small><input value="90"></div>
+      <div class="box"><small>3</small><input value="90"></div>
+    </div>
+  </div>
+
+  <div class="set-adjust">
+    <button class="round" aria-label="Moins">−</button>
+    <span>3 sets</span>
+    <button class="round" aria-label="Plus">+</button>
+  </div>
+
+  <div class="coach-note">
+    <h4>CoachTanguy's notes:</h4>
+    <p>Garde le dos neutre, pousse les hanches vers l’arrière et contrôle la descente sur chaque répétition.</p>
+  </div>
+</div>
+
+<div class="exercise-card">
+  <h3>Seated Dumbbell Shoulder Press</h3>
+  <div class="exercise-top">
+    <div class="video-thumb">
+      <img src="img/a9.webp" alt="">
+      <div class="play">▶</div>
+    </div>
+    <div class="last-time">
+      <div class="label">Last time</div>
+      <div class="value">7, 7, 7</div>
+      <div class="history-link">View full history &nbsp;›</div>
+    </div>
+    <button class="more-circle">•••</button>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title"><span class="accent">↕</span><span>Reps</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="10"></div>
+      <div class="box"><small>2</small><input value="10"></div>
+      <div class="box"><small>3</small><input value="10"></div>
+    </div>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title red"><span class="accent">◭</span><span>Weight</span><span class="unit-pill red">kg ▾</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="7"></div>
+      <div class="box"><small>2</small><input value="7"></div>
+      <div class="box"><small>3</small><input value="7"></div>
+    </div>
+  </div>
+
+  <div class="metric">
+    <div class="metric-title green"><span class="accent">☕</span><span>Rest</span><span class="unit-pill">sec ▾</span></div>
+    <div class="boxes">
+      <div class="box"><small>1</small><input value="75"></div>
+      <div class="box"><small>2</small><input value="75"></div>
+      <div class="box"><small>3</small><input value="75"></div>
+    </div>
+  </div>
+
+  <div class="set-adjust">
+    <button class="round" aria-label="Moins">−</button>
+    <span>3 sets</span>
+    <button class="round" aria-label="Plus">+</button>
+  </div>
+
+  <div class="coach-note">
+    <h4>CoachTanguy's notes:</h4>
+    <p>Garde le tronc gainé, évite de cambrer et pousse les haltères de façon fluide au-dessus de la tête.</p>
+  </div>
+</div>
+
+
+                <div class="exercise-bottom">
+                  <button class="pill-btn"><span class="timer-sm" id="exercise-timer">00:27</span></button>
+                  <button class="pill-btn icon-plus" id="rest-button" aria-label="Repos">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="7"></circle><path d="M12 13V9M12 13l3 2"></path></svg>
+                    <span>+</span>
+                  </button>
+                  <button class="pill-btn primary" id="complete-workout">Complete</button>
+                </div>
+              </section>
+
+              <nav class="bottom-nav" id="bottom-nav">
+                <button class="nav-item active" id="nav-train">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M8 4 5 10h5l-2 10 8-12h-5l2-4z"></path>
+                  </svg>
+                  <span>Train</span>
+                </button>
+                <button class="nav-item" id="nav-programs">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 5.5h7v13H4z"></path><path d="M13 5.5h7v13h-7"></path>
+                  </svg>
+                  <span>Programs</span>
+                </button>
+                <div class="plus-wrap"><button class="plus" aria-label="Ajouter">+</button></div>
+                <button class="nav-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 18V8M12 18V4M19 18v-6M3 20h18"></path>
+                  </svg>
+                  <span>History</span>
+                </button>
+                <button class="nav-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"></circle><path d="M4 20a8 8 0 0 1 16 0"></path>
+                  </svg>
+                  <span>Account</span>
+                </button>
+              </nav>
+
+              <div class="sheet-overlay" id="day-sheet-overlay">
+                <div class="sheet">
+                  <div class="sheet-grab"></div>
+                  <h3>Jour 1</h3>
+
+                  <div class="sheet-stats">
+                    <div class="sheet-stat"><strong>5</strong><span>Exercises</span></div>
+                    <div class="sheet-stat"><strong>15</strong><span>Total Sets</span></div>
+                  </div>
+
+                  
+<section>
+  <h4>Workout</h4>
+
+  <div class="mini-ex">
+    <div class="thumb"><img src="img/a10.webp" alt=""></div>
+    <div><strong>Goblet Squat</strong><span>3 × 10</span></div>
+    <div class="comment-btn">💬</div>
+  </div>
+  <div class="mini-ex">
+    <div class="thumb"><img src="img/a11.webp" alt=""></div>
+    <div><strong>Incline Dumbbell Press</strong><span>3 × 10</span></div>
+    <div class="comment-btn">💬</div>
+  </div>
+  <div class="mini-ex">
+    <div class="thumb"><img src="img/a12.webp" alt=""></div>
+    <div><strong>Seated Cable Row</strong><span>3 × 12</span></div>
+    <div class="comment-btn">💬</div>
+  </div>
+  <div class="mini-ex">
+    <div class="thumb"><img src="img/a13.webp" alt=""></div>
+    <div><strong>Dumbbell Romanian Deadlift</strong><span>3 × 10</span></div>
+    <div class="comment-btn">💬</div>
+  </div>
+  <div class="mini-ex">
+    <div class="thumb"><img src="img/a14.webp" alt=""></div>
+    <div><strong>Seated Dumbbell Shoulder Press</strong><span>3 × 10</span></div>
+    <div class="comment-btn">💬</div>
+  </div>
+</section>
+
+
+                  <div class="sheet-start">
+                    <button class="btn" id="start-workout">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                      <span>Start Workout</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="complete-overlay" id="complete-overlay">
+                <div class="complete-card">
+                  <div class="grab"></div>
+                  <h3>Complete Workout</h3>
+                  <div class="subtitle">Force & mobilité - 8 semaines - Week 1 - Jour 1 - Mon 13 Jul 2026</div>
+
+                  <div class="summary-grid">
+                    <div class="summary-box"><strong>5</strong><span>Exercises</span></div>
+                    <div class="summary-box"><strong id="sets-done">3/15</strong><span>Sets</span></div>
+                    <div class="summary-box"><strong id="duration-done">0m</strong><span>Duration</span></div>
+                  </div>
+
+                  <div class="rating">How was your workout?</div>
+                  <div class="stars" id="stars">
+                    <button data-star="1">☆</button>
+                    <button data-star="2">☆</button>
+                    <button data-star="3">☆</button>
+                    <button data-star="4">☆</button>
+                    <button data-star="5">☆</button>
+                  </div>
+
+                  <textarea class="note" id="workout-note" placeholder="Add a note about your workout..."></textarea>
+
+                  <div class="complete-actions">
+                    <button class="cancel" id="cancel-complete">Cancel</button>
+                    <button class="save" id="save-workout">Save Workout</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="toast" id="toast">Workout saved</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-site">
+          Cliquez dans le téléphone pour découvrir le programme, ouvrir une séance
+          et visualiser le suivi d’un exercice.
+        </div>
+      </div>
+    </section>
+
+    <div class="legend">
+      Cette démonstration présente un exemple de séance. Chaque programme est adapté
+      à votre niveau, votre matériel, vos objectifs et vos contraintes.
+    </div>
+  </main>
+
+  <script>
+    const views = {
+      home: document.getElementById('view-home'),
+      program: document.getElementById('view-program'),
+      exercise: document.getElementById('view-exercise')
+    };
+    const navTrain = document.getElementById('nav-train');
+    const navPrograms = document.getElementById('nav-programs');
+    const toast = document.getElementById('toast');
+
+    let timerSeconds = 27;
+    let timerInterval = null;
+    let toastTimeout = null;
+    let currentStars = 0;
+
+    function setActiveNav(which){
+      [navTrain, navPrograms].forEach(el => el.classList.remove('active'));
+      if(which === 'train') navTrain.classList.add('active');
+      if(which === 'programs') navPrograms.classList.add('active');
+    }
+
+    function showView(name){
+      Object.entries(views).forEach(([key,el]) => el.classList.toggle('active', key === name));
+      if(name === 'home') setActiveNav('train');
+      if(name === 'program' || name === 'exercise') setActiveNav('programs');
+    }
+
+    function showToast(message){
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => toast.classList.remove('show'), 1400);
+    }
+
+    document.getElementById('home-program-card').addEventListener('click', ()=>showView('program'));
+    document.getElementById('see-all-home').addEventListener('click', ()=>showView('program'));
+    document.getElementById('back-to-home').addEventListener('click', ()=>showView('home'));
+    navTrain.addEventListener('click', ()=>showView('home'));
+    navPrograms.addEventListener('click', ()=>showView('program'));
+
+    const daySheet = document.getElementById('day-sheet-overlay');
+    document.querySelectorAll('.open-day').forEach(btn=>{
+      btn.addEventListener('click', ()=> daySheet.classList.add('show'));
+    });
+    daySheet.addEventListener('click', (e)=>{
+      if(e.target === daySheet) daySheet.classList.remove('show');
+    });
+
+    document.getElementById('start-workout').addEventListener('click', ()=>{
+      daySheet.classList.remove('show');
+      showView('exercise');
+      startTimer();
+    });
+
+    document.getElementById('back-to-program').addEventListener('click', ()=> showView('program'));
+
+    function startTimer(){
+      clearInterval(timerInterval);
+      timerSeconds = 27;
+      updateTimerDisplay();
+      timerInterval = setInterval(()=>{
+        timerSeconds++;
+        updateTimerDisplay();
+      }, 1000);
+    }
+
+    function updateTimerDisplay(){
+      const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+      const secs = String(timerSeconds % 60).padStart(2, '0');
+      document.getElementById('exercise-timer').textContent = `${mins}:${secs}`;
+    }
+
+    document.getElementById('rest-button').addEventListener('click', ()=> showToast('Rest timer added'));
+
+
+    document.getElementById('complete-workout').addEventListener('click', ()=>{
+      document.getElementById('sets-done').textContent = '3/15';
+      document.getElementById('duration-done').textContent = Math.max(0, Math.floor(timerSeconds / 60)) + 'm';
+      document.getElementById('complete-overlay').classList.add('show');
+    });
+    document.getElementById('cancel-complete').addEventListener('click', ()=>{
+      document.getElementById('complete-overlay').classList.remove('show');
+    });
+    document.getElementById('complete-overlay').addEventListener('click', (e)=>{
+      if(e.target.id === 'complete-overlay') document.getElementById('complete-overlay').classList.remove('show');
+    });
+
+    document.querySelectorAll('#stars button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        currentStars = Number(btn.dataset.star);
+        document.querySelectorAll('#stars button').forEach(st=>{
+          st.classList.toggle('active', Number(st.dataset.star) <= currentStars);
+          st.textContent = Number(st.dataset.star) <= currentStars ? '★' : '☆';
+        });
+      });
+    });
+
+    document.getElementById('save-workout').addEventListener('click', ()=>{
+      document.getElementById('complete-overlay').classList.remove('show');
+      showToast('Workout saved');
+      showView('home');
+    });
+
+    function updateClock(){
+      const now = new Date();
+      document.getElementById('clock').textContent = now.toLocaleTimeString('fr-BE', {hour:'2-digit', minute:'2-digit'});
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
+  </script>
+  <script>
+  (function(){
+    function ph(){try{parent.postMessage({__fpH:Math.ceil(document.documentElement.getBoundingClientRect().height)},'*')}catch(e){}}
+    window.addEventListener('load',ph);window.addEventListener('resize',ph);
+    if(window.ResizeObserver){new ResizeObserver(ph).observe(document.body);}
+    document.addEventListener('click',function(){setTimeout(ph,60);setTimeout(ph,420);});
+    setTimeout(ph,300);setTimeout(ph,1200);
+  })();
+  </script>
+</body>
+</html>

@@ -811,3 +811,42 @@ body.has-hero .section.section--dark { background: var(--dark); }
 body.has-hero .divider:not(.divider--on-dark) { background: var(--surface); max-width: none; }
 body.has-hero .divider:not(.divider--on-dark)::before,
 body.has-hero .divider:not(.divider--on-dark)::after { flex: 0 1 330px; }
+
+/* ============================================================
+   AVIS GOOGLE (accueil) : badge note + carrousel defilant
+   ============================================================ */
+.grating { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; padding: 10px 18px; border-radius: 999px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); transition: border-color .2s, background .2s, transform .2s; }
+.grating:hover { border-color: rgba(255,255,255,.32); background: rgba(255,255,255,.09); transform: translateY(-1px); }
+.grating__g { width: 26px; height: 26px; border-radius: 50%; background: #fff; display: grid; place-items: center; font-family: var(--font-head); font-weight: 800; font-size: 15px; color: #4285F4; }
+.grating__stars { color: #fbbf24; letter-spacing: 2px; font-size: 14px; }
+.grating__score { color: #fff; font-size: 15px; font-weight: 800; }
+.grating__count { color: rgba(255,255,255,.62); font-size: 13.5px; }
+
+.reviews { overflow: hidden; margin-top: 40px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.reviews__track { display: flex; width: max-content; animation: revScroll 90s linear infinite; will-change: transform; }
+.reviews:hover .reviews__track { animation-play-state: paused; }
+.reviews__group { display: flex; gap: 18px; padding-right: 18px; }
+@keyframes revScroll { to { transform: translateX(-50%); } }
+
+.rev { width: 350px; flex: 0 0 auto; display: flex; flex-direction: column; gap: 12px; background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.09); border-radius: 18px; padding: 22px 22px 20px; }
+.rev__stars { color: #fbbf24; letter-spacing: 3px; font-size: 15px; }
+.rev__text { margin: 0; font-size: 14.5px; line-height: 1.62; color: rgba(255,255,255,.78); }
+.rev__who { margin-top: auto; display: flex; align-items: center; gap: 11px; padding-top: 6px; }
+.rev__avatar { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 15px; color: #fff; background: #4285F4; flex: 0 0 auto; }
+.reviews__group .rev:nth-child(4n+2) .rev__avatar { background: #EA4335; }
+.reviews__group .rev:nth-child(4n+3) .rev__avatar { background: #F9AB00; }
+.reviews__group .rev:nth-child(4n)   .rev__avatar { background: #34A853; }
+.rev__who strong { display: block; font-size: 14px; font-weight: 600; color: #fff; }
+.rev__src { display: block; font-size: 12px; color: rgba(255,255,255,.45); }
+
+.reviews__cta { display: flex; justify-content: center; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
+
+@media (max-width: 720px) {
+  .rev { width: 300px; padding: 18px 18px 16px; }
+  .reviews { margin-top: 30px; }
+  .grating { gap: 8px; padding: 9px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reviews__track { animation: none; }
+  .reviews { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+}

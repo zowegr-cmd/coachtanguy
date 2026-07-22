@@ -164,9 +164,9 @@
   <div class="toast" id="toast"></div>
 
   <!-- charge le contenu des 3 langues (chacune s'enregistre dans SITE_CONTENT_ALL) -->
-  <script src="content/fr.js?v=6"></script>
-  <script src="content/nl.js?v=6"></script>
-  <script src="content/en.js?v=6"></script>
+  <script src="content/fr.js?v=7"></script>
+  <script src="content/nl.js?v=7"></script>
+  <script src="content/en.js?v=7"></script>
   <!-- Dictionnaires du calculateur (FR source -> NL/EN), snapshot par langue -->
   <script src="content/calc-i18n.nl.js?v=3"></script>
   <script>window.__CALC = { nl: { dict: Object.assign({}, window.CALC_I18N), frags: Object.assign({}, window.CALC_I18N_FRAGMENTS) } };</script>
@@ -232,7 +232,7 @@
     }
 
     var GROUPS = {
-      nav:"Navigation", home:"Accueil", visio:"Coaching visio", suivi:"Suivi en ligne",
+      nav:"Navigation", home:"Accueil", visio:"Coaching visio", suivi:"Suivi en ligne", avis:"Avis Google (accueil)",
       contact:"Contact", footer:"Pied de page", stripe:"Liens de paiement Stripe",
       calc:"Calculateur (hero)", collab:"Page Kiné partenaire (ZOWE)", meta:"SEO · Titres & descriptions", local:"Pages locales",
       legal:"Pages légales", confirm:"Page de confirmation"
@@ -292,6 +292,9 @@
       } return out;
     }
     function sectionOf(path){var p=path.split('.');return ((p[0]==='home'||p[0]==='local'||p[0]==='legal')&&p.length>1)?p[0]+'.'+p[1]:p[0];}
+    // Labels générés pour les avis Google (r1Name/r1Text ... r20Name/r20Text)
+    for(var __r=1;__r<=20;__r++){ LABELS['r'+__r+'Name']='Avis '+__r+' · prénom'; LABELS['r'+__r+'Text']='Avis '+__r+' · texte'; }
+    LABELS.score='Note (5,0)'; LABELS.count='Nombre d\'avis (texte)'; LABELS.cta1='Bouton « laisser un avis »'; LABELS.cta2='Bouton « voir tous les avis »';
     function labelOf(path){var last=path.split('.').pop();return LABELS[last]||last;}
     // Chaque lien Stripe correspond à un prix éditable : on affiche le prix ACTUEL
     // (de tes sections) à côté du lien, pour qu'ils restent cohérents.

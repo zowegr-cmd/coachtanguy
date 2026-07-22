@@ -212,3 +212,9 @@ if (contactForm) {
   var b = document.createElement('div'); b.className = 'safe-bottom'; b.setAttribute('aria-hidden', 'true');
   document.body.appendChild(t); document.body.appendChild(b);
 })();
+
+// ===== Avis Google : l'initiale de l'avatar suit le prénom (éditable au dashboard) =====
+document.querySelectorAll('.rev__who').forEach(function (w) {
+  var s = w.querySelector('strong'), a = w.querySelector('.rev__avatar');
+  if (s && a && s.textContent.trim()) a.textContent = s.textContent.trim().charAt(0).toUpperCase();
+});

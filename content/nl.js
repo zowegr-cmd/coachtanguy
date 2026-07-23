@@ -3,7 +3,7 @@
    =========================================================== */
 window.SITE_CONTENT = {
   "nav": {
-    "suivis": "Begeleiding",
+    "suivis": "Diensten",
     "avis": "Reviews",
     "accueil": "Home",
     "calculateur": "Calculator",

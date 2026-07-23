@@ -4,7 +4,7 @@
    =========================================================== */
 window.SITE_CONTENT = {
   "nav": {
-    "suivis": "Suivis",
+    "suivis": "Services",
     "avis": "Avis",
     "accueil": "Accueil",
     "calculateur": "Calculateur",

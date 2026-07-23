@@ -218,3 +218,66 @@ document.querySelectorAll('.rev__who').forEach(function (w) {
   var s = w.querySelector('strong'), a = w.querySelector('.rev__avatar');
   if (s && a && s.textContent.trim()) a.textContent = s.textContent.trim().charAt(0).toUpperCase();
 });
+
+// ===== Avis Google : défilement auto + manuel =====
+// Vrai conteneur scrollable : avance automatique en douceur, boucle infinie, et
+// l'utilisateur peut swiper (mobile) / glisser (souris) / molette. Pause pendant la
+// manipulation ou au survol, reprise automatique ensuite.
+(function () {
+  var box = document.querySelector('.reviews');
+  if (!box) return;
+  var track = box.querySelector('.reviews__track');
+  var half = 0, pos = 0;
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function measure() { half = track.scrollWidth / 2; }
+  measure();
+  window.addEventListener('load', measure);
+  window.addEventListener('resize', measure);
+
+  var SPEED = 52;                   // px / seconde (constant quel que soit l'écran 60/120 Hz)
+  var paused = false, resumeTimer = null, hovering = false;
+  function pauseFor(ms) {
+    paused = true; clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(function () { if (!hovering) paused = false; }, ms);
+  }
+  // interactions manuelles -> pause puis reprise
+  box.addEventListener('touchstart', function () { pauseFor(2800); }, { passive: true });
+  box.addEventListener('wheel', function () { pauseFor(2200); }, { passive: true });
+  box.addEventListener('mouseenter', function () { hovering = true; paused = true; clearTimeout(resumeTimer); });
+  box.addEventListener('mouseleave', function () { hovering = false; pauseFor(500); });
+
+  // glisser à la souris (desktop)
+  var down = false, startX = 0, startL = 0;
+  box.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'mouse') return;
+    down = true; startX = e.clientX; startL = box.scrollLeft; box.classList.add('is-drag');
+  });
+  window.addEventListener('pointermove', function (e) {
+    if (down) box.scrollLeft = startL - (e.clientX - startX);
+  });
+  window.addEventListener('pointerup', function () {
+    if (down) { down = false; box.classList.remove('is-drag'); pauseFor(1600); }
+  });
+
+  // resynchronise la position quand on scrolle à la main + boucle infinie des 2 côtés
+  box.addEventListener('scroll', function () {
+    var sl = box.scrollLeft;
+    if (Math.abs(sl - pos) > 1.5) pos = sl;
+    if (half > 0) {
+      if (pos >= half) { pos -= half; box.scrollLeft = pos; }
+      else if (pos < 0) { pos += half; box.scrollLeft = pos; }
+    }
+  }, { passive: true });
+
+  var lastT = null;
+  function loop(t) {
+    if (lastT !== null && !paused && !reduced && half > 0) {
+      pos += SPEED * Math.min(0.05, (t - lastT) / 1000);
+      if (pos >= half) pos -= half;
+      box.scrollLeft = pos;
+    }
+    lastT = t;
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();

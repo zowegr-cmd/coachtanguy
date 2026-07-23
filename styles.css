@@ -822,11 +822,14 @@ body.has-hero .divider:not(.divider--on-dark)::after { flex: 0 1 330px; }
 .grating__score { color: #fff; font-size: 15px; font-weight: 800; }
 .grating__count { color: rgba(255,255,255,.62); font-size: 13.5px; }
 
-.reviews { overflow: hidden; margin-top: 40px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
-.reviews__track { display: flex; width: max-content; animation: revScroll 90s linear infinite; will-change: transform; }
-.reviews:hover .reviews__track { animation-play-state: paused; }
+/* Défilement auto piloté en JS (script.js) sur un vrai conteneur scrollable :
+   on peut donc AUSSI le faire glisser à la main (swipe/drag/molette), et le
+   défilement reprend tout seul après. Barre de scroll masquée. */
+.reviews { overflow-x: auto; overflow-y: hidden; margin-top: 40px; cursor: grab; scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.reviews::-webkit-scrollbar { display: none; }
+.reviews.is-drag { cursor: grabbing; user-select: none; }
+.reviews__track { display: flex; width: max-content; }
 .reviews__group { display: flex; gap: 18px; padding-right: 18px; }
-@keyframes revScroll { to { transform: translateX(-50%); } }
 
 .rev { width: 350px; flex: 0 0 auto; display: flex; flex-direction: column; gap: 12px; background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.09); border-radius: 18px; padding: 22px 22px 20px; }
 .rev__stars { color: #fbbf24; letter-spacing: 3px; font-size: 15px; }

@@ -4,9 +4,9 @@
    =========================================================== */
 window.SITE_CONTENT = {
   "nav": {
+    "suivis": "Suivis",
+    "avis": "Avis",
     "accueil": "Accueil",
-    "visio": "Coaching visio",
-    "suivi": "Suivi en ligne",
     "calculateur": "Calculateur",
     "faq": "FAQ",
     "contact": "Contact",

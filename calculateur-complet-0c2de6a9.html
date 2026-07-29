@@ -2743,7 +2743,7 @@
               </div>
 
               <div class="full-field">
-                <label for="wheyChoice">Complément alimentaire — whey</label>
+                <label for="wheyChoice">Complément alimentaire, whey</label>
                 <select id="wheyChoice" name="wheyChoice">
                   <option value="no" selected>Non, je ne souhaite pas en prendre</option>
                   <option value="yes">Oui, je souhaite en intégrer</option>
@@ -3664,7 +3664,7 @@
         var protein=(d.whey&&d.whey.enabled)?d.whey.protein:0;
         var shakerText=fmt(sh)+' shaker'+(sh>1?'s':'')+' de '+fmt(per)+' g';
         return [
-          option('Complément whey — organisation simple',[
+          option('Complément whey, organisation simple',[
             shakerText+' = '+fmt(total)+' g de whey sur la journée',
             'Apport estimé : environ '+fmt(protein)+' g de protéines',
             'À placer au moment le plus pratique : après l’entraînement, entre deux repas ou avec une collation déjà prévue.',
@@ -3684,13 +3684,13 @@
         var total=(d.whey&&d.whey.enabled)?d.whey.totalGrams:0;
         var protein=(d.whey&&d.whey.enabled)?d.whey.protein:0;
         return [
-          option('Collation avec whey — simple',[
+          option('Collation avec whey, simple',[
             fmt(sh)+' shaker'+(sh>1?'s':'')+' de '+fmt(per)+' g de whey',
             'Total journée : '+fmt(total)+' g de whey, soit environ '+fmt(protein)+' g de protéines',
             food(targetC/.12,80,220,25)+' g de fruit ou compote',
             targetF>0 ? fatText(targetF,0) : 'lipides non obligatoires sur cette collation'
           ]),
-          option('Collation avec whey — smoothie',[
+          option('Collation avec whey, smoothie',[
             fmt(sh)+' shaker'+(sh>1?'s':'')+' de whey, soit '+fmt(total)+' g sur la journée',
             food((targetC*.55)/.12,80,220,25)+' g de fruit',
             food((targetC*.35)/.60,10,60,5)+' g de flocons d’avoine',
@@ -3715,13 +3715,13 @@
             ? (hasAvoid('eggs')?'dinde ou tofu fumé':'dinde ou tofu fumé, ou '+eggSnack+' durs')
             : (hasAvoid('eggs')?'dinde, thon ou tofu fumé':'dinde, thon ou tofu fumé, ou '+eggSnack+' durs');
           return [
-            option('Collation salée — wrap ou tartines',[
+            option('Collation salée, wrap ou tartines',[
               proteinQtySnack+' g de '+proteinText,
               food((targetC*.85)/.45,30,120,10)+' g de '+(hasAvoid('gluten')?'pain sans gluten, galettes ou wrap sans gluten':'pain complet, galettes ou wrap'),
               food((targetC*.15)/.05,80,200,25)+' g de crudités',
               fatText(targetF,0)
             ]),
-            option('Collation salée — bol simple',[
+            option('Collation salée, bol simple',[
               food(targetP/.10,100,250,25)+' g de '+(hasAvoid('dairy')?'tofu fumé ou alternative végétale riche en protéines':'cottage cheese, skyr salé ou fromage blanc'),
               food((targetC*.80)/.45,30,120,10)+' g de crackers, pain ou galettes',
               'crudités au choix',
@@ -3730,12 +3730,12 @@
           ];
         }
         return [
-          option('Collation sucrée — skyr / fruit',[
+          option('Collation sucrée, skyr / fruit',[
             food(targetP/.10,100,250,25)+' g de '+(hasAvoid('dairy')?'alternative végétale riche en protéines':'skyr ou fromage blanc'),
             food(targetC/.12,80,220,25)+' g de fruit',
             fatText(targetF,0)
           ]),
-          option('Collation sucrée — smoothie bowl',[
+          option('Collation sucrée, smoothie bowl',[
             food((targetP*.80)/.10,100,250,25)+' g de '+(hasAvoid('dairy')?'alternative végétale riche en protéines':'skyr ou yaourt grec'),
             food((targetC*.55)/.12,80,220,25)+' g de fruit',
             food((targetC*.35)/.60,10,60,5)+' g de flocons d’avoine',
@@ -3747,12 +3747,12 @@
       function eveningOptionsFor(targetP,targetC,targetF,includeWhey){
         if(includeWhey) return wheySnackOptions(targetC,targetF);
         return [
-          option('Option soir — sucrée',[
+          option('Option soir, sucrée',[
             food(targetP/.10,100,200,25)+' g de '+(hasAvoid('dairy')?'alternative végétale riche en protéines':'fromage blanc ou skyr'),
             food(targetC/.12,50,180,25)+' g de fruit ou compote',
             food(targetF/.50,0,20,5)+' g de noix ou chocolat noir'
           ]),
-          option('Option soir — salée',[
+          option('Option soir, salée',[
             hasAvoid('eggs')
               ? food((targetP*.8)/.13,60,150,10)+' g de cottage cheese, dinde ou tofu'
               : eggLabel(eggCountFromProtein(targetP*.8))+' en omelette, ou portion équivalente de cottage cheese / tofu',

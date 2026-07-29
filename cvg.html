@@ -8,7 +8,7 @@
   <meta name="robots" content="noindex" />
   <link rel="stylesheet" href="assets/fonts.css" />
   <link rel="canonical" href="https://www.coachtanguy.com/cvg.html" />
-  <link rel="stylesheet" href="styles.css?v=79" />
+  <link rel="stylesheet" href="styles.css?v=80" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png" />
   <link rel="apple-touch-icon" href="assets/icon-180.png" />
@@ -21,16 +21,16 @@
     <div class="container nav__inner">
       <a href="index.html" class="nav__logo"><img class="nav__logo-dark" src="assets/logo.webp" alt="CoachTanguy" width="160" height="73" /><img class="nav__logo-light" src="assets/logo-white.webp" alt="CoachTanguy" width="160" height="73" /></a>
       <nav class="nav__links" id="navLinks">
-        <a href="index.html">Accueil</a>
-        <a href="coaching-visio.html">Coaching visio</a>
-        <a href="suivi-en-ligne.html">Suivi en ligne</a>
-        <a href="calculateur.html">Calculateur</a>
-        <a href="index.html#faq">FAQ</a>
-        <a href="contact.html">Contact</a>
-        <a href="collaboration.html">Collaboration</a>
+        <a href="index.html" data-i18n="nav.accueil">Accueil</a>
+        <a href="index.html#services" data-i18n="nav.suivis">Services</a>
+        <a href="index.html#avis" data-i18n="nav.avis">Avis</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
+        <a href="calculateur.html" data-i18n="nav.calculateur">Calculateur</a>
+        <a href="collaboration.html" data-i18n="nav.collab">Collaboration</a>
       </nav>
       <div class="nav__right">
-        <a href="contact.html" class="btn btn--primary nav__cta">Réserver un appel</a>
+        <a href="contact.html" class="btn btn--primary nav__cta" data-i18n="nav.cta">Réserver un appel</a>
         <div class="lang-switch" id="langSwitch" aria-label="Langue">
           <a href="#" data-lang="fr">FR</a>
           <a href="#" data-lang="nl">NL</a>
@@ -46,34 +46,180 @@
       <div data-i18n-html="legal.cvg.body">
       <span class="eyebrow">Conditions</span>
       <h1>Conditions générales de vente</h1>
-      <p class="legal__update">Dernière mise à jour : juin 2026</p>
+      <p class="legal__update">Dernière mise à jour : 29 juillet 2026</p>
 
-      <h2>1. Objet</h2>
-      <p>Les présentes conditions régissent la vente des prestations de coaching sportif proposées par CoachTanguy : séances de coaching visio et formules de suivi en ligne.</p>
-
-      <h2>2. Prix et paiement</h2>
-      <p>Les prix sont indiqués en euros, toutes taxes comprises. Le paiement s'effectue en ligne de manière sécurisée via Stripe (Visa, Mastercard, PayPal, Apple Pay, Google Pay…). Le paiement en plusieurs fois est possible via Klarna.</p>
-
-      <h2>3. Packs et validité</h2>
+      <h2>1. Identité du prestataire</h2>
+      <p>Les présentes Conditions générales de vente, ci-après les « CGV », sont proposées par :</p>
       <ul>
-        <li>Pack 4 séances : valable 5 semaines à compter de la date d'achat.</li>
-        <li>Pack 8 séances : valable 10 semaines à compter de la date d'achat.</li>
-        <li>Les séances non utilisées à l'expiration du pack sont perdues.</li>
+        <li>Tanguy Witters, CoachTanguy</li>
+        <li>Coach sportif indépendant</li>
+        <li>Adresse : Avenue de la Pépinière 11, 1640 Rhode-Saint-Genèse, Belgique</li>
+        <li>Numéro d'entreprise : 1026.048.974</li>
+        <li>Numéro de TVA : BE1026048974</li>
+        <li>E-mail : <a href="mailto:contact@coachtanguy.com">contact@coachtanguy.com</a></li>
+        <li>Téléphone : +32 472 76 16 39</li>
       </ul>
+      <p>Les présentes CGV s'appliquent aux prestations de coaching visio et de suivi sportif en ligne proposées par CoachTanguy.</p>
+
+      <h2>2. Acceptation des CGV</h2>
+      <p>Le Client reconnaît avoir pu consulter les présentes CGV avant de confirmer sa commande.</p>
+      <p>Lors du paiement via Stripe, il doit cocher une case obligatoire, non présélectionnée, contenant un lien direct vers les CGV.</p>
+      <p>La validation de cette case, suivie du paiement, matérialise l'acceptation des CGV et la conclusion du contrat entre le Client et CoachTanguy.</p>
+      <p>Les CGV applicables sont celles acceptées à la date de la commande. Le Client est invité à en conserver une copie.</p>
+
+      <h2>3. Coaching visio</h2>
+      <p>Le coaching visio consiste en des séances sportives individuelles réalisées à distance, en direct avec CoachTanguy, d'une durée habituelle de 30 à 40 minutes.</p>
+      <ul>
+        <li>Séance à l'unité : 40 €</li>
+        <li>Pack de 4 séances : 140 €, valable 5 semaines</li>
+        <li>Pack de 8 séances : 240 €, valable 10 semaines</li>
+      </ul>
+      <p>La période de validité commence à la date du paiement, sauf accord différent communiqué au Client. Les séances doivent être réservées et réalisées pendant la durée de validité du pack.</p>
+      <p>Le Client doit disposer d'une connexion internet suffisamment stable, d'un appareil équipé d'une caméra et d'un espace adapté et sécurisé pour pratiquer.</p>
 
       <h2>4. Réservation, annulation et report</h2>
-      <p>Les séances sont réservées via le lien de calendrier transmis. Une séance peut être annulée ou reportée tant que le pack est valide. En cas de vacances, le pack ou le suivi peut être mis en pause et reprend au retour.</p>
+      <p>Les séances visio sont réservées au moyen du calendrier transmis par CoachTanguy ou directement d'un commun accord.</p>
+      <p>Toute demande d'annulation ou de report doit être communiquée au minimum 24 heures avant la séance.</p>
+      <p>En cas d'annulation moins de 24 heures avant la séance ou d'absence non justifiée, la séance peut être considérée comme utilisée. Une exception peut être accordée en cas de maladie soudaine, d'accident, de force majeure ou de circonstance grave.</p>
+      <p>Lorsqu'une séance est annulée par CoachTanguy, elle est reportée sans frais.</p>
+      <p>Les séances non utilisées à l'expiration du pack sont perdues, sauf accord écrit, incapacité médicale, force majeure ou indisponibilité de CoachTanguy.</p>
+      <p>En cas de vacances annoncées et convenues à l'avance, la durée de validité du pack peut être prolongée.</p>
 
-      <h2>5. Droit de rétractation</h2>
-      <p>Conformément à la législation en vigueur, vous disposez d'un délai légal de rétractation. Ce délai ne s'applique plus dès lors que la prestation a commencé avec votre accord.</p>
+      <h2>5. Suivi en ligne initial</h2>
+      <p>Le suivi en ligne initial est proposé au prix de 299 € pour 8 semaines. Il comprend notamment :</p>
+      <ul>
+        <li>un appel visio d'introduction ;</li>
+        <li>un programme sportif personnalisé ;</li>
+        <li>l'accès au programme sur l'application FitPros ;</li>
+        <li>les exercices, séries, répétitions, temps de repos et vidéos d'exécution ;</li>
+        <li>un accompagnement régulier via WhatsApp ;</li>
+        <li>les adaptations nécessaires du programme ;</li>
+        <li>l'accès au calculateur alimentaire personnalisé.</li>
+      </ul>
+      <p>Le programme est normalement mis à disposition dans les 72 heures suivant l'appel d'introduction et la réception de toutes les informations nécessaires.</p>
+      <p>L'accompagnement prend automatiquement fin après 8 semaines et ne fait l'objet d'aucun renouvellement automatique.</p>
 
-      <h2>6. Santé et responsabilité</h2>
-      <p>Les programmes proposés ne remplacent pas un avis médical. Le client déclare être apte à la pratique sportive. CoachTanguy ne saurait être tenu responsable d'une utilisation inadaptée des programmes.</p>
+      <h2>6. Poursuite pendant 4 semaines</h2>
+      <p>Après le suivi initial de 8 semaines, le Client peut choisir de poursuivre son accompagnement au prix de 139 € pour 4 semaines. Cette formule comprend notamment :</p>
+      <ul>
+        <li>la poursuite du programme personnalisé sur FitPros ;</li>
+        <li>les adaptations du programme ;</li>
+        <li>l'accompagnement via WhatsApp ;</li>
+        <li>l'accès au calculateur alimentaire personnalisé.</li>
+      </ul>
+      <p>La poursuite est facultative et ne fait l'objet d'aucun renouvellement automatique. À la fin de chaque période de 4 semaines, le Client choisit manuellement de commander ou non une nouvelle période.</p>
+      <p>Chaque nouveau paiement constitue une nouvelle commande soumise aux CGV en vigueur au moment de celle-ci.</p>
 
-      <h2>7. Contact</h2>
-      <p>Pour toute question relative aux présentes conditions : contact@coachtanguy.com.</p>
+      <h2>7. Paiement</h2>
+      <p>Le paiement est effectué en ligne de manière sécurisée par l'intermédiaire de Stripe. Les moyens de paiement disponibles sont ceux affichés sur la page de paiement. La commande est confirmée lorsque le paiement est accepté.</p>
+      <p>CoachTanguy ne conserve pas directement les données bancaires complètes du Client.</p>
+      <p>Les prix sont indiqués en euros, toutes taxes comprises. CoachTanguy peut modifier ses tarifs pour les commandes futures. Une modification de prix n'affecte pas une prestation déjà commandée et payée.</p>
+      <p>Les promotions, réductions et codes promotionnels sont valables selon les conditions et pendant la période annoncées.</p>
+
+      <h2>8. FitPros et WhatsApp</h2>
+      <p>Les accès à FitPros et les programmes transmis sont strictement personnels. Le Client ne peut pas partager ses identifiants, transmettre son programme, copier les contenus, les publier ou les revendre. L'accès à FitPros peut prendre fin au terme de l'accompagnement.</p>
+      <p>CoachTanguy ne garantit pas l'absence totale de panne ou d'interruption provenant de FitPros, Stripe, WhatsApp ou d'un autre prestataire externe. En cas de problème technique important, une solution raisonnable est proposée au Client, notamment la transmission temporaire des informations essentielles par un autre moyen.</p>
+      <p>Le suivi WhatsApp permet au Client de poser des questions concernant son programme, ses exercices et sa progression. Il ne constitue pas une disponibilité permanente, un service médical ou un service d'urgence. CoachTanguy répond dans un délai raisonnable en fonction de ses disponibilités.</p>
+
+      <h2>9. Santé et obligations du Client</h2>
+      <p>Le Client s'engage à communiquer honnêtement les informations utiles concernant sa santé, ses douleurs, ses blessures, ses traitements et ses éventuelles contre-indications. Il doit notamment :</p>
+      <ul>
+        <li>respecter les consignes communiquées ;</li>
+        <li>utiliser du matériel adapté et en bon état ;</li>
+        <li>pratiquer dans un espace sécurisé ;</li>
+        <li>interrompre immédiatement un exercice en cas de douleur inhabituelle, de malaise ou de vertige ;</li>
+        <li>consulter un professionnel de santé en cas de doute sur son aptitude à pratiquer.</li>
+      </ul>
+      <p>Les prestations proposées sont des prestations de coaching sportif. Elles ne remplacent pas un diagnostic, un traitement médical, une séance de kinésithérapie ou un suivi diététique clinique.</p>
+      <p>CoachTanguy peut demander un avis médical ou refuser un exercice lorsqu'il estime que la situation du Client présente un risque.</p>
+
+      <h2>10. Calculateur alimentaire</h2>
+      <p>Le calculateur alimentaire fournit des estimations et des conseils généraux en fonction des informations communiquées et de l'objectif sportif du Client. Il ne constitue pas une prescription médicale ou un suivi diététique clinique.</p>
+      <p>En cas de pathologie, de grossesse, d'allaitement, d'allergie importante, de trouble du comportement alimentaire ou de traitement médical, le Client doit consulter un médecin ou un diététicien compétent.</p>
+      <p>Les résultats obtenus à l'aide du calculateur restent des estimations et peuvent différer des besoins réels du Client.</p>
+
+      <h2>11. Résultats et responsabilité</h2>
+      <p>CoachTanguy s'engage à fournir un accompagnement professionnel et adapté aux informations communiquées par le Client. Il est tenu à une obligation de moyens et ne garantit aucun résultat précis en matière de perte de poids, de prise de masse musculaire, de performance ou de transformation physique.</p>
+      <p>Les résultats dépendent notamment de l'assiduité, de l'implication, de l'alimentation, du sommeil, de la récupération et de la situation personnelle du Client.</p>
+      <p>CoachTanguy reste responsable de ses fautes professionnelles. Sa responsabilité ne peut toutefois pas être engagée lorsque le dommage résulte notamment :</p>
+      <ul>
+        <li>d'une information importante non communiquée ou incorrecte ;</li>
+        <li>du non-respect des consignes ;</li>
+        <li>d'un exercice modifié ou ajouté sans validation ;</li>
+        <li>d'un matériel défectueux ou inadapté ;</li>
+        <li>de la poursuite d'un exercice malgré une douleur ou un malaise ;</li>
+        <li>d'un problème technique indépendant de CoachTanguy.</li>
+      </ul>
+      <p>Aucune disposition des présentes CGV ne limite une responsabilité qui ne pourrait légalement être exclue.</p>
+
+      <h2>12. Droit de rétractation</h2>
+      <p>Pour une commande conclue à distance, le Client consommateur dispose en principe d'un délai de 14 jours calendrier à compter de la conclusion du contrat pour se rétracter sans devoir justifier sa décision. La demande doit être envoyée à : <a href="mailto:contact@coachtanguy.com">contact@coachtanguy.com</a></p>
+      <p>Lorsque le Client demande expressément que l'accompagnement commence avant la fin des 14 jours, il conserve son droit de rétractation, mais doit payer la partie du service déjà exécutée jusqu'au moment de sa demande. Les prestations déjà exécutées peuvent notamment comprendre :</p>
+      <ul>
+        <li>l'appel initial ;</li>
+        <li>l'analyse du questionnaire ;</li>
+        <li>la création et la mise en ligne du programme ;</li>
+        <li>une séance visio déjà réalisée ;</li>
+        <li>les adaptations ou le suivi déjà fournis.</li>
+      </ul>
+      <p>Le simple commencement de l'accompagnement ne supprime pas automatiquement le droit de rétractation. La demande suivante doit être recueillie séparément lorsque le Client souhaite commencer avant la fin du délai :</p>
+      <blockquote>
+        <p>« Je demande expressément que mon accompagnement commence avant la fin du délai légal de rétractation de 14 jours. Je reconnais que les prestations déjà exécutées pourront rester dues proportionnellement si je me rétracte. »</p>
+      </blockquote>
+
+      <h2>13. Suspension, arrêt et remboursement</h2>
+      <p>Une suspension ou une prolongation peut être accordée en cas de vacances convenues à l'avance, de blessure, de maladie ou de circonstance exceptionnelle.</p>
+      <p>En dehors du droit de rétractation, aucun remboursement n'est automatiquement dû lorsque le Client :</p>
+      <ul>
+        <li>change d'avis ;</li>
+        <li>ne réalise pas son programme ;</li>
+        <li>n'utilise pas FitPros ;</li>
+        <li>ne réserve pas ses séances ;</li>
+        <li>ou cesse de répondre aux messages.</li>
+      </ul>
+      <p>Une solution proportionnée peut néanmoins être recherchée en cas d'incapacité médicale durable, de force majeure ou d'impossibilité pour CoachTanguy d'exécuter la prestation.</p>
+      <p>Toute prestation payée mais définitivement non exécutée pour une raison imputable à CoachTanguy est remboursée proportionnellement.</p>
+
+      <h2>14. Propriété intellectuelle</h2>
+      <p>Les programmes, vidéos, textes, documents, calculateurs et autres supports transmis sont protégés par les droits de propriété intellectuelle. Ils sont réservés à l'usage personnel du Client.</p>
+      <p>Il est interdit de les partager, reproduire, publier, revendre ou utiliser pour accompagner une autre personne sans l'autorisation écrite préalable de CoachTanguy.</p>
+
+      <h2>15. Données personnelles</h2>
+      <p>Les données personnelles sont traitées conformément à la <a href="politique-confidentialite.html">Politique de confidentialité</a> disponible sur le site de CoachTanguy. Les données nécessaires à la commande et à l'accompagnement peuvent notamment être utilisées pour :</p>
+      <ul>
+        <li>gérer le paiement et la facturation ;</li>
+        <li>communiquer avec le Client ;</li>
+        <li>personnaliser son programme ;</li>
+        <li>organiser les séances ;</li>
+        <li>lui donner accès à FitPros.</li>
+      </ul>
+      <p>Les informations relatives aux blessures, douleurs, pathologies et traitements sont des données de santé sensibles. Leur traitement nécessite un consentement explicite distinct de l'acceptation des présentes CGV. La case suivante peut être ajoutée au questionnaire initial :</p>
+      <blockquote>
+        <p>« Je consens explicitement à ce que les informations relatives à ma santé que je communique soient utilisées uniquement afin d'adapter et de sécuriser mon accompagnement sportif. »</p>
+      </blockquote>
+      <p>Le Client peut exercer ses droits en écrivant à <a href="mailto:contact@coachtanguy.com">contact@coachtanguy.com</a>.</p>
+
+      <h2>16. Réclamations et droit applicable</h2>
+      <p>Toute réclamation doit être envoyée en priorité à : <a href="mailto:contact@coachtanguy.com">contact@coachtanguy.com</a>. Les parties chercheront d'abord une solution amiable.</p>
+      <p>À défaut d'accord, le Client peut s'adresser au Service de Médiation pour le Consommateur ou aux juridictions compétentes.</p>
+      <p>Les présentes CGV sont soumises au droit belge. Si une clause est déclarée nulle ou inapplicable, les autres clauses restent applicables.</p>
+      <p>CoachTanguy peut modifier les présentes CGV pour les commandes futures. La version applicable reste celle acceptée par le Client au moment de sa commande.</p>
+
+      <h2>Formulaire type de rétractation</h2>
+      <p>À utiliser uniquement si le Client souhaite exercer son droit de rétractation.</p>
+      <div class="legal__form">
+        <p><strong>À l'attention de CoachTanguy, Tanguy Witters</strong><br />E-mail : <a href="mailto:contact@coachtanguy.com">contact@coachtanguy.com</a></p>
+        <p>Je vous informe de ma décision de me rétracter du contrat portant sur la prestation suivante :</p>
+        <p>Prestation concernée :</p><span class="fill"></span>
+        <p>Date de la commande :</p><span class="fill"></span>
+        <p>Nom et prénom :</p><span class="fill"></span>
+        <p>Adresse e-mail utilisée lors de la commande :</p><span class="fill"></span>
+        <p>Date :</p><span class="fill"></span>
+        <p>Signature, uniquement en cas d'envoi sur papier :</p><span class="fill"></span>
+      </div>
 
       <p class="legal__back"><a href="index.html">← Retour à l'accueil</a></p>
+      
     </div>
     </div>
   </section>
@@ -99,7 +245,7 @@
     <div class="footer__bottom"><div class="container">© 2026 CoachTanguy. Tous droits réservés.</div></div>
   </footer>
 
-  <script src="content/fr.js?v=9"></script>
+  <script src="content/fr.js?v=10"></script>
   <script src="assets/i18n.js?v=2"></script>
   <script src="script.js?v=23" defer></script>
 </body>

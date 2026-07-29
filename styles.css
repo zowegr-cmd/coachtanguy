@@ -853,3 +853,22 @@ body.has-hero .divider:not(.divider--on-dark)::after { flex: 0 1 330px; }
   .reviews__track { animation: none; }
   .reviews { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
 }
+
+/* Pages légales : sous-titres, encadrés de consentement, formulaire de rétractation */
+.legal h3 { font-size: 17px; margin: 26px 0 8px; color: var(--black); }
+.legal strong { color: var(--gray-900); }
+.legal blockquote {
+  margin: 18px 0; padding: 16px 20px;
+  border-left: 3px solid var(--orange);
+  background: var(--gray-100); border-radius: 0 12px 12px 0;
+  color: var(--gray-900); font-style: normal;
+}
+.legal blockquote p { margin: 0; color: var(--gray-900); }
+.legal__form {
+  margin: 22px 0 8px; padding: 24px 26px;
+  border: 1px solid var(--gray-200); border-radius: var(--radius);
+  background: var(--white); box-shadow: var(--shadow-sm);
+}
+.legal__form p { margin: 0 0 6px; }
+.legal__form .fill { display: block; border-bottom: 1px dashed var(--gray-500); height: 26px; margin-bottom: 16px; }
+@media (max-width: 720px) { .legal__form { padding: 18px 18px; } }

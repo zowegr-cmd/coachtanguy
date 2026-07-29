@@ -76,7 +76,7 @@ window.SITE_CONTENT = {
       "eyebrow": "FAQ",
       "title": "Veelgestelde vragen.",
       "q1": "Waarom sessiepakketten aanbieden?",
-      "a1": "Met de pakketten regel je alles met één betaling en moedig je een engagement op langere termijn aan. Ze helpen je ook om regelmatig en gemotiveerd te blijven trainen — essentieel om vooruitgang te boeken en concrete resultaten te behalen.",
+      "a1": "Met de pakketten regel je alles met één betaling en moedig je een engagement op langere termijn aan. Ze helpen je ook om regelmatig en gemotiveerd te blijven trainen, essentieel om vooruitgang te boeken en concrete resultaten te behalen.",
       "q2": "Hoe boek ik een sessie?",
       "a2": "Om de 2 weken ontvang je via WhatsApp een link naar mijn elektronische agenda om je sessie te reserveren. De reserveringen gebeuren om de 2 weken om meer flexibiliteit te garanderen en zich aan jouw agenda aan te passen.",
       "q3": "Kan ik een sessie annuleren of verplaatsen?",
@@ -101,9 +101,8 @@ window.SITE_CONTENT = {
     "calcTeaser": {
       "eyebrow": "Gratis tool",
       "title": "Bereken je caloriebehoefte in 2 minuten",
-      "text": "Basaal metabolisme, doelcalorieën, verdeling van je macro's en concrete richtlijnen om je maaltijden samen te stellen: mijn gratis voedingscalculator geeft je een duidelijke basis om te starten — zonder registratie.",
+      "text": "Basaal metabolisme, doelcalorieën, verdeling van je macro's en concrete richtlijnen om je maaltijden samen te stellen: mijn gratis voedingscalculator geeft je een duidelijke basis om te starten, zonder registratie.",
       "chip1": "✓ Calorieën & macro's",
-      "chip2": "✓ Bordmethode",
       "chip3": "✓ Maaltijdideeën",
       "button": "Probeer de calculator"
     }
@@ -146,7 +145,7 @@ window.SITE_CONTENT = {
   },
   "footer": {
     "tagline": "Sporten wordt makkelijk, overal en altijd.",
-    "areas": "Sportcoach in Sint-Genesius-Rode, Ukkel, Waterloo, Beersel, Linkebeek en Eigenbrakel — aan huis of via video.",
+    "areas": "Sportcoach in Sint-Genesius-Rode, Ukkel, Waterloo, Beersel, Linkebeek en Eigenbrakel, aan huis of via video.",
     "lVisio": "Videocoaching",
     "lSuivi": "Online opvolging",
     "lFaq": "FAQ",
@@ -208,6 +207,7 @@ window.SITE_CONTENT = {
     "p1l2": "Feedback na de sessie",
     "p1l3": "Zonder verbintenis",
     "p1Note": "💳 Betaling bij de reservering",
+    "p1lCalc": "Persoonlijke voedingscalculator",
     "p1Btn": "Reserveren",
     "p2Ribbon": "Meest gekozen",
     "p2Name": "Pakket 4 sessies",
@@ -218,6 +218,7 @@ window.SITE_CONTENT = {
     "p2l2": "Feedback na elke sessie",
     "p2l3": "Uitstel mogelijk bij vakantie",
     "p2l4": "Ideaal 1 sessie / week",
+    "p2lCalc": "Persoonlijke voedingscalculator",
     "p2Btn": "Kiezen",
     "p3Name": "Pakket 8 sessies",
     "p3Price": "240€",
@@ -227,6 +228,7 @@ window.SITE_CONTENT = {
     "p3l2": "Feedback na elke sessie",
     "p3l3": "Uitstel mogelijk bij vakantie",
     "p3l4": "Beste tarief / sessie",
+    "p3lCalc": "Persoonlijke voedingscalculator",
     "p3Btn": "Kiezen",
     "ctaTitle": "Klaar om te starten?",
     "ctaText": "Reserveer je gratis proefsessie en we beginnen samen.",
@@ -266,6 +268,7 @@ window.SITE_CONTENT = {
     "s1l6": "Programma beschikbaar binnen 72u na het gesprek",
     "s1l8": "Regelmatige bijsturing voor optimale resultaten",
     "s1l9": "Pauze mogelijk bij vakantie",
+    "s1lCalc": "Persoonlijke voedingscalculator",
     "s1Btn": "Kiezen",
     "s2Name": "Maandelijkse opvolging",
     "s2Price": "139€",
@@ -276,6 +279,7 @@ window.SITE_CONTENT = {
     "s2l3": "Communicatie & opvolging via WhatsApp",
     "s2l5": "Regelmatige bijsturing",
     "s2l6": "Pauze mogelijk bij vakantie",
+    "s2lCalc": "Persoonlijke voedingscalculator",
     "s2Btn": "Kiezen",
     "ctaTitle": "Klaar om vooruit te gaan?",
     "ctaText": "Reserveer je gratis introductiegesprek en we bouwen je programma.",
@@ -316,7 +320,7 @@ window.SITE_CONTENT = {
       "metaDesc": "Sportcoach in Sint-Genesius-Rode: sessies aan huis of via video, programma en voeding op maat. Gediplomeerd coach, 1e proefsessie gratis.",
       "heroEyebrow": "Sportcoaching · Sint-Genesius-Rode",
       "h1": "Sportcoach in Sint-Genesius-Rode",
-      "heroLead": "Gevestigd in Sint-Genesius-Rode bied ik persoonlijke sportcoaching aan, rechtstreeks bij je thuis of via videogesprek. Van het centrum tot de wijken bij het Zoniënwoud pas ik me aan jouw niveau, je doelen en je agenda aan — beginner of gevorderd.",
+      "heroLead": "Gevestigd in Sint-Genesius-Rode bied ik persoonlijke sportcoaching aan, rechtstreeks bij je thuis of via videogesprek. Van het centrum tot de wijken bij het Zoniënwoud pas ik me aan jouw niveau, je doelen en je agenda aan, beginner of gevorderd.",
       "btnEssai": "Gratis proefsessie",
       "btnVisio": "Bekijk videocoaching",
       "secEyebrow": "In Sint-Genesius-Rode en omgeving",
@@ -327,7 +331,7 @@ window.SITE_CONTENT = {
       "f2h": "Coaching via video",
       "f2p": "Vanuit Sint-Genesius-Rode of onderweg volg je je sessies via videogesprek, met een bijgewerkt programma en correcties in realtime.",
       "f3h": "Programma & voeding op maat",
-      "f3p": "Een plan afgestemd op je niveau en je doelen, met eenvoudige en concrete voedingsrichtlijnen — zonder extreem dieet.",
+      "f3p": "Een plan afgestemd op je niveau en je doelen, met eenvoudige en concrete voedingsrichtlijnen, zonder extreem dieet.",
       "ctaH2": "Klaar om (opnieuw) te sporten in Sint-Genesius-Rode?",
       "ctaP": "Eerste proefsessie gratis, zonder verbintenis. Aan huis of via video, we starten wanneer je wil.",
       "btnContact": "Contacteer mij"
@@ -348,7 +352,7 @@ window.SITE_CONTENT = {
       "f2h": "Coaching via video",
       "f2p": "Vanuit Ukkel of onderweg volg je je sessies via videogesprek, met een bijgewerkt programma en correcties in realtime.",
       "f3h": "Programma & voeding op maat",
-      "f3p": "Een plan afgestemd op je niveau en je doelen, met eenvoudige en concrete voedingsrichtlijnen — zonder extreem dieet.",
+      "f3p": "Een plan afgestemd op je niveau en je doelen, met eenvoudige en concrete voedingsrichtlijnen, zonder extreem dieet.",
       "ctaH2": "Klaar om (opnieuw) te sporten in Ukkel?",
       "ctaP": "Eerste proefsessie gratis, zonder verbintenis. Aan huis of via video, we starten wanneer je wil.",
       "btnContact": "Contacteer mij"
@@ -369,7 +373,7 @@ window.SITE_CONTENT = {
       "f2h": "Coaching via video",
       "f2p": "Vanuit Waterloo of onderweg volg je je sessies via videogesprek, met een bijgewerkt programma en correcties in realtime.",
       "f3h": "Programma & voeding op maat",
-      "f3p": "Een plan afgestemd op je niveau en je doelen, met eenvoudige en concrete voedingsrichtlijnen — zonder extreem dieet.",
+      "f3p": "Een plan afgestemd op je niveau en je doelen, met eenvoudige en concrete voedingsrichtlijnen, zonder extreem dieet.",
       "ctaH2": "Klaar om (opnieuw) te sporten in Waterloo?",
       "ctaP": "Eerste proefsessie gratis, zonder verbintenis. Aan huis of via video, we starten wanneer je wil.",
       "btnContact": "Contacteer mij"
@@ -384,13 +388,13 @@ window.SITE_CONTENT = {
       "btnVisio": "Bekijk videocoaching",
       "secEyebrow": "In Beersel en omgeving",
       "h2": "Begeleide sport, dicht bij huis in Beersel",
-      "secIntro": "Coaching aan huis bespaart je tijd en houdt de motivatie hoog. Video laat je het ritme aanhouden, ook in drukke weken of onderweg — het is de regelmaat die resultaten oplevert.",
+      "secIntro": "Coaching aan huis bespaart je tijd en houdt de motivatie hoog. Video laat je het ritme aanhouden, ook in drukke weken of onderweg, het is de regelmaat die resultaten oplevert.",
       "f1h": "Aan huis in Beersel",
       "f1p": "Ik kom bij je langs in Beersel met het nodige materiaal. Je traint in een vertrouwde omgeving, op het uur dat jou uitkomt.",
       "f2h": "Coaching via video",
       "f2p": "Vanuit Beersel of onderweg volg je je sessies via videogesprek, met een bijgewerkt programma en correcties in realtime.",
       "f3h": "Programma & voeding op maat",
-      "f3p": "Een plan afgestemd op je niveau en je doelen, met eenvoudige en concrete voedingsrichtlijnen — zonder extreem dieet.",
+      "f3p": "Een plan afgestemd op je niveau en je doelen, met eenvoudige en concrete voedingsrichtlijnen, zonder extreem dieet.",
       "ctaH2": "Klaar om (opnieuw) te sporten in Beersel?",
       "ctaP": "Eerste proefsessie gratis, zonder verbintenis. Aan huis of via video, we starten wanneer je wil.",
       "btnContact": "Contacteer mij"
@@ -411,7 +415,7 @@ window.SITE_CONTENT = {
       "f2h": "Coaching via video",
       "f2p": "Vanuit Linkebeek of onderweg volg je je sessies via videogesprek, met een bijgewerkt programma en correcties in realtime.",
       "f3h": "Programma & voeding op maat",
-      "f3p": "Een plan afgestemd op je niveau en je doelen, met eenvoudige en concrete voedingsrichtlijnen — zonder extreem dieet.",
+      "f3p": "Een plan afgestemd op je niveau en je doelen, met eenvoudige en concrete voedingsrichtlijnen, zonder extreem dieet.",
       "ctaH2": "Klaar om (opnieuw) te sporten in Linkebeek?",
       "ctaP": "Eerste proefsessie gratis, zonder verbintenis. Aan huis of via video, we starten wanneer je wil.",
       "btnContact": "Contacteer mij"
@@ -432,7 +436,7 @@ window.SITE_CONTENT = {
       "f2h": "Coaching via video",
       "f2p": "Vanuit Eigenbrakel of onderweg volg je je sessies via videogesprek, met een bijgewerkt programma en correcties in realtime.",
       "f3h": "Programma & voeding op maat",
-      "f3p": "Een plan afgestemd op je niveau en je doelen, met eenvoudige en concrete voedingsrichtlijnen — zonder extreem dieet.",
+      "f3p": "Een plan afgestemd op je niveau en je doelen, met eenvoudige en concrete voedingsrichtlijnen, zonder extreem dieet.",
       "ctaH2": "Klaar om (opnieuw) te sporten in Eigenbrakel?",
       "ctaP": "Eerste proefsessie gratis, zonder verbintenis. Aan huis of via video, we starten wanneer je wil.",
       "btnContact": "Contacteer mij"
@@ -442,12 +446,12 @@ window.SITE_CONTENT = {
     "privacy": {
       "title": "Privacybeleid — CoachTanguy",
       "desc": "Hoe CoachTanguy uw persoonsgegevens verwerkt: doeleinden, rechtsgronden, bewaartermijnen en uw rechten (AVG).",
-      "body": "<span class=\"eyebrow\">Privacy</span>\n      <h1>Privacybeleid</h1>\n      <p class=\"legal__update\">Laatste update: juni 2026</p>\n\n      <h2>1. Verwerkingsverantwoordelijke</h2>\n      <p>De verwerkingsverantwoordelijke voor de gegevens die via <strong>coachtanguy.com</strong> worden verzameld is:</p>\n      <ul>\n        <li>Tanguy Witters (CoachTanguy), zelfstandig sportcoach</li>\n        <li>Avenue de la Pépinière 11, 1640 Sint-Genesius-Rode, België</li>\n        <li>Ondernemingsnummer (KBO): 1026.048.974 — btw: BE1026048974</li>\n        <li>E-mail: contact@coachtanguy.com — Telefoon: +32 472 76 16 39</li>\n      </ul>\n\n      <h2>2. Verwerkte gegevens, doeleinden en rechtsgronden</h2>\n      <p><strong>Contactformulier</strong> (naam, e-mail, onderwerp, bericht): uitsluitend gebruikt om uw vraag te beantwoorden en onze uitwisseling op te volgen. Rechtsgrond: precontractuele maatregelen op uw verzoek (art. 6.1.b AVG) en gerechtvaardigd belang om te antwoorden (art. 6.1.f).</p>\n      <p><strong>Rechtstreeks contact</strong> (e-mail, WhatsApp, telefoon): zelfde doeleinden en rechtsgronden. Het gebruik van WhatsApp valt onder het privacybeleid van WhatsApp (Meta).</p>\n      <p><strong>Klantenrelatie</strong> (als u klant wordt): gegevens die nodig zijn voor de organisatie en opvolging van de coaching. Rechtsgrond: uitvoering van de overeenkomst (art. 6.1.b). Eventuele gegevens over uw gezondheid of fysieke conditie worden enkel verwerkt met uw uitdrukkelijke toestemming (art. 9.2.a), die u op elk moment kan intrekken.</p>\n      <p><strong>Betalingen</strong>: verwerkt door Stripe (en desgevallend PayPal/Klarna) op hun eigen beveiligde pagina's. De site verzamelt of bewaart geen bankgegevens.</p>\n      <p><strong>Voedingscalculator</strong>: de ingevoerde gegevens (geslacht, leeftijd, lengte, gewicht, doel) worden uitsluitend in uw browser verwerkt. Ze worden niet doorgestuurd en niet op een server opgeslagen.</p>\n      <p>De site doet niet aan geautomatiseerde prospectie, profilering of geautomatiseerde besluitvorming.</p>\n\n      <h2>3. Ontvangers</h2>\n      <p>Uw gegevens worden nooit verkocht. Ze zijn enkel toegankelijk voor de verwerkingsverantwoordelijke en zijn strikt noodzakelijke technische verwerkers:</p>\n      <ul>\n        <li><strong>Netlify, Inc.</strong> (hosting van de site en ontvangst van de berichten van het contactformulier)</li>\n        <li><strong>Stripe</strong> (betalingsverwerking, op de pagina's van Stripe)</li>\n        <li>De e-mailprovider die wordt gebruikt om u te antwoorden</li>\n      </ul>\n\n      <h2>4. Doorgiften buiten de Europese Unie</h2>\n      <p>Onze host Netlify, Inc. is gevestigd in de Verenigde Staten: berichten via het formulier kunnen dus buiten de EU worden verwerkt. Deze doorgifte is omkaderd door de waarborgen van hoofdstuk V van de AVG (adequaatheidsbesluit EU–VS \"Data Privacy Framework\" en/of standaardcontractbepalingen). Hetzelfde geldt voor Stripe bij een betaling.</p>\n\n      <h2>5. Bewaartermijnen</h2>\n      <ul>\n        <li>Contactberichten zonder gevolg: verwijderd uiterlijk 12 maanden na de laatste uitwisseling.</li>\n        <li>Klantgegevens: duur van de contractuele relatie, daarna beperkte archivering volgens de wettelijke verplichtingen (boekhoudkundige stukken: 7 jaar).</li>\n        <li>Lokale opslag in uw browser: zie het <a href=\"cookies.html\">cookiebeleid</a>.</li>\n      </ul>\n\n      <h2>6. Uw rechten</h2>\n      <p>Overeenkomstig artikelen 15 tot 22 van de AVG heeft u recht op <strong>inzage</strong>, <strong>rectificatie</strong>, <strong>wissing</strong>, <strong>beperking</strong> van de verwerking, <strong>bezwaar</strong> (met name tegen verwerkingen op basis van gerechtvaardigd belang), <strong>overdraagbaarheid</strong>, en <strong>intrekking van uw toestemming</strong> op elk moment wanneer de verwerking daarop berust.</p>\n      <p>Om deze rechten uit te oefenen, schrijf naar <a href=\"mailto:contact@coachtanguy.com\">contact@coachtanguy.com</a>. U ontvangt een antwoord binnen één maand. Bij redelijke twijfel kan een identiteitsbewijs worden gevraagd.</p>\n\n      <h2>7. Klacht bij de toezichthoudende autoriteit</h2>\n      <p>Als u meent dat uw rechten niet worden gerespecteerd, kan u een klacht indienen bij de <strong>Gegevensbeschermingsautoriteit</strong> (GBA):</p>\n      <ul>\n        <li>Drukpersstraat 35, 1000 Brussel</li>\n        <li>Telefoon: +32 (0)2 274 48 00</li>\n        <li>E-mail: contact@apd-gba.be</li>\n        <li>Website: <a href=\"https://www.gegevensbeschermingsautoriteit.be\" target=\"_blank\" rel=\"noopener\">www.gegevensbeschermingsautoriteit.be</a></li>\n      </ul>\n\n      <h2>8. Beveiliging</h2>\n      <p>De site wordt uitsluitend via HTTPS aangeboden. Enkel de strikt noodzakelijke gegevens worden verzameld (minimalisatie), en de lettertypen worden lokaal gehost zodat er geen gegevens (waaronder uw IP-adres) naar Google worden gestuurd bij het bezoeken van de site.</p>\n\n      <h2>9. Wijzigingen</h2>\n      <p>Dit beleid kan worden bijgewerkt, onder meer bij wijzigingen aan de site of de regelgeving. De datum van de laatste update staat bovenaan deze pagina.</p>\n\n      <p class=\"legal__back\"><a href=\"index.html\">← Terug naar de startpagina</a></p>"
+      "body": "<span class=\"eyebrow\">Privacy</span>\n      <h1>Privacybeleid</h1>\n      <p class=\"legal__update\">Laatste update: juni 2026</p>\n\n      <h2>1. Verwerkingsverantwoordelijke</h2>\n      <p>De verwerkingsverantwoordelijke voor de gegevens die via <strong>coachtanguy.com</strong> worden verzameld is:</p>\n      <ul>\n        <li>Tanguy Witters (CoachTanguy), zelfstandig sportcoach</li>\n        <li>Avenue de la Pépinière 11, 1640 Sint-Genesius-Rode, België</li>\n        <li>Ondernemingsnummer (KBO): 1026.048.974, btw: BE1026048974</li>\n        <li>E-mail: contact@coachtanguy.com, Telefoon: +32 472 76 16 39</li>\n      </ul>\n\n      <h2>2. Verwerkte gegevens, doeleinden en rechtsgronden</h2>\n      <p><strong>Contactformulier</strong> (naam, e-mail, onderwerp, bericht): uitsluitend gebruikt om uw vraag te beantwoorden en onze uitwisseling op te volgen. Rechtsgrond: precontractuele maatregelen op uw verzoek (art. 6.1.b AVG) en gerechtvaardigd belang om te antwoorden (art. 6.1.f).</p>\n      <p><strong>Rechtstreeks contact</strong> (e-mail, WhatsApp, telefoon): zelfde doeleinden en rechtsgronden. Het gebruik van WhatsApp valt onder het privacybeleid van WhatsApp (Meta).</p>\n      <p><strong>Klantenrelatie</strong> (als u klant wordt): gegevens die nodig zijn voor de organisatie en opvolging van de coaching. Rechtsgrond: uitvoering van de overeenkomst (art. 6.1.b). Eventuele gegevens over uw gezondheid of fysieke conditie worden enkel verwerkt met uw uitdrukkelijke toestemming (art. 9.2.a), die u op elk moment kan intrekken.</p>\n      <p><strong>Betalingen</strong>: verwerkt door Stripe (en desgevallend PayPal/Klarna) op hun eigen beveiligde pagina's. De site verzamelt of bewaart geen bankgegevens.</p>\n      <p><strong>Voedingscalculator</strong>: de ingevoerde gegevens (geslacht, leeftijd, lengte, gewicht, doel) worden uitsluitend in uw browser verwerkt. Ze worden niet doorgestuurd en niet op een server opgeslagen.</p>\n      <p>De site doet niet aan geautomatiseerde prospectie, profilering of geautomatiseerde besluitvorming.</p>\n\n      <h2>3. Ontvangers</h2>\n      <p>Uw gegevens worden nooit verkocht. Ze zijn enkel toegankelijk voor de verwerkingsverantwoordelijke en zijn strikt noodzakelijke technische verwerkers:</p>\n      <ul>\n        <li><strong>Netlify, Inc.</strong> (hosting van de site en ontvangst van de berichten van het contactformulier)</li>\n        <li><strong>Stripe</strong> (betalingsverwerking, op de pagina's van Stripe)</li>\n        <li>De e-mailprovider die wordt gebruikt om u te antwoorden</li>\n      </ul>\n\n      <h2>4. Doorgiften buiten de Europese Unie</h2>\n      <p>Onze host Netlify, Inc. is gevestigd in de Verenigde Staten: berichten via het formulier kunnen dus buiten de EU worden verwerkt. Deze doorgifte is omkaderd door de waarborgen van hoofdstuk V van de AVG (adequaatheidsbesluit EU–VS \"Data Privacy Framework\" en/of standaardcontractbepalingen). Hetzelfde geldt voor Stripe bij een betaling.</p>\n\n      <h2>5. Bewaartermijnen</h2>\n      <ul>\n        <li>Contactberichten zonder gevolg: verwijderd uiterlijk 12 maanden na de laatste uitwisseling.</li>\n        <li>Klantgegevens: duur van de contractuele relatie, daarna beperkte archivering volgens de wettelijke verplichtingen (boekhoudkundige stukken: 7 jaar).</li>\n        <li>Lokale opslag in uw browser: zie het <a href=\"cookies.html\">cookiebeleid</a>.</li>\n      </ul>\n\n      <h2>6. Uw rechten</h2>\n      <p>Overeenkomstig artikelen 15 tot 22 van de AVG heeft u recht op <strong>inzage</strong>, <strong>rectificatie</strong>, <strong>wissing</strong>, <strong>beperking</strong> van de verwerking, <strong>bezwaar</strong> (met name tegen verwerkingen op basis van gerechtvaardigd belang), <strong>overdraagbaarheid</strong>, en <strong>intrekking van uw toestemming</strong> op elk moment wanneer de verwerking daarop berust.</p>\n      <p>Om deze rechten uit te oefenen, schrijf naar <a href=\"mailto:contact@coachtanguy.com\">contact@coachtanguy.com</a>. U ontvangt een antwoord binnen één maand. Bij redelijke twijfel kan een identiteitsbewijs worden gevraagd.</p>\n\n      <h2>7. Klacht bij de toezichthoudende autoriteit</h2>\n      <p>Als u meent dat uw rechten niet worden gerespecteerd, kan u een klacht indienen bij de <strong>Gegevensbeschermingsautoriteit</strong> (GBA):</p>\n      <ul>\n        <li>Drukpersstraat 35, 1000 Brussel</li>\n        <li>Telefoon: +32 (0)2 274 48 00</li>\n        <li>E-mail: contact@apd-gba.be</li>\n        <li>Website: <a href=\"https://www.gegevensbeschermingsautoriteit.be\" target=\"_blank\" rel=\"noopener\">www.gegevensbeschermingsautoriteit.be</a></li>\n      </ul>\n\n      <h2>8. Beveiliging</h2>\n      <p>De site wordt uitsluitend via HTTPS aangeboden. Enkel de strikt noodzakelijke gegevens worden verzameld (minimalisatie), en de lettertypen worden lokaal gehost zodat er geen gegevens (waaronder uw IP-adres) naar Google worden gestuurd bij het bezoeken van de site.</p>\n\n      <h2>9. Wijzigingen</h2>\n      <p>Dit beleid kan worden bijgewerkt, onder meer bij wijzigingen aan de site of de regelgeving. De datum van de laatste update staat bovenaan deze pagina.</p>\n\n      <p class=\"legal__back\"><a href=\"index.html\">← Terug naar de startpagina</a></p>"
     },
     "cookies": {
       "title": "Cookiebeleid — CoachTanguy",
       "desc": "CoachTanguy gebruikt geen enkele trackingcookie. Overzicht van de functionele lokale opslag en uw opties.",
-      "body": "<span class=\"eyebrow\">Cookies &amp; lokale opslag</span>\n      <h1>Cookiebeleid</h1>\n      <p class=\"legal__update\">Laatste update: juni 2026</p>\n\n      <h2>1. Geen trackingcookies</h2>\n      <p>De site <strong>coachtanguy.com</strong> gebruikt <strong>geen enkele cookie voor statistieken, reclame of sociale media</strong>, en geen trackers van derden. Een toestemmingsbanner is dus niet nodig: overeenkomstig de aanbevelingen van de Gegevensbeschermingsautoriteit (GBA) wordt enkel opslag gebruikt die strikt noodzakelijk is voor de werking van de site, en die is vrijgesteld van toestemming.</p>\n\n      <h2>2. Functionele lokale opslag</h2>\n      <p>De site gebruikt de lokale opslag van uw browser (localStorage / sessionStorage / Cache Storage) uitsluitend voor de volgende technische doeleinden:</p>\n      <ul>\n        <li><strong>Cache van de app \"Calculator\"</strong> (Cache Storage, als u de calculator als app installeert): bewaart de bestanden die nodig zijn om offline te werken. Duur: tot u de app verwijdert of de cache wist.</li>\n        <li><strong>SITE_CONTENT_fr / _nl / _en</strong> en <strong>CALC_I18N_fr / _nl / _en</strong> (localStorage): conceptversies van de inhoud, enkel gebruikt in voorbeeldmodus door de beheerder van de site. Ze worden niet gelezen of aangemaakt bij een gewoon bezoek. Duur: tot handmatige verwijdering.</li>\n        <li><strong>dash_ok</strong> (sessionStorage): houdt de sessie van de beheerder op het bewerkingsdashboard actief. Duur: sluiten van het tabblad.</li>\n        <li><strong>cookie_consent</strong> (localStorage): zou uw keuze onthouden indien ooit een toestemmingsbanner wordt geactiveerd. <em>Momenteel niet in gebruik.</em> Maximale duur: 6 maanden.</li>\n      </ul>\n      <p>Deze opslag blijft in uw browser: er wordt geen informatie naar derden gestuurd en u kan er niet mee worden gevolgd.</p>\n\n      <h2>3. Externe diensten</h2>\n      <ul>\n        <li><strong>Lettertypen</strong>: lokaal gehost op de site — geen enkele aanvraag naar Google Fonts.</li>\n        <li><strong>Stripe-betalingen</strong>: de betaalknoppen zijn gewone links naar de beveiligde pagina's van Stripe; de cookies van Stripe gelden enkel op de site van Stripe (zie hun <a href=\"https://stripe.com/nl-be/privacy\" target=\"_blank\" rel=\"noopener\">privacybeleid</a>).</li>\n        <li><strong>WhatsApp</strong>: de WhatsApp-knoppen zijn links; er wordt geen script van Meta op deze site geladen.</li>\n      </ul>\n\n      <h2>4. Hoe deze gegevens verwijderen?</h2>\n      <p>U kan op elk moment de lokale opslag en de cache van uw browser wissen: Instellingen → Privacy → Browsegegevens wissen (of gelijkaardig volgens uw browser). Voor de geïnstalleerde app: verwijder ze gewoon.</p>\n\n      <h2>5. Als er ooit trackers worden toegevoegd</h2>\n      <p>Indien ooit niet-essentiële cookies (statistieken, marketing) zouden worden gebruikt, worden die enkel geplaatst <strong>na uw voorafgaande, vrije en geïnformeerde toestemming</strong>, via een banner waarmee weigeren even eenvoudig is als aanvaarden, zonder vooraf aangevinkte vakjes, en uw keuze wordt maximaal 6 maanden bewaard. Deze pagina zou dan worden bijgewerkt.</p>\n\n      <p class=\"legal__back\"><a href=\"index.html\">← Terug naar de startpagina</a></p>"
+      "body": "<span class=\"eyebrow\">Cookies &amp; lokale opslag</span>\n      <h1>Cookiebeleid</h1>\n      <p class=\"legal__update\">Laatste update: juni 2026</p>\n\n      <h2>1. Geen trackingcookies</h2>\n      <p>De site <strong>coachtanguy.com</strong> gebruikt <strong>geen enkele cookie voor statistieken, reclame of sociale media</strong>, en geen trackers van derden. Een toestemmingsbanner is dus niet nodig: overeenkomstig de aanbevelingen van de Gegevensbeschermingsautoriteit (GBA) wordt enkel opslag gebruikt die strikt noodzakelijk is voor de werking van de site, en die is vrijgesteld van toestemming.</p>\n\n      <h2>2. Functionele lokale opslag</h2>\n      <p>De site gebruikt de lokale opslag van uw browser (localStorage / sessionStorage / Cache Storage) uitsluitend voor de volgende technische doeleinden:</p>\n      <ul>\n        <li><strong>Cache van de app \"Calculator\"</strong> (Cache Storage, als u de calculator als app installeert): bewaart de bestanden die nodig zijn om offline te werken. Duur: tot u de app verwijdert of de cache wist.</li>\n        <li><strong>SITE_CONTENT_fr / _nl / _en</strong> en <strong>CALC_I18N_fr / _nl / _en</strong> (localStorage): conceptversies van de inhoud, enkel gebruikt in voorbeeldmodus door de beheerder van de site. Ze worden niet gelezen of aangemaakt bij een gewoon bezoek. Duur: tot handmatige verwijdering.</li>\n        <li><strong>dash_ok</strong> (sessionStorage): houdt de sessie van de beheerder op het bewerkingsdashboard actief. Duur: sluiten van het tabblad.</li>\n        <li><strong>cookie_consent</strong> (localStorage): zou uw keuze onthouden indien ooit een toestemmingsbanner wordt geactiveerd. <em>Momenteel niet in gebruik.</em> Maximale duur: 6 maanden.</li>\n      </ul>\n      <p>Deze opslag blijft in uw browser: er wordt geen informatie naar derden gestuurd en u kan er niet mee worden gevolgd.</p>\n\n      <h2>3. Externe diensten</h2>\n      <ul>\n        <li><strong>Lettertypen</strong>: lokaal gehost op de site, geen enkele aanvraag naar Google Fonts.</li>\n        <li><strong>Stripe-betalingen</strong>: de betaalknoppen zijn gewone links naar de beveiligde pagina's van Stripe; de cookies van Stripe gelden enkel op de site van Stripe (zie hun <a href=\"https://stripe.com/nl-be/privacy\" target=\"_blank\" rel=\"noopener\">privacybeleid</a>).</li>\n        <li><strong>WhatsApp</strong>: de WhatsApp-knoppen zijn links; er wordt geen script van Meta op deze site geladen.</li>\n      </ul>\n\n      <h2>4. Hoe deze gegevens verwijderen?</h2>\n      <p>U kan op elk moment de lokale opslag en de cache van uw browser wissen: Instellingen → Privacy → Browsegegevens wissen (of gelijkaardig volgens uw browser). Voor de geïnstalleerde app: verwijder ze gewoon.</p>\n\n      <h2>5. Als er ooit trackers worden toegevoegd</h2>\n      <p>Indien ooit niet-essentiële cookies (statistieken, marketing) zouden worden gebruikt, worden die enkel geplaatst <strong>na uw voorafgaande, vrije en geïnformeerde toestemming</strong>, via een banner waarmee weigeren even eenvoudig is als aanvaarden, zonder vooraf aangevinkte vakjes, en uw keuze wordt maximaal 6 maanden bewaard. Deze pagina zou dan worden bijgewerkt.</p>\n\n      <p class=\"legal__back\"><a href=\"index.html\">← Terug naar de startpagina</a></p>"
     }
   },
   "collab": {
@@ -455,16 +459,16 @@ window.SITE_CONTENT = {
     "desc": "CoachTanguy werkt samen met ZOWE, de kinesitherapiepraktijk van Zoé Grêde in Sint-Genesius-Rode: zorg en sportcoaching gaan hand in hand.",
     "eyebrow": "Gezondheidspartnerschap",
     "h1": "ZOWE Kine × CoachTanguy",
-    "intro": "Om je van herstel tot prestatie te begeleiden, werk ik samen met Zoé Grêde, gediplomeerd kinesitherapeute (Master in de kinesitherapie en revalidatie, ULB) en beoefenaar van de BELTRA-methode. Haar praktijk ZOWE is gevestigd bij Kinovea, Rue des Iris in Sint-Genesius-Rode — midden in mijn coachingzone.",
+    "intro": "Om je van herstel tot prestatie te begeleiden, werk ik samen met Zoé Grêde, gediplomeerd kinesitherapeute (Master in de kinesitherapie en revalidatie, ULB) en beoefenaar van de BELTRA-methode. Haar praktijk ZOWE is gevestigd bij Kinovea, Rue des Iris in Sint-Genesius-Rode, midden in mijn coachingzone.",
     "f1h": "Van zorg naar training",
     "f1p": "Blessure, pijn, verminderde mobiliteit? Zoé herstelt de beweging; ik neem het over om kracht en uithouding veilig weer op te bouwen.",
     "f2h": "Precieze expertise",
     "f2p": "Morfostatische diagnose, diep myofasciaal werk, IASTM, vacuümtherapie, mobilisaties: een gerichte aanpak die de oorzaak behandelt, niet alleen de symptomen.",
     "f3h": "Dezelfde regio",
-    "f3p": "Praktijk in Sint-Genesius-Rode en huisbezoeken in Linkebeek, Beersel, Lot, Eigenbrakel en Waterloo — precies waar ik coach.",
-    "cardEyebrow": "ZOWE — Kinesitherapie",
+    "f3p": "Praktijk in Sint-Genesius-Rode en huisbezoeken in Linkebeek, Beersel, Lot, Eigenbrakel en Waterloo, precies waar ik coach.",
+    "cardEyebrow": "ZOWE, Kinesitherapie",
     "cardTitle": "Nood aan kine-advies?",
-    "cardText": "Lage rugpijn, nekpijn, tendinitis, chronische pijn of terugkeer naar sport na een blessure: ontdek de aanpak van Zoé — \"L'art de la justesse, l'expertise du soin\".",
+    "cardText": "Lage rugpijn, nekpijn, tendinitis, chronische pijn of terugkeer naar sport na een blessure: ontdek de aanpak van Zoé, \"L'art de la justesse, l'expertise du soin\".",
     "chip1": "✓ BELTRA-methode",
     "chip2": "✓ Praktijk Kinovea · Sint-Genesius-Rode",
     "chip3": "✓ FR · NL · EN",

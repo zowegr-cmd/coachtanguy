@@ -460,7 +460,125 @@
     }
     .toast.show{opacity:1}
 
-    .note-site{max-width:400px;text-align:center;color:var(--site-muted);font-size:12px;line-height:1.5}
+    
+    .guide-launch{
+      padding:11px 17px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid var(--site-line);
+      box-shadow:0 12px 26px rgba(0,0,0,.06);
+      color:var(--site-ink);
+      font-size:13px;
+      font-weight:750;
+    }
+    .guide-launch:hover{transform:translateY(-1px)}
+
+    .tutorial-overlay{
+      position:absolute;
+      inset:0;
+      z-index:90;
+      display:none;
+      overflow:hidden;
+      pointer-events:none;
+    }
+    .tutorial-overlay.show{display:block}
+
+    .tutorial-highlight{
+      position:absolute;
+      z-index:91;
+      border:3px solid #fff;
+      border-radius:20px;
+      box-shadow:
+        0 0 0 9999px rgba(0,0,0,.63),
+        0 0 0 8px rgba(255,255,255,.10),
+        0 0 28px rgba(255,255,255,.24);
+      pointer-events:none;
+      transition:left .2s ease,top .2s ease,width .2s ease,height .2s ease;
+    }
+    .tutorial-target-label{
+      position:absolute;
+      z-index:92;
+      top:8px;
+      right:8px;
+      padding:6px 9px;
+      border-radius:999px;
+      background:#fff;
+      color:#111;
+      font-size:10px;
+      line-height:1;
+      font-weight:850;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      white-space:nowrap;
+      box-shadow:0 8px 18px rgba(0,0,0,.22);
+    }
+
+    .tutorial-tooltip{
+      position:absolute;
+      z-index:93;
+      left:12px;
+      right:12px;
+      width:auto;
+      max-height:220px;
+      overflow:auto;
+      border-radius:20px;
+      padding:15px;
+      background:#fff;
+      color:#111;
+      box-shadow:0 20px 45px rgba(0,0,0,.32);
+      pointer-events:auto;
+    }
+    .tutorial-tooltip.top{top:54px;bottom:auto}
+    .tutorial-tooltip.bottom{top:auto;bottom:94px}
+    .tutorial-tooltip h4{
+      margin:0 0 7px;
+      font-size:16px;
+      line-height:1.18;
+      letter-spacing:-.025em;
+      font-weight:800;
+    }
+    .tutorial-tooltip p{
+      margin:0;
+      color:#55575f;
+      font-size:12px;
+      line-height:1.48;
+    }
+    .tutorial-step{
+      display:inline-block;
+      margin-bottom:9px;
+      padding:5px 9px;
+      border-radius:999px;
+      background:#fff0e6;
+      color:#ff5a00;
+      font-size:10px;
+      font-weight:850;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+    .tutorial-instruction{
+      margin-top:10px !important;
+      color:#111 !important;
+      font-weight:750;
+    }
+    .tutorial-actions{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+      margin-top:13px;
+    }
+    .tutorial-actions-right{display:flex;gap:8px}
+    .tutorial-btn{
+      padding:9px 11px;
+      border-radius:11px;
+      font-size:11px;
+      font-weight:800;
+    }
+    .tutorial-btn.secondary{background:#f0f1f3;color:#33343a}
+    .tutorial-btn.primary{background:#111;color:#fff}
+    .tutorial-btn[hidden]{display:none}
+
+.note-site{max-width:400px;text-align:center;color:var(--site-muted);font-size:12px;line-height:1.5}
     .legend{
       max-width:1040px;margin:64px auto 0;padding:18px 20px;border-radius:18px;background:rgba(255,255,255,.72);
       border:1px solid var(--site-line);color:var(--site-muted);text-align:center;font-size:13px;line-height:1.5
@@ -495,8 +613,13 @@
       <img src="img/a1.webp" alt="Logo CoachTanguy">
       <span>CoachTanguy.</span>
     </div>
-    <div class="tag">FITPROS</div>
+    <div class="tag">Application FitPros</div>
     <h1>Votre programme sur mesure<br>dans votre poche.</h1>
+    
+<p class="intro">
+  Cliquez dans le téléphone pour tester la démo de l'application.
+</p>
+
 
     <section class="layout">
       
@@ -522,7 +645,8 @@
 
 
       <div class="demo-side">
-        <div class="hint"><i></i>Cliquez dans le téléphone</div>
+        <div class="hint"><i></i>Suivez les étapes dans le téléphone</div>
+        <button class="guide-launch" id="open-guide">Relancer le didacticiel</button>
 
         <div class="phone">
           <div class="screen">
@@ -1139,14 +1263,35 @@
                 </div>
               </div>
 
+              
+              <div class="tutorial-overlay" id="tutorial-overlay">
+                <div class="tutorial-highlight" id="tutorial-highlight">
+                  <span class="tutorial-target-label" id="tutorial-target-label">Cliquez ici</span>
+                </div>
+
+                <div class="tutorial-tooltip top" id="tutorial-tooltip">
+                  <span class="tutorial-step" id="tutorial-step-label">Étape 1 sur 6</span>
+                  <h4 id="tutorial-title">Ouvrez le programme</h4>
+                  <p id="tutorial-text"></p>
+                  <p class="tutorial-instruction" id="tutorial-instruction"></p>
+                  <div class="tutorial-actions">
+                    <button class="tutorial-btn secondary" id="tutorial-close">Quitter</button>
+                    <div class="tutorial-actions-right">
+                      <button class="tutorial-btn secondary" id="tutorial-back" hidden>Retour</button>
+                      <button class="tutorial-btn primary" id="tutorial-continue" hidden>Continuer</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="toast" id="toast">Workout saved</div>
             </div>
           </div>
         </div>
 
         <div class="note-site">
-          Cliquez dans le téléphone pour découvrir le programme, ouvrir une séance
-          et visualiser le suivi d’un exercice.
+          Cette page est une démonstration interactive : cliquez dans le téléphone
+          pour tester l'application comme si vous étiez déjà dedans.
         </div>
       </div>
     </section>
@@ -1260,12 +1405,226 @@
       showView('home');
     });
 
+
+    const guideLaunch = document.getElementById('open-guide');
+    const tutorialOverlay = document.getElementById('tutorial-overlay');
+    const tutorialHighlight = document.getElementById('tutorial-highlight');
+    const tutorialTargetLabel = document.getElementById('tutorial-target-label');
+    const tutorialTooltip = document.getElementById('tutorial-tooltip');
+    const tutorialStepLabel = document.getElementById('tutorial-step-label');
+    const tutorialTitle = document.getElementById('tutorial-title');
+    const tutorialText = document.getElementById('tutorial-text');
+    const tutorialInstruction = document.getElementById('tutorial-instruction');
+    const tutorialClose = document.getElementById('tutorial-close');
+    const tutorialBack = document.getElementById('tutorial-back');
+    const tutorialContinue = document.getElementById('tutorial-continue');
+
+    let tutorialIndex = 0;
+    let tutorialTarget = null;
+    let tutorialTargetHandler = null;
+
+    const tutorialSteps = [
+      {
+        title: 'Ouvrez le programme',
+        text: 'La grande carte à ouvrir est celle intitulée « Force & mobilité - 8 semaines », sous la rubrique « Continue Training ».',
+        instruction: 'Cliquez directement sur la carte entourée en blanc.',
+        label: 'Cliquez sur la carte',
+        placement: 'top',
+        mode: 'click',
+        setup: () => {
+          showView('home');
+          daySheet.classList.remove('show');
+          views.home.scrollTop = 0;
+        },
+        target: () => document.getElementById('home-program-card')
+      },
+      {
+        title: 'Ouvrez la première séance',
+        text: 'Dans la liste du programme, recherchez le bloc intitulé « Jour 1 ».',
+        instruction: 'Cliquez sur le bloc « Jour 1 » entouré en blanc.',
+        label: 'Cliquez sur Jour 1',
+        placement: 'top',
+        mode: 'click',
+        setup: () => {
+          showView('program');
+          daySheet.classList.remove('show');
+        },
+        target: () => document.querySelectorAll('.open-day')[0]
+      },
+      {
+        title: 'Démarrez l’entraînement',
+        text: 'La fiche de la séance affiche les exercices prévus. Le bouton de démarrage se trouve tout en bas de cette fiche.',
+        instruction: 'Cliquez sur le grand bouton blanc « Start Workout » entouré en blanc.',
+        label: 'Cliquez sur Start Workout',
+        placement: 'top',
+        mode: 'click',
+        setup: () => {
+          showView('program');
+          daySheet.classList.add('show');
+        },
+        target: () => document.getElementById('start-workout')
+      },
+      {
+        title: 'Consultez tous les exercices',
+        text: 'Chaque bloc correspond à un exercice. Vous y voyez la vidéo, les répétitions, les charges et le temps de repos.',
+        instruction: 'Faites glisser l’écran vers le haut pour voir les 5 exercices, puis appuyez sur « Continuer ».',
+        label: 'Faites défiler',
+        placement: 'bottom',
+        mode: 'continue',
+        setup: () => {
+          daySheet.classList.remove('show');
+          showView('exercise');
+          views.exercise.scrollTop = 0;
+        },
+        target: () => document.querySelector('.exercise-card')
+      },
+      {
+        title: 'Validez la fin de la séance',
+        text: 'Le bouton qui termine l’entraînement reste visible en bas à droite de l’écran.',
+        instruction: 'Cliquez sur le bouton blanc « Complete » entouré en blanc.',
+        label: 'Cliquez sur Complete',
+        placement: 'top',
+        mode: 'click',
+        setup: () => {
+          daySheet.classList.remove('show');
+          showView('exercise');
+        },
+        target: () => document.getElementById('complete-workout')
+      },
+      {
+        title: 'Enregistrez la séance',
+        text: 'Vous pouvez noter la séance et ajouter un commentaire. Pour terminer, il faut enregistrer le workout.',
+        instruction: 'Cliquez sur le bouton blanc « Save Workout » entouré en blanc.',
+        label: 'Cliquez sur Save Workout',
+        placement: 'top',
+        mode: 'click-end',
+        setup: () => {
+          document.getElementById('complete-overlay').classList.add('show');
+        },
+        target: () => document.getElementById('save-workout')
+      }
+    ];
+
+    function clearTutorialTargetHandler(){
+      if(tutorialTarget && tutorialTargetHandler){
+        tutorialTarget.removeEventListener('click', tutorialTargetHandler, true);
+      }
+      tutorialTarget = null;
+      tutorialTargetHandler = null;
+    }
+
+    function closeTutorial(){
+      clearTutorialTargetHandler();
+      tutorialOverlay.classList.remove('show');
+    }
+
+    function ensureTargetVisible(target){
+      const activeView = target.closest('.view');
+      if(activeView){
+        const viewRect = activeView.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        const desiredTop = activeView.scrollTop + (targetRect.top - viewRect.top) - (activeView.clientHeight / 2) + (targetRect.height / 2);
+        activeView.scrollTop = Math.max(0, desiredTop);
+      }
+    }
+
+    function positionTutorial(step, target){
+      const screen = document.querySelector('.screen');
+      if(!screen || !target) return;
+
+      ensureTargetVisible(target);
+
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        const screenRect = screen.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        const pad = 5;
+
+        let left = targetRect.left - screenRect.left - pad;
+        let top = targetRect.top - screenRect.top - pad;
+        let width = targetRect.width + (pad * 2);
+        let height = targetRect.height + (pad * 2);
+
+        left = Math.max(5, Math.min(left, screenRect.width - 10));
+        top = Math.max(48, Math.min(top, screenRect.height - 12));
+        width = Math.min(width, screenRect.width - left - 5);
+        height = Math.min(height, screenRect.height - top - 5);
+
+        tutorialHighlight.style.left = left + 'px';
+        tutorialHighlight.style.top = top + 'px';
+        tutorialHighlight.style.width = Math.max(30, width) + 'px';
+        tutorialHighlight.style.height = Math.max(30, height) + 'px';
+
+        tutorialTooltip.classList.remove('top', 'bottom');
+        tutorialTooltip.classList.add(step.placement);
+      }));
+    }
+
+    function renderTutorial(){
+      clearTutorialTargetHandler();
+
+      const step = tutorialSteps[tutorialIndex];
+      step.setup();
+
+      tutorialStepLabel.textContent = `Étape ${tutorialIndex + 1} sur ${tutorialSteps.length}`;
+      tutorialTitle.textContent = step.title;
+      tutorialText.textContent = step.text;
+      tutorialInstruction.textContent = step.instruction;
+      tutorialTargetLabel.textContent = step.label;
+      tutorialBack.hidden = tutorialIndex === 0;
+      tutorialContinue.hidden = step.mode !== 'continue';
+
+      requestAnimationFrame(() => {
+        tutorialTarget = step.target();
+        if(!tutorialTarget) return;
+
+        positionTutorial(step, tutorialTarget);
+
+        if(step.mode === 'click' || step.mode === 'click-end'){
+          tutorialTargetHandler = () => {
+            setTimeout(() => {
+              if(step.mode === 'click-end'){
+                closeTutorial();
+              } else {
+                tutorialIndex += 1;
+                renderTutorial();
+              }
+            }, 260);
+          };
+          tutorialTarget.addEventListener('click', tutorialTargetHandler, true);
+        }
+      });
+    }
+
+    function openTutorial(){
+      tutorialIndex = 0;
+      tutorialOverlay.classList.add('show');
+      renderTutorial();
+    }
+
+    tutorialContinue.addEventListener('click', () => {
+      if(tutorialIndex < tutorialSteps.length - 1){
+        tutorialIndex += 1;
+        renderTutorial();
+      }
+    });
+
+    tutorialBack.addEventListener('click', () => {
+      if(tutorialIndex > 0){
+        tutorialIndex -= 1;
+        renderTutorial();
+      }
+    });
+
+    tutorialClose.addEventListener('click', closeTutorial);
+    guideLaunch.addEventListener('click', openTutorial);
+
     function updateClock(){
       const now = new Date();
       document.getElementById('clock').textContent = now.toLocaleTimeString('fr-BE', {hour:'2-digit', minute:'2-digit'});
     }
     updateClock();
     setInterval(updateClock, 30000);
+    setTimeout(openTutorial, 700);
   </script>
   <script>
   (function(){

@@ -423,7 +423,13 @@
       var files={};
       ['fr','nl','en'].forEach(function(l){
         var raw=null; try{ raw=localStorage.getItem('SITE_CONTENT_'+l); }catch(e){}
-        if(raw){ try{ files['content/'+l+'.js']=buildSiteFile(l, JSON.parse(raw)); }catch(e){} }
+        if(raw){ try{
+          /* On republie le contenu COMPLET : brouillon fusionné par-dessus le contenu
+             de référence. Sans ça, un vieux brouillon (créé avant l'ajout de nouvelles
+             clés : avis, textes légaux...) republierait un fichier amputé et ferait
+             disparaître ces textes du site en ligne. */
+          files['content/'+l+'.js']=buildSiteFile(l, mergeWork(JSON.parse(JSON.stringify(DEFAULTS_ALL[l]||{})), JSON.parse(raw)));
+        }catch(e){} }
         var craw=null; try{ craw=localStorage.getItem('CALC_I18N_'+l); }catch(e){}
         if(craw){ try{
           var cw=JSON.parse(craw)||{}; var cd=cw.dict||{}, cf=cw.frags||{}; var od, of;

@@ -455,13 +455,13 @@
             if(j.deploy===false) toast('✅ Déjà à jour (aucun changement).');
             else toast('✅ Publié ! En ligne dans ~1 min.');
           } else if(res.status===401){ try{ sessionStorage.removeItem('dash_pw'); }catch(e){} toast('Mot de passe incorrect — réessaie.'); }
-          else { toast('Erreur : '+(j.error||('HTTP '+res.status))); }
+          else { toast('Erreur : '+(j.error||('HTTP '+res.status)), 12000); }
         })
         .catch(function(e){ toast('Erreur réseau : '+e.message); })
         .then(function(){ pubBtn.disabled=false; pubBtn.textContent=old; });
     });
 
-    function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2600);}
+    function toast(msg,ms){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t.__tm);t.__tm=setTimeout(function(){t.classList.remove('show');},ms||2600);}
 
     render('');
     persistAndPreview();

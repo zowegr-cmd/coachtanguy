@@ -66,23 +66,39 @@ exports.handler = async (event) => {
     return { status: r.status, data, text };
   };
 
+  /* Message d'erreur explicite selon le code renvoyé par GitHub.
+     Un token expiré renvoie 401 : il ne faut SURTOUT pas dire « branche introuvable »,
+     ça envoie chercher au mauvais endroit (les tokens fine-grained expirent). */
+  const ghError = (res, etape) => {
+    const s = res.status;
+    if (s === 401) return 'Token GitHub expiré ou invalide. Génère un nouveau token (Contents : Read and write) et remplace GITHUB_TOKEN dans Netlify.';
+    if (s === 403) {
+      const msg = ((res.data && res.data.message) || '').toLowerCase();
+      if (msg.indexOf('rate limit') >= 0) return 'Limite de requêtes GitHub atteinte. Réessaie dans quelques minutes.';
+      return 'Token GitHub sans les droits nécessaires. Vérifie qu\'il a la permission Contents : Read and write sur le dépôt ' + repo + '.';
+    }
+    if (s === 404) return 'Dépôt ou branche introuvable (' + repo + ' / ' + branch + '). Vérifie GITHUB_REPO et GITHUB_BRANCH, et que le token donne bien accès à ce dépôt.';
+    if (s === 409 || s === 422) return 'Conflit avec GitHub : le contenu a changé entre-temps. Recharge le dashboard et republie.';
+    return 'GitHub a refusé la requête (' + etape + ', code ' + s + ').';
+  };
+
   try {
     // 1) Réf de la branche → commit courant
     const ref = await gh('GET', API + '/git/ref/heads/' + encodeURIComponent(branch));
     if (ref.status !== 200 || !ref.data || !ref.data.object) {
-      return json(502, { ok: false, error: 'Branche introuvable (' + ref.status + '). Vérifie GITHUB_REPO / GITHUB_BRANCH.' });
+      return json(502, { ok: false, error: ghError(ref, 'lecture de la branche') });
     }
     const parentSha = ref.data.object.sha;
 
     // 2) Arbre de base
     const commit = await gh('GET', API + '/git/commits/' + parentSha);
-    if (commit.status !== 200) return json(502, { ok: false, error: 'Lecture du commit échouée (' + commit.status + ').' });
+    if (commit.status !== 200) return json(502, { ok: false, error: ghError(commit, 'lecture du commit') });
     const baseTree = commit.data.tree.sha;
 
     // 3) Nouvel arbre (contenu inline → pas besoin de blobs séparés)
     const tree = paths.map((p) => ({ path: p, mode: '100644', type: 'blob', content: files[p] }));
     const newTree = await gh('POST', API + '/git/trees', { base_tree: baseTree, tree });
-    if (newTree.status !== 201) return json(502, { ok: false, error: 'Création de l\'arbre échouée (' + newTree.status + ').', detail: (newTree.text || '').slice(0, 200) });
+    if (newTree.status !== 201) return json(502, { ok: false, error: ghError(newTree, 'préparation des fichiers'), detail: (newTree.text || '').slice(0, 200) });
 
     // Rien n'a changé → on ne crée pas de commit inutile
     if (newTree.data.sha === baseTree) {
@@ -95,11 +111,11 @@ exports.handler = async (event) => {
       tree: newTree.data.sha,
       parents: [parentSha],
     });
-    if (made.status !== 201) return json(502, { ok: false, error: 'Création du commit échouée (' + made.status + ').' });
+    if (made.status !== 201) return json(502, { ok: false, error: ghError(made, 'création du commit'), detail: (made.text || '').slice(0, 200) });
 
     // 5) Avance la branche → déclenche le déploiement Netlify
     const upd = await gh('PATCH', API + '/git/refs/heads/' + encodeURIComponent(branch), { sha: made.data.sha, force: false });
-    if (upd.status !== 200) return json(502, { ok: false, error: 'Mise à jour de la branche échouée (' + upd.status + ').', detail: (upd.text || '').slice(0, 200) });
+    if (upd.status !== 200) return json(502, { ok: false, error: ghError(upd, 'publication'), detail: (upd.text || '').slice(0, 200) });
 
     return json(200, { ok: true, deploy: true, changed: paths, commit: made.data.sha.slice(0, 7) });
   } catch (e) {

@@ -195,6 +195,16 @@
     function curPageFile(){ var s=document.getElementById('page'); return s?s.value:'index.html'; }
     // Ajoute ?preview=1 : l'aperçu lit le brouillon localStorage, le vrai site jamais.
     function pv(u){ return u + (u.indexOf('?')>=0?'&':'?') + 'preview=1'; }
+    /* Purge des brouillons à l'ancien format (copie complète du contenu). Gardés, ils
+       republieraient de vieux textes par-dessus les mises à jour du site. Les vraies
+       modifications non publiées sont à refaire — c'est le prix de la sécurité. */
+    (function(){
+      var trouve=false;
+      ['fr','nl','en'].forEach(function(l){
+        try{ if(localStorage.getItem('SITE_CONTENT_'+l)){ localStorage.removeItem('SITE_CONTENT_'+l); trouve=true; } }catch(e){}
+      });
+      if(trouve) setTimeout(function(){ toast('Ancien brouillon local ignoré : le dashboard repart du contenu actuellement en ligne.', 10000); }, 700);
+    })();
     var work = loadWork();
 
     // ===== Mode Calculateur =====
@@ -279,11 +289,31 @@
       for(var k2 in over){ if(!(k2 in out)) out[k2]=over[k2]; }
       return out;
     }
+    /* Brouillon local : on ne mémorise QUE les champs réellement modifiés.
+       Avant, on stockait une copie complète du contenu : un brouillon ancien figeait
+       donc TOUT le texte et, à la publication, écrasait les mises à jour faites
+       entre-temps (textes légaux, nom du menu, prix...). En ne gardant que les
+       différences, les champs non touchés suivent toujours le contenu du site. */
+    var EDITS_KEY='SITE_EDITS_';
+    function diffLeaves(def,cur){
+      var out={};
+      for(var k in cur){
+        var a=def?def[k]:undefined, b=cur[k];
+        if(b&&typeof b==='object'&&!Array.isArray(b)){
+          var sub=diffLeaves((a&&typeof a==='object')?a:{}, b);
+          if(Object.keys(sub).length) out[k]=sub;
+        } else if(String(a)!==String(b)) out[k]=b;
+      }
+      return out;
+    }
     function loadWork(){
       var def=JSON.parse(JSON.stringify(DEF()));
-      var draft=null;
-      try{var raw=localStorage.getItem('SITE_CONTENT_'+LANG); if(raw) draft=JSON.parse(raw);}catch(e){}
-      return draft ? mergeWork(def, draft) : def;
+      var edits=null;
+      try{var raw=localStorage.getItem(EDITS_KEY+LANG); if(raw) edits=JSON.parse(raw);}catch(e){}
+      return edits ? mergeWork(def, edits) : def;
+    }
+    function saveWork(){
+      try{ localStorage.setItem(EDITS_KEY+LANG, JSON.stringify(diffLeaves(DEF(), work))); }catch(e){}
     }
     function flatten(obj,prefix,out){
       out=out||[];prefix=prefix||'';
@@ -340,7 +370,7 @@
       saveTimer=setTimeout(persistAndPreview,250);
     }
     function persistAndPreview(){
-      try{localStorage.setItem('SITE_CONTENT_'+LANG,JSON.stringify(work));}catch(e){}
+      saveWork();
       var f=document.getElementById('frame');
       try{f.contentWindow.location.reload();}catch(e){f.src=f.src;}
     }
@@ -381,7 +411,7 @@
         localStorage.removeItem('CALC_I18N_'+LANG); cwork=JSON.parse(JSON.stringify(CALC_DEF[LANG])); render(curFilter); reloadPreview(); toast('Réinitialisé'); return;
       }
       if(!confirm('Réinitialiser les textes ('+LANG.toUpperCase()+') aux valeurs d\'origine ?'))return;
-      localStorage.removeItem('SITE_CONTENT_'+LANG);
+      try{ localStorage.removeItem(EDITS_KEY+LANG); localStorage.removeItem('SITE_CONTENT_'+LANG); }catch(e){}
       work=JSON.parse(JSON.stringify(DEF())); render(curFilter); persistAndPreview(); toast('Réinitialisé');
     });
     document.getElementById('export').addEventListener('click',function(){
@@ -422,13 +452,15 @@
     function gatherFiles(){
       var files={};
       ['fr','nl','en'].forEach(function(l){
-        var raw=null; try{ raw=localStorage.getItem('SITE_CONTENT_'+l); }catch(e){}
+        var raw=null; try{ raw=localStorage.getItem(EDITS_KEY+l); }catch(e){}
         if(raw){ try{
-          /* On republie le contenu COMPLET : brouillon fusionné par-dessus le contenu
-             de référence. Sans ça, un vieux brouillon (créé avant l'ajout de nouvelles
-             clés : avis, textes légaux...) republierait un fichier amputé et ferait
-             disparaître ces textes du site en ligne. */
-          files['content/'+l+'.js']=buildSiteFile(l, mergeWork(JSON.parse(JSON.stringify(DEFAULTS_ALL[l]||{})), JSON.parse(raw)));
+          /* On publie le contenu de référence À JOUR, avec par-dessus les seuls champs
+             modifiés. Un champ jamais touché suit donc toujours le site : plus aucun
+             risque qu'un vieux brouillon fasse revenir d'anciens textes. */
+          var ed=JSON.parse(raw);
+          if(Object.keys(ed).length){
+            files['content/'+l+'.js']=buildSiteFile(l, mergeWork(JSON.parse(JSON.stringify(DEFAULTS_ALL[l]||{})), ed));
+          }
         }catch(e){} }
         var craw=null; try{ craw=localStorage.getItem('CALC_I18N_'+l); }catch(e){}
         if(craw){ try{
@@ -444,7 +476,7 @@
     }
     var pubBtn=document.getElementById('publish');
     if(pubBtn) pubBtn.addEventListener('click', function(){
-      try{ localStorage.setItem('SITE_CONTENT_'+LANG, JSON.stringify(work)); }catch(e){}
+      saveWork();
       if(MODE==='calc'){ try{ localStorage.setItem('CALC_I18N_'+LANG, JSON.stringify(cwork)); }catch(e){} }
       var files=gatherFiles(); var n=Object.keys(files).length;
       if(!n){ toast('Rien à publier : fais d\'abord une modification.'); return; }

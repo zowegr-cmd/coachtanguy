@@ -288,8 +288,8 @@ window.SITE_CONTENT = {
   },
   "stripe": {
     "unite": "contact.html",
-    "pack4": "https://buy.stripe.com/5kQ4gBdvB0Yz85A7Pa0RG0a",
-    "pack8": "https://buy.stripe.com/8x2cN7fDJePpadI8Te0RG0b",
+    "pack4": "https://buy.stripe.com/4gM28tezF9v53Pkb1m0RG0h",
+    "pack8": "https://buy.stripe.com/dRmbJ3639cHh1Hc1qM0RG0i",
     "initial": "https://buy.stripe.com/6oU3cx9fl6iTadIb1m0RG0c",
     "mensuel": "https://buy.stripe.com/6oU14p77d4aLadIglG0RG0g"
   },

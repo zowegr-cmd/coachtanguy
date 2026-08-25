@@ -112,7 +112,7 @@ window.SITE_CONTENT = {
     "eyebrow": "Avis Google",
     "title": "Ils me font confiance.",
     "score": "5,0",
-    "count": "20 avis Google",
+    "count": "20+ avis Google",
     "cta1": "Laisser un avis",
     "cta2": "Voir tous les avis",
     "r1Name": "Laurence Bioul",

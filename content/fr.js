@@ -83,7 +83,7 @@ window.SITE_CONTENT = {
       "q3": "Puis-je annuler ou reporter une séance ?",
       "a3": "Pas de panique, vous pouvez annuler une séance et la reporter à une autre date tant que votre pack est encore valide. Une fois la date de fin du pack dépassée, toute séance non utilisée est perdue.",
       "q4": "Quelle est la durée de validité d'un pack ?",
-      "a4": "Les packs de 4 séances sont valables 5 semaines et les packs 8 séances sont valables 10 semaines à compter de la date de paiement. Cette durée permet de garantir une pratique régulière et d'optimiser les résultats. Passé ces délais, les séances non utilisées seront perdues. Le report d'une séance ne prolonge pas la durée de validité du pack.",
+      "a4": "Les packs de 4 et 8 séances sont valables 5 semaines à compter de la date de paiement. Cette durée permet de garantir une pratique régulière et d'optimiser les résultats. Passé ces délais, les séances non utilisées seront perdues. Le report d'une séance ne prolonge pas la durée de validité du pack.",
       "q5": "Quels moyens de paiement sont acceptés ?",
       "a5": "Les paiements peuvent être effectués par Visa, Mastercard, Revolut Pay, PayPal, Klarna, Bancontact, Apple Pay ou Google Pay. Le paiement s'effectue de manière sécurisée via Stripe.",
       "q6": "Et si je pars en vacances ?",

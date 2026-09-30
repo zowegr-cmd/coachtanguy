@@ -272,7 +272,7 @@ window.SITE_CONTENT = {
     "s1lCalc": "Calculateur alimentaire personnalisé",
     "s1Btn": "Choisir",
     "s2Name": "Suivi mensuel",
-    "s2Price": "139€",
+    "s2Price": "119€",
     "s2PriceSub": "toutes les 4 semaines",
     "s2Meta": "Uniquement après l'accompagnement initial",
     "s2l1": "Programme d'entraînement sur-mesure",
@@ -291,7 +291,7 @@ window.SITE_CONTENT = {
     "pack4": "https://buy.stripe.com/4gM28tezF9v53Pkb1m0RG0h",
     "pack8": "https://buy.stripe.com/dRmbJ3639cHh1Hc1qM0RG0i",
     "initial": "https://buy.stripe.com/6oU3cx9fl6iTadIb1m0RG0c",
-    "mensuel": "https://buy.stripe.com/6oU14p77d4aLadIglG0RG0g"
+    "mensuel": "https://buy.stripe.com/14A14p4Z57mX2Lgc5q0RG0k"
   },
   "meta": {
     "index": {

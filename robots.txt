@@ -1,10 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /confirmation.html
-Disallow: /merci-programme.html
-Disallow: /nl/merci-programme.html
-Disallow: /en/merci-programme.html
-Disallow: /mentions-legales.html
-Disallow: /cvg.html
 
-Sitemap: https://www.coachtanguy.com/sitemap.xml
+Sitemap: https://coachtanguy.com/sitemap.xml

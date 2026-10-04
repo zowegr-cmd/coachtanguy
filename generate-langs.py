@@ -34,9 +34,9 @@ def transform(html, lang, locale):
                   r'src="../calculateur/index.html\1&lang=%s"' % lang, html)
     html = html.replace('name="lang" value="fr"', 'name="lang" value="%s"' % lang)
     # canonical + og:url -> insère /lang/ après le domaine (toute page)
-    html = re.sub(r'(rel="canonical" href="https://www\.coachtanguy\.com/)',
+    html = re.sub(r'(rel="canonical" href="https://coachtanguy\.com/)',
                   r'\g<1>%s/' % lang, html)
-    html = re.sub(r'(property="og:url" content="https://www\.coachtanguy\.com/)',
+    html = re.sub(r'(property="og:url" content="https://coachtanguy\.com/)',
                   r'\g<1>%s/' % lang, html)
     html = html.replace('content="fr_FR"', 'content="%s"' % locale)
     # liens internes vers les pages uniquement FR -> ../

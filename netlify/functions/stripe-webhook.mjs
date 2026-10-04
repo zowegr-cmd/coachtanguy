@@ -2,7 +2,7 @@
    Stripe > Netlify : envoi automatique du programme après paiement.
 
    Stripe appelle cette adresse à chaque paiement réussi :
-     https://www.coachtanguy.com/.netlify/functions/stripe-webhook
+     https://coachtanguy.com/.netlify/functions/stripe-webhook   (sans www : www redirige, et Stripe ne suit pas les redirections)
    (événements : checkout.session.completed
                  checkout.session.async_payment_succeeded)
 

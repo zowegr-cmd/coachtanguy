@@ -73,7 +73,7 @@
     .pdfp__check.no i{background:#fff;border:2px solid #d4d2ce}
     .pdfp__check span{display:block;color:var(--muted);font-size:12.5px}
     .pdfp__info{font-size:13px;color:#555;margin:0 0 10px;line-height:1.5}
-    .pdfp code{font-size:12px;background:var(--bg);padding:1px 6px;border-radius:5px}
+    .pdfp code{font-size:12px;background:var(--bg);padding:1px 6px;border-radius:5px;overflow-wrap:anywhere;user-select:all}
     .pdfp__drop{display:flex;flex-direction:column;gap:4px;border:2px dashed #d4d2ce;border-radius:14px;padding:26px 18px;text-align:center;cursor:pointer;transition:.15s;background:var(--bg);font-size:14px}
     .pdfp__drop span{font-size:12.5px;color:var(--muted)}
     .pdfp__drop:hover,.pdfp__drop.over,.pdfp__drop:focus{border-color:var(--orange);background:#fff5ee;outline:none}
@@ -595,9 +595,9 @@
         h+='<div class="pdfp__etat'+(tout?' ok':'')+'">'+(tout?'Tout est prêt : chaque paiement envoie le programme automatiquement.':'Il reste des étapes avant de pouvoir vendre le programme.')+'</div>';
         h+='<h3>État de préparation</h3><div class="pdfp__checks">';
         h+=coche(p.pdf,'PDF du programme déposé', p.pdf?'':'Glisse le fichier dans le cadre ci-dessous.');
-        h+=coche(lienSite(),'Lien de paiement affiché sur le site', lienSite()?'':'Colle le lien Stripe (https://buy.stripe.com/…) dans « Liens de paiement Stripe · Programme 28 jours », puis « Mettre en ligne ». Tant qu\'il est vide, le site affiche « Bientôt disponible ».');
+        h+=coche(lienSite(),'Lien de paiement affiché sur le site', lienSite()?'':'Colle le lien Stripe (https://buy.stripe.com/…) dans « Liens de paiement Stripe · Programme 28 jours », puis « Mettre en ligne ». Tant qu\'il est vide, le site affiche « Bientôt disponible ». Dans Stripe, règle ce lien pour rediriger après paiement vers <code>'+location.origin+'/merci-programme.html</code>.');
         h+=coche(p.lien,'Lien de paiement reconnu pour l\'envoi', p.lien?'':'Indique ci-dessous l\'identifiant du lien (plink_…).');
-        h+=coche(p.webhook,'Stripe relié au site', p.webhook?'':'Variable STRIPE_WEBHOOK_SECRET absente sur Netlify (étape à faire une seule fois).');
+        h+=coche(p.webhook,'Stripe relié au site', p.webhook?'':'À faire une seule fois. Dans Stripe (Développeurs, Webhooks), ajoute une destination vers <code>'+location.origin+'/.netlify/functions/stripe-webhook</code> avec les événements <code>checkout.session.completed</code> et <code>checkout.session.async_payment_succeeded</code>. Stripe te donne alors une clé de signature (whsec_…) : enregistre-la dans Netlify sous le nom <code>STRIPE_WEBHOOK_SECRET</code>, puis relance un déploiement.');
         h+=coche(p.email,'Envoi d\'e-mails actif', p.email?('Expéditeur : '+esc(p.expediteur||'non précisé')):'Variable RESEND_API_KEY absente sur Netlify.');
         h+='</div>';
 

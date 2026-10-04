@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Démo du programme Reprise 28 jours | CoachTanguy</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{
+  --orange:#ff6500;
+  --orange2:#ff7a1a;
+  --dark:#05080d;
+  --dark2:#09111b;
+  --card:#101924;
+  --line:#26303b;
+  --muted:#9ca7b3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 26% 14%, rgba(255,122,26,.08), transparent 12%),
+    radial-gradient(circle at 78% 22%, rgba(255,101,0,.06), transparent 16%),
+    linear-gradient(180deg, #ffffff 0%, #fcfcfd 62%, #f7f9fb 100%);
+  position:relative;
+}
+body:before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to bottom, rgba(255,255,255,.72), transparent 22%),
+    linear-gradient(to bottom, transparent 0%, rgba(6,11,18,.035) 100%);
+  pointer-events:none;
+}
+.wrap{
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+  display:grid;
+  place-items:center;
+  padding:34px;
+}
+.phone{
+  width:min(356px, 90vw);
+  height:min(760px, 90vh);
+  aspect-ratio:356/760;
+  padding:10px;
+  border-radius:42px;
+  position:relative;
+  background:linear-gradient(180deg,#161c24 0%, #0c121a 100%);
+  box-shadow:
+    0 26px 60px rgba(10,14,20,.14),
+    0 10px 26px rgba(10,14,20,.08),
+    0 0 0 1px rgba(18,24,32,.06);
+}
+.phone:before{
+  content:"";
+  position:absolute;
+  z-index:20;
+  top:13px;
+  left:50%;
+  transform:translateX(-50%);
+  width:100px;
+  height:22px;
+  border-radius:99px;
+  background:#0a0f15;
+}
+.screen{
+  height:100%;
+  border-radius:33px;
+  overflow:hidden;
+  background:#07101a;
+  border:1px solid rgba(255,255,255,.08);
+  position:relative;
+}
+.status{
+  height:43px;padding:16px 17px 0;display:flex;justify-content:space-between;
+  font-size:10px;font-weight:800;color:#e9ebee;background:#05090e
+}
+.viewer{height:calc(100% - 43px);position:relative;background:#07101a}
+.page{
+  position:absolute;inset:0 0 52px;overflow-y:auto;display:none;scrollbar-width:none;
+  background:#fff;color:#111822
+}
+.page::-webkit-scrollbar{display:none}
+.page.active{display:block}
+.page.dark{background:#07101a;color:#fff}
+.doc-head{
+  height:47px;padding:12px 15px 10px;border-bottom:2px solid var(--orange);
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:4;background:inherit
+}
+.logo{display:flex;align-items:center}
+.brand-logo{display:block;width:78px;height:auto;object-fit:contain}
+.cover-logo{display:block;width:122px;height:auto;margin-bottom:20px}
+.doc-head{background:#07101a !important;color:#fff}
+.doc-head small{font-size:6px;color:#8993a0;text-transform:uppercase;letter-spacing:.08em}
+.page-body{padding:16px 16px 28px}
+.eyebrow{font-size:8px;color:var(--orange);font-weight:950;text-transform:uppercase;letter-spacing:.12em}
+.page-title{font-size:23px;line-height:1.05;letter-spacing:-.035em;margin:5px 0 6px;font-weight:900}
+.page-desc{font-size:9px;color:#65707c;line-height:1.45}
+.dark .page-desc{color:#97a1ad}
+
+/* Cover */
+.cover{
+  background:
+    linear-gradient(90deg,rgba(2,6,11,.98) 0%,rgba(2,6,11,.93) 49%,rgba(2,6,11,.38) 100%),
+    radial-gradient(circle at 82% 25%,rgba(255,117,38,.22),transparent 21%),
+    linear-gradient(145deg,#101823,#05080d);
+}
+.cover .page-body{padding:56px 20px 20px;min-height:100%}
+.cover-label{
+  display:inline-flex;padding:8px 13px;border-radius:999px;background:var(--orange);
+  color:#fff;font-size:10px;font-weight:900
+}
+.cover-offer{margin-top:8px;font-size:10px;font-weight:900}
+.cover-offer b{color:var(--orange)}
+.cover h2{font-size:38px;line-height:.93;margin:15px 0 15px;letter-spacing:-.04em}
+.cover h2 span{color:var(--orange)}
+.cover p{max-width:260px;color:#e0e3e6;font-size:11px;line-height:1.45}
+.cover-stats{
+  position:absolute;left:16px;right:16px;bottom:22px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:7px
+}
+.cover-stat{background:rgba(9,14,21,.9);border-left:2px solid var(--orange);border-radius:0 10px 10px 0;padding:10px}
+.cover-stat strong{display:block;font-size:18px}
+.cover-stat span{font-size:7px;color:#bbc1c8}
+
+/* p2 */
+.steps{display:grid;gap:9px;margin-top:13px}
+.stepbox{border:1px solid #d8dde2;border-radius:11px;background:#fff;padding:10px;display:grid;grid-template-columns:27px 1fr;gap:9px}
+.stepnum{width:27px;height:27px;border-radius:7px;background:var(--orange);color:#fff;display:grid;place-items:center;font-size:10px;font-weight:950}
+.stepbox h3{font-size:10px;margin:0 0 4px}
+.stepbox p{font-size:8px;line-height:1.42;color:#5f6974;margin:0}
+.safety{margin-top:17px;border-top:1px solid #d9dee4;padding-top:13px}
+.safety h3{font-size:13px;margin:0 0 8px}
+.safety li{font-size:7.5px;color:#606b77;margin:7px 0;line-height:1.4}
+
+/* p3 */
+.calendar{
+  margin-top:13px;
+  border:1px solid #d8dde3;
+  border-radius:11px;
+  overflow:hidden;
+  background:#fff
+}
+.cal-row{
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  width:100%
+}
+.cal-row:not(.cal-head){
+  grid-auto-rows:58px
+}
+.cal-cell{
+  min-width:0;
+  height:58px;
+  padding:6px 5px;
+  border-right:1px solid #e3e6e9;
+  border-bottom:1px solid #e3e6e9;
+  font-size:6.7px;
+  line-height:1.28;
+  color:#505b66;
+  overflow:hidden
+}
+.cal-row .cal-cell:last-child{border-right:0}
+.cal-row:last-child .cal-cell{border-bottom:0}
+.cal-cell b{
+  display:block;
+  color:#171d25;
+  font-size:7.2px;
+  margin-bottom:2px
+}
+.cal-head .cal-cell{
+  height:25px;
+  min-height:25px;
+  background:#111923;
+  color:#fff;
+  font-weight:900;
+  text-align:left;
+  padding:7px 5px 5px;
+  border-bottom:1px solid #e3e6e9
+}
+.calendar .cal-row:nth-child(3) .cal-cell,
+.calendar .cal-row:nth-child(5) .cal-cell{
+  background:#eef0f2
+}
+.calendar .cal-row:nth-child(2) .cal-cell,
+.calendar .cal-row:nth-child(4) .cal-cell{
+  background:#fff
+}
+.flex-note{margin-top:12px;border:1px solid rgba(255,101,0,.55);border-radius:10px;padding:10px;background:#fff7f1}
+.flex-note b{display:block;font-size:9px;margin-bottom:3px}
+.flex-note span{font-size:7.4px;color:#616a74;line-height:1.35}
+
+/* p4 menu */
+.week-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}
+.week-card{border:1px solid #d9dee3;border-radius:11px;overflow:hidden;background:#fff}
+.week-top{background:#111923;color:#fff;padding:7px 8px;display:flex;justify-content:space-between;gap:5px}
+.week-top strong{font-size:8px}.week-top span{font-size:6.5px;color:#abb3bd}
+.session-link{
+  display:block;width:calc(100% - 14px);margin:7px;border:0;border-radius:999px;
+  background:var(--orange);color:#fff;font-size:7.5px;font-weight:900;padding:7px 5px;cursor:pointer
+}
+.calc-card{margin-top:14px;background:#0b121b;color:#fff;border-radius:11px;padding:11px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+.calc-card h3{font-size:11px;margin:3px 0}.calc-card p{font-size:7px;color:#a7b0bb;margin:0;line-height:1.35}
+.calc-card button{border:0;background:var(--orange);color:#fff;border-radius:999px;padding:8px 10px;font-size:7px;font-weight:900;cursor:pointer}
+
+/* Échauffement / accès menu */
+.warmup-menu-card{
+  margin-top:13px;border:1px solid #d8dde3;border-radius:11px;background:#f6f7f8;
+  padding:9px 10px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;
+  border-left:3px solid var(--orange)
+}
+.warmup-menu-card strong{display:block;font-size:8px;color:#171d25}
+.warmup-menu-card span{display:block;margin-top:2px;font-size:6.8px;color:#68727d}
+.warmup-link{
+  border:0;background:var(--orange);color:#fff;border-radius:999px;padding:8px 11px;
+  font-size:6.6px;font-weight:900;cursor:pointer;white-space:nowrap
+}
+.warmup-page .session-head{padding-bottom:2px}
+.warmup-page .page-title{font-size:20px}
+.warmup-list{margin:10px 16px 0;display:grid;gap:7px}
+.warmup-card{
+  border:1px solid #2c3540;background:#101720;border-radius:12px;padding:9px;
+  display:grid;grid-template-columns:25px 1fr 54px;gap:7px;align-items:center;min-height:58px
+}
+.warmup-card .exdata strong{font-size:8.5px}
+.warmup-card .exdata span{display:block;margin-top:2px}
+.warmup-note{margin:10px 16px 0;background:#222b35;border-radius:8px;padding:8px;color:#e2e5e8;font-size:7px;line-height:1.4}
+
+/* sessions */
+.session-head{padding:15px 16px 0}
+.meta-row{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:5px;margin-top:10px}
+.meta{background:#202833;border-radius:999px;padding:6px 7px;text-align:center;font-size:6.5px;color:#c8ced5}
+.meta b{color:#fff}
+.menu-chip{background:transparent;border:1px solid var(--orange);color:var(--orange);border-radius:999px;padding:6px 9px;font-size:7px;font-weight:900;cursor:pointer}
+.biset{margin:10px 16px 0;border:1px solid #2c3540;background:#101720;border-radius:12px;padding:9px}
+.exercise{
+  display:grid;
+  grid-template-columns:25px 1fr 54px;
+  gap:7px;
+  align-items:center;
+  padding:8px 0;
+  border-top:0
+}
+.exercise:first-of-type{border-top:0}
+.exnum{
+  width:25px;
+  height:25px;
+  border-radius:7px;
+  background:var(--orange);
+  display:grid;
+  place-items:center;
+  font-size:9px;
+  font-weight:900
+}
+.exdata strong{display:block;font-size:8.5px}
+.exdata span{font-size:6.8px;color:#aeb6bf}
+.fake-lines{display:flex;gap:4px;margin-top:4px}
+.fake-lines i{display:block;height:3px;border-radius:8px;background:#313b46}
+.fake-lines i:first-child{width:52%}
+.fake-lines i:last-child{width:30%}
+.video-lock{
+  border:1px solid rgba(255,101,0,.7);
+  background:transparent;
+  color:var(--orange);
+  border-radius:7px;
+  padding:6px 3px;
+  font-size:6.2px;
+  font-weight:900;
+  cursor:pointer
+}
+.biset-marker{
+  display:grid;
+  grid-template-columns:25px 1fr 54px;
+  align-items:center;
+  padding:0;
+  margin:-1px 0 -1px 0;
+  min-height:28px
+}
+.biset-marker-text{
+  grid-column:1;
+  justify-self:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  line-height:.98;
+  transform:translateX(0)
+}
+.biset-marker-text span{
+  font-size:5.9px;
+  font-weight:900;
+  letter-spacing:.08em;
+  color:#aeb6bf
+}
+.biset-marker-text b{
+  font-size:8px;
+  font-weight:900;
+  color:var(--orange);
+  margin-top:1px
+}
+.biset-rest{margin-top:5px;color:#d3d7dc;font-size:6.9px}
+.cooldown{margin:10px 16px 14px;background:#222b35;border-radius:8px;padding:8px;color:#e2e5e8;font-size:7px}
+.locked{margin:10px 16px 20px;padding:10px;text-align:center;border:1px solid rgba(255,101,0,.35);background:rgba(255,101,0,.07);border-radius:10px;color:#d9dde2;font-size:7px}
+.locked b{color:var(--orange)}
+
+/* p18 */
+.follow{background:#f6f7f8;color:#111822}
+.follow .page-body{padding-top:22px}
+.follow h2{font-size:25px;line-height:1.05;margin:5px 0 9px}
+.follow h2 span{color:var(--orange)}
+.follow p{font-size:8.5px;color:#616b76;line-height:1.45}
+.follow-card{margin-top:16px;background:#08121e;color:#fff;border-radius:12px;padding:13px}
+.follow-item{display:grid;grid-template-columns:24px 1fr;gap:8px;margin:11px 0}
+.follow-item i{font-style:normal;width:22px;height:22px;border-radius:6px;background:var(--orange);display:grid;place-items:center;font-size:8px;font-weight:900}
+.follow-item b{display:block;font-size:8px}.follow-item span{font-size:6.7px;color:#aeb6bf}
+.follow-btn{width:100%;border:0;background:var(--orange);color:#fff;border-radius:999px;padding:9px;font-size:8px;font-weight:900;margin-top:7px;cursor:pointer}
+
+/* bottom controls */
+.controls{
+  position:absolute;left:0;right:0;bottom:0;height:52px;background:#050a10;
+  border-top:1px solid rgba(255,255,255,.07);display:grid;
+  grid-template-columns:50px 1fr 50px;align-items:center;padding:0 9px;z-index:8
+}
+.ctrl{width:38px;height:34px;border-radius:10px;border:1px solid #27303a;background:#0d141c;color:#fff;font-size:16px;cursor:pointer}
+.ctrl:disabled{opacity:.3;cursor:default}
+.page-count{text-align:center;font-size:9px;color:#a9b2bc}
+.page-count strong{color:#fff}
+.progress{height:2px;background:#1b2530;position:absolute;left:0;right:0;bottom:50px;z-index:9}
+.progress i{display:block;height:100%;background:var(--orange);width:5.56%;transition:.2s}
+.toast{
+  position:absolute;left:18px;right:18px;bottom:66px;z-index:20;
+  padding:11px 12px;border-radius:12px;background:#151e28;border:1px solid rgba(255,101,0,.4);
+  color:#fff;font-size:9px;line-height:1.35;opacity:0;transform:translateY(10px);pointer-events:none;transition:.2s
+}
+.toast.show{opacity:1;transform:none}
+
+.pdf-cover-wrap{width:100%;height:100%;background:#000}.pdf-cover-img{display:block;width:100%;height:auto;background:#000}
+
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("is-embedded")</script>
+<style>
+html.is-embedded,html.is-embedded body{background:transparent!important}
+html.is-embedded body:before{display:none}
+html.is-embedded .wrap{padding:0}
+html.is-embedded .phone{width:100%;height:100%;aspect-ratio:auto;box-shadow:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="phone">
+    <div class="screen">
+      <div class="status"><span>9:41</span><span>● ● ●</span></div>
+      <div class="viewer" id="viewer">
+        <section class="page dark cover active" data-page="1">
+          <div class="pdf-cover-wrap">
+            <img class="pdf-cover-img" alt="Couverture du programme" src="img/cover.webp">
+          </div>
+        </section>
+
+        <section class="page" data-page="2">
+          <div class="doc-head">
+            <div class="logo"><img class="brand-logo" src="img/logo.webp" alt="CoachTanguy"></div>
+            <small>Programme reprise 28 jours</small>
+          </div>
+          <div class="page-body">
+            <div class="eyebrow">BIEN DÉMARRER</div>
+            <div class="page-title">Comment utiliser le programme</div>
+            <div class="page-desc">L’objectif n’est pas de te fatiguer au maximum, mais de reconstruire une routine régulière et une base technique solide.</div>
+            <div class="steps">
+              <div class="stepbox"><div class="stepnum">1</div><div><h3>Suis les BI-SETS</h3><p>Dans chaque bi-set, fais 1 série de l’exercice 1 puis, sans repos, 1 série de l’exercice 2. Repose-toi ensuite, puis recommence.</p></div></div>
+              <div class="stepbox"><div class="stepnum">2</div><div><h3>Choisis ton niveau</h3><p>Commence par le niveau 1. Passe au niveau 2 lorsque toutes les répétitions restent propres, sans douleur et sans perdre la position.</p></div></div>
+              <div class="stepbox"><div class="stepnum">3</div><div><h3>Vidéos d’exécution</h3><p>Clique sur « VIDÉO » pour voir l’exécution. Certains exercices utilisent la même vidéo aux deux niveaux : réalise le même mouvement et ajoute simplement la difficulté indiquée au niveau 2.</p></div></div>
+              <div class="stepbox"><div class="stepnum">4</div><div><h3>Adapte le programme à ton emploi du temps</h3><p>Réalise si possible toutes les séances de la semaine. Si tu es disponible 2 fois, fais les séances A et B ; 3 fois, fais A, B et C. Donne la priorité au renforcement et ajoute les marches lorsque ton emploi du temps le permet.</p></div></div>
+            </div>
+            <div class="safety">
+              <h3>Règles essentielles</h3>
+              <ul>
+                <li>Demander l’avis d’un professionnel de santé en cas de maladie, grossesse, douleur persistante, intervention récente ou longue période d’inactivité.</li>
+                <li>Arrêter immédiatement en cas de douleur vive, malaise, vertiges, douleur thoracique ou essoufflement anormal.</li>
+                <li>Une fatigue musculaire modérée est normale. Une douleur articulaire ou tendineuse n’est pas un objectif.</li>
+                <li>Boire régulièrement et utiliser une chaise ou un support parfaitement stable.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" data-page="3">
+          <div class="doc-head">
+            <div class="logo"><img class="brand-logo" src="img/logo.webp" alt="CoachTanguy"></div>
+            <small>Programme reprise 28 jours</small>
+          </div>
+          <div class="page-body">
+            <div class="eyebrow">PLANIFICATION</div>
+            <div class="page-title">Calendrier des 28 jours</div>
+            <div class="page-desc">Trois séances complètes, deux journées de marche et deux journées de récupération chaque semaine.</div>
+            <div class="calendar" id="calendar"></div>
+            <div class="flex-note"><b>Organisation flexible</b><span>Tu peux décaler une séance d’un jour si nécessaire. Évite simplement de placer les trois séances de renforcement sur trois jours consécutifs.</span></div>
+          </div>
+        </section>
+
+        <section class="page" data-page="4">
+          <div class="doc-head">
+            <div class="logo"><img class="brand-logo" src="img/logo.webp" alt="CoachTanguy"></div>
+            <small>Programme reprise 28 jours</small>
+          </div>
+          <div class="page-body">
+            <div class="eyebrow">MENU</div>
+            <div class="page-title">Mon programme interactif</div>
+            <div class="page-desc">Choisis ta semaine, puis clique sur la séance du jour. Le bouton « MENU » te ramène ici.</div>
+            <div class="warmup-menu-card">
+              <div>
+                <strong>ÉCHAUFFEMENT COMMUN</strong>
+                <span>5 min · À réaliser avant chaque séance</span>
+              </div>
+              <button class="warmup-link" data-goto="5">VOIR L’ÉCHAUFFEMENT &gt;</button>
+            </div>
+            <div class="week-grid">
+              <div class="week-card"><div class="week-top"><strong>SEMAINE 1</strong><span>Découverte</span></div>
+                <button class="session-link" data-goto="6">Séance A - Jour 1</button>
+                <button class="session-link" data-goto="7">Séance B - Jour 3</button>
+                <button class="session-link" data-goto="8">Séance C - Jour 5</button>
+              </div>
+              <div class="week-card"><div class="week-top"><strong>SEMAINE 2</strong><span>Régularité</span></div>
+                <button class="session-link" data-goto="9">Séance A - Jour 8</button>
+                <button class="session-link" data-goto="10">Séance B - Jour 10</button>
+                <button class="session-link" data-goto="11">Séance C - Jour 12</button>
+              </div>
+              <div class="week-card"><div class="week-top"><strong>SEMAINE 3</strong><span>Progression</span></div>
+                <button class="session-link" data-goto="12">Séance A - Jour 15</button>
+                <button class="session-link" data-goto="13">Séance B - Jour 17</button>
+                <button class="session-link" data-goto="14">Séance C - Jour 19</button>
+              </div>
+              <div class="week-card"><div class="week-top"><strong>SEMAINE 4</strong><span>Consolidation</span></div>
+                <button class="session-link" data-goto="15">Séance A - Jour 22</button>
+                <button class="session-link" data-goto="16">Séance B - Jour 24</button>
+                <button class="session-link" data-goto="17">Séance C - Jour 26</button>
+              </div>
+            </div>
+            <div class="calc-card">
+              <div><div class="eyebrow">OUTIL INTÉGRÉ</div><h3>Calculateur alimentaire</h3><p>Estime tes besoins caloriques et obtiens des idées de repas pour accompagner ta reprise.</p></div>
+              <button data-demo="calc">ACCÉDER AU CALCULATEUR</button>
+            </div>
+          </div>
+        </section>
+
+
+        <section class="page dark warmup-page" data-page="5">
+          <div class="doc-head">
+            <div class="logo"><img class="brand-logo" src="img/logo.webp" alt="CoachTanguy"></div>
+            <small>Programme reprise 28 jours</small>
+          </div>
+          <div class="session-head">
+            <div class="eyebrow">ÉCHAUFFEMENT COMMUN</div>
+            <div class="page-title">Mobilité générale</div>
+            <div class="page-desc">À réaliser avant chaque séance du programme.</div>
+            <div class="meta-row">
+              <div class="meta">DURÉE TOTALE<br><b>5 min</b></div>
+              <div class="meta">RÉCUPÉRATION<br><b>Aucune</b></div>
+              <div class="meta">NIVEAU<br><b>Tous niveaux</b></div>
+              <button class="menu-chip" data-goto="4">MENU</button>
+            </div>
+          </div>
+          <div class="warmup-list">
+            <div class="warmup-card"><div class="exnum">1</div><div class="exdata"><strong>Exercice 1</strong><span>Contenu masqué</span><div class="fake-lines"><i></i><i></i></div></div><button class="video-lock" data-demo="locked">VIDÉO 🔒</button></div><div class="warmup-card"><div class="exnum">2</div><div class="exdata"><strong>Exercice 2</strong><span>Contenu masqué</span><div class="fake-lines"><i></i><i></i></div></div><button class="video-lock" data-demo="locked">VIDÉO 🔒</button></div><div class="warmup-card"><div class="exnum">3</div><div class="exdata"><strong>Exercice 3</strong><span>Contenu masqué</span><div class="fake-lines"><i></i><i></i></div></div><button class="video-lock" data-demo="locked">VIDÉO 🔒</button></div><div class="warmup-card"><div class="exnum">4</div><div class="exdata"><strong>Exercice 4</strong><span>Contenu masqué</span><div class="fake-lines"><i></i><i></i></div></div><button class="video-lock" data-demo="locked">VIDÉO 🔒</button></div><div class="warmup-card"><div class="exnum">5</div><div class="exdata"><strong>Exercice 5</strong><span>Contenu masqué</span><div class="fake-lines"><i></i><i></i></div></div><button class="video-lock" data-demo="locked">VIDÉO 🔒</button></div><div class="warmup-card"><div class="exnum">6</div><div class="exdata"><strong>Exercice 6</strong><span>Contenu masqué</span><div class="fake-lines"><i></i><i></i></div></div><button class="video-lock" data-demo="locked">VIDÉO 🔒</button></div>
+          </div>
+          <div class="warmup-note"><b>Consignes</b><br>Réalise cette routine avant chaque séance. Les mouvements doivent rester fluides, contrôlés et indolores.</div>
+          <div class="locked"><b>CONTENU MASQUÉ POUR LA DÉMO</b></div>
+        </section>
+
+        <section class="page follow" data-page="18">
+          <div class="doc-head">
+            <div class="logo"><img class="brand-logo" src="img/logo.webp" alt="CoachTanguy"></div>
+            <small>Programme reprise 28 jours</small>
+          </div>
+          <div class="page-body">
+            <div class="eyebrow">POUR ALLER PLUS LOIN</div>
+            <h2>Le programme t’a plu ?<br><span>Passe au suivi en ligne.</span></h2>
+            <p>Ces 28 jours t’ont permis de reprendre de bonnes habitudes. Si tu veux maintenant un accompagnement construit autour de tes objectifs, de ton niveau et de ton emploi du temps, le suivi en ligne est la suite logique.</p>
+            <div class="follow-card">
+              <div class="follow-item"><i>1</i><div><b>PROGRAMME SUR-MESURE</b><span>Un programme adapté à tes objectifs, ton niveau, ton matériel et ton emploi du temps.</span></div></div>
+              <div class="follow-item"><i>2</i><div><b>SUIVI WHATSAPP</b><span>Pose tes questions, envoie tes retours et reste accompagné tout au long de ton programme.</span></div></div>
+              <div class="follow-item"><i>3</i><div><b>AJUSTEMENTS RÉGULIERS</b><span>Ton programme évolue selon tes progrès, tes contraintes et tes sensations.</span></div></div>
+              <button class="follow-btn" data-demo="follow">DÉCOUVRIR LE SUIVI EN LIGNE</button>
+            </div>
+          </div>
+        </section>
+
+        <div class="progress"><i id="progressBar"></i></div>
+        <div class="controls">
+          <button class="ctrl" id="prevBtn" aria-label="Page précédente">‹</button>
+          <div class="page-count">Page <strong id="pageNow">1</strong> / 18</div>
+          <button class="ctrl" id="nextBtn" aria-label="Page suivante">›</button>
+        </div>
+        <div class="toast" id="toast">Contenu disponible dans le programme complet.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const viewer = document.getElementById('viewer');
+  const toast = document.getElementById('toast');
+
+  const sessions = [
+    {page:6, week:1, title:'Séance A - Base complète'},
+    {page:7, week:1, title:'Séance B - Posture et gainage'},
+    {page:8, week:1, title:'Séance C - Coordination et autonomie'},
+    {page:9, week:2, title:'Séance A - Base complète'},
+    {page:10, week:2, title:'Séance B - Posture et gainage'},
+    {page:11, week:2, title:'Séance C - Coordination et autonomie'},
+    {page:12, week:3, title:'Séance A - Base complète'},
+    {page:13, week:3, title:'Séance B - Posture et gainage'},
+    {page:14, week:3, title:'Séance C - Coordination et autonomie'},
+    {page:15, week:4, title:'Séance A - Base complète'},
+    {page:16, week:4, title:'Séance B - Posture et gainage'},
+    {page:17, week:4, title:'Séance C - Coordination et autonomie'}
+  ];
+
+  function sessionHTML(s){
+    const ex = n => `
+      <div class="exercise">
+        <div class="exnum">${n}</div>
+        <div class="exdata">
+          <strong>Exercice ${n}</strong>
+          <span>Niv. 1 : contenu masqué · Niv. 2 : contenu masqué</span>
+          <div class="fake-lines"><i></i><i></i></div>
+        </div>
+        <button class="video-lock" data-demo="locked">VIDÉO 🔒</button>
+      </div>`;
+    const marker = n => `
+      <div class="biset-marker" aria-hidden="true">
+        <div class="biset-marker-text">
+          <span>BI</span>
+          <span>SET</span>
+          <b>${n}</b>
+        </div>
+      </div>`;
+    return `
+      <section class="page dark" data-page="${s.page}">
+        <div class="doc-head">
+          <div class="logo"><img class="brand-logo" src="img/logo.webp" alt="CoachTanguy"></div>
+          <small>Programme reprise 28 jours</small>
+        </div>
+        <div class="session-head">
+          <div class="eyebrow">SEMAINE ${s.week}</div>
+          <div class="page-title" style="font-size:20px">${s.title}</div>
+          <div class="meta-row">
+            <div class="meta">DURÉE TOTALE<br><b>30 à 45 min</b></div>
+            <div class="meta">RÉCUPÉRATION<br><b>45 à 60 s</b></div>
+            <div class="meta">NIVEAU<br><b>N1 ou N2</b></div>
+            <button class="menu-chip" data-goto="4">MENU</button>
+          </div>
+        </div>
+        <div class="biset">${ex(1)}${marker(1)}${ex(2)}<div class="biset-rest">1 série de l’exercice 1, puis directement 1 série de l’exercice 2, puis récupération.</div></div>
+        <div class="biset">${ex(3)}${marker(2)}${ex(4)}<div class="biset-rest">Les séries, répétitions et consignes précises sont réservées au programme complet.</div></div>
+        <div class="biset">${ex(5)}${marker(3)}${ex(6)}<div class="biset-rest">Les vidéos d’exécution exactes sont également verrouillées dans cette démo.</div></div>
+        <div class="cooldown"><b>Retour au calme</b><br>Si besoin, marcher 2 minutes en respirant calmement.</div>
+        <div class="locked"><b>CONTENU MASQUÉ POUR LA DÉMO</b></div>
+      </section>`;
+  }
+
+  sessions.forEach(s => {
+    const wrap = document.createElement('div');
+    wrap.innerHTML = sessionHTML(s).trim();
+    viewer.insertBefore(wrap.firstElementChild, document.querySelector('.progress'));
+  });
+
+  const cal = document.getElementById('calendar');
+  const heads = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+  const schedule = [
+    ['Séance A','Découverte'],['Marche','15 min'],['Séance B','Découverte'],['Marche','15 min'],['Séance C','Découverte'],['Repos',''],['Repos',''],
+    ['Séance A','Régularité'],['Marche','20 min'],['Séance B','Régularité'],['Marche','20 min'],['Séance C','Régularité'],['Repos',''],['Repos',''],
+    ['Séance A','Progression'],['Marche','25 min'],['Séance B','Progression'],['Marche','25 min'],['Séance C','Progression'],['Repos',''],['Repos',''],
+    ['Séance A','Consolidation'],['Marche','30 min'],['Séance B','Consolidation'],['Marche','30 min'],['Séance C','Bilan'],['Repos',''],['Repos + et après ?','(p. 18)']
+  ];
+  const hr = document.createElement('div'); hr.className='cal-row cal-head';
+  heads.forEach(h => {const c=document.createElement('div');c.className='cal-cell';c.textContent=h;hr.appendChild(c)});
+  cal.appendChild(hr);
+  for(let w=0;w<4;w++){
+    const row=document.createElement('div');row.className='cal-row';
+    for(let d=0;d<7;d++){
+      const idx=w*7+d; const c=document.createElement('div');c.className='cal-cell';
+      c.innerHTML=`<b>Jour ${idx+1}</b>${schedule[idx][0]}<br><span>${schedule[idx][1]}</span>`;
+      row.appendChild(c);
+    }
+    cal.appendChild(row);
+  }
+
+  const allPages = () => Array.from(document.querySelectorAll('.page'));
+  let current=1;
+
+  function showPage(n){
+    n=Math.max(1,Math.min(18,Number(n)||1));
+    allPages().forEach(p=>p.classList.toggle('active',Number(p.dataset.page)===n));
+    current=n;
+    document.getElementById('pageNow').textContent=n;
+    document.getElementById('prevBtn').disabled=n===1;
+    document.getElementById('nextBtn').disabled=n===18;
+    document.getElementById('progressBar').style.width=(n/18*100)+'%';
+    const p=document.querySelector(`.page[data-page="${n}"]`);
+    if(p) p.scrollTop=0;
+  }
+
+  document.getElementById('prevBtn').addEventListener('click',()=>showPage(current-1));
+  document.getElementById('nextBtn').addEventListener('click',()=>showPage(current+1));
+
+  document.addEventListener('click',e=>{
+    const goto=e.target.closest('[data-goto]');
+    if(goto){showPage(goto.dataset.goto);return}
+    const demo=e.target.closest('[data-demo]');
+    if(!demo)return;
+    const type=demo.dataset.demo;
+    if(type==='locked') pop('Exercice et vidéo disponibles dans la version complète du programme.');
+    else if(type==='calc') pop('Le calculateur alimentaire est offert avec le programme complet.');
+    else if(type==='follow') pop('Clique ici pour découvrir mon suivi en ligne et profiter d’un accompagnement personnalisé après ce programme 28 jours.');
+  });
+
+  function pop(msg){
+    toast.textContent=msg;
+    toast.classList.add('show');
+    clearTimeout(window.__ctToast);
+    window.__ctToast=setTimeout(()=>toast.classList.remove('show'),2200);
+  }
+
+  showPage(1);
+})();
+</script>
+</body>
+</html>

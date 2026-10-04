@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
 Disallow: /confirmation.html
+Disallow: /merci-programme.html
+Disallow: /nl/merci-programme.html
+Disallow: /en/merci-programme.html
 Disallow: /mentions-legales.html
 Disallow: /cvg.html
 

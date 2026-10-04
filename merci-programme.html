@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title data-i18n="merci.title">Merci pour votre achat | CoachTanguy</title>
+  <meta name="description" data-i18n-content="merci.desc" content="Votre programme Reprise 28 jours vous a été envoyé par e-mail." />
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="assets/fonts.css" />
+  <link rel="stylesheet" href="styles.css?v=81" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png" />
+  <link rel="apple-touch-icon" href="assets/icon-180.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#0c0c0e" />
+  <script>
+    try {
+      var l = localStorage.getItem('ct_buy_lang');
+      if ((l === 'nl' || l === 'en') && !/\/(nl|en)\//.test(location.pathname)) {
+        localStorage.removeItem('ct_buy_lang');
+        location.replace(l + '/merci-programme.html');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body class="has-hero">
+
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo"><img class="nav__logo-dark" src="assets/logo.webp" alt="CoachTanguy" width="160" height="73" /><img class="nav__logo-light" src="assets/logo-white.webp" alt="CoachTanguy" width="160" height="73" /></a>
+      <nav class="nav__links" id="navLinks">
+        <a href="index.html" data-i18n="nav.accueil">Accueil</a>
+        <a href="index.html#services" data-i18n="nav.suivis">Services</a>
+        <a href="index.html#avis" data-i18n="nav.avis">Avis</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
+        <a href="calculateur.html" data-i18n="nav.calculateur">Calculateur</a>
+        <a href="collaboration.html" data-i18n="nav.collab">Collaboration</a>
+      </nav>
+      <div class="nav__right">
+        <a href="contact.html" class="btn btn--primary nav__cta" data-i18n="nav.cta">Réserver un appel</a>
+        <div class="lang-switch" id="langSwitch" aria-label="Langue">
+          <a href="#" data-lang="fr">FR</a>
+          <a href="#" data-lang="nl">NL</a>
+          <a href="#" data-lang="en">EN</a>
+        </div>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="confirm">
+    <div class="cta__bg" aria-hidden="true"></div>
+    <div class="container confirm__inner reveal">
+      <div class="confirm__check">
+        <svg viewBox="0 0 52 52" width="56" height="56" fill="none"><circle cx="26" cy="26" r="24" stroke="#ff5a00" stroke-width="3"/><path d="M16 27l7 7 13-15" stroke="#ff5a00" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h1 data-i18n="merci.h1">Merci, votre programme est en route !</h1>
+      <p class="p28merci__text" data-i18n="merci.text">Votre paiement est confirmé. Le programme Reprise 28 jours vient de vous être envoyé par e-mail, en pièce jointe. Pensez à vérifier vos courriers indésirables.</p>
+      <p class="p28merci__help" data-i18n="merci.help">Rien reçu après 10 minutes ? Écrivez-moi et je vous le renvoie tout de suite.</p>
+      <div class="confirm__actions">
+        <a href="index.html" class="btn btn--primary btn--lg" data-i18n="merci.btn1">Retour à l'accueil</a>
+        <a href="contact.html" class="btn btn--ghost" data-i18n="merci.btn2">Me contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="nav__logo"><img src="assets/logo-white.webp" alt="CoachTanguy" width="160" height="73" /></a>
+        <p data-i18n="footer.tagline">Le sport facile, partout et à tout moment.</p>
+        <p class="footer__areas" data-i18n="footer.areas">Coach sportif à Rhode-Saint-Genèse, Uccle, Waterloo, Beersel, Linkebeek et Braine-l'Alleud, à domicile ou en visio.</p>
+      </div>
+      <nav class="footer__links">
+        <a href="coaching-visio.html" data-i18n="footer.lVisio">Coaching visio</a>
+        <a href="suivi-en-ligne.html" data-i18n="footer.lSuivi">Suivi en ligne</a>
+        <a href="programme-28-jours.html" data-i18n="footer.lProg">Programme 28 jours</a>
+        <a href="index.html#faq" data-i18n="footer.lFaq">FAQ</a>
+        <a href="contact.html" data-i18n="footer.lContact">Contact</a>
+        <a href="collaboration.html" data-i18n="footer.lCollab">Kiné partenaire</a>
+        <a href="mentions-legales.html" data-i18n="footer.lMentions">Mentions légales</a>
+        <a href="cvg.html" data-i18n="footer.lCgv">CGV</a>
+        <a href="politique-confidentialite.html" data-i18n="footer.lPrivacy">Confidentialité</a>
+        <a href="cookies.html" data-i18n="footer.lCookies">Cookies</a>
+      </nav>
+      <nav class="footer__links footer__local" aria-label="Zones desservies">
+        <a href="coach-sportif-rhode-saint-genese.html">Coach sportif Rhode-Saint-Genèse</a>
+        <a href="coach-sportif-uccle.html">Coach sportif Uccle</a>
+        <a href="coach-sportif-waterloo.html">Coach sportif Waterloo</a>
+        <a href="coach-sportif-beersel.html">Coach sportif Beersel</a>
+        <a href="coach-sportif-linkebeek.html">Coach sportif Linkebeek</a>
+        <a href="coach-sportif-braine-lalleud.html">Coach sportif Braine-l'Alleud</a>
+      </nav>
+    </div>
+    <div class="footer__bottom"><div class="container" data-i18n="footer.copyright">© 2026 CoachTanguy. Tous droits réservés.</div></div>
+  </footer>
+
+  <script src="content/fr.js?v=13"></script>
+  <script src="assets/i18n.js?v=3"></script>
+  <script src="script.js?v=24" defer></script>
+</body>
+</html>

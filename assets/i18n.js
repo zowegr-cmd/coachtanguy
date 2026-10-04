@@ -18,7 +18,7 @@
   // Le vrai site n'utilise jamais l'éventuel brouillon stocké en localStorage.
   if (/[?&]preview=1/.test(location.search)) {
     try {
-      var raw = localStorage.getItem('SITE_CONTENT_' + lang);
+      var raw = localStorage.getItem('SITE_PREVIEW_' + lang);
       if (raw) content = JSON.parse(raw);
     } catch (e) {}
   }

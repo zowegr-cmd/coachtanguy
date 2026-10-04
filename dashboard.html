@@ -14,8 +14,9 @@
     .app{display:grid;grid-template-columns:minmax(420px,1fr) 1.25fr;height:100vh}
     /* ---- Éditeur ---- */
     .editor{display:flex;flex-direction:column;height:100vh;border-right:1px solid var(--line);background:#fbfbfa}
-    .top{display:flex;align-items:center;gap:14px;padding:16px 22px;border-bottom:1px solid var(--line);background:#fff}
+    .top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:14px 22px;border-bottom:1px solid var(--line);background:#fff}
     .top h1{font-family:'Inter Tight';font-size:18px;font-weight:800}
+    .top h1,.lang,.btn{white-space:nowrap}
     .top h1 b{color:var(--orange)}
     .langs{display:flex;gap:6px;margin-left:6px}
     .lang{font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;cursor:pointer;color:#444}
@@ -52,9 +53,44 @@
     .preview__bar .dot{width:10px;height:10px;border-radius:50%;background:#ff5f57}
     .preview__bar select{margin-left:auto;font-size:12px;padding:5px 8px;border-radius:6px;border:none}
     .preview iframe{flex:1;width:100%;border:0;background:#fff}
-    .toast{position:fixed;bottom:20px;left:20px;background:var(--dark);color:#fff;padding:12px 18px;border-radius:10px;font-size:13px;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;z-index:10}
+    .toast{position:fixed;bottom:20px;left:20px;z-index:60;background:var(--dark);color:#fff;padding:12px 18px;border-radius:10px;font-size:13px;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;z-index:10}
     .toast.show{opacity:1;transform:none}
     @media(max-width:1000px){.app{grid-template-columns:1fr}.preview{display:none}}
+
+    /* ---- Panneau Programme PDF ---- */
+    .pdfp{position:fixed;inset:0;z-index:50;display:none;align-items:flex-start;justify-content:center;background:rgba(12,12,14,.55);padding:34px 16px;overflow-y:auto}
+    .pdfp.open{display:flex}
+    .pdfp__box{background:#fff;border-radius:18px;width:700px;max-width:100%;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+    .pdfp__head{display:flex;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line)}
+    .pdfp__head h2{font-family:'Inter Tight';font-size:17px;font-weight:800;flex:1}
+    .pdfp__body{padding:18px 22px 26px}
+    .pdfp h3{font-family:'Inter Tight';font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px}
+    .pdfp__etat{padding:12px 14px;border-radius:10px;font-size:13.5px;font-weight:600;background:#fff5ee;color:#9a3a00;border:1px solid #ffd9c2}
+    .pdfp__etat.ok{background:#ecfdf3;color:#0f6b3a;border-color:#b8ebcd}
+    .pdfp__checks{display:grid;gap:9px}
+    .pdfp__check{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.45}
+    .pdfp__check i{flex:0 0 20px;height:20px;margin-top:1px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800;color:#fff;background:#16a34a}
+    .pdfp__check.no i{background:#fff;border:2px solid #d4d2ce}
+    .pdfp__check span{display:block;color:var(--muted);font-size:12.5px}
+    .pdfp__info{font-size:13px;color:#555;margin:0 0 10px;line-height:1.5}
+    .pdfp code{font-size:12px;background:var(--bg);padding:1px 6px;border-radius:5px}
+    .pdfp__drop{display:flex;flex-direction:column;gap:4px;border:2px dashed #d4d2ce;border-radius:14px;padding:26px 18px;text-align:center;cursor:pointer;transition:.15s;background:var(--bg);font-size:14px}
+    .pdfp__drop span{font-size:12.5px;color:var(--muted)}
+    .pdfp__drop:hover,.pdfp__drop.over,.pdfp__drop:focus{border-color:var(--orange);background:#fff5ee;outline:none}
+    .pdfp__drop.busy{opacity:.55;pointer-events:none}
+    .pdfp__bar{height:6px;border-radius:3px;background:#eee;overflow:hidden;margin-top:12px;display:none}
+    .pdfp__bar i{display:block;height:100%;width:0;background:var(--orange);transition:width .25s}
+    .pdfp__row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .pdfp__row input{flex:1;min-width:180px;font-family:'Inter';font-size:13.5px;padding:9px 12px;border:1px solid var(--line);border-radius:8px}
+    .pdfp__row select{font-family:'Inter';font-size:13px;padding:9px 8px;border:1px solid var(--line);border-radius:8px;background:#fff}
+    .pdfp__row input:focus{outline:none;border-color:var(--orange)}
+    .pdfp__alerte{margin-top:10px;padding:10px 12px;border-radius:10px;background:#fff5ee;border:1px solid #ffd9c2;font-size:13px;line-height:1.6}
+    .pdfp__erreur{padding:14px;border-radius:10px;background:#fef3f2;color:#b42318;font-size:13.5px}
+    .pdfp table{width:100%;border-collapse:collapse;font-size:12.5px}
+    .pdfp td{padding:9px 6px;border-top:1px solid var(--line);vertical-align:top}
+    .pdfp td small{color:var(--muted)}
+    .pdfp__tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11.5px;font-weight:700;background:#fff5ee;color:#9a3a00}
+    .pdfp__tag.ok{background:#ecfdf3;color:#0f6b3a}
 
     /* ---- Porte (mot de passe) ---- */
     .dash-gate{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:#0c0c0e}
@@ -117,6 +153,7 @@
         <div class="langs modes">
           <button class="lang mode active" data-mode="site">Site</button>
           <button class="lang mode" data-mode="calc">Calculateur</button>
+          <button class="lang" id="pdfOpen" title="Déposer le PDF du programme, régler l'envoi automatique, voir les ventes">Programme PDF</button>
         </div>
         <div class="actions">
           <button class="btn" id="reset">↺ Réinitialiser</button>
@@ -137,6 +174,7 @@
             <option value="index.html">Accueil</option>
             <option value="coaching-visio.html">Coaching visio</option>
             <option value="suivi-en-ligne.html">Suivi en ligne</option>
+            <option value="programme-28-jours.html">Programme 28 jours</option>
             <option value="calculateur.html">Calculateur</option>
             <option value="contact.html">Contact</option>
             <option value="collaboration.html">Kiné partenaire</option>
@@ -155,18 +193,25 @@
             <option value="mentions-legales.html">Mentions légales</option>
             <option value="cvg.html">CGV</option>
             <option value="confirmation.html">Confirmation</option>
+            <option value="merci-programme.html">Merci (après achat)</option>
           </optgroup>
         </select>
       </div>
       <iframe id="frame" src="index.html?preview=1"></iframe>
     </div>
   </div>
+  <div class="pdfp" id="pdfp" aria-hidden="true">
+    <div class="pdfp__box" role="dialog" aria-modal="true" aria-label="Programme 28 jours : PDF et ventes">
+      <div class="pdfp__head"><h2>Programme 28 jours · PDF et ventes</h2><button class="btn" id="pdfpClose">Fermer</button></div>
+      <div class="pdfp__body" id="pdfpBody"></div>
+    </div>
+  </div>
   <div class="toast" id="toast"></div>
 
   <!-- charge le contenu des 3 langues (chacune s'enregistre dans SITE_CONTENT_ALL) -->
-  <script src="content/fr.js?v=12"></script>
-  <script src="content/nl.js?v=12"></script>
-  <script src="content/en.js?v=12"></script>
+  <script src="content/fr.js?v=13"></script>
+  <script src="content/nl.js?v=13"></script>
+  <script src="content/en.js?v=13"></script>
   <!-- Dictionnaires du calculateur (FR source -> NL/EN), snapshot par langue -->
   <script src="content/calc-i18n.nl.js?v=3"></script>
   <script>window.__CALC = { nl: { dict: Object.assign({}, window.CALC_I18N), frags: Object.assign({}, window.CALC_I18N_FRAGMENTS) } };</script>
@@ -245,11 +290,12 @@
       nav:"Navigation", home:"Accueil", visio:"Coaching visio", suivi:"Suivi en ligne", avis:"Avis Google (accueil)",
       contact:"Contact", footer:"Pied de page", stripe:"Liens de paiement Stripe",
       calc:"Calculateur (hero)", collab:"Page Kiné partenaire (ZOWE)", meta:"SEO · Titres & descriptions", local:"Pages locales",
-      legal:"Pages légales", confirm:"Page de confirmation"
+      legal:"Pages légales", confirm:"Page de confirmation",
+      prog:"Programme 28 jours (page)", merci:"Programme 28 jours · page de remerciement"
     };
     var SUB = {
       "home.hero":"Accueil · Hero", "home.trust":"Accueil · Bandeau confiance",
-      "home.services":"Accueil · Services", "home.process":"Accueil · Comment ça marche",
+      "home.services":"Accueil · Services", "home.process":"Accueil · Comment ça marche", "home.prog":"Accueil · Programme 28 jours",
       "home.about":"Accueil · À propos", "home.faq":"Accueil · FAQ", "home.cta":"Accueil · Appel à l'action",
       "home.payments":"Accueil · Paiement sécurisé",
       "home.calcTeaser":"Accueil · Calculateur (mise en avant)",
@@ -295,6 +341,10 @@
        entre-temps (textes légaux, nom du menu, prix...). En ne gardant que les
        différences, les champs non touchés suivent toujours le contenu du site. */
     var EDITS_KEY='SITE_EDITS_';
+    /* L'aperçu (?preview=1) lit une copie complète du contenu en cours, rangée à part :
+       elle ne sert QU'À l'aperçu et n'est jamais publiée (la publication part du diff). */
+    var PREVIEW_KEY='SITE_PREVIEW_';
+    function ecrireApercu(w){ try{ localStorage.setItem(PREVIEW_KEY+LANG, JSON.stringify(w)); }catch(e){} }
     function diffLeaves(def,cur){
       var out={};
       for(var k in cur){
@@ -310,10 +360,13 @@
       var def=JSON.parse(JSON.stringify(DEF()));
       var edits=null;
       try{var raw=localStorage.getItem(EDITS_KEY+LANG); if(raw) edits=JSON.parse(raw);}catch(e){}
-      return edits ? mergeWork(def, edits) : def;
+      var w = edits ? mergeWork(def, edits) : def;
+      ecrireApercu(w);
+      return w;
     }
     function saveWork(){
       try{ localStorage.setItem(EDITS_KEY+LANG, JSON.stringify(diffLeaves(DEF(), work))); }catch(e){}
+      ecrireApercu(work);
     }
     function flatten(obj,prefix,out){
       out=out||[];prefix=prefix||'';
@@ -326,10 +379,12 @@
     // Labels générés pour les avis Google (r1Name/r1Text ... r20Name/r20Text)
     for(var __r=1;__r<=20;__r++){ LABELS['r'+__r+'Name']='Avis '+__r+' · prénom'; LABELS['r'+__r+'Text']='Avis '+__r+' · texte'; }
     LABELS.score='Note (5,0)'; LABELS.count='Nombre d\'avis (texte)'; LABELS.cta1='Bouton « laisser un avis »'; LABELS.cta2='Bouton « voir tous les avis »';
+    // Libellés des champs du programme 28 jours
+    (function(L){ var o={title1:"Titre · 1re ligne",title2:"Titre · 2e ligne (orange)",priceSub:"Mention sous le prix",chip1:"Pastille 1",chip2:"Pastille 2",chip3:"Pastille 3",heroTitle1:"Titre · 1re ligne",heroTitle2:"Titre · 2e ligne (orange)",heroCta1:"Bouton principal (démo)",heroCta2:"Bouton secondaire (tarif)",pill1:"Pastille 1",pill2:"Pastille 2",pill3:"Pastille 3",demoEyebrow:"Démo · surtitre",demoTitle:"Démo · titre",demoText:"Démo · texte",demoHint:"Démo · indication",demoNote:"Démo · note (contenu masqué)",phEyebrow:"Phases · surtitre",phTitle:"Phases · titre",phText:"Phases · texte",ftEyebrow:"Inclus · surtitre",ftTitle:"Inclus · titre",ftText:"Inclus · texte",whoEyebrow:"Pour qui · surtitre",whoTitle:"Pour qui · titre",whoNote:"Pour qui · avertissement",priceEyebrow:"Tarif · surtitre",priceTitle:"Tarif · titre",priceText:"Tarif · texte",cardName:"Tarif · nom du produit",price:"PRIX du programme",priceOnce:"Tarif · mention sous le prix",langNote:"Note sur la langue (laisser vide en français)",buyBtn:"Bouton d'achat (le prix s'ajoute tout seul)",buyNote:"Mention sous le bouton d'achat",soon:"Texte du bouton tant que le lien de paiement est vide",afterEyebrow:"Et après · surtitre",afterTitle:"Et après · titre",afterText:"Et après · texte",afterBtn:"Et après · bouton",ctaTitle:"Appel final · titre",ctaText:"Appel final · texte",ctaBtn:"Appel final · bouton (le prix s'ajoute tout seul)",ctaNote:"Appel final · mention",programme:"Programme 28 jours",lProg:"Lien « Programme 28 jours »",help:"Aide (rien reçu ?)",btn1:"Bouton 1",btn2:"Bouton 2",ph1Days:"Phase 1 · jours",ph1Title:"Phase 1 · titre",ph1Text:"Phase 1 · texte",who1Title:"Pour qui 1 · titre",who1Text:"Pour qui 1 · texte",ph2Days:"Phase 2 · jours",ph2Title:"Phase 2 · titre",ph2Text:"Phase 2 · texte",who2Title:"Pour qui 2 · titre",who2Text:"Pour qui 2 · texte",ph3Days:"Phase 3 · jours",ph3Title:"Phase 3 · titre",ph3Text:"Phase 3 · texte",who3Title:"Pour qui 3 · titre",who3Text:"Pour qui 3 · texte",ph4Days:"Phase 4 · jours",ph4Title:"Phase 4 · titre",ph4Text:"Phase 4 · texte",who4Title:"Pour qui 4 · titre",who4Text:"Pour qui 4 · texte",ft1Title:"Inclus 1 · titre",ft1Text:"Inclus 1 · texte",c1:"Tarif · ligne 1 de la liste",ft2Title:"Inclus 2 · titre",ft2Text:"Inclus 2 · texte",c2:"Tarif · ligne 2 de la liste",ft3Title:"Inclus 3 · titre",ft3Text:"Inclus 3 · texte",c3:"Tarif · ligne 3 de la liste",ft4Title:"Inclus 4 · titre",ft4Text:"Inclus 4 · texte",c4:"Tarif · ligne 4 de la liste",ft5Title:"Inclus 5 · titre",ft5Text:"Inclus 5 · texte",c5:"Tarif · ligne 5 de la liste",ft6Title:"Inclus 6 · titre",ft6Text:"Inclus 6 · texte",c6:"Tarif · ligne 6 de la liste"}; for(var k in o){ if(!L[k]) L[k]=o[k]; } })(LABELS);
     function labelOf(path){var last=path.split('.').pop();return LABELS[last]||last;}
     // Chaque lien Stripe correspond à un prix éditable : on affiche le prix ACTUEL
     // (de tes sections) à côté du lien, pour qu'ils restent cohérents.
-    var STRIPE_PRICE={'stripe.unite':'visio.p1Price','stripe.pack4':'visio.p2Price','stripe.pack8':'visio.p3Price','stripe.initial':'suivi.s1Price','stripe.mensuel':'suivi.s2Price'};
+    var STRIPE_PRICE={'stripe.unite':'visio.p1Price','stripe.pack4':'visio.p2Price','stripe.pack8':'visio.p3Price','stripe.initial':'suivi.s1Price','stripe.mensuel':'suivi.s2Price','stripe.programme':'prog.price'};
     function setDeep(obj,path,val){var p=path.split('.');var o=obj;for(var i=0;i<p.length-1;i++){o=o[p[i]];}o[p[p.length-1]]=val;}
     function getDeep(obj,path){return path.split('.').reduce(function(a,k){return a&&a[k]!=null?a[k]:undefined;},obj);}
 
@@ -500,6 +555,156 @@
     });
 
     function toast(msg,ms){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t.__tm);t.__tm=setTimeout(function(){t.classList.remove('show');},ms||2600);}
+
+
+    // ===== Programme 28 jours : dépôt du PDF, réglages d'envoi et suivi des ventes =====
+    // Le PDF part dans un stockage privé (jamais dans le dépôt public) : voir netlify/lib/programme.mjs.
+    (function(){
+      var API='/.netlify/functions/programme-admin';
+      var box=document.getElementById('pdfp'), body=document.getElementById('pdfpBody');
+      if(!box||!body) return;
+      var ETAT=null;
+      var MORCEAU=2*1024*1024, MAX=18*1024*1024;
+
+      function motDePasse(){
+        var p=''; try{ p=sessionStorage.getItem('dash_pw')||''; }catch(e){}
+        if(!p){ p=prompt('Mot de passe du dashboard :')||''; if(p){ try{ sessionStorage.setItem('dash_pw',p); }catch(e){} } }
+        return p;
+      }
+      function api(data){
+        var p=motDePasse(); if(!p) return Promise.reject(new Error('Mot de passe requis.'));
+        data.password=p;
+        return fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+          .then(function(r){ return r.text().then(function(t){
+            var j={}; try{ j=JSON.parse(t); }catch(e){}
+            if(r.status===401){ try{ sessionStorage.removeItem('dash_pw'); }catch(e){} }
+            if(r.status===404||r.status===501||r.status===405&&!j.erreur) throw new Error('Ce panneau fonctionne sur le site en ligne (coachtanguy.com/dashboard.html), pas en local.');
+            if(!r.ok||!j.ok) throw new Error(j.erreur||('Erreur '+r.status));
+            return j;
+          }); });
+      }
+      function mo(n){ return (n/1048576).toFixed(n<1048576?2:1).replace('.',',')+' Mo'; }
+      function quand(iso){ try{ return new Date(iso).toLocaleString('fr-BE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}); }catch(e){ return iso||''; } }
+      function euros(c,d){ return (Number(c)/100).toFixed(2).replace('.',',')+' '+(String(d||'eur').toUpperCase()==='EUR'?'€':String(d).toUpperCase()); }
+      function lienSite(){ var s=(DEFAULTS_ALL.fr&&DEFAULTS_ALL.fr.stripe&&DEFAULTS_ALL.fr.stripe.programme)||''; return /^https:\/\//.test(String(s).trim()); }
+      function coche(ok,titre,aide){ return '<div class="pdfp__check'+(ok?'':' no')+'"><i>'+(ok?'✓':'')+'</i><div><b>'+titre+'</b>'+(aide?'<span>'+aide+'</span>':'')+'</div></div>'; }
+
+      function dessiner(){
+        var e=ETAT, p=e.pret, h='';
+        var tout=p.pdf&&p.webhook&&p.lien&&p.email&&lienSite();
+        h+='<div class="pdfp__etat'+(tout?' ok':'')+'">'+(tout?'Tout est prêt : chaque paiement envoie le programme automatiquement.':'Il reste des étapes avant de pouvoir vendre le programme.')+'</div>';
+        h+='<h3>État de préparation</h3><div class="pdfp__checks">';
+        h+=coche(p.pdf,'PDF du programme déposé', p.pdf?'':'Glisse le fichier dans le cadre ci-dessous.');
+        h+=coche(lienSite(),'Lien de paiement affiché sur le site', lienSite()?'':'Colle le lien Stripe (https://buy.stripe.com/…) dans « Liens de paiement Stripe · Programme 28 jours », puis « Mettre en ligne ». Tant qu\'il est vide, le site affiche « Bientôt disponible ».');
+        h+=coche(p.lien,'Lien de paiement reconnu pour l\'envoi', p.lien?'':'Indique ci-dessous l\'identifiant du lien (plink_…).');
+        h+=coche(p.webhook,'Stripe relié au site', p.webhook?'':'Variable STRIPE_WEBHOOK_SECRET absente sur Netlify (étape à faire une seule fois).');
+        h+=coche(p.email,'Envoi d\'e-mails actif', p.email?('Expéditeur : '+esc(p.expediteur||'non précisé')):'Variable RESEND_API_KEY absente sur Netlify.');
+        h+='</div>';
+
+        h+='<h3>Le PDF envoyé aux acheteurs</h3>';
+        h+= e.pdf ? '<p class="pdfp__info"><b>'+esc(e.pdf.nom||'programme.pdf')+'</b> · '+mo(e.pdf.taille||0)+' · déposé le '+quand(e.pdf.deposeLe)+'</p>'
+                  : '<p class="pdfp__info">Aucun PDF pour le moment.</p>';
+        h+='<div class="pdfp__drop" id="pdfpDrop" tabindex="0"><b>'+(e.pdf?'Remplacer le PDF':'Glisse le PDF ici')+'</b><span>ou clique pour choisir le fichier (18 Mo maximum)</span><input type="file" id="pdfpFile" accept="application/pdf,.pdf" hidden></div>';
+        h+='<div class="pdfp__bar" id="pdfpBar"><i></i></div>';
+
+        h+='<h3>Lien de paiement Stripe du programme</h3>';
+        h+='<p class="pdfp__info">Dans Stripe, ouvre le lien de paiement du programme : son identifiant est à la fin de l\'adresse de la page (il commence par <code>plink_</code>).</p>';
+        h+='<div class="pdfp__row"><input id="pdfpPlink" placeholder="plink_…" value="'+esc((e.plinks||[]).join(', '))+'"><button class="btn btn--primary" id="pdfpPlinkOk">Enregistrer</button></div>';
+        (e.inconnus||[]).forEach(function(x,i){
+          h+='<div class="pdfp__alerte">Paiement reçu mais non reconnu : <b>'+euros(x.montant,x.devise)+'</b> le '+quand(x.le)+' <code>'+esc(x.plink)+'</code> <button class="btn" data-adopter="'+esc(x.plink)+'">C\'est le lien du programme</button></div>';
+        });
+
+        h+='<h3>Tester ou envoyer à la main</h3>';
+        h+='<div class="pdfp__row"><button class="btn" id="pdfpTest">M\'envoyer un e-mail de test</button><span class="pdfp__info" style="margin:0">Tu reçois exactement ce que reçoit un acheteur.</span></div>';
+        h+='<div class="pdfp__row" style="margin-top:10px"><input id="pdfpMail" type="email" placeholder="adresse@exemple.be"><select id="pdfpLang"><option value="fr">FR</option><option value="nl">NL</option><option value="en">EN</option></select><button class="btn" id="pdfpSend">Envoyer le programme</button></div>';
+
+        h+='<h3>Dernières ventes</h3>';
+        if(!(e.ventes||[]).length){ h+='<p class="pdfp__info">Aucune vente pour le moment.</p>'; }
+        else {
+          h+='<table>';
+          e.ventes.forEach(function(v){
+            var ok=v.statut==='envoye';
+            h+='<tr><td>'+quand(v.creeLe)+'</td><td><b>'+esc(v.nom||'')+'</b><br>'+esc(v.email||'adresse absente')+'</td><td>'+(v.manuel?'offert':euros(v.montant,v.devise))+'</td>'
+              +'<td><span class="pdfp__tag'+(ok?' ok':'')+'">'+(ok?'Envoyé':'En attente')+'</span>'+(v.erreur?'<br><small>'+esc(v.erreur)+'</small>':'')+(v.renvois?'<br><small>renvoyé '+v.renvois+' fois</small>':'')+'</td>'
+              +'<td>'+(v.email&&!v.manuel?'<button class="btn" data-renvoyer="'+esc(v.id)+'">Renvoyer</button>':'')+'</td></tr>';
+          });
+          h+='</table>';
+        }
+        body.innerHTML=h;
+        brancher();
+      }
+
+      function charger(){
+        body.innerHTML='<p class="pdfp__info">Chargement…</p>';
+        api({action:'etat'}).then(function(j){ ETAT=j; dessiner(); })
+          .catch(function(err){ body.innerHTML='<p class="pdfp__erreur">'+esc(err.message)+'</p>'; });
+      }
+      function agir(data,ok){
+        return api(data).then(function(j){ if(j.pret){ ETAT=j; dessiner(); } else { charger(); } toast(ok,5000); })
+          .catch(function(err){ toast('Erreur : '+err.message,12000); });
+      }
+      function b64(u8){ var s='',n=0x8000; for(var i=0;i<u8.length;i+=n){ s+=String.fromCharCode.apply(null,u8.subarray(i,i+n)); } return btoa(s); }
+
+      function deposer(file){
+        if(!file) return;
+        if(!/\.pdf$/i.test(file.name)&&file.type!=='application/pdf'){ toast('Ce fichier n\'est pas un PDF.',6000); return; }
+        if(file.size>MAX){ toast('PDF trop lourd ('+mo(file.size)+'). Maximum 18 Mo : au-delà, les boîtes mail refusent la pièce jointe.',12000); return; }
+        var bar=document.getElementById('pdfpBar'), fill=bar.querySelector('i'), drop=document.getElementById('pdfpDrop');
+        bar.style.display='block'; fill.style.width='2%'; drop.classList.add('busy');
+        var envoi=(Math.random().toString(36).slice(2)+Date.now().toString(36)).replace(/[^a-z0-9]/g,'').slice(0,30);
+        file.arrayBuffer().then(function(ab){
+          var u8=new Uint8Array(ab), total=Math.max(1,Math.ceil(u8.length/MORCEAU)), i=0;
+          function suivant(){
+            if(i>=total) return api({action:'finaliser',envoi:envoi,total:total,nom:file.name,taille:u8.length});
+            var part=u8.subarray(i*MORCEAU,(i+1)*MORCEAU);
+            return api({action:'morceau',envoi:envoi,index:i,total:total,data:b64(part)}).then(function(){
+              i++; fill.style.width=Math.round(i/total*92)+'%'; return suivant();
+            });
+          }
+          return suivant();
+        }).then(function(){ fill.style.width='100%'; toast('PDF déposé. Il sera joint à chaque achat.',6000); charger(); })
+          .catch(function(err){ bar.style.display='none'; drop.classList.remove('busy'); toast('Dépôt impossible : '+err.message,12000); });
+      }
+
+      function brancher(){
+        var drop=document.getElementById('pdfpDrop'), input=document.getElementById('pdfpFile');
+        drop.addEventListener('click',function(){ input.click(); });
+        drop.addEventListener('keydown',function(ev){ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); input.click(); } });
+        input.addEventListener('change',function(){ deposer(input.files[0]); });
+        ['dragenter','dragover'].forEach(function(n){ drop.addEventListener(n,function(ev){ ev.preventDefault(); drop.classList.add('over'); }); });
+        ['dragleave','drop'].forEach(function(n){ drop.addEventListener(n,function(ev){ ev.preventDefault(); drop.classList.remove('over'); }); });
+        drop.addEventListener('drop',function(ev){ deposer(ev.dataTransfer.files[0]); });
+        document.getElementById('pdfpPlinkOk').addEventListener('click',function(){
+          var l=document.getElementById('pdfpPlink').value.split(/[\s,;]+/).filter(Boolean);
+          agir({action:'liens',plinks:l},'Lien de paiement enregistré.');
+        });
+        body.querySelectorAll('[data-adopter]').forEach(function(b){ b.addEventListener('click',function(){
+          agir({action:'liens',plinks:(ETAT.plinks||[]).concat([b.getAttribute('data-adopter')])},'Lien reconnu : les prochains paiements enverront le programme.');
+        }); });
+        document.getElementById('pdfpTest').addEventListener('click',function(){
+          this.disabled=true; var b=this;
+          api({action:'test'}).then(function(j){ toast('E-mail de test envoyé à '+j.envoyeA+'.',7000); })
+            .catch(function(err){ toast('Erreur : '+err.message,12000); }).then(function(){ b.disabled=false; });
+        });
+        document.getElementById('pdfpSend').addEventListener('click',function(){
+          var m=document.getElementById('pdfpMail').value.trim();
+          if(!m){ toast('Indique une adresse e-mail.'); return; }
+          if(!confirm('Envoyer le programme à '+m+' ?')) return;
+          agir({action:'envoyer',email:m,lang:document.getElementById('pdfpLang').value},'Programme envoyé à '+m+'.');
+        });
+        body.querySelectorAll('[data-renvoyer]').forEach(function(b){ b.addEventListener('click',function(){
+          if(!confirm('Renvoyer le programme à ce client ?')) return;
+          agir({action:'renvoyer',id:b.getAttribute('data-renvoyer')},'Programme renvoyé.');
+        }); });
+      }
+
+      function ouvrir(){ box.classList.add('open'); box.setAttribute('aria-hidden','false'); charger(); }
+      function fermer(){ box.classList.remove('open'); box.setAttribute('aria-hidden','true'); }
+      document.getElementById('pdfOpen').addEventListener('click',ouvrir);
+      document.getElementById('pdfpClose').addEventListener('click',fermer);
+      box.addEventListener('click',function(ev){ if(ev.target===box) fermer(); });
+      document.addEventListener('keydown',function(ev){ if(ev.key==='Escape'&&box.classList.contains('open')) fermer(); });
+    })();
 
     render('');
     persistAndPreview();

@@ -388,4 +388,31 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://www.coachtanguy.com/programme-28-jours.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/programme-28-jours.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/programme-28-jours.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/programme-28-jours.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/programme-28-jours.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/nl/programme-28-jours.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/programme-28-jours.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/programme-28-jours.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/programme-28-jours.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/programme-28-jours.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.coachtanguy.com/en/programme-28-jours.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.coachtanguy.com/programme-28-jours.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.coachtanguy.com/nl/programme-28-jours.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.coachtanguy.com/en/programme-28-jours.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.coachtanguy.com/programme-28-jours.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

@@ -143,7 +143,7 @@ faqItems.forEach(item => {
   var sw = document.getElementById('langSwitch');
   if (!sw) return;
   // Pages disponibles dans /en et /nl (ajoute-les ici quand elles sont traduites)
-  var TRANSLATED = ['index.html', 'contact.html', 'coaching-visio.html', 'suivi-en-ligne.html', 'calculateur.html', 'politique-confidentialite.html', 'cookies.html', 'collaboration.html',
+  var TRANSLATED = ['index.html', 'contact.html', 'coaching-visio.html', 'suivi-en-ligne.html', 'calculateur.html', 'programme-28-jours.html', 'merci-programme.html', 'politique-confidentialite.html', 'cookies.html', 'collaboration.html',
     'coach-sportif-rhode-saint-genese.html', 'coach-sportif-uccle.html', 'coach-sportif-waterloo.html',
     'coach-sportif-beersel.html', 'coach-sportif-linkebeek.html', 'coach-sportif-braine-lalleud.html'];
   var cur = document.documentElement.lang || 'fr';
@@ -281,3 +281,30 @@ document.querySelectorAll('.rev__who').forEach(function (w) {
   }
   requestAnimationFrame(loop);
 })();
+
+// ===== Programme 28 jours : boutons d'achat =====
+// Le lien de paiement se règle dans le dashboard (Liens de paiement Stripe > Programme 28 jours).
+// Tant qu'il est vide, les boutons affichent « Bientôt disponible » : aucun bouton d'achat
+// ne peut mener nulle part. Dès qu'il est renseigné, ils deviennent actifs tout seuls.
+document.addEventListener('DOMContentLoaded', function () {
+  var btns = document.querySelectorAll('[data-buy="programme"]');
+  if (!btns.length) return;
+  var c = window.__siteContent || {};
+  var url = String((c.stripe && c.stripe.programme) || '').trim();
+  var live = /^https:\/\/\S+$/.test(url);
+  var lang = document.documentElement.lang || 'fr';
+  btns.forEach(function (b) {
+    if (live) {
+      // Stripe affiche le paiement dans la langue de la page d'où part l'achat
+      b.setAttribute('href', url + (url.indexOf('?') < 0 ? '?' : '&') + 'locale=' + encodeURIComponent(lang));
+      b.addEventListener('click', function () {
+        try { localStorage.setItem('ct_buy_lang', lang); } catch (e) {}
+      });
+    } else {
+      b.removeAttribute('href');
+      b.setAttribute('aria-disabled', 'true');
+      b.classList.add('is-soon');
+      b.textContent = (c.prog && c.prog.soon) || 'Bientôt disponible';
+    }
+  });
+});

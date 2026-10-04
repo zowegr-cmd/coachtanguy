@@ -1,0 +1,8 @@
+{
+  "name": "coachtanguy",
+  "private": true,
+  "description": "Site statique CoachTanguy. La seule dépendance sert aux fonctions Netlify (stockage privé du PDF du programme).",
+  "dependencies": {
+    "@netlify/blobs": "^10.7.13"
+  }
+}

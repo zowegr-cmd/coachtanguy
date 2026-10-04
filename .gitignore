@@ -13,3 +13,10 @@ desktop.ini
 # Local Netlify folder
 .netlify
 _email_preview/
+
+# Dépendances des fonctions (réinstallées par Netlify à chaque déploiement)
+node_modules/
+
+# Variables locales de test (jamais publiées)
+.env
+.env.*

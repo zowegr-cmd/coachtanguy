@@ -4,6 +4,7 @@
 window.SITE_CONTENT = {
   "nav": {
     "suivis": "Services",
+    "programme": "Programme",
     "avis": "Reviews",
     "accueil": "Home",
     "calculateur": "Calculator",

@@ -341,7 +341,34 @@ body:before{
 }
 .toast.show{opacity:1;transform:none}
 
-.pdf-cover-wrap{width:100%;height:100%;background:#000}.pdf-cover-img{display:block;width:100%;height:auto;background:#000}
+
+
+
+
+
+
+/* Page 1 spécialement réadaptée aux proportions de l'écran du téléphone */
+
+.phone-cover-page{
+  overflow:hidden !important;
+  background:#000 !important;
+  position:absolute !important;
+}
+.phone-cover-img{
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+  max-height:none;
+  object-fit:contain;
+  object-position:center;
+  background:#000;
+}
+
 
 </style>
 <script>if(window.self!==window.top)document.documentElement.classList.add("is-embedded")</script>
@@ -358,10 +385,8 @@ html.is-embedded .phone{width:100%;height:100%;aspect-ratio:auto;box-shadow:none
     <div class="screen">
       <div class="status"><span>9:41</span><span>● ● ●</span></div>
       <div class="viewer" id="viewer">
-        <section class="page dark cover active" data-page="1">
-          <div class="pdf-cover-wrap">
-            <img class="pdf-cover-img" alt="Couverture du programme" src="img/cover.webp">
-          </div>
+        <section class="page dark cover active phone-cover-page" data-page="1">
+          <img class="phone-cover-img" alt="Couverture du programme" src="img/cover.webp">
         </section>
 
         <section class="page" data-page="2">

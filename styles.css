@@ -124,11 +124,17 @@ body.nav-solid .nav {
 .nav__logo-light { display: none; }
 .nav__links { display: flex; gap: 34px; }
 .nav__links a { white-space: nowrap; }
-@media (max-width: 1240px) { .nav__links { gap: 20px; } .nav__links a { font-size: 14px; } .nav__cta { padding: 10px 16px; font-size: 14px; } }
+@media (max-width: 1279px) { .nav__links { gap: 20px; } .nav__links a { font-size: 14px; } .nav__cta { padding: 10px 16px; font-size: 14px; } }
 .nav__links a { font-size: 15px; font-weight: 500; color: var(--gray-900); position: relative; transition: color .2s; }
 .nav__links a::after { content: ""; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px; background: var(--orange); transition: width .25s; border-radius: 2px; }
 .nav__links a:hover { color: var(--orange); }
 .nav__links a:hover::after { width: 100%; }
+/* Le menu compte 8 entrées : sur les écrans moyens (juste au-dessus du menu hamburger), on resserre
+   pour garder de l'air entre le logo, les liens et le bouton. Ces règles sont placées après la règle de base
+   des liens (taille du texte) pour s'appliquer. */
+@media (max-width: 1279px) { .nav__links a { font-size: 14px; } }
+@media (max-width: 1160px) { .nav__links { gap: 14px; } .nav__links a { font-size: 13.5px; } .nav__cta { font-size: 13.5px; } }
+@media (max-width: 1080px) { .nav__links { gap: 12px; } }
 .nav__menu-logo { display: none; }   /* logo du menu : visible uniquement dans le menu mobile (voir media query) */
 /* Groupe de droite (bouton + sélecteur dans le coin) */
 .nav__right { display: flex; align-items: center; gap: 16px; }
@@ -408,6 +414,17 @@ body.nav-over-dark .nav .nav__links.open a { color: var(--gray-900); }
   body.menu-open .lang-switch a { color: rgba(255,255,255,.72); font-size: 14px; font-weight: 700; letter-spacing: .03em; padding: 9px 18px; border-radius: 999px; transition: .15s; }
   body.menu-open .lang-switch a.active { background: var(--orange); color: #fff; }
   body.menu-open .wa-fab { display: none; }
+}
+/* Menu hamburger sur écran court (petits téléphones, téléphone à l'horizontale) : les 8 entrées sont
+   resserrées et le menu part du haut, pour que la dernière ne passe pas sous le sélecteur de langue.
+   Au-dessus de 650 px de haut, rien ne change. */
+@media (max-width: 1024px) and (max-height: 650px) {
+  .nav__links { justify-content: flex-start; }
+  .nav__links .nav__menu-logo { width: 110px; margin: auto auto 12px; }
+  .nav__links > a:last-child { margin-bottom: auto; }
+  .nav__links a,
+  body.nav-over-dark .nav .nav__links a,
+  body.nav-over-dark .nav .nav__links.open a { padding: 6px 12px; line-height: 1.25; }
 }
 @media (max-width: 720px) {
   .cards { grid-template-columns: 1fr; }
@@ -900,7 +917,7 @@ body.has-hero .divider:not(.divider--on-dark)::after { flex: 0 1 330px; }
 
 /* --- Rail des 4 phases : la progression se lit en un regard --- */
 .p28rail { list-style: none; position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 26px; }
-.p28rail::before { content: ""; position: absolute; left: 0; right: 0; top: 8px; height: 2px; background: linear-gradient(90deg, var(--orange) 0%, rgba(255,90,0,.55) 60%, rgba(255,90,0,.16) 100%); border-radius: 2px; }
+.p28rail::before { content: ""; position: absolute; left: 0; right: 0; top: 11px; height: 2px; background: linear-gradient(90deg, var(--orange) 0%, rgba(255,90,0,.55) 60%, rgba(255,90,0,.16) 100%); border-radius: 2px; }
 .p28rail li { position: relative; padding-top: 34px; }
 .p28rail li::before { content: ""; position: absolute; left: 0; top: 0; width: 18px; height: 18px; border-radius: 50%; background: var(--dark); border: 3px solid var(--orange); box-shadow: 0 0 0 5px rgba(255,90,0,.14); }
 .p28rail__days { display: block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-light); margin-bottom: 6px; }
@@ -994,9 +1011,11 @@ body.has-hero .divider:not(.divider--on-dark)::after { flex: 0 1 330px; }
   .p28home .p28rail { margin-top: 52px; }
   /* le rail passe à la verticale : la ligne descend le long des 4 étapes */
   .p28rail { grid-template-columns: 1fr; gap: 26px 0; max-width: 420px; margin-left: auto; margin-right: auto; }
-  .p28rail::before { left: 8px; right: auto; top: 6px; bottom: 6px; width: 2px; height: auto; background: linear-gradient(180deg, var(--orange) 0%, rgba(255,90,0,.55) 60%, rgba(255,90,0,.16) 100%); }
+  .p28rail::before { left: 11px; right: auto; top: 6px; bottom: 6px; width: 2px; height: auto; background: linear-gradient(180deg, var(--orange) 0%, rgba(255,90,0,.55) 60%, rgba(255,90,0,.16) 100%); }
   .p28rail li { padding: 0 0 0 40px; }
   .p28rail strong { font-size: 20px; }
+  /* accueil : le parcours se cale au centre, comme le reste de la section */
+  .p28home .p28rail { width: fit-content; max-width: 100%; }
   .p28phone { width: min(320px, 100%); }
   .p28price strong { font-size: 32px; }
 }

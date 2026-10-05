@@ -288,8 +288,8 @@ document.querySelectorAll('.rev__who').forEach(function (w) {
 // Une fois le lien renseigné, la vente ne s'ouvre que si l'envoi automatique est prêt
 // (PDF déposé, Stripe relié au site, e-mails actifs) : sinon un client paierait sans rien
 // recevoir. Dès que tout est prêt, les boutons deviennent actifs tout seuls.
-// Avant de payer, le client coche une case dédiée : il demande l'envoi immédiat du programme
-// et reconnaît perdre son droit de rétractation (CGV, point 12.2). Le lien de paiement n'est
+// Avant de payer, le client coche une case dédiée : il accepte de ne plus pouvoir annuler son
+// achat une fois le programme reçu, donc de perdre son droit de rétractation (CGV, point 12.2). Le lien de paiement n'est
 // posé sur le bouton que lorsque la case est cochée ; l'accord part avec le paiement.
 document.addEventListener('DOMContentLoaded', function () {
   var btns = Array.prototype.slice.call(document.querySelectorAll('[data-buy="programme"]'));

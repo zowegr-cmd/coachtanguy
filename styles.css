@@ -964,7 +964,7 @@ body.has-hero .divider:not(.divider--on-dark)::after { flex: 0 1 330px; }
 .p28lang { margin: -6px 0 18px; font-size: 13.5px; font-weight: 600; color: var(--orange-light); }
 .p28lang:empty { display: none; }
 
-/* Case à cocher avant paiement : envoi immédiat demandé, droit de rétractation perdu (CGV 12.2).
+/* Case à cocher avant paiement : le client accepte de perdre son droit de rétractation (CGV 12.2).
    Masquée tant que la vente n'est pas ouverte. */
 .p28consent { display: flex; align-items: flex-start; gap: 10px; margin: 0 0 16px; font-size: 13px; line-height: 1.45; color: rgba(255,255,255,.74); text-align: left; cursor: pointer; }
 .p28consent input { flex: 0 0 auto; width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--orange); cursor: pointer; }

@@ -355,7 +355,7 @@ window.SITE_CONTENT = {
     "c4": "Uitvoeringsvideo's",
     "c5": "Voedingscalculator inbegrepen",
     "langNote": "Het programma is in het Frans opgesteld.",
-    "accord": "Ik vraag om het programma meteen na mijn betaling te ontvangen. Ik aanvaard dat ik mijn aankoop niet meer kan annuleren zodra ik het pdf-programma heb ontvangen (verlies van het herroepingsrecht).",
+    "accord": "Ik aanvaard dat ik mijn aankoop niet meer kan annuleren zodra ik het pdf-programma heb ontvangen (verlies van het herroepingsrecht).",
     "accordErr": "Vink het vakje hierboven aan om verder te gaan.",
     "buyBtn": "Programma verkrijgen",
     "buyNote": "Onmiddellijk per e-mail na betaling · Geen abonnement",

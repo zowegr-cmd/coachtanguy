@@ -355,7 +355,7 @@ window.SITE_CONTENT = {
     "c4": "Exercise videos",
     "c5": "Nutrition calculator included",
     "langNote": "The programme is written in French.",
-    "accord": "I ask to receive the programme as soon as I have paid. I accept that once I have received the PDF programme, I can no longer cancel my purchase (loss of the right of withdrawal).",
+    "accord": "I accept that once I have received the PDF programme, I can no longer cancel my purchase (loss of the right of withdrawal).",
     "accordErr": "Please tick the box above to continue.",
     "buyBtn": "Get the programme",
     "buyNote": "Sent by e-mail right after payment · No subscription",

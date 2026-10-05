@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="robots" content="noindex" />
-  <title>Dashboard — CoachTanguy</title>
+  <title>Dashboard | CoachTanguy</title>
   <link rel="stylesheet" href="assets/fonts.css" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png" />
   <style>
@@ -53,7 +53,7 @@
     .preview__bar .dot{width:10px;height:10px;border-radius:50%;background:#ff5f57}
     .preview__bar select{margin-left:auto;font-size:12px;padding:5px 8px;border-radius:6px;border:none}
     .preview iframe{flex:1;width:100%;border:0;background:#fff}
-    .toast{position:fixed;bottom:20px;left:20px;z-index:60;background:var(--dark);color:#fff;padding:12px 18px;border-radius:10px;font-size:13px;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;z-index:10}
+    .toast{position:fixed;bottom:20px;left:20px;z-index:60;background:var(--dark);color:#fff;padding:12px 18px;border-radius:10px;font-size:13px;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none}
     .toast.show{opacity:1;transform:none}
     @media(max-width:1000px){.app{grid-template-columns:1fr}.preview{display:none}}
 
@@ -209,9 +209,9 @@
   <div class="toast" id="toast"></div>
 
   <!-- charge le contenu des 3 langues (chacune s'enregistre dans SITE_CONTENT_ALL) -->
-  <script src="content/fr.js?v=13"></script>
-  <script src="content/nl.js?v=13"></script>
-  <script src="content/en.js?v=13"></script>
+  <script src="content/fr.js?v=14"></script>
+  <script src="content/nl.js?v=14"></script>
+  <script src="content/en.js?v=14"></script>
   <!-- Dictionnaires du calculateur (FR source -> NL/EN), snapshot par langue -->
   <script src="content/calc-i18n.nl.js?v=3"></script>
   <script>window.__CALC = { nl: { dict: Object.assign({}, window.CALC_I18N), frags: Object.assign({}, window.CALC_I18N_FRAGMENTS) } };</script>
@@ -247,9 +247,17 @@
       var trouve=false;
       ['fr','nl','en'].forEach(function(l){
         try{ if(localStorage.getItem('SITE_CONTENT_'+l)){ localStorage.removeItem('SITE_CONTENT_'+l); trouve=true; } }catch(e){}
+        /* Brouillons fabriqués par la version du 4 octobre : les clés n'avaient pas encore de
+           nom au premier chargement, une copie complète du contenu était rangée sous
+           « undefinedfr » puis relue comme un brouillon (elle faisait revenir d'anciens textes). */
+        try{ var anc=localStorage.getItem('SITE_EDITS_'+l); if(anc && Object.keys(diffLeaves(DEFAULTS_ALL[l]||{}, JSON.parse(anc))).length) trouve=true; }catch(e){}
+        try{ localStorage.removeItem('undefined'+l); localStorage.removeItem('SITE_EDITS_'+l); }catch(e){}
       });
-      if(trouve) setTimeout(function(){ toast('Ancien brouillon local ignoré : le dashboard repart du contenu actuellement en ligne.', 10000); }, 700);
+      if(trouve) setTimeout(function(){ toast('Ancien brouillon local ignoré : le dashboard repart du contenu actuellement en ligne. Tes modifications non publiées sont à refaire.', 12000); }, 700);
     })();
+    /* Noms des clés du brouillon et de l'aperçu : à déclarer AVANT le premier loadWork(). */
+    var EDITS_KEY='SITE_EDITS2_';
+    var PREVIEW_KEY='SITE_PREVIEW_';
     var work = loadWork();
 
     // ===== Mode Calculateur =====
@@ -340,10 +348,8 @@
        donc TOUT le texte et, à la publication, écrasait les mises à jour faites
        entre-temps (textes légaux, nom du menu, prix...). En ne gardant que les
        différences, les champs non touchés suivent toujours le contenu du site. */
-    var EDITS_KEY='SITE_EDITS_';
     /* L'aperçu (?preview=1) lit une copie complète du contenu en cours, rangée à part :
        elle ne sert QU'À l'aperçu et n'est jamais publiée (la publication part du diff). */
-    var PREVIEW_KEY='SITE_PREVIEW_';
     function ecrireApercu(w){ try{ localStorage.setItem(PREVIEW_KEY+LANG, JSON.stringify(w)); }catch(e){} }
     function diffLeaves(def,cur){
       var out={};
@@ -380,7 +386,7 @@
     for(var __r=1;__r<=20;__r++){ LABELS['r'+__r+'Name']='Avis '+__r+' · prénom'; LABELS['r'+__r+'Text']='Avis '+__r+' · texte'; }
     LABELS.score='Note (5,0)'; LABELS.count='Nombre d\'avis (texte)'; LABELS.cta1='Bouton « laisser un avis »'; LABELS.cta2='Bouton « voir tous les avis »';
     // Libellés des champs du programme 28 jours
-    (function(L){ var o={title1:"Titre · 1re ligne",title2:"Titre · 2e ligne (orange)",priceSub:"Mention sous le prix",chip1:"Pastille 1",chip2:"Pastille 2",chip3:"Pastille 3",heroTitle1:"Titre · 1re ligne",heroTitle2:"Titre · 2e ligne (orange)",heroCta1:"Bouton principal (démo)",heroCta2:"Bouton secondaire (tarif)",pill1:"Pastille 1",pill2:"Pastille 2",pill3:"Pastille 3",demoEyebrow:"Démo · surtitre",demoTitle:"Démo · titre",demoText:"Démo · texte",demoHint:"Démo · indication",demoNote:"Démo · note (contenu masqué)",phEyebrow:"Phases · surtitre",phTitle:"Phases · titre",phText:"Phases · texte",ftEyebrow:"Inclus · surtitre",ftTitle:"Inclus · titre",ftText:"Inclus · texte",whoEyebrow:"Pour qui · surtitre",whoTitle:"Pour qui · titre",whoNote:"Pour qui · avertissement",priceEyebrow:"Tarif · surtitre",priceTitle:"Tarif · titre",priceText:"Tarif · texte",cardName:"Tarif · nom du produit",price:"PRIX du programme",priceOnce:"Tarif · mention sous le prix",langNote:"Note sur la langue (laisser vide en français)",buyBtn:"Bouton d'achat (le prix s'ajoute tout seul)",buyNote:"Mention sous le bouton d'achat",soon:"Texte du bouton tant que le lien de paiement est vide",afterEyebrow:"Et après · surtitre",afterTitle:"Et après · titre",afterText:"Et après · texte",afterBtn:"Et après · bouton",ctaTitle:"Appel final · titre",ctaText:"Appel final · texte",ctaBtn:"Appel final · bouton (le prix s'ajoute tout seul)",ctaNote:"Appel final · mention",programme:"Programme 28 jours",lProg:"Lien « Programme 28 jours »",help:"Aide (rien reçu ?)",btn1:"Bouton 1",btn2:"Bouton 2",ph1Days:"Phase 1 · jours",ph1Title:"Phase 1 · titre",ph1Text:"Phase 1 · texte",who1Title:"Pour qui 1 · titre",who1Text:"Pour qui 1 · texte",ph2Days:"Phase 2 · jours",ph2Title:"Phase 2 · titre",ph2Text:"Phase 2 · texte",who2Title:"Pour qui 2 · titre",who2Text:"Pour qui 2 · texte",ph3Days:"Phase 3 · jours",ph3Title:"Phase 3 · titre",ph3Text:"Phase 3 · texte",who3Title:"Pour qui 3 · titre",who3Text:"Pour qui 3 · texte",ph4Days:"Phase 4 · jours",ph4Title:"Phase 4 · titre",ph4Text:"Phase 4 · texte",who4Title:"Pour qui 4 · titre",who4Text:"Pour qui 4 · texte",ft1Title:"Inclus 1 · titre",ft1Text:"Inclus 1 · texte",c1:"Tarif · ligne 1 de la liste",ft2Title:"Inclus 2 · titre",ft2Text:"Inclus 2 · texte",c2:"Tarif · ligne 2 de la liste",ft3Title:"Inclus 3 · titre",ft3Text:"Inclus 3 · texte",c3:"Tarif · ligne 3 de la liste",ft4Title:"Inclus 4 · titre",ft4Text:"Inclus 4 · texte",c4:"Tarif · ligne 4 de la liste",ft5Title:"Inclus 5 · titre",ft5Text:"Inclus 5 · texte",c5:"Tarif · ligne 5 de la liste",ft6Title:"Inclus 6 · titre",ft6Text:"Inclus 6 · texte",c6:"Tarif · ligne 6 de la liste"}; for(var k in o){ if(!L[k]) L[k]=o[k]; } })(LABELS);
+    (function(L){ var o={title1:"Titre · 1re ligne",title2:"Titre · 2e ligne (orange)",priceSub:"Mention sous le prix",chip1:"Pastille 1",chip2:"Pastille 2",chip3:"Pastille 3",heroTitle1:"Titre · 1re ligne",heroTitle2:"Titre · 2e ligne (orange)",heroCta1:"Bouton principal (démo)",heroCta2:"Bouton secondaire (tarif)",pill1:"Pastille 1",pill2:"Pastille 2",pill3:"Pastille 3",demoEyebrow:"Démo · surtitre",demoTitle:"Démo · titre",demoText:"Démo · texte",demoHint:"Démo · indication",demoNote:"Démo · note (contenu masqué)",phEyebrow:"Phases · surtitre",phTitle:"Phases · titre",phText:"Phases · texte",ftEyebrow:"Inclus · surtitre",ftTitle:"Inclus · titre",ftText:"Inclus · texte",priceEyebrow:"Tarif · surtitre",priceTitle:"Tarif · titre",priceText:"Tarif · texte",cardName:"Tarif · nom du produit",price:"PRIX du programme",priceOnce:"Tarif · mention sous le prix",langNote:"Note sur la langue (laisser vide en français)",buyBtn:"Bouton d'achat (le prix s'ajoute tout seul)",buyNote:"Mention sous le bouton d'achat",healthNote:"Avertissement santé (sous le tarif)",consent:"Case à cocher avant paiement (rétractation)",consentErr:"Message si la case n'est pas cochée",soon:"Texte du bouton tant que la vente n'est pas ouverte",afterEyebrow:"Et après · surtitre",afterTitle:"Et après · titre",afterText:"Et après · texte",afterBtn:"Et après · bouton",ctaTitle:"Appel final · titre",ctaText:"Appel final · texte",ctaBtn:"Appel final · bouton (le prix s'ajoute tout seul)",ctaNote:"Appel final · mention",programme:"Programme 28 jours",lProg:"Lien « Programme 28 jours »",help:"Aide (rien reçu ?)",btn1:"Bouton 1",btn2:"Bouton 2",ph1Days:"Phase 1 · jours",ph1Title:"Phase 1 · titre",ph1Text:"Phase 1 · texte",ph2Days:"Phase 2 · jours",ph2Title:"Phase 2 · titre",ph2Text:"Phase 2 · texte",ph3Days:"Phase 3 · jours",ph3Title:"Phase 3 · titre",ph3Text:"Phase 3 · texte",ph4Days:"Phase 4 · jours",ph4Title:"Phase 4 · titre",ph4Text:"Phase 4 · texte",ft1Title:"Inclus 1 · titre",ft1Text:"Inclus 1 · texte",c1:"Tarif · ligne 1 de la liste",ft2Title:"Inclus 2 · titre",ft2Text:"Inclus 2 · texte",c2:"Tarif · ligne 2 de la liste",ft3Title:"Inclus 3 · titre",ft3Text:"Inclus 3 · texte",c3:"Tarif · ligne 3 de la liste",ft4Title:"Inclus 4 · titre",ft4Text:"Inclus 4 · texte",c4:"Tarif · ligne 4 de la liste",ft5Title:"Inclus 5 · titre",ft5Text:"Inclus 5 · texte",c5:"Tarif · ligne 5 de la liste",ft6Title:"Inclus 6 · titre",ft6Text:"Inclus 6 · texte"}; for(var k in o){ if(!L[k]) L[k]=o[k]; } })(LABELS);
     function labelOf(path){var last=path.split('.').pop();return LABELS[last]||last;}
     // Chaque lien Stripe correspond à un prix éditable : on affiche le prix ACTUEL
     // (de tes sections) à côté du lien, pour qu'ils restent cohérents.
@@ -482,9 +488,7 @@
         download('calc-i18n.'+LANG+'.js', h+b);
         toast('calc-i18n.'+LANG+'.js téléchargé → place-le dans content/'); return;
       }
-      var header='/* ===========================================================\n   CONTENU '+LANG.toUpperCase()+' — CoachTanguy (exporté via dashboard)\n   =========================================================== */\n';
-      var body='window.SITE_CONTENT = '+JSON.stringify(work,null,2)+';\n';
-      download(LANG+'.js', header+body);
+      download(LANG+'.js', buildSiteFile(LANG, work));
       toast('Fichier '+LANG+'.js téléchargé → place-le dans content/');
     });
 
@@ -504,8 +508,9 @@
       return h+'window.CALC_I18N = '+JSON.stringify(dict,null,2)+';\n'
         +'window.CALC_I18N_FRAGMENTS = '+JSON.stringify(frags,null,2)+';\n';
     }
+    var BASES={}, PUBLIES={}, SANS_REF=[];   // contenu de départ envoyé avec la publication, contenu publié par langue, langues dont le contenu du site n'a pas pu être lu
     function gatherFiles(){
-      var files={};
+      var files={}; BASES={}; PUBLIES={}; SANS_REF=[];
       ['fr','nl','en'].forEach(function(l){
         var raw=null; try{ raw=localStorage.getItem(EDITS_KEY+l); }catch(e){}
         if(raw){ try{
@@ -513,8 +518,11 @@
              modifiés. Un champ jamais touché suit donc toujours le site : plus aucun
              risque qu'un vieux brouillon fasse revenir d'anciens textes. */
           var ed=JSON.parse(raw);
-          if(Object.keys(ed).length){
-            files['content/'+l+'.js']=buildSiteFile(l, mergeWork(JSON.parse(JSON.stringify(DEFAULTS_ALL[l]||{})), ed));
+          if(Object.keys(ed).length && !Object.keys(DEFAULTS_ALL[l]||{}).length){ SANS_REF.push(l); }
+          else if(Object.keys(ed).length){
+            PUBLIES[l]=mergeWork(JSON.parse(JSON.stringify(DEFAULTS_ALL[l]||{})), ed);
+            files['content/'+l+'.js']=buildSiteFile(l, PUBLIES[l]);
+            BASES['content/'+l+'.js']=buildSiteFile(l, DEFAULTS_ALL[l]||{});
           }
         }catch(e){} }
         var craw=null; try{ craw=localStorage.getItem('CALC_I18N_'+l); }catch(e){}
@@ -534,20 +542,38 @@
       saveWork();
       if(MODE==='calc'){ try{ localStorage.setItem('CALC_I18N_'+LANG, JSON.stringify(cwork)); }catch(e){} }
       var files=gatherFiles(); var n=Object.keys(files).length;
+      if(SANS_REF.length){ toast('Publication impossible : le contenu '+SANS_REF.join(', ').toUpperCase()+' du site n\'a pas pu être lu par le dashboard. Recharge la page ; si le message revient, préviens ton développeur.', 15000); return; }
       if(!n){ toast('Rien à publier : fais d\'abord une modification.'); return; }
       var pw=''; try{ pw=sessionStorage.getItem('dash_pw')||''; }catch(e){}
       if(!pw){ pw=prompt('Mot de passe pour publier en ligne :')||''; }
       if(!pw) return;
-      if(!confirm('Publier '+n+' fichier(s) en ligne ?\nLe site sera mis à jour automatiquement dans ~1 minute.')) return;
+      var resume=['fr','nl','en'].map(function(l){ var ed={}; try{ ed=JSON.parse(localStorage.getItem(EDITS_KEY+l)||'{}'); }catch(e){} var ch=flatten(ed).map(function(x){ return x.path; }); return ch.length ? l.toUpperCase()+' : '+ch.slice(0,10).join(', ')+(ch.length>10?' et '+(ch.length-10)+' autre(s)':'') : ''; }).filter(Boolean).join('\n');
+      if(!confirm('Publier '+n+' fichier(s) en ligne ?'+(resume?'\n\nChamps modifiés qui vont partir :\n'+resume+'\n':'')+'\nLe site sera mis à jour automatiquement dans ~1 minute.')) return;
       var old=pubBtn.textContent; pubBtn.disabled=true; pubBtn.textContent='Publication…'; toast('Publication en cours…');
-      fetch('/.netlify/functions/dash-publish', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({password:pw, files:files}) })
+      fetch('/.netlify/functions/dash-publish', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({password:pw, files:files, bases:BASES}) })
         .then(function(r){ return r.json().then(function(j){ return {status:r.status, j:j}; }).catch(function(){ return {status:r.status, j:{}}; }); })
         .then(function(res){
           var j=res.j||{};
           if(res.status===200 && j.ok){
+            /* Ce qui vient d'être publié devient le contenu de référence : le brouillon est vidé
+               et une deuxième publication dans la foulée part du bon contenu. */
+            saveWork();   // ce qui a été tapé pendant l'envoi reste dans le brouillon
+            Object.keys(PUBLIES).forEach(function(l){
+              DEFAULTS_ALL[l]=JSON.parse(JSON.stringify(PUBLIES[l]));
+              try{
+                var reste=diffLeaves(DEFAULTS_ALL[l], JSON.parse(localStorage.getItem(EDITS_KEY+l)||'{}'));
+                if(Object.keys(reste).length) localStorage.setItem(EDITS_KEY+l, JSON.stringify(reste)); else localStorage.removeItem(EDITS_KEY+l);
+              }catch(e){}
+            });
+            if(PUBLIES[LANG] && MODE!=='calc'){
+              var ouvertes=[]; document.querySelectorAll('#fields details[open]>summary').forEach(function(s){ ouvertes.push(s.textContent); });
+              work=loadWork(); render(curFilter);
+              document.querySelectorAll('#fields details>summary').forEach(function(s){ if(ouvertes.indexOf(s.textContent)>=0) s.parentNode.open=true; });
+            }
             if(j.deploy===false) toast('✅ Déjà à jour (aucun changement).');
             else toast('✅ Publié ! En ligne dans ~1 min.');
-          } else if(res.status===401){ try{ sessionStorage.removeItem('dash_pw'); }catch(e){} toast('Mot de passe incorrect — réessaie.'); }
+          } else if(res.status===401){ try{ sessionStorage.removeItem('dash_pw'); }catch(e){} toast('Mot de passe incorrect. Réessaie.'); }
+          else if(res.status===409){ toast(j.error||'Le site a changé : recharge le dashboard puis republie.', 20000); }
           else { toast('Erreur : '+(j.error||('HTTP '+res.status)), 12000); }
         })
         .catch(function(e){ toast('Erreur réseau : '+e.message); })
@@ -573,7 +599,7 @@
       }
       function api(data){
         var p=motDePasse(); if(!p) return Promise.reject(new Error('Mot de passe requis.'));
-        data.password=p;
+        data.password=p; data.lienSite=adresseLien();
         return fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
           .then(function(r){ return r.text().then(function(t){
             var j={}; try{ j=JSON.parse(t); }catch(e){}
@@ -586,17 +612,18 @@
       function mo(n){ return (n/1048576).toFixed(n<1048576?2:1).replace('.',',')+' Mo'; }
       function quand(iso){ try{ return new Date(iso).toLocaleString('fr-BE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}); }catch(e){ return iso||''; } }
       function euros(c,d){ return (Number(c)/100).toFixed(2).replace('.',',')+' '+(String(d||'eur').toUpperCase()==='EUR'?'€':String(d).toUpperCase()); }
-      function lienSite(){ var s=(DEFAULTS_ALL.fr&&DEFAULTS_ALL.fr.stripe&&DEFAULTS_ALL.fr.stripe.programme)||''; return /^https:\/\//.test(String(s).trim()); }
+      function adresseLien(){ return String((DEFAULTS_ALL.fr&&DEFAULTS_ALL.fr.stripe&&DEFAULTS_ALL.fr.stripe.programme)||'').trim(); }
+      function lienSite(){ return /^https:\/\//.test(adresseLien()); }
       function coche(ok,titre,aide){ return '<div class="pdfp__check'+(ok?'':' no')+'"><i>'+(ok?'✓':'')+'</i><div><b>'+titre+'</b>'+(aide?'<span>'+aide+'</span>':'')+'</div></div>'; }
 
       function dessiner(){
         var e=ETAT, p=e.pret, h='';
         var tout=p.pdf&&p.webhook&&p.lien&&p.email&&lienSite();
-        h+='<div class="pdfp__etat'+(tout?' ok':'')+'">'+(tout?'Tout est prêt : chaque paiement envoie le programme automatiquement.':'Il reste des étapes avant de pouvoir vendre le programme.')+'</div>';
+        h+='<div class="pdfp__etat'+(tout?' ok':'')+'">'+(tout?'Tout est prêt : la vente est ouverte sur le site et chaque paiement envoie le programme automatiquement.':'Il reste des étapes. En attendant, le bouton d\'achat du site affiche « Bientôt disponible » ; il s\'ouvrira tout seul dès que tout sera coché.')+'</div>';
         h+='<h3>État de préparation</h3><div class="pdfp__checks">';
         h+=coche(p.pdf,'PDF du programme déposé', p.pdf?'':'Glisse le fichier dans le cadre ci-dessous.');
-        h+=coche(lienSite(),'Lien de paiement affiché sur le site', lienSite()?'':'Colle le lien Stripe (https://buy.stripe.com/…) dans « Liens de paiement Stripe · Programme 28 jours », puis « Mettre en ligne ». Tant qu\'il est vide, le site affiche « Bientôt disponible ». Dans Stripe, règle ce lien pour rediriger après paiement vers <code>'+location.origin+'/merci-programme.html</code>.');
-        h+=coche(p.lien,'Lien de paiement reconnu pour l\'envoi', p.lien?'':'Indique ci-dessous l\'identifiant du lien (plink_…).');
+        h+=coche(lienSite(),'Lien de paiement renseigné sur le site', lienSite()?'':'Colle le lien Stripe (https://buy.stripe.com/…) dans « Liens de paiement Stripe · Programme 28 jours », puis « Mettre en ligne ». Le bouton d\'achat ne s\'active que lorsque toutes les étapes de cette liste sont cochées.');
+        h+=coche(p.lien,'Lien de paiement reconnu pour l\'envoi', p.lien?'':'Ce lien de paiement n\'est pas encore connu du site : indique ci-dessous son identifiant (plink_…). Si tu viens de changer le lien, recharge d\'abord le dashboard une minute après « Mettre en ligne ».');
         h+=coche(p.webhook,'Stripe relié au site', p.webhook?'':'À faire une seule fois. Dans Stripe (Développeurs, Webhooks), ajoute une destination vers <code>'+location.origin+'/.netlify/functions/stripe-webhook</code> avec les événements <code>checkout.session.completed</code> et <code>checkout.session.async_payment_succeeded</code>. Stripe te donne alors une clé de signature (whsec_…) : enregistre-la dans Netlify sous le nom <code>STRIPE_WEBHOOK_SECRET</code>, puis relance un déploiement.');
         h+=coche(p.email,'Envoi d\'e-mails actif', p.email?('Expéditeur : '+esc(p.expediteur||'non précisé')):'Variable RESEND_API_KEY absente sur Netlify.');
         h+='</div>';
@@ -608,14 +635,17 @@
         h+='<div class="pdfp__bar" id="pdfpBar"><i></i></div>';
 
         h+='<h3>Lien de paiement Stripe du programme</h3>';
-        h+='<p class="pdfp__info">Dans Stripe, ouvre le lien de paiement du programme : son identifiant est à la fin de l\'adresse de la page (il commence par <code>plink_</code>).</p>';
+        h+='<p class="pdfp__info">Dans Stripe, ce lien doit rediriger après paiement vers <code>'+location.origin+'/merci-programme.html</code>. Donne toujours aux clients l\'adresse de la page du site, jamais le lien Stripe direct : c\'est sur la page qu\'ils cochent la case de renonciation au droit de rétractation.</p>';
+        (function(){ var f=adresseLien(), autres=['nl','en'].filter(function(l){ var s=String((DEFAULTS_ALL[l]&&DEFAULTS_ALL[l].stripe&&DEFAULTS_ALL[l].stripe.programme)||'').trim(); return s!==f; });
+          if(autres.length) h+='<div class="pdfp__alerte">Le lien du programme n\'est pas le même en '+autres.map(function(l){ return l.toUpperCase(); }).join(' et ')+' qu\'en français. Passe sur ces langues (boutons en haut) et colle le même lien, puis « Mettre en ligne ».</div>'; })();
+        h+='<p class="pdfp__info">Si tu remplaces un jour le lien de paiement : dans Stripe, ouvre le nouveau lien, son identifiant est à la fin de l\'adresse de la page (il commence par <code>plink_</code>). Enregistre-le ici.</p>';
         h+='<div class="pdfp__row"><input id="pdfpPlink" placeholder="plink_…" value="'+esc((e.plinks||[]).join(', '))+'"><button class="btn btn--primary" id="pdfpPlinkOk">Enregistrer</button></div>';
         (e.inconnus||[]).forEach(function(x,i){
           h+='<div class="pdfp__alerte">Paiement reçu mais non reconnu : <b>'+euros(x.montant,x.devise)+'</b> le '+quand(x.le)+' <code>'+esc(x.plink)+'</code> <button class="btn" data-adopter="'+esc(x.plink)+'">C\'est le lien du programme</button></div>';
         });
 
         h+='<h3>Tester ou envoyer à la main</h3>';
-        h+='<div class="pdfp__row"><button class="btn" id="pdfpTest">M\'envoyer un e-mail de test</button><span class="pdfp__info" style="margin:0">Tu reçois exactement ce que reçoit un acheteur.</span></div>';
+        h+='<div class="pdfp__row"><button class="btn" id="pdfpTest">M\'envoyer un e-mail de test</button><span class="pdfp__info" style="margin:0">Tu reçois ce que reçoit un acheteur passé par la page du site, dans la langue choisie ci-dessous (sans la ligne de confirmation de commande, qui reprend le montant payé).</span></div>';
         h+='<div class="pdfp__row" style="margin-top:10px"><input id="pdfpMail" type="email" placeholder="adresse@exemple.be"><select id="pdfpLang"><option value="fr">FR</option><option value="nl">NL</option><option value="en">EN</option></select><button class="btn" id="pdfpSend">Envoyer le programme</button></div>';
 
         h+='<h3>Dernières ventes</h3>';
@@ -676,14 +706,19 @@
         drop.addEventListener('drop',function(ev){ deposer(ev.dataTransfer.files[0]); });
         document.getElementById('pdfpPlinkOk').addEventListener('click',function(){
           var l=document.getElementById('pdfpPlink').value.split(/[\s,;]+/).filter(Boolean);
-          agir({action:'liens',plinks:l},'Lien de paiement enregistré.');
+          var nouveau=l.some(function(x){ return (ETAT.plinks||[]).indexOf(x)<0; }), associer=false;
+          if(l.length && !nouveau && !ETAT.pret.lien && lienSite()){
+            if(!confirm('Aucun nouvel identifiant dans la liste. Le lien affiché sur le site a changé : son identifiant est-il vraiment déjà dans cette liste ? Si tu viens de créer un nouveau lien dans Stripe, annule et ajoute son identifiant (plink_…).')) return;
+            associer=true;
+          }
+          agir({action:'liens',plinks:l,associer:associer},'Lien de paiement enregistré.');
         });
         body.querySelectorAll('[data-adopter]').forEach(function(b){ b.addEventListener('click',function(){
           agir({action:'liens',plinks:(ETAT.plinks||[]).concat([b.getAttribute('data-adopter')])},'Lien reconnu : les prochains paiements enverront le programme.');
         }); });
         document.getElementById('pdfpTest').addEventListener('click',function(){
           this.disabled=true; var b=this;
-          api({action:'test'}).then(function(j){ toast('E-mail de test envoyé à '+j.envoyeA+'.',7000); })
+          api({action:'test', lang:document.getElementById('pdfpLang').value}).then(function(j){ toast('E-mail de test envoyé à '+j.envoyeA+'.',7000); })
             .catch(function(err){ toast('Erreur : '+err.message,12000); }).then(function(){ b.disabled=false; });
         });
         document.getElementById('pdfpSend').addEventListener('click',function(){

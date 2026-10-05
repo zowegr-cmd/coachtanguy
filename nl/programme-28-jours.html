@@ -25,7 +25,7 @@
   <meta name="twitter:description" content="Een progressief programma van 28 dagen om opnieuw in beweging te komen, zonder meteen met iets te intensiefs te starten." />
   <meta name="twitter:image" content="https://coachtanguy.com/assets/og-coachtanguy.jpg" />
   <link rel="stylesheet" href="../assets/fonts.css" />
-  <link rel="stylesheet" href="../styles.css?v=81" />
+  <link rel="stylesheet" href="../styles.css?v=83" />
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png" />
   <link rel="apple-touch-icon" href="../assets/icon-180.png" />
@@ -178,25 +178,6 @@
     </div>
   </section>
 
-  <div class="divider"><span class="divider__mark"></span></div>
-
-  <!-- ===== POUR QUI ===== -->
-  <section class="section section--alt">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="eyebrow" data-i18n="prog.whoEyebrow">Voor wie?</span>
-        <h2 data-i18n="prog.whoTitle">Een programma om te herbeginnen.</h2>
-      </div>
-      <div class="p28who">
-        <article class="reveal"><h3 data-i18n="prog.who1Title">Je weet niet waar te beginnen.</h3><p data-i18n="prog.who1Text">Het programma geeft je vanaf dag één een duidelijke structuur.</p></article>
-        <article class="reveal"><h3 data-i18n="prog.who2Title">Je bent bang om te hard te herbeginnen.</h3><p data-i18n="prog.who2Text">Elke oefening heeft twee moeilijkheidsniveaus, zodat je het juiste ritme vindt.</p></article>
-        <article class="reveal"><h3 data-i18n="prog.who3Title">Je wilt iets eenvoudigs.</h3><p data-i18n="prog.who3Text">Je hoeft je sessies niet zelf samen te stellen: alles staat al klaar.</p></article>
-        <article class="reveal"><h3 data-i18n="prog.who4Title">Je wilt zelfstandig trainen.</h3><p data-i18n="prog.who4Text">De video's en richtlijnen begeleiden je de volledige 28 dagen.</p></article>
-      </div>
-      <p class="p28disclaimer reveal" data-i18n="prog.whoNote">Het programma is algemeen en vervangt geen individuele begeleiding bij een blessure, aandoening of specifieke behoefte.</p>
-    </div>
-  </section>
-
   <!-- ===== TARIF ===== -->
   <section class="section section--dark section-lift" id="prix">
     <div class="container p28buy">
@@ -214,13 +195,18 @@
             <li data-i18n="prog.c2">Kalender en gedetailleerde sessies</li>
             <li data-i18n="prog.c3">2 moeilijkheidsniveaus per oefening</li>
             <li data-i18n="prog.c4">Uitvoeringsvideo's</li>
-            <li data-i18n="prog.c5">Gemeenschappelijke opwarming inbegrepen</li>
-            <li data-i18n="prog.c6">Voedingscalculator inbegrepen</li>
+            <li data-i18n="prog.c5">Voedingscalculator inbegrepen</li>
           </ul>
           <p class="p28lang" data-i18n="prog.langNote">Het programma is in het Frans opgesteld.</p>
+          <label class="p28consent" data-consent="programme" hidden>
+            <input type="checkbox" />
+            <span data-i18n="prog.consent">Ik vraag om het programma meteen na mijn betaling te ontvangen en erken dat ik mijn herroepingsrecht verlies zodra het programma is verzonden.</span>
+          </label>
+          <p class="p28consent__err" data-consent-err="programme" role="alert" hidden data-i18n="prog.consentErr">Vink het vakje hierboven aan om verder te gaan.</p>
           <a href="#prix" class="btn btn--primary price__btn" data-buy="programme" rel="noopener"><span data-i18n="prog.buyBtn">Programma verkrijgen</span><span class="p28sep" aria-hidden="true">·</span><span data-i18n="prog.price">49 €</span></a>
         </article>
         <p class="p28buy__note" data-i18n="prog.buyNote">Onmiddellijk per e-mail na betaling · Geen abonnement</p>
+        <p class="p28buy__legal" data-i18n="prog.healthNote">Het programma is algemeen en vervangt geen individuele begeleiding bij een blessure, aandoening of specifieke behoefte.</p>
       </div>
     </div>
   </section>
@@ -284,6 +270,6 @@
 
   <script src="../content/nl.js"></script>
   <script src="../assets/i18n.js?v=3"></script>
-  <script src="../script.js?v=24" defer></script>
+  <script src="../script.js?v=26" defer></script>
 </body>
 </html>

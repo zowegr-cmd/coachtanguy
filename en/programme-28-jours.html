@@ -25,7 +25,7 @@
   <meta name="twitter:description" content="A progressive 28-day programme designed to get you moving again, without jumping straight into something too intense." />
   <meta name="twitter:image" content="https://coachtanguy.com/assets/og-coachtanguy.jpg" />
   <link rel="stylesheet" href="../assets/fonts.css" />
-  <link rel="stylesheet" href="../styles.css?v=81" />
+  <link rel="stylesheet" href="../styles.css?v=83" />
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png" />
   <link rel="apple-touch-icon" href="../assets/icon-180.png" />
@@ -178,25 +178,6 @@
     </div>
   </section>
 
-  <div class="divider"><span class="divider__mark"></span></div>
-
-  <!-- ===== POUR QUI ===== -->
-  <section class="section section--alt">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="eyebrow" data-i18n="prog.whoEyebrow">Who is it for?</span>
-        <h2 data-i18n="prog.whoTitle">A programme designed for getting back into it.</h2>
-      </div>
-      <div class="p28who">
-        <article class="reveal"><h3 data-i18n="prog.who1Title">You do not know where to start.</h3><p data-i18n="prog.who1Text">The programme gives you a clear structure from day one.</p></article>
-        <article class="reveal"><h3 data-i18n="prog.who2Title">You are worried about restarting too hard.</h3><p data-i18n="prog.who2Text">Each exercise offers two difficulty levels so you can find the right pace.</p></article>
-        <article class="reveal"><h3 data-i18n="prog.who3Title">You want something simple.</h3><p data-i18n="prog.who3Text">No need to build your own sessions: everything is already organised.</p></article>
-        <article class="reveal"><h3 data-i18n="prog.who4Title">You want to train on your own.</h3><p data-i18n="prog.who4Text">The videos and instructions guide you throughout the 28 days.</p></article>
-      </div>
-      <p class="p28disclaimer reveal" data-i18n="prog.whoNote">The programme is general and does not replace individual coaching in case of injury, medical condition or specific needs.</p>
-    </div>
-  </section>
-
   <!-- ===== TARIF ===== -->
   <section class="section section--dark section-lift" id="prix">
     <div class="container p28buy">
@@ -214,13 +195,18 @@
             <li data-i18n="prog.c2">Calendar and detailed sessions</li>
             <li data-i18n="prog.c3">2 difficulty levels per exercise</li>
             <li data-i18n="prog.c4">Exercise videos</li>
-            <li data-i18n="prog.c5">Shared warm-up included</li>
-            <li data-i18n="prog.c6">Nutrition calculator included</li>
+            <li data-i18n="prog.c5">Nutrition calculator included</li>
           </ul>
           <p class="p28lang" data-i18n="prog.langNote">The programme is written in French.</p>
+          <label class="p28consent" data-consent="programme" hidden>
+            <input type="checkbox" />
+            <span data-i18n="prog.consent">I ask to receive the programme as soon as I have paid, and I acknowledge that I lose my right of withdrawal once the programme has been sent.</span>
+          </label>
+          <p class="p28consent__err" data-consent-err="programme" role="alert" hidden data-i18n="prog.consentErr">Please tick the box above to continue.</p>
           <a href="#prix" class="btn btn--primary price__btn" data-buy="programme" rel="noopener"><span data-i18n="prog.buyBtn">Get the programme</span><span class="p28sep" aria-hidden="true">·</span><span data-i18n="prog.price">49 €</span></a>
         </article>
         <p class="p28buy__note" data-i18n="prog.buyNote">Sent by e-mail right after payment · No subscription</p>
+        <p class="p28buy__legal" data-i18n="prog.healthNote">The programme is general and does not replace individual coaching in case of injury, medical condition or specific needs.</p>
       </div>
     </div>
   </section>
@@ -284,6 +270,6 @@
 
   <script src="../content/en.js"></script>
   <script src="../assets/i18n.js?v=3"></script>
-  <script src="../script.js?v=24" defer></script>
+  <script src="../script.js?v=26" defer></script>
 </body>
 </html>

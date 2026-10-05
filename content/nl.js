@@ -342,17 +342,6 @@ window.SITE_CONTENT = {
     "ft5Text": "De moeilijkheid en het volume nemen week na week geleidelijk toe.",
     "ft6Title": "Op je telefoon",
     "ft6Text": "Raadpleeg het programma makkelijk en train waar je maar wilt.",
-    "whoEyebrow": "Voor wie?",
-    "whoTitle": "Een programma om te herbeginnen.",
-    "who1Title": "Je weet niet waar te beginnen.",
-    "who1Text": "Het programma geeft je vanaf dag één een duidelijke structuur.",
-    "who2Title": "Je bent bang om te hard te herbeginnen.",
-    "who2Text": "Elke oefening heeft twee moeilijkheidsniveaus, zodat je het juiste ritme vindt.",
-    "who3Title": "Je wilt iets eenvoudigs.",
-    "who3Text": "Je hoeft je sessies niet zelf samen te stellen: alles staat al klaar.",
-    "who4Title": "Je wilt zelfstandig trainen.",
-    "who4Text": "De video's en richtlijnen begeleiden je de volledige 28 dagen.",
-    "whoNote": "Het programma is algemeen en vervangt geen individuele begeleiding bij een blessure, aandoening of specifieke behoefte.",
     "priceEyebrow": "Volledig programma",
     "priceTitle": "Start je herbegin.",
     "priceText": "Een eenmalige aankoop voor toegang tot het volledige programma, dat je op jouw tempo volgt. Het volledige programma wordt je na de betaling automatisch per e-mail toegestuurd, zodat je er meteen toegang toe hebt en kunt beginnen wanneer je wilt.",
@@ -363,11 +352,13 @@ window.SITE_CONTENT = {
     "c2": "Kalender en gedetailleerde sessies",
     "c3": "2 moeilijkheidsniveaus per oefening",
     "c4": "Uitvoeringsvideo's",
-    "c5": "Gemeenschappelijke opwarming inbegrepen",
-    "c6": "Voedingscalculator inbegrepen",
+    "c5": "Voedingscalculator inbegrepen",
     "langNote": "Het programma is in het Frans opgesteld.",
+    "consent": "Ik vraag om het programma meteen na mijn betaling te ontvangen en erken dat ik mijn herroepingsrecht verlies zodra het programma is verzonden.",
+    "consentErr": "Vink het vakje hierboven aan om verder te gaan.",
     "buyBtn": "Programma verkrijgen",
     "buyNote": "Onmiddellijk per e-mail na betaling · Geen abonnement",
+    "healthNote": "Het programma is algemeen en vervangt geen individuele begeleiding bij een blessure, aandoening of specifieke behoefte.",
     "soon": "Binnenkort beschikbaar",
     "afterEyebrow": "En daarna?",
     "afterTitle": "Zin om verder te gaan?",
@@ -384,7 +375,7 @@ window.SITE_CONTENT = {
     "pack8": "https://buy.stripe.com/8x2cN7fDJePpadI8Te0RG0b",
     "initial": "https://buy.stripe.com/6oU3cx9fl6iTadIb1m0RG0c",
     "mensuel": "https://buy.stripe.com/6oU14p77d4aLadIglG0RG0g",
-    "programme": ""
+    "programme": "https://buy.stripe.com/bJe14p4Z54aLgC69Xi0RG0j"
   },
   "meta": {
     "index": {
@@ -549,7 +540,7 @@ window.SITE_CONTENT = {
     "cookies": {
       "title": "Cookiebeleid — CoachTanguy",
       "desc": "CoachTanguy gebruikt geen enkele trackingcookie. Overzicht van de functionele lokale opslag en uw opties.",
-      "body": "<span class=\"eyebrow\">Cookies &amp; lokale opslag</span>\n      <h1>Cookiebeleid</h1>\n      <p class=\"legal__update\">Laatste update: juni 2026</p>\n\n      <h2>1. Geen trackingcookies</h2>\n      <p>De site <strong>coachtanguy.com</strong> gebruikt <strong>geen enkele cookie voor statistieken, reclame of sociale media</strong>, en geen trackers van derden. Een toestemmingsbanner is dus niet nodig: overeenkomstig de aanbevelingen van de Gegevensbeschermingsautoriteit (GBA) wordt enkel opslag gebruikt die strikt noodzakelijk is voor de werking van de site, en die is vrijgesteld van toestemming.</p>\n\n      <h2>2. Functionele lokale opslag</h2>\n      <p>De site gebruikt de lokale opslag van uw browser (localStorage / sessionStorage / Cache Storage) uitsluitend voor de volgende technische doeleinden:</p>\n      <ul>\n        <li><strong>Cache van de app \"Calculator\"</strong> (Cache Storage, als u de calculator als app installeert): bewaart de bestanden die nodig zijn om offline te werken. Duur: tot u de app verwijdert of de cache wist.</li>\n        <li><strong>SITE_CONTENT_fr / _nl / _en</strong> en <strong>CALC_I18N_fr / _nl / _en</strong> (localStorage): conceptversies van de inhoud, enkel gebruikt in voorbeeldmodus door de beheerder van de site. Ze worden niet gelezen of aangemaakt bij een gewoon bezoek. Duur: tot handmatige verwijdering.</li>\n        <li><strong>dash_ok</strong> (sessionStorage): houdt de sessie van de beheerder op het bewerkingsdashboard actief. Duur: sluiten van het tabblad.</li>\n        <li><strong>cookie_consent</strong> (localStorage): zou uw keuze onthouden indien ooit een toestemmingsbanner wordt geactiveerd. <em>Momenteel niet in gebruik.</em> Maximale duur: 6 maanden.</li>\n      </ul>\n      <p>Deze opslag blijft in uw browser: er wordt geen informatie naar derden gestuurd en u kan er niet mee worden gevolgd.</p>\n\n      <h2>3. Externe diensten</h2>\n      <ul>\n        <li><strong>Lettertypen</strong>: lokaal gehost op de site, geen enkele aanvraag naar Google Fonts.</li>\n        <li><strong>Stripe-betalingen</strong>: de betaalknoppen zijn gewone links naar de beveiligde pagina's van Stripe; de cookies van Stripe gelden enkel op de site van Stripe (zie hun <a href=\"https://stripe.com/nl-be/privacy\" target=\"_blank\" rel=\"noopener\">privacybeleid</a>).</li>\n        <li><strong>WhatsApp</strong>: de WhatsApp-knoppen zijn links; er wordt geen script van Meta op deze site geladen.</li>\n      </ul>\n\n      <h2>4. Hoe deze gegevens verwijderen?</h2>\n      <p>U kan op elk moment de lokale opslag en de cache van uw browser wissen: Instellingen → Privacy → Browsegegevens wissen (of gelijkaardig volgens uw browser). Voor de geïnstalleerde app: verwijder ze gewoon.</p>\n\n      <h2>5. Als er ooit trackers worden toegevoegd</h2>\n      <p>Indien ooit niet-essentiële cookies (statistieken, marketing) zouden worden gebruikt, worden die enkel geplaatst <strong>na uw voorafgaande, vrije en geïnformeerde toestemming</strong>, via een banner waarmee weigeren even eenvoudig is als aanvaarden, zonder vooraf aangevinkte vakjes, en uw keuze wordt maximaal 6 maanden bewaard. Deze pagina zou dan worden bijgewerkt.</p>\n\n      <p class=\"legal__back\"><a href=\"index.html\">← Terug naar de startpagina</a></p>"
+      "body": "<span class=\"eyebrow\">Cookies &amp; lokale opslag</span>\n      <h1>Cookiebeleid</h1>\n      <p class=\"legal__update\">Laatste update: oktober 2026</p>\n\n      <h2>1. Geen trackingcookies</h2>\n      <p>De site <strong>coachtanguy.com</strong> gebruikt <strong>geen enkele cookie voor statistieken, reclame of sociale media</strong>, en geen trackers van derden. Een toestemmingsbanner is dus niet nodig: overeenkomstig de aanbevelingen van de Gegevensbeschermingsautoriteit (GBA) wordt enkel opslag gebruikt die strikt noodzakelijk is voor de werking van de site, en die is vrijgesteld van toestemming.</p>\n\n      <h2>2. Functionele lokale opslag</h2>\n      <p>De site gebruikt de lokale opslag van uw browser (localStorage / sessionStorage / Cache Storage) uitsluitend voor de volgende technische doeleinden:</p>\n      <ul>\n        <li><strong>Cache van de app \"Calculator\"</strong> (Cache Storage, als u de calculator als app installeert): bewaart de bestanden die nodig zijn om offline te werken. Duur: tot u de app verwijdert of de cache wist.</li>\n        <li><strong>SITE_EDITS2_fr / _nl / _en</strong>, <strong>SITE_PREVIEW_fr / _nl / _en</strong> en <strong>CALC_I18N_fr / _nl / _en</strong> (localStorage): conceptversies van de inhoud, enkel gebruikt in voorbeeldmodus door de beheerder van de site. Ze worden niet gelezen of aangemaakt bij een gewoon bezoek. Duur: tot handmatige verwijdering.</li>\n        <li><strong>dash_ok</strong> en <strong>dash_pw</strong> (sessionStorage): houden de sessie van de beheerder op het bewerkingsdashboard actief. Duur: sluiten van het tabblad.</li>\n        <li><strong>ct_prog_vente</strong> (sessionStorage): onthoudt tijdens uw bezoek dat de verkoop van het Herstartprogramma 28 dagen open is, zodat de aankoopknop actief wordt zonder de site opnieuw te bevragen. Duur: sluiten van het tabblad.</li>\n        <li><strong>ct_buy_lang</strong> (localStorage): onthoudt de taal van de pagina waarop een aankoop start, om de bedankpagina in dezelfde taal te tonen. Duur: tot de bedankpagina wordt getoond, anders tot handmatige verwijdering.</li>\n        <li><strong>cookie_consent</strong> (localStorage): zou uw keuze onthouden indien ooit een toestemmingsbanner wordt geactiveerd. <em>Momenteel niet in gebruik.</em> Maximale duur: 6 maanden.</li>\n      </ul>\n      <p>Deze opslag blijft in uw browser: er wordt geen informatie naar derden gestuurd en u kan er niet mee worden gevolgd.</p>\n\n      <h2>3. Externe diensten</h2>\n      <ul>\n        <li><strong>Lettertypen</strong>: lokaal gehost op de site, geen enkele aanvraag naar Google Fonts.</li>\n        <li><strong>Stripe-betalingen</strong>: de betaalknoppen zijn gewone links naar de beveiligde pagina's van Stripe; de cookies van Stripe gelden enkel op de site van Stripe (zie hun <a href=\"https://stripe.com/nl-be/privacy\" target=\"_blank\" rel=\"noopener\">privacybeleid</a>).</li>\n        <li><strong>WhatsApp</strong>: de WhatsApp-knoppen zijn links; er wordt geen script van Meta op deze site geladen.</li>\n      </ul>\n\n      <h2>4. Hoe deze gegevens verwijderen?</h2>\n      <p>U kan op elk moment de lokale opslag en de cache van uw browser wissen: Instellingen → Privacy → Browsegegevens wissen (of gelijkaardig volgens uw browser). Voor de geïnstalleerde app: verwijder ze gewoon.</p>\n\n      <h2>5. Als er ooit trackers worden toegevoegd</h2>\n      <p>Indien ooit niet-essentiële cookies (statistieken, marketing) zouden worden gebruikt, worden die enkel geplaatst <strong>na uw voorafgaande, vrije en geïnformeerde toestemming</strong>, via een banner waarmee weigeren even eenvoudig is als aanvaarden, zonder vooraf aangevinkte vakjes, en uw keuze wordt maximaal 6 maanden bewaard. Deze pagina zou dan worden bijgewerkt.</p>\n\n      <p class=\"legal__back\"><a href=\"index.html\">← Terug naar de startpagina</a></p>"
     }
   },
   "collab": {

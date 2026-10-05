@@ -13,7 +13,7 @@
 import crypto from 'node:crypto';
 import {
   json, memeSecret, CLEAN, emailValide, PLINK_RE, NOM_FICHIER,
-  magasin, lireJSON, lirePdf, inscrireVente, envoyerProgramme,
+  magasin, lireJSON, lirePdf, inscrireVente, envoyerProgramme, lienReconnu, ventePrete, adresseLien,
 } from '../lib/programme.mjs';
 
 const MAX_MORCEAU = 3.5 * 1024 * 1024;   // octets décodés par appel
@@ -24,7 +24,7 @@ const cleMorceau = (envoi, i) => 'tmp/' + envoi + '/' + String(i).padStart(3, '0
 
 const versArrayBuffer = (buf) => buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength);
 
-async function etat(store) {
+async function etat(store, lienSite) {
   const pdf = await lirePdf(store);
   const config = await lireJSON(store, 'config', {});
   const ventes = await lireJSON(store, 'ventes-index', []);
@@ -37,7 +37,7 @@ async function etat(store) {
     pret: {
       pdf: !!pdf,
       webhook: !!process.env.STRIPE_WEBHOOK_SECRET,
-      lien: plinks.length > 0 || !!process.env.STRIPE_PROGRAMME_PLINK,
+      lien: lienReconnu(lienSite, plinks, config.lien),
       email: !!process.env.RESEND_API_KEY,
       expediteur: process.env.RESEND_FROM || '',
       notif: !!process.env.CONTACT_TO,
@@ -48,10 +48,14 @@ async function etat(store) {
 }
 
 export default async (req) => {
-  /* Appel sans mot de passe : dit seulement si la fonction et le stockage répondent. */
+  /* Appel sans mot de passe : dit seulement si le stockage répond et si la vente peut ouvrir
+     sur le site (PDF déposé, Stripe relié, e-mails actifs, lien reconnu). Rien d'autre.
+     Le site s'en sert pour n'activer le bouton d'achat que lorsque l'envoi automatique est prêt. */
   if (req.method === 'GET') {
-    try { await magasin().get('config'); return json(200, { ok: true, stockage: true }); }
-    catch (e) { return json(200, { ok: true, stockage: false }); }
+    let lienSite = '';
+    try { lienSite = new URL(req.url).searchParams.get('lien') || ''; } catch (e) {}
+    try { return json(200, { ok: true, stockage: true, vente: await ventePrete(magasin(), process.env, lienSite) }); }
+    catch (e) { return json(200, { ok: true, stockage: false, vente: false }); }
   }
   if (req.method !== 'POST') return json(405, { ok: false, erreur: 'Méthode non autorisée.' });
 
@@ -66,7 +70,7 @@ export default async (req) => {
     const store = magasin();
     const action = String(p.action || 'etat');
 
-    if (action === 'etat') return json(200, await etat(store));
+    if (action === 'etat') return json(200, await etat(store, p.lienSite));
 
     /* ---- dépôt du PDF, morceau par morceau ---- */
     if (action === 'morceau') {
@@ -109,16 +113,24 @@ export default async (req) => {
       const mauvais = liste.filter((x) => !PLINK_RE.test(x));
       if (mauvais.length) return json(400, { ok: false, erreur: 'Identifiant invalide : « ' + CLEAN(mauvais[0], 60) + ' ». Il doit commencer par plink_' });
       const config = await lireJSON(store, 'config', {});
+      const avant = config.plinks || [];
       config.plinks = Array.from(new Set(liste)).slice(0, 10);
+      /* On retient pour quel lien du site ces identifiants ont été saisis : si le lien change
+         plus tard, la vente ne rouvre pas tant que son identifiant n'a pas été enregistré.
+         Réenregistrer la même liste ne rattache donc pas d'anciens identifiants à un nouveau lien :
+         il faut un identifiant nouveau, ou une confirmation explicite (associer). */
+      const ajout = config.plinks.some((x) => avant.indexOf(x) < 0);
+      if (config.plinks.length && adresseLien(p.lienSite) && (ajout || p.associer === true || !config.lien)) config.lien = adresseLien(p.lienSite);
+      if (!config.plinks.length) delete config.lien;
       await store.setJSON('config', config);
-      return json(200, await etat(store));
+      return json(200, await etat(store, p.lienSite));
     }
 
     /* ---- envois manuels ---- */
     if (action === 'test') {
       const to = process.env.CONTACT_TO;
       if (!to) return json(400, { ok: false, erreur: 'CONTACT_TO non configuré : je ne sais pas à quelle adresse envoyer le test.' });
-      const r = await envoyerProgramme(store, { email: to, nom: 'Tanguy', lang: p.lang, prefixe: '[TEST] ' });
+      const r = await envoyerProgramme(store, { email: to, nom: 'Tanguy', lang: p.lang, prefixe: '[TEST] ', renonciation: true });
       return json(r.ok ? 200 : 400, r.ok ? { ok: true, envoyeA: to } : { ok: false, erreur: r.erreur });
     }
 
@@ -133,21 +145,21 @@ export default async (req) => {
         id: 'manuel-' + Date.now().toString(36), email, nom: CLEAN(p.nom, 120), montant: 0, devise: 'eur', lang,
         manuel: true, statut: 'envoye', creeLe: maintenant, envoyeLe: maintenant, tentatives: 1,
       });
-      return json(200, await etat(store));
+      return json(200, await etat(store, p.lienSite));
     }
 
     if (action === 'renvoyer') {
       const id = CLEAN(p.id, 120);
       const fiche = await lireJSON(store, 'ventes/' + id, null);
       if (!fiche) return json(404, { ok: false, erreur: 'Vente introuvable.' });
-      const r = await envoyerProgramme(store, { email: fiche.email, nom: fiche.nom, lang: fiche.lang });
+      const r = await envoyerProgramme(store, { email: fiche.email, nom: fiche.nom, lang: fiche.lang, renonciation: fiche.renonciation, montant: /^manuel-/.test(String(fiche.id)) ? undefined : fiche.montant, devise: fiche.devise });
       if (!r.ok) return json(400, { ok: false, erreur: r.erreur });
       fiche.statut = 'envoye';
       fiche.envoyeLe = new Date().toISOString();
       fiche.renvois = (fiche.renvois || 0) + 1;
       delete fiche.erreur;
       await inscrireVente(store, fiche);
-      return json(200, await etat(store));
+      return json(200, await etat(store, p.lienSite));
     }
 
     return json(400, { ok: false, erreur: 'Action inconnue.' });

@@ -90,7 +90,47 @@ export function estProgramme(session, opts) {
   if (!pl) return false;
   const liste = (opts && opts.plinks) || [];
   const env = (opts && opts.envPlink) || '';
-  return liste.indexOf(pl) >= 0 || (!!env && env === pl);
+  return liste.indexOf(pl) >= 0 || (!!env && env === pl) || PLINKS_CONNUS.indexOf(pl) >= 0;
+}
+
+/* Liens de paiement du programme connus d'avance : adresse publique -> identifiant Stripe.
+   L'identifiant se lit dans la page de paiement publique (ce n'est pas un secret) ;
+   l'inscrire ici évite de le recopier à la main dans le dashboard.
+   Si le lien change, ajouter le nouveau ici ou saisir son identifiant dans « Programme PDF ». */
+export const LIENS_CONNUS = {
+  'https://buy.stripe.com/bJe14p4Z54aLgC69Xi0RG0j': 'plink_1ULM0MRov04Y8GN77dJfJ2Ze',
+};
+export const PLINKS_CONNUS = Object.values(LIENS_CONNUS);
+
+/* Adresse d'un lien de paiement sans ses paramètres (?locale=...) ni barre finale.
+   Une valeur anormalement longue est ignorée : ce paramètre arrive d'un appel public. */
+export const adresseLien = (u) => {
+  const b = String(u == null ? '' : u).trim().split(/[?#]/)[0];
+  return b.length > 200 ? '' : b.replace(/\/+$/, '');
+};
+
+/* Le lien de paiement affiché sur le site sera-t-il reconnu quand Stripe préviendra le site ?
+   Oui s'il est connu d'avance. Sinon, seulement si un identifiant a été enregistré depuis le
+   dashboard POUR CE LIEN-LÀ (lienAssocie = adresse du lien au moment de l'enregistrement) :
+   un identifiant saisi pour un ancien lien n'ouvre pas la vente d'un nouveau. */
+export function lienReconnu(lienSite, plinks, lienAssocie) {
+  const adresse = adresseLien(lienSite);
+  if (!adresse) return false;
+  if (Object.prototype.hasOwnProperty.call(LIENS_CONNUS, adresse)) return true;
+  return (plinks || []).length > 0 && !!lienAssocie && adresseLien(lienAssocie) === adresse;
+}
+
+/* Accord donné sur la page du site avant le paiement (case à cocher dédiée) : le client demande
+   l'envoi immédiat du programme et reconnaît perdre son droit de rétractation. Le site le
+   transmet à Stripe dans client_reference_id ; on le retrouve ici dans le paiement. */
+export const RENONCE_RE = /^renonce-retractation-\d{8}$/;
+
+/* L'accord n'est retenu que si sa date est celle du paiement, à un jour près (fuseaux horaires) :
+   un ancien lien recopié ou transmis à quelqu'un d'autre ne vaut pas accord. */
+export function accordValide(ref, creeLe) {
+  const m = /^renonce-retractation-(\d{4})(\d{2})(\d{2})$/.exec(String(ref == null ? '' : ref));
+  if (!m || !creeLe) return false;
+  return Math.abs(Date.UTC(+m[1], +m[2] - 1, +m[3], 12) - Number(creeLe) * 1000) <= 36 * 3600 * 1000;
 }
 
 /* Payé, ou gratuit via un code promo de 100 % (cadeau à un client). */
@@ -115,6 +155,8 @@ export function venteDepuisSession(session, livemode) {
     devise: String(session.currency || 'eur').toLowerCase(),
     lang: langueDe(session),
     reel: livemode !== false,
+    renonciation: accordValide(session.client_reference_id, session.created),
+    accord: CLEAN(session.client_reference_id || '', 60),   // valeur reçue, gardée telle quelle comme trace
   };
 }
 
@@ -132,6 +174,21 @@ export async function lirePdf(store) {
   const r = await store.getWithMetadata('pdf', { type: 'arrayBuffer' });
   if (!r || !r.data) return null;
   return { octets: Buffer.from(r.data), meta: r.metadata || {} };
+}
+
+/* Le PDF est-il déposé ? Lecture de sa fiche seulement, sans télécharger le fichier. */
+export async function pdfDepose(store) {
+  if (typeof store.getMetadata === 'function') return !!(await store.getMetadata('pdf'));
+  return !!(await lirePdf(store));
+}
+
+/* La vente peut-elle ouvrir sur le site ? Seulement si un paiement sera réellement suivi
+   de l'envoi du programme : PDF déposé, Stripe relié, e-mails actifs, lien reconnu. */
+export async function ventePrete(store, env, lienSite) {
+  const config = await lireJSON(store, 'config', {});   // lue en premier : prouve aussi que le stockage répond
+  if (!env.STRIPE_WEBHOOK_SECRET || !env.RESEND_API_KEY) return false;
+  if (!lienReconnu(lienSite, config.plinks || [], config.lien)) return false;
+  return pdfDepose(store);
 }
 
 const MAX_INDEX = 200;
@@ -183,6 +240,9 @@ const TXT = {
     privacy: 'Confidentialité',
     privacyUrl: SITE + '/politique-confidentialite.html',
     piece: 'Pièce jointe',
+    renonce: 'Confirmation : lors de votre commande, vous avez demandé à recevoir le programme immédiatement et reconnu perdre votre droit de rétractation dès son envoi.',
+    commande: (prix) => 'Confirmation de votre commande : Programme Reprise 28 jours, fichier PDF en français joint à cet e-mail, lisible sur téléphone, tablette ou ordinateur. Prix payé : ' + prix + ', toutes taxes comprises, paiement unique, sans abonnement. Vendeur : Tanguy Witters (CoachTanguy), Avenue de la Pépinière 11, 1640 Rhode-Saint-Genèse, Belgique, numéro d\'entreprise 1026.048.974, contact@coachtanguy.com, +32 472 76 16 39. Vous bénéficiez de la garantie légale de conformité applicable aux contenus numériques : si le fichier ne s\'ouvre pas ou est incomplet, répondez à cet e-mail, il vous est renvoyé ou corrigé sans frais. Une réclamation restée sans solution peut être portée devant le Service de Médiation pour le Consommateur.',
+    delai: 'Vous disposez de 14 jours à compter de votre commande pour vous rétracter, sans motif, sur simple message à contact@coachtanguy.com.',
   },
   nl: {
     sujet: 'Je Herstartprogramma 28 dagen is er',
@@ -205,6 +265,9 @@ const TXT = {
     privacy: 'Privacy',
     privacyUrl: SITE + '/nl/politique-confidentialite.html',
     piece: 'Bijlage',
+    renonce: 'Bevestiging: bij je bestelling heb je gevraagd om het programma onmiddellijk te ontvangen en erkend dat je je herroepingsrecht verliest zodra het is verzonden.',
+    commande: (prix) => 'Bevestiging van je bestelling: Herstartprogramma 28 dagen, pdf-bestand in het Frans in de bijlage van deze e-mail, leesbaar op telefoon, tablet of computer. Betaalde prijs: ' + prix + ', alle taksen inbegrepen, eenmalige betaling, geen abonnement. Verkoper: Tanguy Witters (CoachTanguy), Avenue de la Pépinière 11, 1640 Sint-Genesius-Rode, België, ondernemingsnummer 1026.048.974, contact@coachtanguy.com, +32 472 76 16 39. Je geniet de wettelijke conformiteitsgarantie voor digitale inhoud: als het bestand niet opent of onvolledig is, antwoord op deze e-mail en je krijgt het kosteloos opnieuw of verbeterd. Een klacht zonder oplossing kan je voorleggen aan de Consumentenombudsdienst.',
+    delai: 'Je hebt 14 dagen vanaf je bestelling om zonder opgave van reden van je aankoop af te zien, met een eenvoudig bericht aan contact@coachtanguy.com.',
   },
   en: {
     sujet: 'Your 28-Day Restart Programme has arrived',
@@ -227,6 +290,9 @@ const TXT = {
     privacy: 'Privacy',
     privacyUrl: SITE + '/en/politique-confidentialite.html',
     piece: 'Attachment',
+    renonce: 'Confirmation: when ordering, you asked to receive the programme immediately and acknowledged that you lose your right of withdrawal once it has been sent.',
+    commande: (prix) => 'Order confirmation: 28-Day Restart Programme, PDF file in French attached to this e-mail, readable on phone, tablet or computer. Price paid: ' + prix + ', all taxes included, one-off payment, no subscription. Seller: Tanguy Witters (CoachTanguy), Avenue de la Pépinière 11, 1640 Rhode-Saint-Genèse, Belgium, company number 1026.048.974, contact@coachtanguy.com, +32 472 76 16 39. You benefit from the legal guarantee of conformity for digital content: if the file does not open or is incomplete, reply to this e-mail and it will be sent again or corrected free of charge. An unresolved complaint can be referred to the Belgian Consumer Mediation Service.',
+    delai: 'You have 14 days from your order to cancel your purchase, without giving a reason, by sending a message to contact@coachtanguy.com.',
   },
 };
 
@@ -268,6 +334,13 @@ export function emailLivraison(opts) {
   const lang = TXT[opts && opts.lang] ? opts.lang : 'fr';
   const t = TXT[lang];
   const prenom = CLEAN(((opts && opts.nom) || '').split(' ')[0], 40);
+  const renonce = !!(opts && opts.renonciation);   // confirmation écrite de l'accord donné à la commande
+  /* Vente réelle (montant connu) : l'e-mail vaut aussi confirmation du contrat sur support durable.
+     Sans accord de renonciation, on rappelle au client qu'il garde 14 jours pour se rétracter. */
+  const vraieVente = !!(opts && opts.montant != null);
+  const mentions = [];
+  if (vraieVente) mentions.push(t.commande(euros(opts.montant, opts.devise)));
+  if (renonce) mentions.push(t.renonce); else if (vraieVente) mentions.push(t.delai);
   const etapes = t.etapes.map((e, i) => (
     '<tr><td valign="top" width="34" style="padding:0 0 12px;">'
     + '<div style="width:26px;height:26px;border-radius:13px;background-color:' + ORANGE + ';color:#ffffff;font-family:' + FONT + ';font-size:13px;font-weight:700;line-height:26px;text-align:center;">' + (i + 1) + '</div></td>'
@@ -287,11 +360,13 @@ export function emailLivraison(opts) {
     + '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:26px;border-top:1px solid #ecebe8;"><tr>'
     + '<td style="padding-top:20px;font-family:' + FONT + ';font-size:14px;line-height:1.55;color:' + GRAY + ';">' + ESC(t.suite) + ' '
     + '<a href="' + t.suiviUrl + '" target="_blank" style="color:' + ORANGE + ';font-weight:700;text-decoration:none;">' + ESC(t.bouton) + '</a></td></tr></table>'
+    + mentions.map((x, i) => '<p style="margin:' + (i ? 10 : 22) + 'px 0 0;font-family:' + FONT + ';font-size:13px;line-height:1.55;color:' + GRAY + ';">' + ESC(x) + '</p>').join('')
     + '</td></tr>'
     + pied(t);
   const texte = [t.bonjour(prenom), '', t.intro.replace(/<[^>]+>/g, ''), '', t.piece + ' : ' + NOM_FICHIER, '', t.etapesTitre + ' :']
     .concat(t.etapes.map((e, i) => (i + 1) + '. ' + e))
     .concat(['', t.aide, '', t.signature, 'Tanguy', '', t.suite + ' ' + t.suiviUrl])
+    .concat(mentions.length ? [''].concat(mentions) : [])
     .join('\n');
   return { sujet: t.sujet, html: gabarit(t.sujet, t.preheader, lang, inner), texte };
 }
@@ -319,6 +394,7 @@ export function emailInterne(vente, etat) {
     + ligne('E-mail', vente.email ? '<a href="mailto:' + ESC(vente.email) + '" style="color:' + ORANGE + ';text-decoration:none;">' + ESC(vente.email) + '</a>' : 'absent')
     + ligne('Montant', ESC(euros(vente.montant, vente.devise)))
     + ligne('Langue', ESC(String(vente.lang || 'fr').toUpperCase()))
+    + (typeof vente.renonciation === 'boolean' ? ligne('Rétractation', vente.renonciation ? (ok ? 'Renonciation acceptée à la commande et confirmée dans l\'e-mail' : 'Renonciation acceptée à la commande, pas encore confirmée au client : la confirmation part avec le programme (relance automatique ou bouton « Renvoyer »)') : 'Non recueillie (achat passé hors de la page du site) : le client garde 14 jours pour se rétracter et être remboursé') : '')
     + '</table></td></tr>'
     + pied({ footer: 'Notification automatique du site coachtanguy.com', legal: 'Envoi du programme Reprise 28 jours', privacy: 'Dashboard', privacyUrl: SITE + '/dashboard.html' });
   const sujet = (ok ? '✅ Vente Programme 28 jours' : '⚠️ Programme non envoyé') + ' · ' + (vente.nom || vente.email || 'client');
@@ -368,7 +444,7 @@ export async function envoyerProgramme(store, dest) {
   if (!emailValide(dest.email)) return { ok: false, erreur: 'adresse e-mail invalide' };
   const pdf = await lirePdf(store);
   if (!pdf) return { ok: false, erreur: 'aucun PDF déposé dans le dashboard', pdfAbsent: true };
-  const m = emailLivraison({ lang: dest.lang, nom: dest.nom });
+  const m = emailLivraison({ lang: dest.lang, nom: dest.nom, renonciation: dest.renonciation, montant: dest.montant, devise: dest.devise });
   const payload = {
     from: expediteur(),
     to: [dest.email],
@@ -391,7 +467,7 @@ export async function livrer(store, vente) {
   fiche.statut = 'attente';
 
   const r = vente.email
-    ? await envoyerProgramme(store, { email: vente.email, nom: vente.nom, lang: vente.lang, cle: 'prog28-' + vente.id })
+    ? await envoyerProgramme(store, { email: vente.email, nom: vente.nom, lang: vente.lang, renonciation: vente.renonciation, montant: vente.montant, devise: vente.devise, cle: 'prog28-' + vente.id })
     : { ok: false, erreur: 'le paiement ne contient pas d\'adresse e-mail', definitif: true };
 
   if (r.ok) {

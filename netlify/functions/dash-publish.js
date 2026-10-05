@@ -16,7 +16,38 @@
 
    Sécurité : seuls les fichiers content/*.js peuvent être écrits ; le token
    n'est jamais envoyé au navigateur.
+
+   Garde-fou : le dashboard envoie aussi { bases:{ "content/fr.js": "..." } }, le contenu
+   de référence d'où il est parti. Si ce contenu n'est plus celui de la branche (le site a
+   été mis à jour entre-temps, ou l'onglet du dashboard est ancien), la publication est
+   refusée : sinon elle remettrait en ligne d'anciens textes par-dessus les nouveaux.
    ============================================================ */
+
+/* Objet contenu dans un fichier content/<langue>.js (null si le fichier n'a pas la forme attendue). */
+function objetDuFichier(texte) {
+  const m = /window\.SITE_CONTENT\s*=\s*([\s\S]*?);\s*\n\(window\.SITE_CONTENT_ALL/.exec(String(texte || '').replace(/\r\n/g, '\n'));
+  if (!m) return null;
+  try { return JSON.parse(m[1]); } catch (e) { return null; }
+}
+
+/* 'ok' : même contenu ; 'perime' : la branche a changé depuis l'ouverture du dashboard ;
+   'illisible' : le fichier de la branche n'a pas la forme attendue, on ne peut pas comparer. */
+function comparerBase(texteBranche, texteBase) {
+  const branche = objetDuFichier(texteBranche);
+  if (!branche) return 'illisible';
+  const base = objetDuFichier(texteBase);
+  if (!base) return 'perime';
+  return JSON.stringify(branche) === JSON.stringify(base) ? 'ok' : 'perime';
+}
+
+const FICHIER_SITE = /^content\/(fr|nl|en)\.js$/;
+const MSG_PERIME = 'Le site a été mis à jour depuis l\'ouverture de ce dashboard. Recharge la page du dashboard, puis clique de nouveau sur « Mettre en ligne » : tes modifications en cours sont conservées. Si le message revient, attends une minute (le site finit de se mettre à jour) et recommence.';
+
+const MSG_ANCIEN = 'Ce dashboard est une ancienne version : la publication est refusée pour ne pas remettre d\'anciens textes en ligne. Note à part tes modifications en cours (elles ne seront pas conservées), recharge la page du dashboard, refais-les, puis clique sur « Mettre en ligne ».';
+
+exports.objetDuFichier = objetDuFichier;
+exports.comparerBase = comparerBase;
+
 exports.handler = async (event) => {
   const json = (code, body) => ({
     statusCode: code,
@@ -94,6 +125,19 @@ exports.handler = async (event) => {
     const commit = await gh('GET', API + '/git/commits/' + parentSha);
     if (commit.status !== 200) return json(502, { ok: false, error: ghError(commit, 'lecture du commit') });
     const baseTree = commit.data.tree.sha;
+
+    // 2 bis) Garde-fou : chaque fichier de textes doit partir du contenu actuel de la branche
+    const bases = payload.bases || {};
+    for (const chemin of paths.filter((x) => FICHIER_SITE.test(x))) {
+      if (typeof bases[chemin] !== 'string') return json(409, { ok: false, perime: true, ancien: true, error: MSG_ANCIEN });
+      const actuel = await gh('GET', API + '/contents/' + chemin + '?ref=' + parentSha);
+      if (actuel.status === 404) continue;   // fichier nouveau : rien à comparer
+      if (actuel.status !== 200 || !actuel.data || typeof actuel.data.content !== 'string') {
+        return json(502, { ok: false, error: ghError(actuel, 'lecture de ' + chemin) });
+      }
+      const texte = Buffer.from(actuel.data.content, 'base64').toString('utf8');
+      if (comparerBase(texte, bases[chemin]) === 'perime') return json(409, { ok: false, perime: true, error: MSG_PERIME });
+    }
 
     // 3) Nouvel arbre (contenu inline → pas besoin de blobs séparés)
     const tree = paths.map((p) => ({ path: p, mode: '100644', type: 'blob', content: files[p] }));

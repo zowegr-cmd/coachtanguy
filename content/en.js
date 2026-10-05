@@ -342,17 +342,6 @@ window.SITE_CONTENT = {
     "ft5Text": "Difficulty and volume increase gradually over the weeks.",
     "ft6Title": "From your phone",
     "ft6Text": "Open the programme easily and train wherever you like.",
-    "whoEyebrow": "Who is it for?",
-    "whoTitle": "A programme designed for getting back into it.",
-    "who1Title": "You do not know where to start.",
-    "who1Text": "The programme gives you a clear structure from day one.",
-    "who2Title": "You are worried about restarting too hard.",
-    "who2Text": "Each exercise offers two difficulty levels so you can find the right pace.",
-    "who3Title": "You want something simple.",
-    "who3Text": "No need to build your own sessions: everything is already organised.",
-    "who4Title": "You want to train on your own.",
-    "who4Text": "The videos and instructions guide you throughout the 28 days.",
-    "whoNote": "The programme is general and does not replace individual coaching in case of injury, medical condition or specific needs.",
     "priceEyebrow": "Full programme",
     "priceTitle": "Start your comeback.",
     "priceText": "A one-off purchase to access the whole programme and follow the 28 days at your own pace. The full programme is sent to you automatically by e-mail after payment, so you can access it straight away and start whenever you like.",
@@ -363,11 +352,13 @@ window.SITE_CONTENT = {
     "c2": "Calendar and detailed sessions",
     "c3": "2 difficulty levels per exercise",
     "c4": "Exercise videos",
-    "c5": "Shared warm-up included",
-    "c6": "Nutrition calculator included",
+    "c5": "Nutrition calculator included",
     "langNote": "The programme is written in French.",
+    "consent": "I ask to receive the programme as soon as I have paid, and I acknowledge that I lose my right of withdrawal once the programme has been sent.",
+    "consentErr": "Please tick the box above to continue.",
     "buyBtn": "Get the programme",
     "buyNote": "Sent by e-mail right after payment · No subscription",
+    "healthNote": "The programme is general and does not replace individual coaching in case of injury, medical condition or specific needs.",
     "soon": "Coming soon",
     "afterEyebrow": "What next?",
     "afterTitle": "Want to go further?",
@@ -384,7 +375,7 @@ window.SITE_CONTENT = {
     "pack8": "https://buy.stripe.com/8x2cN7fDJePpadI8Te0RG0b",
     "initial": "https://buy.stripe.com/6oU3cx9fl6iTadIb1m0RG0c",
     "mensuel": "https://buy.stripe.com/6oU14p77d4aLadIglG0RG0g",
-    "programme": ""
+    "programme": "https://buy.stripe.com/bJe14p4Z54aLgC69Xi0RG0j"
   },
   "meta": {
     "index": {
@@ -549,7 +540,7 @@ window.SITE_CONTENT = {
     "cookies": {
       "title": "Cookie policy — CoachTanguy",
       "desc": "CoachTanguy uses no tracking cookies. Details of the functional local storage used and your options.",
-      "body": "<span class=\"eyebrow\">Cookies &amp; local storage</span>\n      <h1>Cookie policy</h1>\n      <p class=\"legal__update\">Last updated: June 2026</p>\n\n      <h2>1. No tracking cookies</h2>\n      <p><strong>coachtanguy.com</strong> uses <strong>no analytics, advertising or social-media cookies</strong>, and no third-party trackers. No consent banner is therefore required: in line with the recommendations of the Belgian Data Protection Authority, only storage strictly necessary for the operation of the site is used, which is exempt from consent.</p>\n\n      <h2>2. Functional local storage</h2>\n      <p>The site uses your browser's local storage (localStorage / sessionStorage / Cache Storage) solely for the following technical purposes:</p>\n      <ul>\n        <li><strong>\"Calculator\" app cache</strong> (Cache Storage, if you install the calculator as an app): keeps the files needed to work offline. Duration: until you uninstall the app or clear the cache.</li>\n        <li><strong>SITE_CONTENT_fr / _nl / _en</strong> and <strong>CALC_I18N_fr / _nl / _en</strong> (localStorage): content drafts, used only in preview mode by the site administrator. They are neither read nor created during a normal visit. Duration: until manually deleted.</li>\n        <li><strong>dash_ok</strong> (sessionStorage): keeps the administrator's session on the editing dashboard. Duration: closing the tab.</li>\n        <li><strong>cookie_consent</strong> (localStorage): would remember your choice if a consent banner were ever activated. <em>Not currently used.</em> Maximum duration: 6 months.</li>\n      </ul>\n      <p>This storage stays in your browser: it sends no information to third parties and cannot be used to track you.</p>\n\n      <h2>3. External services</h2>\n      <ul>\n        <li><strong>Fonts</strong>: hosted locally on the site, no request is made to Google Fonts.</li>\n        <li><strong>Stripe payments</strong>: the payment buttons are plain links to Stripe's secure pages; Stripe's cookies only apply on Stripe's site (see their <a href=\"https://stripe.com/en-be/privacy\" target=\"_blank\" rel=\"noopener\">privacy policy</a>).</li>\n        <li><strong>WhatsApp</strong>: the WhatsApp buttons are links; no Meta script is loaded on this site.</li>\n      </ul>\n\n      <h2>4. How to delete this data?</h2>\n      <p>You can clear your browser's local storage and cache at any time: Settings → Privacy → Clear browsing data (or equivalent depending on your browser). For the installed app, simply uninstall it.</p>\n\n      <h2>5. If trackers were ever added</h2>\n      <p>If non-essential cookies (statistics, marketing) were ever used, they would only be set <strong>after your prior, free and informed consent</strong>, collected through a banner where refusing is as easy as accepting, with no pre-ticked boxes, and your choice would be kept for a maximum of 6 months. This page would be updated accordingly.</p>\n\n      <p class=\"legal__back\"><a href=\"index.html\">← Back to home</a></p>"
+      "body": "<span class=\"eyebrow\">Cookies &amp; local storage</span>\n      <h1>Cookie policy</h1>\n      <p class=\"legal__update\">Last updated: October 2026</p>\n\n      <h2>1. No tracking cookies</h2>\n      <p><strong>coachtanguy.com</strong> uses <strong>no analytics, advertising or social-media cookies</strong>, and no third-party trackers. No consent banner is therefore required: in line with the recommendations of the Belgian Data Protection Authority, only storage strictly necessary for the operation of the site is used, which is exempt from consent.</p>\n\n      <h2>2. Functional local storage</h2>\n      <p>The site uses your browser's local storage (localStorage / sessionStorage / Cache Storage) solely for the following technical purposes:</p>\n      <ul>\n        <li><strong>\"Calculator\" app cache</strong> (Cache Storage, if you install the calculator as an app): keeps the files needed to work offline. Duration: until you uninstall the app or clear the cache.</li>\n        <li><strong>SITE_EDITS2_fr / _nl / _en</strong>, <strong>SITE_PREVIEW_fr / _nl / _en</strong> and <strong>CALC_I18N_fr / _nl / _en</strong> (localStorage): content drafts, used only in preview mode by the site administrator. They are neither read nor created during a normal visit. Duration: until manually deleted.</li>\n        <li><strong>dash_ok</strong> and <strong>dash_pw</strong> (sessionStorage): keep the administrator's session on the editing dashboard. Duration: closing the tab.</li>\n        <li><strong>ct_prog_vente</strong> (sessionStorage): remembers during your visit that the 28-Day Restart Programme is on sale, so the buy button becomes active without asking the site again. Duration: closing the tab.</li>\n        <li><strong>ct_buy_lang</strong> (localStorage): remembers the language of the page a purchase starts from, to show the thank-you page in the same language. Duration: until the thank-you page is shown, otherwise until manually deleted.</li>\n        <li><strong>cookie_consent</strong> (localStorage): would remember your choice if a consent banner were ever activated. <em>Not currently used.</em> Maximum duration: 6 months.</li>\n      </ul>\n      <p>This storage stays in your browser: it sends no information to third parties and cannot be used to track you.</p>\n\n      <h2>3. External services</h2>\n      <ul>\n        <li><strong>Fonts</strong>: hosted locally on the site, no request is made to Google Fonts.</li>\n        <li><strong>Stripe payments</strong>: the payment buttons are plain links to Stripe's secure pages; Stripe's cookies only apply on Stripe's site (see their <a href=\"https://stripe.com/en-be/privacy\" target=\"_blank\" rel=\"noopener\">privacy policy</a>).</li>\n        <li><strong>WhatsApp</strong>: the WhatsApp buttons are links; no Meta script is loaded on this site.</li>\n      </ul>\n\n      <h2>4. How to delete this data?</h2>\n      <p>You can clear your browser's local storage and cache at any time: Settings → Privacy → Clear browsing data (or equivalent depending on your browser). For the installed app, simply uninstall it.</p>\n\n      <h2>5. If trackers were ever added</h2>\n      <p>If non-essential cookies (statistics, marketing) were ever used, they would only be set <strong>after your prior, free and informed consent</strong>, collected through a banner where refusing is as easy as accepting, with no pre-ticked boxes, and your choice would be kept for a maximum of 6 months. This page would be updated accordingly.</p>\n\n      <p class=\"legal__back\"><a href=\"index.html\">← Back to home</a></p>"
     }
   },
   "collab": {

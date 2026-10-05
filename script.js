@@ -284,27 +284,101 @@ document.querySelectorAll('.rev__who').forEach(function (w) {
 
 // ===== Programme 28 jours : boutons d'achat =====
 // Le lien de paiement se règle dans le dashboard (Liens de paiement Stripe > Programme 28 jours).
-// Tant qu'il est vide, les boutons affichent « Bientôt disponible » : aucun bouton d'achat
-// ne peut mener nulle part. Dès qu'il est renseigné, ils deviennent actifs tout seuls.
+// Tant qu'il est vide, les boutons affichent « Bientôt disponible ».
+// Une fois le lien renseigné, la vente ne s'ouvre que si l'envoi automatique est prêt
+// (PDF déposé, Stripe relié au site, e-mails actifs) : sinon un client paierait sans rien
+// recevoir. Dès que tout est prêt, les boutons deviennent actifs tout seuls.
+// Avant de payer, le client coche une case dédiée : il demande l'envoi immédiat du programme
+// et reconnaît perdre son droit de rétractation (CGV, point 12.2). Le lien de paiement n'est
+// posé sur le bouton que lorsque la case est cochée ; l'accord part avec le paiement.
 document.addEventListener('DOMContentLoaded', function () {
-  var btns = document.querySelectorAll('[data-buy="programme"]');
+  var btns = Array.prototype.slice.call(document.querySelectorAll('[data-buy="programme"]'));
   if (!btns.length) return;
   var c = window.__siteContent || {};
   var url = String((c.stripe && c.stripe.programme) || '').trim();
-  var live = /^https:\/\/\S+$/.test(url);
   var lang = document.documentElement.lang || 'fr';
-  btns.forEach(function (b) {
-    if (live) {
-      // Stripe affiche le paiement dans la langue de la page d'où part l'achat
-      b.setAttribute('href', url + (url.indexOf('?') < 0 ? '?' : '&') + 'locale=' + encodeURIComponent(lang));
-      b.addEventListener('click', function () {
-        try { localStorage.setItem('ct_buy_lang', lang); } catch (e) {}
-      });
-    } else {
+  var CLE = 'ct_prog_vente';
+  var accord = document.querySelector('[data-consent="programme"]');
+  var caseAccord = accord ? accord.querySelector('input[type="checkbox"]') : null;
+  var alerte = document.querySelector('[data-consent-err="programme"]');
+  // Bouton qui mène au paiement : celui de la carte du tarif, à côté de la case à cocher.
+  var payer = btns.filter(function (b) { return accord && accord.parentNode && accord.parentNode.contains(b); });
+  if (!payer.length) payer = btns.slice(0, 1);
+
+  function attendre() {
+    btns.forEach(function (b) {
       b.removeAttribute('href');
+      b.setAttribute('aria-busy', 'true');
+      b.setAttribute('aria-disabled', 'true');
+      b.classList.add('is-soon');
+    });
+  }
+  function fermer() {
+    btns.forEach(function (b) {
+      b.removeAttribute('href');
+      b.removeAttribute('aria-busy');
       b.setAttribute('aria-disabled', 'true');
       b.classList.add('is-soon');
       b.textContent = (c.prog && c.prog.soon) || 'Bientôt disponible';
-    }
-  });
+    });
+  }
+  function lienPaiement() {
+    var d = new Date();
+    var jour = String(d.getFullYear()) + ('0' + (d.getMonth() + 1)).slice(-2) + ('0' + d.getDate()).slice(-2);
+    var q = (url.indexOf('?') < 0 ? '?' : '&') + 'locale=' + encodeURIComponent(lang);
+    // Stripe affiche le paiement dans la langue de la page d'où part l'achat
+    if (caseAccord) q += '&client_reference_id=renonce-retractation-' + jour;
+    return url + q;
+  }
+  function poserLien() {
+    var ok = !caseAccord || caseAccord.checked;
+    payer.forEach(function (b) { b.setAttribute('href', ok ? lienPaiement() : '#prix'); });
+    if (ok && alerte) alerte.hidden = true;
+    if (ok && accord) accord.classList.remove('is-error');
+  }
+  function ouvrir() {
+    btns.forEach(function (b) {
+      b.removeAttribute('aria-busy');
+      b.removeAttribute('aria-disabled');
+      b.classList.remove('is-soon');
+      if (payer.indexOf(b) < 0) b.setAttribute('href', '#prix');   // les autres boutons mènent à la carte du tarif
+    });
+    if (accord) accord.hidden = false;
+    poserLien();
+    if (caseAccord) caseAccord.addEventListener('change', poserLien);
+    // Retour arrière : le navigateur peut remettre la case cochée sans prévenir, on repose le lien.
+    window.addEventListener('pageshow', poserLien);
+    payer.forEach(function (b) {
+      b.addEventListener('click', function (e) {
+        poserLien();   // le lien suit l'état réel de la case au moment du clic, avec la date du jour
+        if (caseAccord && !caseAccord.checked) {
+          e.preventDefault();
+          if (alerte) alerte.hidden = false;
+          if (accord) accord.classList.add('is-error');
+          caseAccord.focus();
+          return;
+        }
+        try { localStorage.setItem('ct_buy_lang', lang); } catch (err) {}
+      });
+    });
+  }
+
+  if (!/^https:\/\/\S+$/.test(url)) { fermer(); return; }
+  try { if (sessionStorage.getItem(CLE) === url) { ouvrir(); return; } } catch (e) {}
+  // En attendant la réponse, le bouton garde son libellé mais reste inactif et atténué.
+  attendre();
+  var coupe = (typeof AbortController === 'function') ? new AbortController() : null;
+  var minuterie = setTimeout(function () { if (coupe) coupe.abort(); }, 5000);
+  fetch('/.netlify/functions/programme-admin?lien=' + encodeURIComponent(url), { headers: { Accept: 'application/json' }, signal: coupe ? coupe.signal : undefined })
+    .then(function (r) { return r.ok ? r.json() : {}; })
+    .then(function (d) {
+      clearTimeout(minuterie);
+      if (d && d.vente === true) {
+        try { sessionStorage.setItem(CLE, url); } catch (e) {}
+        ouvrir();
+      } else {
+        fermer();
+      }
+    })
+    .catch(function () { clearTimeout(minuterie); fermer(); });
 });

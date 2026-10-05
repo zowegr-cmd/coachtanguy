@@ -565,7 +565,8 @@ window.SITE_CONTENT = {
     "title": "Merci pour votre achat | CoachTanguy",
     "desc": "Votre programme Reprise 28 jours vous a été envoyé par e-mail.",
     "h1": "Merci, votre programme est en route !",
-    "text": "Votre paiement est confirmé. Le programme Reprise 28 jours vient de vous être envoyé par e-mail, en pièce jointe. Pensez à vérifier vos courriers indésirables.",
+    "text": "Votre paiement est confirmé. Le programme Reprise 28 jours vient de vous être envoyé par e-mail, en pièce jointe.",
+    "spam": "Vous ne voyez pas l'e-mail ? Regardez dans vos spams (courrier indésirable).",
     "help": "Rien reçu après 10 minutes ? Écrivez-moi et je vous le renvoie tout de suite.",
     "btn1": "Retour à l'accueil",
     "btn2": "Me contacter"

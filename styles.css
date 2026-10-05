@@ -1035,4 +1035,5 @@ body.has-hero .divider:not(.divider--on-dark)::after { flex: 0 1 330px; }
 
 /* ---------- Page de remerciement après achat ---------- */
 .confirm .p28merci__text { margin-bottom: 14px; }
+.confirm .p28merci__spam { display: inline-block; margin: 6px auto 18px; padding: 12px 18px; font-size: 16px; font-weight: 600; line-height: 1.45; color: #fff; background: rgba(255,90,0,.14); border: 1px solid rgba(255,90,0,.42); border-radius: 12px; }
 .confirm .p28merci__help { font-size: 15.5px; color: rgba(255,255,255,.56); }

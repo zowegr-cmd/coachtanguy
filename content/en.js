@@ -577,7 +577,8 @@ window.SITE_CONTENT = {
     "title": "Thank you for your purchase | CoachTanguy",
     "desc": "Your 28-Day Restart Programme has been sent by e-mail.",
     "h1": "Thank you, your programme is on its way!",
-    "text": "Your payment is confirmed. The 28-Day Restart Programme has just been sent to you by e-mail, as an attachment. Remember to check your spam folder.",
+    "text": "Your payment is confirmed. The 28-Day Restart Programme has just been sent to you by e-mail, as an attachment.",
+    "spam": "Can't see the e-mail? Check your spam or junk folder.",
     "help": "Nothing after 10 minutes? Send me a message and I will resend it straight away.",
     "btn1": "Back to home",
     "btn2": "Contact me"

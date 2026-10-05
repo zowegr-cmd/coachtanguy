@@ -577,7 +577,8 @@ window.SITE_CONTENT = {
     "title": "Bedankt voor je aankoop | CoachTanguy",
     "desc": "Je Herstartprogramma 28 dagen is per e-mail verstuurd.",
     "h1": "Bedankt, je programma is onderweg!",
-    "text": "Je betaling is bevestigd. Het Herstartprogramma 28 dagen is zonet per e-mail naar je verstuurd, als bijlage. Kijk ook even in je map met ongewenste e-mail.",
+    "text": "Je betaling is bevestigd. Het Herstartprogramma 28 dagen is zonet per e-mail naar je verstuurd, als bijlage.",
+    "spam": "Zie je de e-mail niet? Kijk in je spam (ongewenste e-mail).",
     "help": "Na 10 minuten nog niets ontvangen? Stuur me een bericht en ik bezorg het je meteen opnieuw.",
     "btn1": "Terug naar de homepage",
     "btn2": "Contacteer mij"
